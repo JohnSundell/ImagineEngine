@@ -10,7 +10,7 @@ Imagine Engine uses Core Animation as its rendering backend - just like Apple's 
 
 ## An easy to use API
 
-Besides being blazingly fast at rendering & updating your games, Imagine Engine aims to provide an easy to use API that anyone can learn. More APIs will be added over time, bug the engine already features a core set of features that we together can build new capabilities on top of.
+Besides its goal of being blazingly fast at rendering & updating your games, Imagine Engine aims to provide an easy to use API that anyone can learn - regardless of game development experience. More APIs will be added over time, but the engine already features a core set of features that we together can build new capabilities on top of.
 
 Here's what's in Imagine Engine today:
 
@@ -37,7 +37,7 @@ scene.add(player)
 
 📦 **Blocks**
 
-Blocks enable you to easily tile textures together to form objects that can scale nicely to any size, without having to scale any texture. This is done by stiching together up to 9 different texture to form a block of textures rendered side by side. Here's how you can easily create a block from a folder named "Platform" that contains the textures that should be stiched together:
+Blocks enable you to easily tile textures together to form objects that can scale nicely to any size, without having to scale any texture. This is done by stiching together up to 9 different textures to form a block of textures rendered side by side. Here's how you can easily create a block from a folder named "Platform" that contains the textures that should be stiched together:
 
 ```swift
 let block = Block(size: Size(width: 300, height: 300), textureCollectionName: "Platform")
@@ -103,6 +103,6 @@ More documentation, contribution guidelines, starter tasks, issues and lots of o
 
 I can't wait to see what we'll be able to build togeher 😊
 
-- John
+-- John
 
 PS. Feel free to [contact me on Twitter](https://twitter.com/johnsundell), my DMs are open! 📬
