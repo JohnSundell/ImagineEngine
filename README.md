@@ -67,6 +67,16 @@ player.events.collided(with: enemy).observe {
 }
 ```
 
+🏃 **Actions**
+
+Actions let you make objects do something over a period of time, for example moving, resizing, fading in and out etc. Imagine Engine contains a suite of built-in actions and also makes it easy for you to define your own. Here's how an actor can be moved over 3 seconds:
+
+```swift
+let actor = Actor()
+scene.add(actor)
+actor.move(byX: 200, y: 100, duration: 3)
+```
+
 🔌 **Plugins**
 
 Instead of relying on subclassing and overriding methods, Imagine Engine is designed to be easily extended through plugins. This enables you to share code between different games, and create new open source projects that add new functionality to the engine. You can attach plugins to most of Imagine Engine's objects, here's an example of creating a plugin that creates a new actor everytime the scene is clicked or tapped:
