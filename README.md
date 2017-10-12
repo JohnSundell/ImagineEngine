@@ -105,6 +105,14 @@ scene.timeline.repeat(withInterval: 5) {
 }
 ```
 
+## Platform support
+
+- [X] 📱 iOS
+- [ ] 🖥 macOS
+- [ ] 📺 tvOS
+
+Imagine Engine currently officially supports only iOS, but it doesn't have any specific dependencies on iOS, so support for both macOS & tvOS will be added within the near future. The API has also been designed in a way to let you use the exact same game code for all of Apple's platforms - no more `#if`s needed!
+
 ## Join the project!
 
 I've been working on this project on and off for a few years now. It's far from perfect (and probably never will be), but it's a start. I have now decided to share this code and this project with you - the amazing Swift community - and you are more then welcome to join in contributing by implementing new features, fixing bugs or just experimenting with and testing the engine. I love games, and will continue working on Imagine Engine together with the games I build using it. The first game - Revazendo - is currently in [public beta on TestFlight](http://www.revazendo.com), so feel free to join the beta if you want to see the engine in action.
