@@ -2,6 +2,16 @@
     <img src="Logo.png" width="250" max-width="50%" alt="Imagine Engine" />
 </p>
 
+<p align="center">
+    <a href="https://dashboard.buddybuild.com/apps/59e21f30b84107000143844a/build/latest?branch=master">
+        <img src="https://dashboard.buddybuild.com/api/statusImage?appID=59e21f30b84107000143844a&branch=master&build=latest" />
+    </a>
+    <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" />
+    <a href="https://twitter.com/johnsundell">
+        <img src="https://img.shields.io/badge/contact-@johnsundell-blue.svg?style=flat" alt="Twitter: @johnsundell" />
+    </a>
+</p>
+
 Welcome to **Imagine Engine**, an ongoing project that aims to create a fast, high-performace Swift 2D game engine for Apple's platforms that is also a joy to use. While there are still ways to go, things to fix and new capabilities to add, you are invited to participate in this new community to build a tool with an ambitious but clear goal - to enable you to easily build any game that you can imagine.
 
 ## Fast Core Animation-based rendering
