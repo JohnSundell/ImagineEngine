@@ -54,7 +54,6 @@ public class GameViewController: NSViewController {
         view.layer?.backgroundColor = NSColor.black.cgColor
         
         game.view.frame = view.bounds
-        game.view.autoresizingMask = [.width, .height]
         view.addSubview(game.view)
     }
     
@@ -82,6 +81,12 @@ public class GameViewController: NSViewController {
         
         game.scene.isPaused = true
         notificationCenter.removeObserver(self)
+    }
+    
+    public override func viewDidLayout() {
+        super.viewDidLayout()
+        
+        game.view.frame = view.bounds
     }
     
     // MARK: - Observations
