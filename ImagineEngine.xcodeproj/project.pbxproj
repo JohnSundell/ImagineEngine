@@ -147,6 +147,7 @@
 		DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */; };
 		DD21B7411F92EA610034A7CE /* ClickPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6521F8D4512008DB43D /* ClickPlugin.swift */; };
 		DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */; };
+		DD21B7481F92EC800034A7CE /* GameViewController-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +246,7 @@
 		DD21B7381F92E81C0034A7CE /* Image-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-macOS.swift"; sourceTree = "<group>"; };
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
 		DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLink-macOS.swift"; sourceTree = "<group>"; };
+		DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController-macOS.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				522CD6661F8D4512008DB43D /* UIKit */,
+				DD21B7451F92EC450034A7CE /* AppKit */,
 			);
 			path = Integrations;
 			sourceTree = "<group>";
@@ -451,6 +454,14 @@
 			);
 			name = Tests;
 			path = Tests/ImagineEngineTests;
+			sourceTree = "<group>";
+		};
+		DD21B7451F92EC450034A7CE /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */,
+			);
+			path = AppKit;
 			sourceTree = "<group>";
 		};
 		DD7502721C68FC1B006590AF /* Frameworks */ = {
@@ -741,6 +752,7 @@
 				DD21B7151F92E75A0034A7CE /* Fadeable.swift in Sources */,
 				DD21B7161F92E75A0034A7CE /* RotateAction.swift in Sources */,
 				DD21B7181F92E75A0034A7CE /* PluginManager.swift in Sources */,
+				DD21B7481F92EC800034A7CE /* GameViewController-macOS.swift in Sources */,
 				DD21B7191F92E75A0034A7CE /* InstanceHashable.swift in Sources */,
 				DD21B71A1F92E75A0034A7CE /* ActionPerformer.swift in Sources */,
 				DD21B71B1F92E75A0034A7CE /* Rotatable.swift in Sources */,
