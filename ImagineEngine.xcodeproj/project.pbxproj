@@ -148,6 +148,7 @@
 		DD21B7411F92EA610034A7CE /* ClickPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6521F8D4512008DB43D /* ClickPlugin.swift */; };
 		DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */; };
 		DD21B7481F92EC800034A7CE /* GameViewController-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */; };
+		DD21B74B1F92ED6B0034A7CE /* GameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7491F92ED5E0034A7CE /* GameWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +248,7 @@
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
 		DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLink-macOS.swift"; sourceTree = "<group>"; };
 		DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController-macOS.swift"; sourceTree = "<group>"; };
+		DD21B7491F92ED5E0034A7CE /* GameWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				DD21B7461F92EC610034A7CE /* GameViewController-macOS.swift */,
+				DD21B7491F92ED5E0034A7CE /* GameWindowController.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				DD21B6F91F92E75A0034A7CE /* ClosureAction.swift in Sources */,
 				DD21B6FA1F92E75A0034A7CE /* RepeatAction.swift in Sources */,
 				DD21B6FB1F92E75A0034A7CE /* ClosureUpdatable.swift in Sources */,
+				DD21B74B1F92ED6B0034A7CE /* GameWindowController.swift in Sources */,
 				DD21B6FC1F92E75A0034A7CE /* LoadedTexture.swift in Sources */,
 				DD21B6FD1F92E75A0034A7CE /* Block.swift in Sources */,
 				DD21B6FE1F92E75A0034A7CE /* Updatable.swift in Sources */,
