@@ -12,7 +12,7 @@ public final class TextureManager {
     /// Any custom image loader that should be used (nil = load from bundle)
     public var imageLoader: TextureImageLoader?
     /// The default scale when loading textures (default = the main screen's scale)
-    public var defaultScale: Int = Int(Screen.main.scale)
+    public var defaultScale: Int = Int(Screen.mainScreenScale)
 
     internal private(set) var cache = [String : LoadedTexture]()
     private let bundle: Bundle
