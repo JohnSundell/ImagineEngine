@@ -146,6 +146,7 @@
 		DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7381F92E81C0034A7CE /* Image-macOS.swift */; };
 		DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */; };
 		DD21B7411F92EA610034A7CE /* ClickPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6521F8D4512008DB43D /* ClickPlugin.swift */; };
+		DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +244,7 @@
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD21B7381F92E81C0034A7CE /* Image-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-macOS.swift"; sourceTree = "<group>"; };
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
+		DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLink-macOS.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 				522CD6531F8D4512008DB43D /* ClosureUpdatable.swift */,
 				52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */,
 				522CD6541F8D4512008DB43D /* DisplayLink-iOS+tvOS.swift */,
+				DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
 				522CD6591F8D4512008DB43D /* Layer.swift */,
@@ -719,6 +722,7 @@
 				DD21B7041F92E75A0034A7CE /* Activatable.swift in Sources */,
 				DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */,
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
+				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
 				DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */,
 				DD21B7061F92E75A0034A7CE /* Label.swift in Sources */,
 				DD21B7071F92E75A0034A7CE /* UpdatableWrapper.swift in Sources */,
