@@ -60,7 +60,7 @@ public extension Animation {
         updateIdentifier()
     }
 
-    init(texturesNamed textureNames: [String], frameDuration: TimeInterval = 1) {
+    init(texturesNamed textureNames: [String], frameDuration: TimeInterval) {
         frames = textureNames.map(Texture.init)
         self.frameDuration = frameDuration
         updateIdentifier()
@@ -68,6 +68,12 @@ public extension Animation {
 
     init(image: Image) {
         frames = [Texture(image: image)]
+        updateIdentifier()
+    }
+
+    init(images: [Image], frameDuration: TimeInterval) {
+        frames = images.map(Texture.init)
+        self.frameDuration = frameDuration
         updateIdentifier()
     }
 }

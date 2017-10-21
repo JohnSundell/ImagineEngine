@@ -24,12 +24,49 @@ final class ActorTests: XCTestCase {
     // MARK: - Tests
 
     func testAnimationAutoResizingActor() {
+        let imageSizes = [
+            Size(width: 200, height: 150),
+            Size(width: 300, height: 50),
+            Size(width: 100, height: 90)
+        ]
+
+        let images = imageSizes.map(ImagineMockFactory.makeImage)
+        actor.animation = Animation(images: images, frameDuration: 1.5)
+
+        // The actor should directly render the first frame
+        XCTAssertEqual(actor.size, imageSizes[0])
+
+        // Perform a game update to start the animation
+        game.update()
+
+        // After 1.5 seconds the second frame should be rendered, and the actor resized
+        game.timeTraveler.travel(by: 1.5)
+        game.update()
+        XCTAssertEqual(actor.size, imageSizes[1])
+
+        // Same thing for the third frame
+        game.timeTraveler.travel(by: 1.5)
+        game.update()
+        XCTAssertEqual(actor.size, imageSizes[2])
+
+        // After an additional 1.5 seconds, the initial frame should again be rendered
+        game.timeTraveler.travel(by: 1.5)
+        game.update()
+        XCTAssertEqual(actor.size, imageSizes[0])
+    }
+
+    func testSettingActorInitialSizeFromAnimation() {
         let imageSize = Size(width: 200, height: 150)
         let image = ImagineMockFactory.makeImage(withSize: imageSize)
 
+        let actor = Actor()
         actor.animation = Animation(image: image)
-        game.update()
 
+        // Before being added to the scene, the actor's size should remain zero
+        XCTAssertEqual(actor.size, .zero)
+
+        // As soon as the actor is added, it should be resized (even without an update)
+        game.scene.add(actor)
         XCTAssertEqual(actor.size, imageSize)
     }
 

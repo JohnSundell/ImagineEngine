@@ -148,6 +148,8 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         if isClickable {
             scene?.add(ClickPlugin())
         }
+
+        renderFirstAnimationFrameIfNeeded()
     }
 
     private func positionDidChange(from oldValue: Point) {
@@ -209,6 +211,12 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
             return
         }
 
+        renderFirstAnimationFrameIfNeeded()
+
+        guard animation.frames.count > 1 else {
+            return
+        }
+
         let action = AnimationAction(animation: animation, triggeredByActor: true)
         animationActionToken = perform(action)
     }
@@ -217,6 +225,21 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         if oldValue == false && isHitTestingEnabled == true {
             rectDidChange()
         }
+    }
+
+    private func renderFirstAnimationFrameIfNeeded() {
+        guard let animation = animation else {
+            return
+        }
+
+        guard let firstFrame = animation.frames.first else {
+            return
+        }
+
+        render(texture: firstFrame,
+               scale: animation.textureScale,
+               resize: animation.autoResize,
+               ignoreNamePrefix: animation.ignoreTextureNamePrefix)
     }
 }
 
