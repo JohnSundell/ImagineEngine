@@ -100,6 +100,12 @@ final class ActorTests: XCTestCase {
         // Approaching from the bottom should stop the actor at the block's bottom edge
         actor.position = Point(x: 0, y: 180)
         XCTAssertEqual(actor.position.y, 200)
+
+        // When moving the actor away, the least possible distance should be picked
+        actor.position = Point(x: 180, y: -190)
+        XCTAssertEqual(actor.position, Point(x: 180, y: -200))
+        actor.position = Point(x: 190, y: -180)
+        XCTAssertEqual(actor.position, Point(x: 200, y: -180))
     }
 
     func testObservingMove() {
