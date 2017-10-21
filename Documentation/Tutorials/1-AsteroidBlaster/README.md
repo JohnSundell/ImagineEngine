@@ -216,7 +216,7 @@ asteroid.events.collided(withActorInGroup: housesGroup).observe { asteroid, hous
 
 Our game won't be much of a game until the user can interact with it. So let's make that happen! What we'll do is observe the `clicked` event on each asteroid, and then simply call `explode()` whenever it's triggered:
 
-```
+```swift
 asteroid.events.clicked.observe { asteroid in
     asteroid.explode()
 }
