@@ -196,9 +196,7 @@ internal final class Grid {
         }
 
         for block in tile.blocks {
-            let actorRect = actor.rectForCollisionDetection
-
-            guard actorRect.intersects(block.rect) else {
+            guard actor.rectForCollisionDetection.intersects(block.rect) else {
                 continue
             }
 
@@ -206,17 +204,7 @@ internal final class Grid {
 
             if let group = block.group {
                 if actor.constraints.contains(.neverOverlapBlockInGroup(group)) {
-                    if actorRect.minX > block.rect.minX && actorRect.maxX < block.rect.maxX {
-                        if actorRect.maxY > block.rect.minY && actor.position.y < block.rect.midY {
-                            actor.position.y = block.rect.minY - actor.size.height / 2
-                        } else {
-                            actor.position.y = block.rect.maxY + actor.size.height / 2
-                        }
-                    } else if actorRect.maxX > block.rect.minX && actor.position.x < block.rect.midX  {
-                        actor.position.x = block.rect.minX - actor.size.width / 2
-                    } else {
-                        actor.position.x = block.rect.maxX + actor.size.width / 2
-                    }
+                    move(actor, awayFrom: block)
                 }
             }
         }
@@ -242,6 +230,30 @@ internal final class Grid {
 
         if let group = block.group {
             actor.events.collided(withBlockInGroup: group).trigger(with: block)
+        }
+    }
+
+    private func move(_ actor: Actor, awayFrom block: Block) {
+        let actorRect = actor.rectForCollisionDetection
+        let distanceX: Metric
+        let distanceY: Metric
+
+        if actor.position.x > block.rect.midX {
+            distanceX = block.rect.maxX - actorRect.minX
+        } else {
+            distanceX = block.rect.minX - actorRect.maxX
+        }
+
+        if actor.position.y > block.rect.midY {
+            distanceY = block.rect.maxY - actorRect.minY
+        } else {
+            distanceY = block.rect.minY - actorRect.maxY
+        }
+
+        if abs(distanceX) < abs(distanceY) {
+            actor.position.x += distanceX
+        } else {
+            actor.position.y += distanceY
         }
     }
 }
