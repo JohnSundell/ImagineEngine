@@ -38,7 +38,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
     /// The size of the actor (centered on its position).
     public var size = Size() { didSet { sizeDidChange(from: oldValue) } }
     /// The rectangle the actor currently occupies within its scene.
-    public var rect: Rect { return layer.frame }
+    public private(set) var rect = Rect() { didSet { rectDidChange() } }
     /// The rotation of the actor along the z axis.
     public var rotation = Metric() { didSet { layer.rotation = rotation } }
     /// The scale of the actor. Does not affect its size, rect or collision detection.
@@ -158,9 +158,10 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         }
         
         layer.position = position
+        updateRect()
+
         events.moved.trigger()
         events.rectChanged.trigger()
-        rectDidChange()
     }
 
     private func sizeDidChange(from oldValue: Size) {
@@ -169,9 +170,10 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         }
 
         layer.bounds.size = size
+        updateRect()
+
         events.resized.trigger()
         events.rectChanged.trigger()
-        rectDidChange()
     }
 
     private func rectDidChange() {
@@ -225,6 +227,13 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         if oldValue == false && isHitTestingEnabled == true {
             rectDidChange()
         }
+    }
+
+    private func updateRect() {
+        var newRect = Rect(origin: position, size: size)
+        newRect.origin.x -= size.width / 2
+        newRect.origin.y -= size.height / 2
+        rect = newRect
     }
 
     private func renderFirstAnimationFrameIfNeeded() {
