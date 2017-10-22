@@ -47,7 +47,7 @@ public final class Label: InstanceHashable, ActionPerformer, Activatable, Movabl
         self.text = text
 
         layer.string = text
-        layer.contentsScale = Screen.main.scale
+        layer.contentsScale = Screen.mainScreenScale
 
         fontDidChange()
     }

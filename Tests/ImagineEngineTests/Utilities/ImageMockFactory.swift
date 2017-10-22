@@ -5,8 +5,8 @@
  */
 
 import Foundation
-import ImagineEngine
 import CoreGraphics
+@testable import ImagineEngine
 
 final class ImagineMockFactory {
     static func makeImage(withSize size: Size) -> Image {

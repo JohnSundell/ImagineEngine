@@ -5,16 +5,15 @@
  */
 
 import Foundation
-import UIKit
 
 internal final class ClickPlugin: Plugin {
-    private var tapRecognizer: UITapGestureRecognizer?
+    private var tapRecognizer: ClickGestureRecognizer?
     private weak var scene: Scene?
 
     func activate(for object: Scene, in game: Game) {
         scene = object
 
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognizer))
+        let tapRecognizer = ClickGestureRecognizer(target: self, action: #selector(handleTapRecognizer))
         self.tapRecognizer = tapRecognizer
         game.view.addGestureRecognizer(tapRecognizer)
     }
@@ -27,7 +26,7 @@ internal final class ClickPlugin: Plugin {
         }
     }
 
-    @objc private func handleTapRecognizer(_ recognizer: UITapGestureRecognizer) {
+    @objc private func handleTapRecognizer(_ recognizer: ClickGestureRecognizer) {
         let point = recognizer.location(in: recognizer.view)
 
         scene?.events.clicked.trigger(with: point)

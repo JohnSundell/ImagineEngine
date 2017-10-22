@@ -12,9 +12,27 @@ internal final class Layer: CALayer {
     var scale: Metric = 1 { didSet { updateTransform() } }
     var mirroring = Set<Mirroring>() { didSet { updateTransform() } }
 
+    // MARK: - Initializers
+
+    override init() {
+        super.init()
+
+        #if os(macOS)
+        isGeometryFlipped = true
+        #endif
+    }
+
+    required init?(coder decoder: NSCoder) {
+        fatalError("The Layer class cannot be decoded")
+    }
+
+    // MARK: - CALayer
+
     override func action(forKey event: String) -> CAAction? {
         return NSNull()
     }
+
+    // MARK: - Private
 
     private func updateTransform() {
         var newTransform = CATransform3DIdentity
