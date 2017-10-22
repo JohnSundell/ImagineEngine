@@ -43,17 +43,8 @@ public class GameViewController: NSViewController {
     // MARK: - UIViewController
     
     public override func loadView() {
-        view = NSView(frame: NSRect(x: 0, y: 0, width: 640, height: 360))
-    }
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        view = game.view
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.black.cgColor
-        
-        game.view.frame = view.bounds
-        view.addSubview(game.view)
     }
     
     public override func viewDidAppear() {
@@ -108,7 +99,7 @@ public class GameViewController: NSViewController {
 }
 
 public extension GameViewController {
-    convenience init(scene: Scene) {
-        self.init(game: Game(size: .zero, scene: scene))
+    convenience init(size: Size, scene: Scene) {
+        self.init(game: Game(size: size, scene: scene))
     }
 }
