@@ -380,20 +380,20 @@
 				DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
+				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
 				522CD6591F8D4512008DB43D /* Layer.swift */,
 				522CD65A1F8D4512008DB43D /* LoadedTexture.swift */,
 				522CD65B1F8D4512008DB43D /* Optional+GetOrSet.swift */,
 				522CD65C1F8D4512008DB43D /* PluginManager.swift */,
 				522CD65D1F8D4512008DB43D /* PluginWrapper.swift */,
 				522CD65E1F8D4512008DB43D /* ReplicatorLayer.swift */,
+				525688B41F9CF08E00F87786 /* Screen-iOS.swift */,
+				DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */,
 				522CD65F1F8D4512008DB43D /* TextLayer.swift */,
 				522CD6611F8D4512008DB43D /* Updatable.swift */,
 				522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */,
 				522CD6631F8D4512008DB43D /* UpdateOutcome.swift */,
 				522CD6641F8D4512008DB43D /* View+MakeLayer.swift */,
-				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
-				DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */,
-				525688B41F9CF08E00F87786 /* Screen-iOS.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
