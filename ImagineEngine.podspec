@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ImagineEngine"
-  s.version      = "0.1.1"
+  s.version      = "0.2.0"
   s.summary      = "A Swift game engine based on Core Animation"
   s.description  = <<-DESC
     Imagine Engine is an ongoing project that aims to create a fast, high-performace Swift 2D game engine for Apple's platforms that is also a joy to use.
@@ -12,7 +12,19 @@ Pod::Spec.new do |s|
   s.author             = { "John Sundell" => "john@sundell.co" }
   s.social_media_url   = "https://twitter.com/johnsundell"
   s.ios.deployment_target = "9.0"
+  s.osx.deployment_target = "10.12"
   s.source       = { :git => "https://github.com/JohnSundell/ImagineEngine.git", :tag => s.version.to_s }
-  s.source_files  = "Sources/**/*.swift"
+  s.source_files = "Sources/Core/**/*.swift"
+  s.ios.source_files  = "Sources/Integrations/UIKit/*.swift"
+  s.ios.exclude_files = [
+      "Sources/Core/Internal/DisplayLink-macOS.swift",
+      "Sources/Core/Internal/Image-macOS.swift",
+      "Sources/Core/Internal/Screen-macOS.swift"
+  ]
+  s.osx.source_files  = "Sources/Integrations/AppKit/*.swift"
+  s.osx.exclude_files = [
+      "Sources/Core/Internal/DisplayLink-iOS+tvOS.swift",
+      "Sources/Core/Internal/Screen-iOS.swift"
+  ]
   s.frameworks  = "Foundation", "CoreGraphics", "QuartzCore"
 end
