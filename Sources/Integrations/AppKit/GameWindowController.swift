@@ -24,5 +24,4 @@ public class GameWindowController: NSWindowController {
         let effectiveScene = scene ?? Scene(size: window.contentRect(forFrameRect: window.frame).size)
         contentViewController = GameViewController(scene: effectiveScene)
     }
-    
 }

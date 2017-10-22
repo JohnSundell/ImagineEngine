@@ -13,7 +13,9 @@ internal final class DisplayLink: DisplayLinkProtocol {
     private var link: CVDisplayLink?
     
     deinit {
-        guard let link = link else { return }
+        guard let link = link else {
+            return
+        }
         
         CVDisplayLinkStop(link)
     }
@@ -21,7 +23,9 @@ internal final class DisplayLink: DisplayLinkProtocol {
     func activate() {
         CVDisplayLinkCreateWithActiveCGDisplays(&link)
         
-        guard let link = link else { return }
+        guard let link = link else {
+            return
+        }
         
         let opaquePointerToSelf = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
         CVDisplayLinkSetOutputCallback(link, _imageEngineDisplayLinkCallback, opaquePointerToSelf)
@@ -34,7 +38,6 @@ internal final class DisplayLink: DisplayLinkProtocol {
     @objc internal func screenDidRender() {
         callback()
     }
-    
 }
 
 private func _imageEngineDisplayLinkCallback(displayLink: CVDisplayLink, _ now: UnsafePointer<CVTimeStamp>, _ outputTime: UnsafePointer<CVTimeStamp>, _ flagsIn: CVOptionFlags, _ flagsOut: UnsafeMutablePointer<CVOptionFlags>, _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn {

@@ -7,7 +7,7 @@
 
 import Cocoa
 
-extension Screen {
+internal extension Screen {
     static var mainScreenScale: CGFloat {
         return Screen.main?.backingScaleFactor ?? 1
     }

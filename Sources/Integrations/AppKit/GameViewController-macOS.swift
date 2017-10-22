@@ -63,15 +63,15 @@ public class GameViewController: NSViewController {
         game.updateActivationStatus()
         
         notificationCenter.addObserver(self,
-                                       selector: #selector(applicationDidBecomeActive),
-                                       name: NSApplication.didBecomeActiveNotification,
-                                       object: nil
+            selector: #selector(applicationDidBecomeActive),
+            name: NSApplication.didBecomeActiveNotification,
+            object: nil
         )
         
         notificationCenter.addObserver(self,
-                                       selector: #selector(applicationWillBecomeInactive),
-                                       name: NSApplication.willBecomeActiveNotification,
-                                       object: nil
+            selector: #selector(applicationWillBecomeInactive),
+            name: NSApplication.willBecomeActiveNotification,
+            object: nil
         )
     }
     
@@ -84,7 +84,6 @@ public class GameViewController: NSViewController {
     
     public override func viewDidLayout() {
         super.viewDidLayout()
-        
         game.view.frame = view.bounds
     }
     
@@ -113,4 +112,3 @@ public extension GameViewController {
         self.init(game: Game(size: .zero, scene: scene))
     }
 }
-
