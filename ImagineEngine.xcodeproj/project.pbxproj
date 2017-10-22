@@ -76,6 +76,7 @@
 		52479F8A1F8E804F00D22A87 /* TimelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F891F8E804F00D22A87 /* TimelineTests.swift */; };
 		52479F8C1F8E818100D22A87 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
 		52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
+		525688B51F9CF08E00F87786 /* Screen-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525688B41F9CF08E00F87786 /* Screen-iOS.swift */; };
 		527FC8061F8EB223006B1295 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
 		527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
 		527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
@@ -229,6 +230,7 @@
 		52479F891F8E804F00D22A87 /* TimelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTests.swift; sourceTree = "<group>"; };
 		52479F8B1F8E818100D22A87 /* ActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTests.swift; sourceTree = "<group>"; };
 		52479F8D1F8E823E00D22A87 /* ActionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMock.swift; sourceTree = "<group>"; };
+		525688B41F9CF08E00F87786 /* Screen-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-iOS.swift"; sourceTree = "<group>"; };
 		527FC8051F8EB223006B1295 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		527FC8071F8EB83F006B1295 /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				522CD6641F8D4512008DB43D /* View+MakeLayer.swift */,
 				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
 				DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */,
+				525688B41F9CF08E00F87786 /* Screen-iOS.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				522CD67C1F8D451D008DB43D /* Group.swift in Sources */,
 				522CD67E1F8D451D008DB43D /* Label.swift in Sources */,
 				522CD6A21F8D4521008DB43D /* UpdatableWrapper.swift in Sources */,
+				525688B51F9CF08E00F87786 /* Screen-iOS.swift in Sources */,
 				522CD6731F8D451D008DB43D /* CancellationToken.swift in Sources */,
 				522CD68A1F8D451D008DB43D /* Scene.swift in Sources */,
 				52479F801F8E58E200D22A87 /* TextureImageLoader.swift in Sources */,
