@@ -9,14 +9,12 @@
 import Cocoa
 
 extension Image {
-    
     var cgImage: CGImage? {
         return cgImage(forProposedRect: nil, context: nil, hints: nil)
     }
     
     var scale: CGFloat {
         // TODO: find a better way of figuring out the image scale factor on macOS
-        return NSScreen.main?.backingScaleFactor ?? 1.0
+        return Screen.mainScreenScale
     }
-    
 }

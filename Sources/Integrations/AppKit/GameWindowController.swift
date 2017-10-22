@@ -9,7 +9,6 @@
 import Cocoa
 
 public class GameWindowController: NSWindowController {
-    
     /// The game that the window controller is managing
     public var game: Game { return gameViewController.game }
     
