@@ -121,11 +121,11 @@ To get started, [check out the first tutorial](https://github.com/JohnSundell/Im
 
 ## Platform support
 
-- [X] 📱 iOS
-- [ ] 🖥 macOS
+- [X] 📱 iOS 9 or later
+- [X] 🖥 macOS 10.12 or later
 - [ ] 📺 tvOS
 
-Imagine Engine currently officially supports only iOS, but it doesn't have any specific dependencies on iOS, so support for both macOS & tvOS will be added within the near future. The API has also been designed in a way to let you use the exact same game code for all of Apple's platforms - no more `#if`s needed!
+Imagine Engine currently supports iOS & macOS, with tvOS support coming soon. The API is completely platform agnostic, which lets you use the exact same game code for all of Apple's platforms - no more `#if`s needed!
 
 ## Join the project!
 
