@@ -23,6 +23,16 @@ final class ActorTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testRect() {
+        XCTAssertEqual(actor.rect, .zero)
+
+        actor.position = Point(x: 150, y: 200)
+        XCTAssertEqual(actor.rect, Rect(x: 150, y: 200, width: 0, height: 0))
+
+        actor.size = Size(width: 100, height: 300)
+        XCTAssertEqual(actor.rect, Rect(x: 100, y: 50, width: 100, height: 300))
+    }
+
     func testAnimationAutoResizingActor() {
         let imageSizes = [
             Size(width: 200, height: 150),
