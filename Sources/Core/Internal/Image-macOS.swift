@@ -7,7 +7,7 @@
 
 import Cocoa
 
-extension Image {
+internal extension Image {
     var cgImage: CGImage? {
         return cgImage(forProposedRect: nil, context: nil, hints: nil)
     }
@@ -15,5 +15,10 @@ extension Image {
     var scale: CGFloat {
         // TODO: find a better way of figuring out the image scale factor on macOS
         return Screen.mainScreenScale
+    }
+
+    convenience init(cgImage: CGImage) {
+        let size = Size(width: cgImage.width, height: cgImage.height)
+        self.init(cgImage: cgImage, size: size)
     }
 }

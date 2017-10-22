@@ -29,7 +29,26 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "525688B91F9CF33100F87786"
+               BuildableName = "ImagineEngine-macOS Tests.xctest"
+               BlueprintName = "ImagineEngine-macOS Tests"
+               ReferencedContainer = "container:ImagineEngine.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DD21B6F01F92E75A0034A7CE"
+            BuildableName = "ImagineEngine.framework"
+            BlueprintName = "ImagineEngine-macOS"
+            ReferencedContainer = "container:ImagineEngine.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

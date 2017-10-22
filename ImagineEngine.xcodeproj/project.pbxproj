@@ -77,6 +77,22 @@
 		52479F8C1F8E818100D22A87 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
 		52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
 		525688B51F9CF08E00F87786 /* Screen-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525688B41F9CF08E00F87786 /* Screen-iOS.swift */; };
+		525688BF1F9CF33100F87786 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */; };
+		525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
+		525688C61F9CF3E200F87786 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
+		525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
+		525688C81F9CF3E200F87786 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
+		525688C91F9CF3E200F87786 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
+		525688CA1F9CF3E200F87786 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F831F8E7B4E00D22A87 /* SceneTests.swift */; };
+		525688CB1F9CF3E200F87786 /* TimelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F891F8E804F00D22A87 /* TimelineTests.swift */; };
+		525688CC1F9CF3E200F87786 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
+		525688CD1F9CF3E200F87786 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
+		525688CE1F9CF3E200F87786 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
+		525688CF1F9CF3E200F87786 /* PluginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F871F8E7CAF00D22A87 /* PluginMock.swift */; };
+		525688D01F9CF3E200F87786 /* TextureImageLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */; };
+		525688D11F9CF3E200F87786 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860321F8E381600C6C7A7 /* Assert.swift */; };
+		525688D21F9CF3E200F87786 /* TimeTraveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860331F8E381600C6C7A7 /* TimeTraveler.swift */; };
+		525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
 		527FC8061F8EB223006B1295 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
 		527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
 		527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
@@ -153,6 +169,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		525688C01F9CF33100F87786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD21B6F01F92E75A0034A7CE;
+			remoteInfo = "ImagineEngine-macOS";
+		};
 		52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
@@ -231,6 +254,7 @@
 		52479F8B1F8E818100D22A87 /* ActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTests.swift; sourceTree = "<group>"; };
 		52479F8D1F8E823E00D22A87 /* ActionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMock.swift; sourceTree = "<group>"; };
 		525688B41F9CF08E00F87786 /* Screen-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-iOS.swift"; sourceTree = "<group>"; };
+		525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FC8051F8EB223006B1295 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		527FC8071F8EB83F006B1295 /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
@@ -254,6 +278,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		525688B71F9CF33100F87786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				525688BF1F9CF33100F87786 /* ImagineEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D6D9781BEFF229002C0205 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,6 +454,7 @@
 				52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */,
 				52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */,
 				DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */,
+				525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -506,6 +539,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		525688B91F9CF33100F87786 /* ImagineEngine-macOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 525688C21F9CF33100F87786 /* Build configuration list for PBXNativeTarget "ImagineEngine-macOS Tests" */;
+			buildPhases = (
+				525688B61F9CF33100F87786 /* Sources */,
+				525688B71F9CF33100F87786 /* Frameworks */,
+				525688B81F9CF33100F87786 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				525688C11F9CF33100F87786 /* PBXTargetDependency */,
+			);
+			name = "ImagineEngine-macOS Tests";
+			productName = "ImagineEngine-macOS Tests";
+			productReference = 525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		52D6D97B1BEFF229002C0205 /* ImagineEngine-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D6D9901BEFF229002C0205 /* Build configuration list for PBXNativeTarget "ImagineEngine-iOS" */;
@@ -566,10 +617,15 @@
 		52D6D9731BEFF229002C0205 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = ImagineEngine;
 				TargetAttributes = {
+					525688B91F9CF33100F87786 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = TEE39J9D8F;
+						ProvisioningStyle = Automatic;
+					};
 					52D6D97B1BEFF229002C0205 = {
 						CreatedOnToolsVersion = 7.1;
 						LastSwiftMigration = 0900;
@@ -595,11 +651,19 @@
 				52D6D97B1BEFF229002C0205 /* ImagineEngine-iOS */,
 				52D6D9851BEFF229002C0205 /* ImagineEngine-iOS Tests */,
 				DD21B6F01F92E75A0034A7CE /* ImagineEngine-macOS */,
+				525688B91F9CF33100F87786 /* ImagineEngine-macOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		525688B81F9CF33100F87786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D6D97A1BEFF229002C0205 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -624,6 +688,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		525688B61F9CF33100F87786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				525688D01F9CF3E200F87786 /* TextureImageLoaderMock.swift in Sources */,
+				525688C81F9CF3E200F87786 /* EventTests.swift in Sources */,
+				525688CE1F9CF3E200F87786 /* GameMock.swift in Sources */,
+				525688C91F9CF3E200F87786 /* LabelTests.swift in Sources */,
+				525688CA1F9CF3E200F87786 /* SceneTests.swift in Sources */,
+				525688CC1F9CF3E200F87786 /* ActionMock.swift in Sources */,
+				525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */,
+				525688D11F9CF3E200F87786 /* Assert.swift in Sources */,
+				525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */,
+				525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */,
+				525688D21F9CF3E200F87786 /* TimeTraveler.swift in Sources */,
+				525688C61F9CF3E200F87786 /* ActionTests.swift in Sources */,
+				525688CD1F9CF3E200F87786 /* DisplayLinkMock.swift in Sources */,
+				525688CF1F9CF3E200F87786 /* PluginMock.swift in Sources */,
+				525688CB1F9CF3E200F87786 /* TimelineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D6D9771BEFF229002C0205 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -790,6 +876,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		525688C11F9CF33100F87786 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD21B6F01F92E75A0034A7CE /* ImagineEngine-macOS */;
+			targetProxy = 525688C01F9CF33100F87786 /* PBXContainerItemProxy */;
+		};
 		52D6D9891BEFF229002C0205 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 52D6D97B1BEFF229002C0205 /* ImagineEngine-iOS */;
@@ -798,6 +889,54 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		525688C31F9CF33100F87786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TEE39J9D8F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		525688C41F9CF33100F87786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TEE39J9D8F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		52D6D98E1BEFF229002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -996,8 +1135,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-macOS";
 				PRODUCT_NAME = ImagineEngine;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1022,7 +1162,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-iOS";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-macOS";
 				PRODUCT_NAME = ImagineEngine;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1036,6 +1177,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		525688C21F9CF33100F87786 /* Build configuration list for PBXNativeTarget "ImagineEngine-macOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				525688C31F9CF33100F87786 /* Debug */,
+				525688C41F9CF33100F87786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52D6D9761BEFF229002C0205 /* Build configuration list for PBXProject "ImagineEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
