@@ -6,12 +6,6 @@
 
 import Foundation
 
-#if os(iOS)
-    import UIKit
-#else
-    import Cocoa
-#endif
-
 internal final class ClickPlugin: Plugin {
     private var tapRecognizer: ClickGestureRecognizer?
     private weak var scene: Scene?
