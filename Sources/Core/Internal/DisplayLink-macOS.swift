@@ -33,10 +33,8 @@ internal final class DisplayLink: DisplayLinkProtocol {
         CVDisplayLinkStart(link)
     }
     
-    // MARK: - Private
-    
-    @objc internal func screenDidRender() {
-        callback()
+    @objc func screenDidRender() {
+        DispatchQueue.main.async(execute: callback)
     }
 }
 
