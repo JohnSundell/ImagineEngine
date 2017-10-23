@@ -7,6 +7,12 @@
         <img src="https://dashboard.buddybuild.com/api/statusImage?appID=59e21f30b84107000143844a&branch=master&build=latest" />
     </a>
     <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" />
+    <a href="https://cocoapods.org/pods/ImagineEngine">
+        <img src="https://img.shields.io/cocoapods/v/ImagineEngine.svg" alt="CocoaPods" />
+    </a>
+    <a href="https://github.com/Carthage/Carthage">
+        <img src="https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat" alt="Carthage" />
+    </a>
     <a href="https://twitter.com/johnsundell">
         <img src="https://img.shields.io/badge/contact-@johnsundell-blue.svg?style=flat" alt="Twitter: @johnsundell" />
     </a>
