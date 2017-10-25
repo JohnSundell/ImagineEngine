@@ -118,18 +118,23 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
 
     // MARK: - Internal
 
-    internal func render(texture: Texture, scale: Int?, resize: Bool, ignoreNamePrefix: Bool) {
+    internal func render(frame: Animation.Frame, scale: Int?, resize: Bool, ignoreNamePrefix: Bool) {
         guard let textureManager = scene?.textureManager else {
             return
         }
 
         let namePrefix = ignoreNamePrefix ? nil : textureNamePrefix
-        let loadedTexture = textureManager.load(texture, namePrefix: namePrefix, scale: scale)
+        let loadedTexture = textureManager.load(frame.texture, namePrefix: namePrefix, scale: scale)
 
         layer.contents = loadedTexture?.image
+        layer.contentsRect = frame.contentRect
 
         if resize {
-            size = loadedTexture?.size ?? .zero
+            if var newSize = loadedTexture?.size {
+                newSize.width *= frame.contentRect.width
+                newSize.height *= frame.contentRect.height
+                size = newSize
+            }
         }
     }
 
@@ -215,7 +220,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
 
         renderFirstAnimationFrameIfNeeded()
 
-        guard animation.frames.count > 1 else {
+        guard animation.frameCount > 1 else {
             return
         }
 
@@ -241,11 +246,11 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
             return
         }
 
-        guard let firstFrame = animation.frames.first else {
+        guard animation.frameCount > 0 else {
             return
         }
 
-        render(texture: firstFrame,
+        render(frame: animation.frame(at: 0),
                scale: animation.textureScale,
                resize: animation.autoResize,
                ignoreNamePrefix: animation.ignoreTextureNamePrefix)

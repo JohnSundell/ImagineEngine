@@ -37,19 +37,19 @@ public final class AnimationAction: Action<Actor> {
     }
 
     internal override func update(for actor: Actor, currentTime: TimeInterval) -> UpdateOutcome {
-        let frame = animation.frames[frameIndex]
+        let frame = animation.frame(at: frameIndex)
         frameIndex += 1
 
-        actor.render(texture: frame,
+        actor.render(frame: frame,
                      scale: animation.textureScale,
                      resize: animation.autoResize,
                      ignoreNamePrefix: animation.ignoreTextureNamePrefix)
 
-        if animation.frames.count < 2 {
+        if animation.frameCount < 2 {
             return .finished
         }
 
-        if frameIndex == animation.frames.count {
+        if frameIndex == animation.frameCount {
             switch animation.repeatMode {
             case .times(let count):
                 guard repeatCount < count else {
