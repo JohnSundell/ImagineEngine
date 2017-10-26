@@ -80,6 +80,29 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.size, imageSize)
     }
 
+    func testAnimatingWithSpriteSheet() {
+        let imageSize = Size(width: 300, height: 100)
+        let image = ImagineMockFactory.makeImage(withSize: imageSize)
+        game.textureImageLoader.images["sheet"] = image.cgImage
+
+        var animation = Animation(
+            spriteSheetNamed: "sheet",
+            frameCount: 6,
+            rowCount: 2,
+            frameDuration: 1
+        )
+        animation.textureScale = 1
+
+        let actor = Actor()
+        actor.animation = animation
+        game.scene.add(actor)
+        XCTAssertEqual(actor.size, Size(width: 100, height: 50))
+
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertEqual(actor.size, Size(width: 100, height: 50))
+    }
+
     func testTextureNamePrefix() {
         actor.textureNamePrefix = "Prefix"
 

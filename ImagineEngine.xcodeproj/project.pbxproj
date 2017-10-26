@@ -67,6 +67,8 @@
 		522CD6A41F8D4521008DB43D /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
 		522CD6A51F8D4526008DB43D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6671F8D4512008DB43D /* GameViewController.swift */; };
 		522CD6A61F8D4526008DB43D /* GameWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6681F8D4512008DB43D /* GameWindow.swift */; };
+		523E5D101F9FEFBC0084792C /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */; };
+		523E5D111F9FEFBC0084792C /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */; };
 		52479F801F8E58E200D22A87 /* TextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */; };
 		52479F821F8E5A6F00D22A87 /* TextureImageLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */; };
 		52479F841F8E7B4E00D22A87 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F831F8E7B4E00D22A87 /* SceneTests.swift */; };
@@ -246,6 +248,7 @@
 		522CD6641F8D4512008DB43D /* View+MakeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+MakeLayer.swift"; sourceTree = "<group>"; };
 		522CD6671F8D4512008DB43D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		522CD6681F8D4512008DB43D /* GameWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWindow.swift; sourceTree = "<group>"; };
+		523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheet.swift; sourceTree = "<group>"; };
 		52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureImageLoader.swift; sourceTree = "<group>"; };
 		52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureImageLoaderMock.swift; sourceTree = "<group>"; };
 		52479F831F8E7B4E00D22A87 /* SceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTests.swift; sourceTree = "<group>"; };
@@ -358,6 +361,7 @@
 				522CD6481F8D4512008DB43D /* ScaleAction.swift */,
 				522CD6491F8D4512008DB43D /* Scene.swift */,
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
+				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
 				52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */,
 				522CD6601F8D4512008DB43D /* TextureManager.swift */,
@@ -717,6 +721,7 @@
 				522CD6A41F8D4521008DB43D /* View+MakeLayer.swift in Sources */,
 				522CD69D1F8D4521008DB43D /* PluginWrapper.swift in Sources */,
 				522CD6881F8D451D008DB43D /* Scalable.swift in Sources */,
+				523E5D101F9FEFBC0084792C /* SpriteSheet.swift in Sources */,
 				522CD6831F8D451D008DB43D /* Plugin.swift in Sources */,
 				522CD66D1F8D451D008DB43D /* ActorEventCollection.swift in Sources */,
 				522CD6811F8D451D008DB43D /* Movable.swift in Sources */,
@@ -855,6 +860,7 @@
 				DD21B71E1F92E75A0034A7CE /* Action.swift in Sources */,
 				DD21B71F1F92E75A0034A7CE /* Texture.swift in Sources */,
 				DD21B7201F92E75A0034A7CE /* UpdateOutcome.swift in Sources */,
+				523E5D111F9FEFBC0084792C /* SpriteSheet.swift in Sources */,
 				DD21B7211F92E75A0034A7CE /* MetricAction.swift in Sources */,
 				DD21B7221F92E75A0034A7CE /* Animation.swift in Sources */,
 				DD21B7231F92E75A0034A7CE /* Game.swift in Sources */,
