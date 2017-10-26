@@ -15,7 +15,7 @@ import Foundation
  *  divided frames.
  *
  *  For example, if a sprite sheet is 100x100 pixels large and it is said
- *  to have 16 frames and 4 rows, then each frame is assumed to be a 20x20
+ *  to have 16 frames and 4 rows, then each frame is assumed to be a 25x25
  *  cutout from the sprite sheet's texture.
  *
  *  To use a sprite sheet with an animation, either assign it as its `content`
