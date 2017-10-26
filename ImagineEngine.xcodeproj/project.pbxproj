@@ -104,6 +104,8 @@
 		52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
 		52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
+		C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
+		C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		DD21B6F21F92E75A0034A7CE /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
 		DD21B6F31F92E75A0034A7CE /* PluginWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65D1F8D4512008DB43D /* PluginWrapper.swift */; };
 		DD21B6F41F92E75A0034A7CE /* Scalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6471F8D4512008DB43D /* Scalable.swift */; };
@@ -272,6 +274,7 @@
 		52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
+		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD21B7381F92E81C0034A7CE /* Image-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-macOS.swift"; sourceTree = "<group>"; };
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
@@ -490,6 +493,7 @@
 				527FC8051F8EB223006B1295 /* EventTests.swift */,
 				527FC80B1F8EBAAB006B1295 /* LabelTests.swift */,
 				52479F831F8E7B4E00D22A87 /* SceneTests.swift */,
+				C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */,
 				52479F891F8E804F00D22A87 /* TimelineTests.swift */,
 				52C860391F8E534000C6C7A7 /* Mocks */,
 				52C860311F8E381600C6C7A7 /* Utilities */,
@@ -699,6 +703,7 @@
 				525688D01F9CF3E200F87786 /* TextureImageLoaderMock.swift in Sources */,
 				525688C81F9CF3E200F87786 /* EventTests.swift in Sources */,
 				525688CE1F9CF3E200F87786 /* GameMock.swift in Sources */,
+				C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */,
 				525688C91F9CF3E200F87786 /* LabelTests.swift in Sources */,
 				525688CA1F9CF3E200F87786 /* SceneTests.swift in Sources */,
 				525688CC1F9CF3E200F87786 /* ActionMock.swift in Sources */,
@@ -792,6 +797,7 @@
 				527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */,
 				52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */,
 				52479F861F8E7BFD00D22A87 /* TimeTraveler.swift in Sources */,
+				C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */,
 				52479F8A1F8E804F00D22A87 /* TimelineTests.swift in Sources */,
 				527FC8061F8EB223006B1295 /* EventTests.swift in Sources */,
 				52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */,

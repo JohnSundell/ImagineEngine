@@ -59,7 +59,10 @@ public final class TextureManager {
         }
 
         guard let image = loadImage(named: name) else {
-            return nil
+            guard scale > 1 else {
+                return nil
+            }
+            return load(texture, namePrefix: namePrefix, scale: scale - 1)
         }
 
         let texture = LoadedTexture(image: image, scale: scale)
