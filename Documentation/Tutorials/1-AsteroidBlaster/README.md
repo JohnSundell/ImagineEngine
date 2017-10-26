@@ -117,12 +117,12 @@ Here's what our scene looks like with houses added:
 
 Now that we have ground and houses, let's start creating some asteroids that the player must destroy before they reach the houses.
 
-We want to create a new asteroid every second, at a random X coordinate. We then want to move the asteroid downwards until it either reaches the ground or collides with a house, at which point we want to make it explode.
+We want to create a new asteroid every 2 seconds, at a random X coordinate. We then want to move the asteroid downwards until it either reaches the ground or collides with a house, at which point we want to make it explode.
 
-To register delayed or repeated events, we'll use our scene's `timeline`. Rather than using `DispatchQueue` or `Timer`, in an Imagine Engine game it's recommended to use the `Timeline` API. This enables the engine to batch multiple events together for optimal performance, and to have your delayed or repeated code executed in sync with the engine's own updates. Let's start by creating a new asteroid actor every second:
+To register delayed or repeated events, we'll use our scene's `timeline`. Rather than using `DispatchQueue` or `Timer`, in an Imagine Engine game it's recommended to use the `Timeline` API. This enables the engine to batch multiple events together for optimal performance, and to have your delayed or repeated code executed in sync with the engine's own updates. Let's start by creating a new asteroid actor every 2 seconds:
 
 ```swift
-timeline.repeat(withInterval: 1) { [weak self] in
+timeline.repeat(withInterval: 2) { [weak self] in
     guard let scene = self else {
         return
     }

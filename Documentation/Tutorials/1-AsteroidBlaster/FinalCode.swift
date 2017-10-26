@@ -30,7 +30,7 @@ class AsteroidBlasterScene: Scene {
             house.position.y = ground.rect.minY - house.size.height / 2
         }
 
-        timeline.repeat(withInterval: 1) { [weak self] in
+        timeline.repeat(withInterval: 2) { [weak self] in
             guard let scene = self else {
                 return
             }
