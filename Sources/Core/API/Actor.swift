@@ -34,10 +34,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
     /// The index of the actor on the z axis. Affects rendering & hit testing. 0 = implicit index.
     public var zIndex = 0 { didSet { layer.zPosition = Metric(zIndex) } }
     /// The position (center-point) of the actor within its scene.
-    public var position = Point() {
-        willSet { positionWillChange(to: newValue) }
-        didSet { positionDidChange(from: oldValue) }
-    }
+    public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the actor (centered on its position).
     public var size = Size() { didSet { sizeDidChange(from: oldValue) } }
     /// The rectangle the actor currently occupies within its scene.
@@ -79,6 +76,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
     private lazy var actionManager = ActionManager(object: self)
     private var velocityActionToken: ActionToken?
     private var animationActionToken: ActionToken?
+    private var isUpdatingPosition = false
     
     // MARK: - Initializer
 
@@ -160,21 +158,27 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         renderFirstAnimationFrameIfNeeded()
     }
 
-    private func positionWillChange(to newValue: Point) {
-        if position != newValue {
-            events.willMove.trigger(with: newValue)
-        }
-    }
-
     private func positionDidChange(from oldValue: Point) {
         guard position != oldValue else {
             return
         }
-        
-        layer.position = position
-        updateRect()
 
-        events.moved.trigger()
+        let isOriginalUpdate = !isUpdatingPosition
+        isUpdatingPosition = true
+        updateRect()
+        
+        guard isOriginalUpdate else {
+            return
+        }
+
+        isUpdatingPosition = false
+
+        guard position != oldValue else {
+            return
+        }
+
+        layer.position = position
+        events.moved.trigger(with: (oldValue, position))
         events.rectChanged.trigger()
     }
 

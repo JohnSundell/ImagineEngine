@@ -43,19 +43,19 @@ final class EventTests: XCTestCase {
         var passedActor: Actor?
         var triggerCount = 0
 
-        actor.events.moved.addObserver(observer) {
+        actor.events.resized.addObserver(observer) {
             passedObserver = $0
             passedActor = $1
             triggerCount += 1
         }
 
-        actor.events.moved.trigger()
+        actor.events.resized.trigger()
         assertSameInstance(passedObserver, observer)
         assertSameInstance(passedActor, actor)
         XCTAssertEqual(triggerCount, 1)
 
-        actor.events.moved.removeObserver(observer)
-        actor.events.moved.trigger()
+        actor.events.resized.removeObserver(observer)
+        actor.events.resized.trigger()
         XCTAssertEqual(triggerCount, 1)
     }
 
@@ -66,17 +66,17 @@ final class EventTests: XCTestCase {
         let actor = Actor()
         var triggerCount = 0
 
-        actor.events.moved.addObserver(observer!) { _ in
+        actor.events.resized.addObserver(observer!) { _ in
             triggerCount += 1
         }
 
-        actor.events.moved.trigger()
+        actor.events.resized.trigger()
         XCTAssertEqual(triggerCount, 1)
 
         observer = nil
         XCTAssertNil(weakObserver)
 
-        actor.events.moved.trigger()
+        actor.events.resized.trigger()
         XCTAssertEqual(triggerCount, 1)
     }
 
