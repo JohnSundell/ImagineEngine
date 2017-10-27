@@ -15,9 +15,11 @@ import Foundation
  */
 public final class Camera: ActionPerformer, Movable, Activatable {
     /// The position of the camera within its scene
-    public var position = Point() { didSet { updateLayerFrame() } }
+    public var position = Point() { didSet { update() } }
     /// The size of the camera's viewport. Set as soon as its presented in a game.
-    public internal(set) var size = Size() { didSet { updateLayerFrame() }}
+    public internal(set) var size = Size() { didSet { update() }}
+    /// The current rectangle of the camera's viewport.
+    public private(set) var rect = Rect()
 
     private let pluginManager = PluginManager()
     private lazy var actionManager = ActionManager(object: self)
@@ -60,10 +62,15 @@ public final class Camera: ActionPerformer, Movable, Activatable {
 
     // MARK: - Private
 
-    private func updateLayerFrame() {
+    private func update() {
         layer.frame.origin = Point(
             x: size.width / 2 - position.x,
             y: size.height / 2 - position.y
         )
+
+        var newRect = Rect(origin: position, size: size)
+        newRect.origin.x -= size.width / 2
+        newRect.origin.y -= size.height / 2
+        rect = newRect
     }
 }
