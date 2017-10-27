@@ -45,7 +45,12 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
     /// The rotation of the actor along the z axis.
     public var rotation = Metric() { didSet { layer.rotation = rotation } }
     /// The scale of the actor. Does not affect its size, rect or collision detection.
-    public var scale: Metric = 1 { didSet { layer.scale = scale } }
+    public var scale: Metric = 1 {
+        didSet {
+            layer.scale = scale
+            rectDidChange()
+        }
+    }
     /// The velocity of the actor. Used for continous directional movement.
     public var velocity = Vector() { didSet { velocityDidChange(from: oldValue) } }
     /// The opacity of the actor. Ranges from 0 (transparent) - 1 (opaque).
