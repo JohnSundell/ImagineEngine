@@ -131,4 +131,30 @@ final class SceneTests: XCTestCase {
         game.update()
         XCTAssertEqual(actor.position, Point(x: 80, y: 80))
     }
+
+    func testClickPointAdjustedForCamera() {
+        var clickedPoint: Point?
+
+        game.scene.events.clicked.observe { _, point in
+            clickedPoint = point
+        }
+
+        // When the scene & the camera are of the same size, no adjustments are needed
+        game.view.frame.size = Size(width: 300, height: 600)
+        game.scene.size = game.view.frame.size
+        game.scene.camera.position = game.scene.center
+        game.simulateClick(at: Point(x: 150, y: 300))
+        XCTAssertEqual(clickedPoint, Point(x: 150, y: 300))
+
+        // When camera in the upper-left corner, no adjustments are needed either
+        game.scene.size = Size(width: 3000, height: 6000)
+        game.scene.camera.position = Point(x: 150, y: 300)
+        game.simulateClick(at: Point(x: 150, y: 300))
+        XCTAssertEqual(clickedPoint, Point(x: 150, y: 300))
+
+        // When camera is moved, the click point should be adjusted accordingly
+        game.scene.camera.position = Point(x: 1000, y: 1500)
+        game.simulateClick(at: Point(x: 200, y: 350))
+        XCTAssertEqual(clickedPoint, Point(x: 1050, y: 1550))
+    }
 }
