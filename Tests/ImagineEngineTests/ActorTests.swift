@@ -178,6 +178,26 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.position, Point(x: 200, y: -180))
     }
 
+    func testObservingWillMoveEvent() {
+        var noValueTriggerCount = 0
+        actor.events.willMove.observe { noValueTriggerCount += 1 }
+
+        var oldPositions = [Point]()
+        var newPositions = [Point]()
+
+        actor.events.willMove.observe { actor, newPosition in
+            oldPositions.append(actor.position)
+            newPositions.append(newPosition)
+        }
+
+        actor.position.x += 100
+        actor.position.y += 50
+
+        XCTAssertEqual(noValueTriggerCount, 2)
+        XCTAssertEqual(oldPositions, [.zero, Point(x: 100, y: 0)])
+        XCTAssertEqual(newPositions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
+    }
+
     func testObservingMove() {
         var noValueTriggerCount = 0
         actor.events.moved.observe { noValueTriggerCount += 1 }
