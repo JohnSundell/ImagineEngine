@@ -99,6 +99,8 @@ public extension Animation {
         self.repeatMode = repeatMode
         self.autoResize = autoResize
         self.ignoreTextureNamePrefix = ignoreTextureNamePrefix
+
+        updateIdentifier()
     }
 }
 

@@ -101,6 +101,19 @@ final class ActorTests: XCTestCase {
         game.timeTraveler.travel(by: 1)
         game.update()
         XCTAssertEqual(actor.size, Size(width: 100, height: 50))
+
+        // Assigning new sprite sheet mid-animation should update the animation
+        var newAnimation = Animation(
+            spriteSheetNamed: "sheet2",
+            frameCount: 6,
+            rowCount: 2,
+            frameDuration: 1
+        )
+        newAnimation.textureScale = 1
+        actor.animation = newAnimation
+
+        game.update()
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet", "sheet2"])
     }
 
     func testTextureNamePrefix() {
