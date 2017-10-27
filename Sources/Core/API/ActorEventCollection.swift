@@ -8,10 +8,8 @@ import Foundation
 
 /// Events that can be used to observe an actor
 public final class ActorEventCollection: EventCollection<Actor> {
-    /// Event triggered when the actor is about to move (contains the new position)
-    public private(set) lazy var willMove = Event<Actor, Point>(object: self.object)
     /// Event triggered when the actor was moved
-    public private(set) lazy var moved = Event<Actor, Void>(object: self.object)
+    public private(set) lazy var moved = Event<Actor, (old: Point, new: Point)>(object: self.object)
     /// Event triggered when the actor was resized
     public private(set) lazy var resized = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor's rectangle changed (either by position or size)

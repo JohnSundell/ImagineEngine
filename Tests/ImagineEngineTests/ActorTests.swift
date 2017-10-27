@@ -191,38 +191,54 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.position, Point(x: 200, y: -180))
     }
 
-    func testObservingWillMoveEvent() {
-        var noValueTriggerCount = 0
-        actor.events.willMove.observe { noValueTriggerCount += 1 }
+    func testMovedEventsNotCalledMultipleTimesWhenConstraining() {
+        let blockSize = Size(width: 400, height: 400)
+        let blockGroup = Group.name("Block")
 
-        var oldPositions = [Point]()
-        var newPositions = [Point]()
+        let block = Block(size: blockSize, textureCollectionName: "Block")
+        block.group = blockGroup
+        game.scene.add(block)
 
-        actor.events.willMove.observe { actor, newPosition in
-            oldPositions.append(actor.position)
-            newPositions.append(newPosition)
-        }
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 250, y: 0)
+        actor.constraints = [.neverOverlapBlockInGroup(blockGroup)]
 
-        actor.position.x += 100
-        actor.position.y += 50
+        var movedCallCount = 0
+        actor.events.moved.observe { movedCallCount += 1 }
 
-        XCTAssertEqual(noValueTriggerCount, 2)
-        XCTAssertEqual(oldPositions, [.zero, Point(x: 100, y: 0)])
-        XCTAssertEqual(newPositions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
+        // Moving the actor to overlap the block should not trigger any events
+        // since, from the user's perspective, it simply remains at the same poisition
+        actor.position.x = 200
+        XCTAssertEqual(actor.position.x, 250)
+        XCTAssertEqual(movedCallCount, 0)
+
+        // Moving the actor anywhere else should trigger events
+        actor.position.x = 300
+        XCTAssertEqual(actor.position.x, 300)
+        XCTAssertEqual(movedCallCount, 1)
     }
 
     func testObservingMove() {
         var noValueTriggerCount = 0
         actor.events.moved.observe { noValueTriggerCount += 1 }
 
-        var positions = [Point]()
-        actor.events.moved.observe { positions.append($0.position) }
+        var actorPositions = [Point]()
+        var oldPositions = [Point]()
+        var newPositions = [Point]()
+
+        actor.events.moved.observe { actor, positions in
+            actorPositions.append(actor.position)
+            oldPositions.append(positions.old)
+            newPositions.append(positions.new)
+        }
 
         actor.position.x += 100
         actor.position.y += 50
 
         XCTAssertEqual(noValueTriggerCount, 2)
-        XCTAssertEqual(positions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
+        XCTAssertEqual(actorPositions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
+        XCTAssertEqual(oldPositions, [.zero, Point(x: 100, y: 0)])
+        XCTAssertEqual(newPositions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
     }
 
     func testObservingResize() {
