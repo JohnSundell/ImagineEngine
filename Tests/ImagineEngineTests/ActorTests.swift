@@ -298,6 +298,18 @@ final class ActorTests: XCTestCase {
         game.scene.add(otherActor)
         actor.position = .zero
         XCTAssertEqual(numberOfCollisions, 3)
+
+        actor.position = Point(x: 300, y: 300)
+
+        // A scaled actor should use its scaled rect for collisions
+        actor.scale = 0.5
+        actor.position = Point(x: 90, y: 90)
+        XCTAssertEqual(numberOfCollisions, 3)
+
+        actor.position = Point(x: 300, y: 300)
+        actor.scale = 1.5
+        actor.position = Point(x: 120, y: 120)
+        XCTAssertEqual(numberOfCollisions, 4)
     }
 
     func testAssigningZIndex() {

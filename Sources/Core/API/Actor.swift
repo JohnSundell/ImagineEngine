@@ -291,16 +291,13 @@ public extension Actor {
 
 internal extension Actor {
     var rectForCollisionDetection: Rect {
-        if let hitboxSize = hitboxSize {
-            return Rect(
-                origin: Point(
-                    x: position.x - hitboxSize.width / 2,
-                    y: position.y - hitboxSize.height / 2
-                ),
-                size: hitboxSize
-            )
-        }
-
-        return rect
+        let scaledSize = hitboxSize ?? Size(width: rect.width * scale, height: rect.height * scale)
+        return Rect(
+            origin: Point(
+                x: position.x - scaledSize.width / 2,
+                y: position.y - scaledSize.height / 2
+            ),
+            size: scaledSize
+        )
     }
 }
