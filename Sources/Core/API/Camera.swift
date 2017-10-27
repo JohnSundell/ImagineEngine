@@ -15,20 +15,26 @@ import Foundation
  */
 public final class Camera: ActionPerformer, Movable, Activatable {
     /// The position of the camera within its scene
-    public var position = Point() { didSet { update() } }
+    public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the camera's viewport. Set as soon as its presented in a game.
-    public internal(set) var size = Size() { didSet { update() }}
+    public internal(set) var size = Size() { didSet { sizeDidChange(from: oldValue) }}
     /// The current rectangle of the camera's viewport.
     public private(set) var rect = Rect()
+    /// Whether the camera is constrained to the scene or can move outside of it (default = false)
+    public var constrainedToScene = false { didSet { update() } }
+
+    internal var sceneSize: Size { didSet { update() } }
 
     private let pluginManager = PluginManager()
     private lazy var actionManager = ActionManager(object: self)
     private let layer: Layer
+    private weak var scene: Scene?
 
     // MARK: - Initializer
 
-    internal init(layer: Layer) {
+    internal init(layer: Layer, sceneSize: Size) {
         self.layer = layer
+        self.sceneSize = sceneSize
     }
 
     // MARK: - Plugin API
@@ -62,15 +68,53 @@ public final class Camera: ActionPerformer, Movable, Activatable {
 
     // MARK: - Private
 
-    private func update() {
-        layer.frame.origin = Point(
-            x: size.width / 2 - position.x,
-            y: size.height / 2 - position.y
-        )
+    private func positionDidChange(from oldValue: Point) {
+        if position != oldValue {
+            update()
+        }
+    }
 
+    private func sizeDidChange(from oldValue: Size) {
+        if size != oldValue {
+            update()
+        }
+    }
+
+    private func update() {
         var newRect = Rect(origin: position, size: size)
         newRect.origin.x -= size.width / 2
         newRect.origin.y -= size.height / 2
         rect = newRect
+
+        if constrainedToScene {
+            if sceneSize.width >= size.width {
+                guard newRect.minX >= 0 else {
+                    position.x = size.width / 2
+                    return
+                }
+
+                guard newRect.maxX <= sceneSize.width else {
+                    position.x = sceneSize.width - size.width / 2
+                    return
+                }
+            }
+
+            if sceneSize.height >= size.height {
+                guard newRect.minY >= 0 else {
+                    position.y = size.height / 2
+                    return
+                }
+
+                guard newRect.maxY <= sceneSize.height else {
+                    position.y = sceneSize.height - size.height / 2
+                    return
+                }
+            }
+        }
+
+        layer.frame.origin = Point(
+            x: size.width / 2 - position.x,
+            y: size.height / 2 - position.y
+        )
     }
 }

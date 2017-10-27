@@ -46,6 +46,35 @@ final class CameraTests: XCTestCase {
         XCTAssertEqual(scene.camera.rect, Rect(x: 0, y: 0, width: 100, height: 200))
     }
 
+    func testConstrainingToScene() {
+        game.view.frame.size = Size(width: 500, height: 300)
+
+        let scene = Scene(size: Size(width: 500, height: 300))
+        game.scene = scene
+
+        // By default, the camera is not constrained to the scene and can move outside it
+        scene.camera.position = Point(x: -2000, y: -1000)
+        XCTAssertEqual(scene.camera.position, Point(x: -2000, y: -1000))
+
+        // When turning on the constraint, the camera should move within the scene
+        scene.camera.constrainedToScene = true
+        XCTAssertEqual(scene.camera.position, Point(x: 250, y: 150))
+
+        // From now on the camera shouldn't be able to move outside of the scene
+        scene.camera.position.x += 100
+        scene.camera.position.y += 100
+        XCTAssertEqual(scene.camera.position, Point(x: 250, y: 150))
+
+        scene.camera.position.x -= 100
+        scene.camera.position.y -= 100
+        XCTAssertEqual(scene.camera.position, Point(x: 250, y: 150))
+
+        // If the scene becomes smaller than the viewport, constraints are no longer evaluated
+        scene.size = Size(width: 100, height: 200)
+        scene.camera.position = Point(x: -2000, y: -1000)
+        XCTAssertEqual(scene.camera.position, Point(x: -2000, y: -1000))
+    }
+
     func testAddingAndRemovingPlugin() {
         let plugin = PluginMock<Camera>()
 

@@ -53,7 +53,7 @@ open class Scene: Activatable {
     public init(size: Size) {
         self.size = size
 
-        camera = Camera(layer: layer)
+        camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
 
         sizeDidChange()
@@ -89,7 +89,7 @@ open class Scene: Activatable {
             remove(label)
         }
 
-        camera = Camera(layer: layer)
+        camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
 
         events = SceneEventCollection(object: self)
@@ -259,6 +259,7 @@ open class Scene: Activatable {
 
     private func sizeDidChange() {
         layer.bounds.size = size
+        camera.sceneSize = size
     }
 
     private func backgroundColorDidChange() {
