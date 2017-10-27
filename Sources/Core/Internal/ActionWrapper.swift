@@ -23,6 +23,19 @@ internal final class ActionWrapper<Object: AnyObject>: Updatable {
             return .finished
         }
 
+        guard !action.token.isCancelled else {
+            if isInProgress {
+                action.cancel(for: object)
+                reset()
+            }
+
+            return .finished
+        }
+
+        guard !action.token.isPending else {
+            return .continueAfter(0)
+        }
+
         if !isInProgress {
             isInProgress = true
             action.start(for: object)
@@ -30,16 +43,6 @@ internal final class ActionWrapper<Object: AnyObject>: Updatable {
             for linkedToken in action.token.linkedTokens {
                 linkedToken.isPending = false
             }
-        }
-
-        guard !action.token.isCancelled else {
-            action.cancel(for: object)
-            reset()
-            return .finished
-        }
-
-        guard !action.token.isPending else {
-            return .continueAfter(0)
         }
 
         let outcome = action.update(for: object, currentTime: currentTime)

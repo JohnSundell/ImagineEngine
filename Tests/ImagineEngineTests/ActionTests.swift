@@ -64,4 +64,65 @@ final class ActionTests: XCTestCase {
         game.update()
         XCTAssertEqual(action.context?.completionRatio, 0)
     }
+
+    func testChainingMultipleActions() {
+        let actionA = ActionMock<Actor>(duration: 2)
+        let actionB = ActionMock<Actor>(duration: 3)
+        let actionC = ActionMock<Actor>(duration: 4)
+
+        let actor = Actor()
+        game.scene.add(actor)
+
+        var allActionsFinished = false
+
+        actor.perform(actionA)
+             .then(actor.perform(actionB))
+             .then(actor.perform(actionC))
+             .then {
+                 allActionsFinished = true
+             }
+
+        // Start the first action
+        game.update()
+        XCTAssertTrue(actionA.isStarted)
+        XCTAssertFalse(actionB.isStarted)
+        XCTAssertFalse(actionC.isStarted)
+        XCTAssertFalse(allActionsFinished)
+
+        // After 1 second only the first action should be 50% complete
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertEqual(actionA.context?.completionRatio, 0.5)
+        XCTAssertNil(actionB.context)
+        XCTAssertNil(actionC.context)
+
+        // After 2 seconds, the first action should be finished and the second started
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertTrue(actionA.isFinished)
+        XCTAssertTrue(actionB.isStarted)
+        XCTAssertFalse(actionC.isStarted)
+        XCTAssertFalse(allActionsFinished)
+
+        // After 3.5 seconds, the second action should be 50% complete
+        game.timeTraveler.travel(by: 1.5)
+        game.update()
+        XCTAssertEqual(actionB.context?.completionRatio, 0.5)
+        XCTAssertNil(actionC.context)
+
+        // After 5 seconds, the second action should be finished and the third started
+        game.timeTraveler.travel(by: 1.5)
+        game.update()
+        XCTAssertTrue(actionB.isFinished)
+        XCTAssertTrue(actionC.isStarted)
+        XCTAssertFalse(allActionsFinished)
+
+        // After 9 seconds all actions should be completed
+        game.timeTraveler.travel(by: 4)
+        game.update()
+        XCTAssertTrue(actionA.isFinished)
+        XCTAssertTrue(actionB.isFinished)
+        XCTAssertTrue(actionC.isFinished)
+        XCTAssertTrue(allActionsFinished)
+    }
 }
