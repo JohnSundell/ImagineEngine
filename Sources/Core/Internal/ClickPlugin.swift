@@ -7,31 +7,53 @@
 import Foundation
 
 internal final class ClickPlugin: Plugin {
-    private var tapRecognizer: ClickGestureRecognizer?
+    private let gestureRecognizer: ClickGestureRecognizer
     private weak var scene: Scene?
+
+    // MARK: - Initializer
+
+    init(gestureRecognizer: ClickGestureRecognizer = .init()) {
+        self.gestureRecognizer = gestureRecognizer
+        gestureRecognizer.addTarget(self, action: #selector(handleGestureRecognizer))
+    }
+
+    // MARK: - Plugin
 
     func activate(for object: Scene, in game: Game) {
         scene = object
-
-        let tapRecognizer = ClickGestureRecognizer(target: self, action: #selector(handleTapRecognizer))
-        self.tapRecognizer = tapRecognizer
-        game.view.addGestureRecognizer(tapRecognizer)
+        game.view.addGestureRecognizer(gestureRecognizer)
     }
 
     func deactivate() {
         scene = nil
-
-        if let tapRecognizer = tapRecognizer {
-            tapRecognizer.view?.removeGestureRecognizer(tapRecognizer)
-        }
+        gestureRecognizer.view?.removeGestureRecognizer(gestureRecognizer)
     }
 
-    @objc private func handleTapRecognizer(_ recognizer: ClickGestureRecognizer) {
-        let point = recognizer.location(in: recognizer.view)
+    // MARK: - API
 
-        scene?.events.clicked.trigger(with: point)
+    func trigger() {
+        handleGestureRecognizer(gestureRecognizer)
+    }
 
-        scene?.actors(at: point).forEach { actor in
+    // MARK: - Private
+
+    @objc private func handleGestureRecognizer(_ recognizer: ClickGestureRecognizer) {
+        guard let scene = scene else {
+            return
+        }
+
+        var point = recognizer.location(in: recognizer.view)
+
+        #if os(macOS)
+        point.y = scene.camera.size.height - point.y
+        #endif
+
+        point.x += scene.camera.rect.minX
+        point.y += scene.camera.rect.minY
+
+        scene.events.clicked.trigger(with: point)
+
+        scene.actors(at: point).forEach { actor in
             if actor.isClickable {
                 actor.events.clicked.trigger()
             }

@@ -31,6 +31,21 @@ final class CameraTests: XCTestCase {
         XCTAssertEqual(scene.camera.size, Size(width: 100, height: 100))
     }
 
+    func testRect() {
+        // Initially the camera should have a zero size rect at the scene's center point
+        let scene = Scene(size: Size(width: 500, height: 300))
+        XCTAssertEqual(scene.camera.rect, Rect(x: 250, y: 150, width: 0, height: 0))
+
+        // When the scene is added to a game the rect should be the full view port
+        game.view.frame.size = Size(width: 100, height: 200)
+        game.scene = scene
+        XCTAssertEqual(scene.camera.rect, Rect(x: 200, y: 50, width: 100, height: 200))
+
+        // When the camera is moved, the rect should be updated
+        scene.camera.position = Point(x: 50, y: 100)
+        XCTAssertEqual(scene.camera.rect, Rect(x: 0, y: 0, width: 100, height: 200))
+    }
+
     func testAddingAndRemovingPlugin() {
         let plugin = PluginMock<Camera>()
 
