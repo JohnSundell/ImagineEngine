@@ -24,11 +24,3 @@ internal final class UpdatableWrapper: Updatable {
         return updatable.update(currentTime: currentTime)
     }
 }
-
-extension UpdatableWrapper: Hashable {
-    static func ==(lhs: UpdatableWrapper, rhs: UpdatableWrapper) -> Bool {
-        return lhs.updatable === rhs.updatable
-    }
-
-    var hashValue: Int { return ObjectIdentifier(updatable).hashValue }
-}

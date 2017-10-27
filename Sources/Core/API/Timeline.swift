@@ -35,7 +35,7 @@ public final class Timeline: Activatable {
 
     private var rootNode: Node?
     private lazy var unsortedUpdatables = [(UpdatableWrapper, TimeInterval)]()
-    private lazy var immediateUpdatables = Set<UpdatableWrapper>()
+    private lazy var immediateUpdatables = UpdatableCollection()
     private var lastUpdateTime: TimeInterval?
     private var pauseInterval: TimeInterval = 0
 
@@ -79,10 +79,7 @@ public final class Timeline: Activatable {
         lastUpdateTime = currentTime
         let currentTime = currentTime - pauseInterval
 
-        let updatables = immediateUpdatables
-        immediateUpdatables = []
-
-        for updatable in updatables {
+        for updatable in immediateUpdatables.removeAll() {
             let outcome = updatable.update(currentTime: currentTime)
 
             switch outcome {
@@ -130,13 +127,13 @@ public final class Timeline: Activatable {
 private extension Timeline {
     final class Node {
         let time: TimeInterval
-        var updatables: Set<UpdatableWrapper>
+        var updatables = UpdatableCollection()
         var greaterChild: Node?
         var lesserChild: Node?
 
         init(time: TimeInterval, updatable: UpdatableWrapper) {
             self.time = time
-            self.updatables = [updatable]
+            updatables.insert(updatable)
         }
 
         func insert(_ updatable: UpdatableWrapper, at insertTime: TimeInterval) {
@@ -159,10 +156,7 @@ private extension Timeline {
 
         func update(in timeline: Timeline, currentTime: TimeInterval) -> NodeUpdateOutcome {
             if currentTime >= time {
-                let currentUpdatables = updatables
-                updatables = []
-
-                for updatable in currentUpdatables {
+                for updatable in updatables.removeAll() {
                     let outcome = updatable.update(currentTime: currentTime)
 
                     switch outcome {
