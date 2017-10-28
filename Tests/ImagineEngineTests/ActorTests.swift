@@ -314,6 +314,28 @@ final class ActorTests: XCTestCase {
         game.scene.add(otherActor)
         actor.position = .zero
         XCTAssertEqual(numberOfCollisions, 3)
+
+        actor.position = Point(x: 300, y: 300)
+
+        // A scaled down actor should use its scale and avoid a collision
+        actor.scale = 0.5
+        actor.position = Point(x: 90, y: 90)
+        XCTAssertEqual(numberOfCollisions, 3)
+
+        // Scaling back up should trigger a collision
+        actor.scale = 1
+        XCTAssertEqual(numberOfCollisions, 4)
+
+        // A scaled up actor should trigger a collision from farther away.
+        actor.position = Point(x: 300, y: 300)
+        actor.scale = 1.5
+        actor.position = Point(x: 120, y: 120)
+        XCTAssertEqual(numberOfCollisions, 5)
+
+        // Setting a hitbox should override the scaling effect.
+        actor.hitboxSize = Size(width: 25, height: 25)
+        actor.position = Point(x: 90, y: 90)
+        XCTAssertEqual(numberOfCollisions, 5)
     }
 
     func testAssigningZIndex() {
