@@ -9,7 +9,7 @@ import CoreGraphics
 
 /// Class that manages & faciliates the loading of textures for actors
 public final class TextureManager {
-    /// Any custom image loader that should be used (nil = load from bundle)
+    /// The image loader that should be used (default = load from bundle)
     public var imageLoader: TextureImageLoader
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
