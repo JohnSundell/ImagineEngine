@@ -40,11 +40,15 @@ public final class ActionToken: CancellationToken {
     internal private(set) lazy var linkedTokens = [ActionToken]()
     internal private(set) lazy var chain = [ChainItem]()
     internal var isPending = false
+    private weak var precedingToken: ActionToken?
+
+    // MARK: - API
 
     /// Link the action that this token is for to another one
     /// You can use this API to perform two actions in parallel
     @discardableResult public func also(_ token: ActionToken) -> ActionToken {
         token.isPending = true
+        token.precedingToken = self
         linkedTokens.append(token)
         return token
     }
@@ -53,6 +57,7 @@ public final class ActionToken: CancellationToken {
     /// You can use this API to perform two actions in sequence
     @discardableResult public func then(_ token: ActionToken) -> ActionToken {
         token.isPending = true
+        token.precedingToken = self
         chain.append(.token(token))
         return token
     }
@@ -67,6 +72,13 @@ public final class ActionToken: CancellationToken {
     @discardableResult public func then(_ closure: @escaping () -> Void) -> ActionToken {
         chain.append(.closure(closure))
         return self
+    }
+
+    // MARK: - CancellationToken
+
+    public override func cancel() {
+        super.cancel()
+        precedingToken?.cancel()
     }
 
     // MARK: - Internal

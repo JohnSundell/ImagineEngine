@@ -125,4 +125,43 @@ final class ActionTests: XCTestCase {
         XCTAssertTrue(actionC.isFinished)
         XCTAssertTrue(allActionsFinished)
     }
+
+    func testCancellingChainedActions() {
+        let actionA = ActionMock<Actor>(duration: 2)
+        let actionB = ActionMock<Actor>(duration: 3)
+        let actionC = ActionMock<Actor>(duration: 4)
+
+        let actor = Actor()
+        game.scene.add(actor)
+
+        let token = actor.perform(actionA)
+                         .then(actor.perform(actionB))
+                         .then(actor.perform(actionC))
+
+        game.update()
+        XCTAssertTrue(actionA.isStarted)
+        XCTAssertFalse(actionB.isStarted)
+        XCTAssertFalse(actionC.isStarted)
+
+        // Cancelling at this point should only send the cancel event to the first action
+        token.cancel()
+        game.update()
+        XCTAssertTrue(actionA.isCancelled)
+        XCTAssertFalse(actionB.isCancelled)
+        XCTAssertFalse(actionC.isCancelled)
+
+        // None of the actions should receive any updates after being cancelled
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        game.timeTraveler.travel(by: 2)
+        game.update()
+
+        XCTAssertEqual(actionA.context?.completionRatio, 0)
+        XCTAssertNil(actionB.context)
+        XCTAssertNil(actionC.context)
+    }
 }
