@@ -23,6 +23,7 @@ final class ImageMockFactory {
             space: CGColorSpaceCreateDeviceRGB(),
             bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue
         )!
+
         return context.makeImage()!
     }
 }

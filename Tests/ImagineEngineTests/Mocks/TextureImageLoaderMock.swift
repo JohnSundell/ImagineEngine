@@ -26,6 +26,7 @@ final class TextureImageLoaderMock: TextureImageLoader {
         guard scale > 1 else {
             return name
         }
+
         return "\(name)@\(scale)x"
     }
 }

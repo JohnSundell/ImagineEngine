@@ -202,6 +202,15 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         scene?.actorRectDidChange(self)
     }
 
+    private func scaleDidChange(from oldValue: Metric) {
+        guard oldValue != scale else {
+            return
+        }
+
+        layer.scale = scale
+        rectDidChange()
+    }
+
     private func velocityDidChange(from oldValue: Vector) {
         guard velocity != oldValue else {
             return
@@ -267,12 +276,6 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
                scale: animation.textureScale,
                resize: animation.autoResize,
                ignoreNamePrefix: animation.ignoreTextureNamePrefix)
-    }
-
-    private func scaleDidChange(from oldValue: Metric) {
-        guard oldValue != scale else { return }
-        layer.scale = scale
-        rectDidChange()
     }
 }
 

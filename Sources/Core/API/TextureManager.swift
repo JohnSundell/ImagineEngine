@@ -57,6 +57,7 @@ public final class TextureManager {
             guard scale > 1 else {
                 return nil
             }
+
             return load(texture, namePrefix: namePrefix, scale: scale - 1)
         }
 
