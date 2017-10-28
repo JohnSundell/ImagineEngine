@@ -123,7 +123,7 @@ scene.timeline.repeat(withInterval: 5) {
 
 ## Getting started
 
-To get started, [check out the first tutorial](https://github.com/JohnSundell/ImagineEngine/tree/master/Documentation/Tutorials/1-AsteroidBlaster), which will walk you through building your first Imagine Engine-powered game in less than 100 lines of code.
+To get started, check out the [tutorials section](https://github.com/JohnSundell/ImagineEngine/tree/master/Documentation/Tutorials), which contains tutorials that will walk you through building your first Imagine Engine-powered games with very few lines of code. No previous game developer experience required!
 
 ## Platform support
 
