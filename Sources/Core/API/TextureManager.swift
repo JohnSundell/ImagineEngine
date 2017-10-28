@@ -18,7 +18,7 @@ public final class TextureManager {
 
     // MARK: - Init
 
-    internal init(imageLoader: TextureImageLoader = BundleImageLoader()) {
+    internal init(imageLoader: TextureImageLoader = BundleTextureImageLoader()) {
         self.imageLoader = imageLoader
     }
 

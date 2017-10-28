@@ -7,8 +7,8 @@
 import Foundation
 import CoreGraphics
 
-class BundleImageLoader: TextureImageLoader {
-    let bundle: Bundle
+internal final class BundleTextureImageLoader: TextureImageLoader {
+    private let bundle: Bundle
 
     init(bundle: Bundle = .main) {
         self.bundle = bundle
