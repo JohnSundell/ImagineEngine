@@ -9,15 +9,34 @@ import XCTest
 @testable import ImagineEngine
 
 class TextureManagerTests: XCTestCase {
-    func testFallsBackToLowerScaleTextures() {
-        let imageLoader = TextureImageLoaderMock()
-        let manager = TextureManager()
-        manager.imageLoader = imageLoader
+    var manager: TextureManager!
+    var imageLoader: TextureImageLoaderMock!
 
+    override func setUp() {
+        manager = TextureManager()
+        imageLoader = TextureImageLoaderMock()
+        manager.imageLoader = imageLoader
+    }
+
+    func testFallsBackToLowerScaleTextures() {
         _ = manager.load(Texture(name: "texture"), namePrefix: nil, scale: 3)
 
-        XCTAssert(imageLoader.imageNames.contains("texture@3x"))
-        XCTAssert(imageLoader.imageNames.contains("texture@2x"))
-        XCTAssert(imageLoader.imageNames.contains("texture"))
+        XCTAssertEqual(imageLoader.imageNames, ["texture@3x", "texture@2x", "texture"])
+    }
+
+    func testRemembersTextureScaleFallback() {
+        imageLoader.images["texture@2x"] = makeImage()
+
+        _ = manager.load(Texture(name: "texture"), namePrefix: nil, scale: 3)
+        XCTAssertEqual(imageLoader.imageNames, ["texture@3x", "texture@2x"])
+
+        imageLoader.clearImageNames()
+
+        _ = manager.load(Texture(name: "texture"), namePrefix: nil, scale: 3)
+        XCTAssert(imageLoader.imageNames.isEmpty)
+    }
+
+    private func makeImage() -> CGImage {
+        return ImageMockFactory.makeCGImage(withSize: Size(width: 1, height: 1))
     }
 }
