@@ -14,8 +14,14 @@ class BundleImageLoader: TextureImageLoader {
         self.bundle = bundle
     }
 
-    func loadImageForTexture(named name: String) -> CGImage? {
-        guard let url = bundle.url(forResource: name, withExtension: "png") else {
+    func loadImageForTexture(named name: String, scale: Int) -> CGImage? {
+        var imageName = name
+
+        if scale > 1 {
+            imageName.append("@\(scale)x")
+        }
+
+        guard let url = bundle.url(forResource: imageName, withExtension: "png") else {
             return nil
         }
 

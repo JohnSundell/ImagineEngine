@@ -36,10 +36,6 @@ public final class TextureManager {
         let scale = scale ?? defaultScale
         var name = texture.name
 
-        if scale > 1 {
-            name.append("@\(scale)x")
-        }
-
         if let prefix = namePrefix {
             name = "\(prefix)\(name)"
         }
@@ -57,7 +53,7 @@ public final class TextureManager {
             return texture
         }
 
-        guard let image = imageLoader.loadImageForTexture(named: name) else {
+        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale) else {
             guard scale > 1 else {
                 return nil
             }
