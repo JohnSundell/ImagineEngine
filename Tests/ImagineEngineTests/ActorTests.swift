@@ -40,7 +40,7 @@ final class ActorTests: XCTestCase {
             Size(width: 100, height: 90)
         ]
 
-        let images = imageSizes.map(ImagineMockFactory.makeImage)
+        let images = imageSizes.map(ImageMockFactory.makeImage)
         actor.animation = Animation(images: images, frameDuration: 1.5)
 
         // The actor should directly render the first frame
@@ -67,7 +67,7 @@ final class ActorTests: XCTestCase {
 
     func testSettingActorInitialSizeFromAnimation() {
         let imageSize = Size(width: 200, height: 150)
-        let image = ImagineMockFactory.makeImage(withSize: imageSize)
+        let image = ImageMockFactory.makeImage(withSize: imageSize)
 
         let actor = Actor()
         actor.animation = Animation(image: image)
@@ -82,7 +82,7 @@ final class ActorTests: XCTestCase {
 
     func testAnimatingWithSpriteSheet() {
         let imageSize = Size(width: 300, height: 100)
-        let image = ImagineMockFactory.makeImage(withSize: imageSize)
+        let image = ImageMockFactory.makeImage(withSize: imageSize)
         game.textureImageLoader.images["sheet"] = image.cgImage
 
         var animation = Animation(
