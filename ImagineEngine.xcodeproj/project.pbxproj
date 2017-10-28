@@ -111,6 +111,8 @@
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
 		C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
+		C8D2FCE51FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
+		C8D2FCE61FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
 		DD21B6F21F92E75A0034A7CE /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
 		DD21B6F31F92E75A0034A7CE /* PluginWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65D1F8D4512008DB43D /* PluginWrapper.swift */; };
 		DD21B6F41F92E75A0034A7CE /* Scalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6471F8D4512008DB43D /* Scalable.swift */; };
@@ -283,6 +285,7 @@
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
 		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
+		C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoader.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD21B7381F92E81C0034A7CE /* Image-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-macOS.swift"; sourceTree = "<group>"; };
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
@@ -388,12 +391,13 @@
 				522CD64F1F8D4512008DB43D /* ActionManager.swift */,
 				522CD6501F8D4512008DB43D /* ActionWrapper.swift */,
 				522CD6511F8D4512008DB43D /* Activatable.swift */,
+				C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */,
 				5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */,
 				522CD6521F8D4512008DB43D /* ClickPlugin.swift */,
 				522CD6531F8D4512008DB43D /* ClosureUpdatable.swift */,
-				52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */,
 				522CD6541F8D4512008DB43D /* DisplayLink-iOS+tvOS.swift */,
 				DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */,
+				52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
 				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
@@ -763,6 +767,7 @@
 				522CD6731F8D451D008DB43D /* CancellationToken.swift in Sources */,
 				522CD68A1F8D451D008DB43D /* Scene.swift in Sources */,
 				52479F801F8E58E200D22A87 /* TextureImageLoader.swift in Sources */,
+				C8D2FCE51FA493940077B560 /* BundleTextureImageLoader.swift in Sources */,
 				522CD68F1F8D4521008DB43D /* ActionManager.swift in Sources */,
 				522CD68B1F8D451D008DB43D /* SceneEventCollection.swift in Sources */,
 				522CD6901F8D4521008DB43D /* ActionWrapper.swift in Sources */,
@@ -842,6 +847,7 @@
 				DD21B6F81F92E75A0034A7CE /* Optional+GetOrSet.swift in Sources */,
 				DD21B6F91F92E75A0034A7CE /* ClosureAction.swift in Sources */,
 				DD21B6FA1F92E75A0034A7CE /* RepeatAction.swift in Sources */,
+				C8D2FCE61FA493940077B560 /* BundleTextureImageLoader.swift in Sources */,
 				DD21B6FB1F92E75A0034A7CE /* ClosureUpdatable.swift in Sources */,
 				DD21B74B1F92ED6B0034A7CE /* GameWindowController.swift in Sources */,
 				DD21B6FC1F92E75A0034A7CE /* LoadedTexture.swift in Sources */,
@@ -925,10 +931,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = TEE39J9D8F;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -949,10 +955,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = TEE39J9D8F;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
