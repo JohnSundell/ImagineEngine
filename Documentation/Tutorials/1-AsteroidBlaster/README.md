@@ -50,7 +50,7 @@ class AsteroidBlasterScene: Scene {
 
 We'll soon start filling our scene with content, but first, let's attach it to a game and start rendering it in our playground's `liveView`. To do that, we create an instance of `AsteroidBlasterScene` (we'll just use the size of an iPhone 6-8 for now) and pass it to a `GameViewController`, which we in turn assign as the playground's `liveView`:
 
-```
+```swift
 let sceneSize = Size(width: 375, height: 667)
 let scene = AsteroidBlasterScene(size: sceneSize)
 PlaygroundPage.current.liveView = GameViewController(scene: scene)
