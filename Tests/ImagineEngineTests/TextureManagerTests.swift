@@ -9,8 +9,8 @@ import XCTest
 @testable import ImagineEngine
 
 class TextureManagerTests: XCTestCase {
-    var manager: TextureManager!
-    var imageLoader: TextureImageLoaderMock!
+    private var manager: TextureManager!
+    private var imageLoader: TextureImageLoaderMock!
 
     override func setUp() {
         manager = TextureManager()
