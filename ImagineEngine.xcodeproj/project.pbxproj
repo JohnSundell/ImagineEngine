@@ -68,7 +68,7 @@
 		522CD6A21F8D4521008DB43D /* UpdatableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */; };
 		522CD6A31F8D4521008DB43D /* UpdateOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6631F8D4512008DB43D /* UpdateOutcome.swift */; };
 		522CD6A41F8D4521008DB43D /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
-		522CD6A51F8D4526008DB43D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6671F8D4512008DB43D /* GameViewController.swift */; };
+		522CD6A51F8D4526008DB43D /* GameViewController-iOS+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6671F8D4512008DB43D /* GameViewController-iOS+tvOS.swift */; };
 		522CD6A61F8D4526008DB43D /* GameWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6681F8D4512008DB43D /* GameWindow.swift */; };
 		523E5D101F9FEFBC0084792C /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */; };
 		523E5D111F9FEFBC0084792C /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */; };
@@ -81,6 +81,92 @@
 		52479F8A1F8E804F00D22A87 /* TimelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F891F8E804F00D22A87 /* TimelineTests.swift */; };
 		52479F8C1F8E818100D22A87 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
 		52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
+		5253C79B1FA4D54000D304B5 /* GameViewController-iOS+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6671F8D4512008DB43D /* GameViewController-iOS+tvOS.swift */; };
+		5253C79C1FA4D54000D304B5 /* GameWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6681F8D4512008DB43D /* GameWindow.swift */; };
+		5253C79D1FA4D56C00D304B5 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64F1F8D4512008DB43D /* ActionManager.swift */; };
+		5253C79E1FA4D56C00D304B5 /* ActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6501F8D4512008DB43D /* ActionWrapper.swift */; };
+		5253C79F1FA4D56C00D304B5 /* Activatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6511F8D4512008DB43D /* Activatable.swift */; };
+		5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6521F8D4512008DB43D /* ClickPlugin.swift */; };
+		5253C7A11FA4D56C00D304B5 /* ClosureUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6531F8D4512008DB43D /* ClosureUpdatable.swift */; };
+		5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */; };
+		5253C7A31FA4D56C00D304B5 /* DisplayLink-iOS+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6541F8D4512008DB43D /* DisplayLink-iOS+tvOS.swift */; };
+		5253C7A41FA4D56C00D304B5 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6571F8D4512008DB43D /* GameView.swift */; };
+		5253C7A51FA4D56C00D304B5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6581F8D4512008DB43D /* Grid.swift */; };
+		5253C7A61FA4D56C00D304B5 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6591F8D4512008DB43D /* Layer.swift */; };
+		5253C7A71FA4D56C00D304B5 /* LoadedTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65A1F8D4512008DB43D /* LoadedTexture.swift */; };
+		5253C7A81FA4D56C00D304B5 /* Optional+GetOrSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65B1F8D4512008DB43D /* Optional+GetOrSet.swift */; };
+		5253C7A91FA4D56C00D304B5 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65C1F8D4512008DB43D /* PluginManager.swift */; };
+		5253C7AA1FA4D56C00D304B5 /* PluginWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65D1F8D4512008DB43D /* PluginWrapper.swift */; };
+		5253C7AB1FA4D56C00D304B5 /* ReplicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65E1F8D4512008DB43D /* ReplicatorLayer.swift */; };
+		5253C7AC1FA4D56C00D304B5 /* Screen-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525688B41F9CF08E00F87786 /* Screen-iOS.swift */; };
+		5253C7AD1FA4D56C00D304B5 /* TextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65F1F8D4512008DB43D /* TextLayer.swift */; };
+		5253C7AE1FA4D56C00D304B5 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6611F8D4512008DB43D /* Updatable.swift */; };
+		5253C7AF1FA4D56C00D304B5 /* UpdatableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B21501FA382B300CE9967 /* UpdatableCollection.swift */; };
+		5253C7B01FA4D56C00D304B5 /* UpdatableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */; };
+		5253C7B11FA4D56C00D304B5 /* UpdateOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6631F8D4512008DB43D /* UpdateOutcome.swift */; };
+		5253C7B21FA4D56C00D304B5 /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
+		5253C7B31FA4D57200D304B5 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6281F8D4512008DB43D /* Action.swift */; };
+		5253C7B41FA4D57200D304B5 /* ActionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6291F8D4512008DB43D /* ActionPerformer.swift */; };
+		5253C7B51FA4D57200D304B5 /* ActionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62A1F8D4512008DB43D /* ActionToken.swift */; };
+		5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62B1F8D4512008DB43D /* Actor.swift */; };
+		5253C7B71FA4D57200D304B5 /* ActorEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62C1F8D4512008DB43D /* ActorEventCollection.swift */; };
+		5253C7B81FA4D57200D304B5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62D1F8D4512008DB43D /* Animation.swift */; };
+		5253C7B91FA4D57200D304B5 /* AnimationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62E1F8D4512008DB43D /* AnimationAction.swift */; };
+		5253C7BA1FA4D57200D304B5 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62F1F8D4512008DB43D /* Block.swift */; };
+		5253C7BB1FA4D57200D304B5 /* BlockTextureCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6301F8D4512008DB43D /* BlockTextureCollection.swift */; };
+		5253C7BC1FA4D57200D304B5 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6311F8D4512008DB43D /* Camera.swift */; };
+		5253C7BD1FA4D57200D304B5 /* CancellationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6321F8D4512008DB43D /* CancellationToken.swift */; };
+		5253C7BE1FA4D57200D304B5 /* ClosureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6331F8D4512008DB43D /* ClosureAction.swift */; };
+		5253C7BF1FA4D57200D304B5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6341F8D4512008DB43D /* Constraint.swift */; };
+		5253C7C01FA4D57200D304B5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6351F8D4512008DB43D /* Event.swift */; };
+		5253C7C11FA4D57200D304B5 /* EventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6361F8D4512008DB43D /* EventCollection.swift */; };
+		5253C7C21FA4D57200D304B5 /* EventToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6371F8D4512008DB43D /* EventToken.swift */; };
+		5253C7C31FA4D57200D304B5 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6381F8D4512008DB43D /* Fadeable.swift */; };
+		5253C7C41FA4D57200D304B5 /* FadeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6391F8D4512008DB43D /* FadeAction.swift */; };
+		5253C7C51FA4D57200D304B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63A1F8D4512008DB43D /* Game.swift */; };
+		5253C7C61FA4D57200D304B5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63B1F8D4512008DB43D /* Group.swift */; };
+		5253C7C71FA4D57200D304B5 /* InstanceHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63C1F8D4512008DB43D /* InstanceHashable.swift */; };
+		5253C7C81FA4D57200D304B5 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63D1F8D4512008DB43D /* Label.swift */; };
+		5253C7C91FA4D57200D304B5 /* MetricAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63E1F8D4512008DB43D /* MetricAction.swift */; };
+		5253C7CA1FA4D57200D304B5 /* Mirroring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD63F1F8D4512008DB43D /* Mirroring.swift */; };
+		5253C7CB1FA4D57200D304B5 /* Movable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6401F8D4512008DB43D /* Movable.swift */; };
+		5253C7CC1FA4D57200D304B5 /* MoveAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6411F8D4512008DB43D /* MoveAction.swift */; };
+		5253C7CD1FA4D57200D304B5 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6421F8D4512008DB43D /* Plugin.swift */; };
+		5253C7CE1FA4D57200D304B5 /* RepeatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6431F8D4512008DB43D /* RepeatAction.swift */; };
+		5253C7CF1FA4D57200D304B5 /* RepeatMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6441F8D4512008DB43D /* RepeatMode.swift */; };
+		5253C7D01FA4D57200D304B5 /* Rotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6451F8D4512008DB43D /* Rotatable.swift */; };
+		5253C7D11FA4D57200D304B5 /* RotateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6461F8D4512008DB43D /* RotateAction.swift */; };
+		5253C7D21FA4D57200D304B5 /* Scalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6471F8D4512008DB43D /* Scalable.swift */; };
+		5253C7D31FA4D57200D304B5 /* ScaleAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6481F8D4512008DB43D /* ScaleAction.swift */; };
+		5253C7D41FA4D57200D304B5 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6491F8D4512008DB43D /* Scene.swift */; };
+		5253C7D51FA4D57200D304B5 /* SceneEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */; };
+		5253C7D61FA4D57200D304B5 /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */; };
+		5253C7D71FA4D57200D304B5 /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64B1F8D4512008DB43D /* Texture.swift */; };
+		5253C7D81FA4D57200D304B5 /* TextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */; };
+		5253C7D91FA4D57200D304B5 /* TextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6601F8D4512008DB43D /* TextureManager.swift */; };
+		5253C7DA1FA4D57200D304B5 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64C1F8D4512008DB43D /* Timeline.swift */; };
+		5253C7DB1FA4D57200D304B5 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64D1F8D4512008DB43D /* Typealiases.swift */; };
+		5253C7DD1FA4D66500D304B5 /* Font+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253C7DC1FA4D66500D304B5 /* Font+Default.swift */; };
+		5253C7DE1FA4D7E400D304B5 /* Font+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253C7DC1FA4D66500D304B5 /* Font+Default.swift */; };
+		5253C7DF1FA4D7E500D304B5 /* Font+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253C7DC1FA4D66500D304B5 /* Font+Default.swift */; };
+		5253C7E01FA4D97D00D304B5 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
+		5253C7E11FA4D97D00D304B5 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
+		5253C7E21FA4D97D00D304B5 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
+		5253C7E31FA4D97D00D304B5 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
+		5253C7E41FA4D97D00D304B5 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
+		5253C7E51FA4D97D00D304B5 /* SceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F831F8E7B4E00D22A87 /* SceneTests.swift */; };
+		5253C7E61FA4D97D00D304B5 /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
+		5253C7E71FA4D97D00D304B5 /* TimelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F891F8E804F00D22A87 /* TimelineTests.swift */; };
+		5253C7E81FA4D97D00D304B5 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
+		5253C7E91FA4D97D00D304B5 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
+		5253C7EA1FA4D97D00D304B5 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
+		5253C7EB1FA4D97D00D304B5 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
+		5253C7EC1FA4D97D00D304B5 /* PluginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F871F8E7CAF00D22A87 /* PluginMock.swift */; };
+		5253C7ED1FA4D97D00D304B5 /* TextureImageLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */; };
+		5253C7EE1FA4D97D00D304B5 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860321F8E381600C6C7A7 /* Assert.swift */; };
+		5253C7EF1FA4D97D00D304B5 /* TimeTraveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860331F8E381600C6C7A7 /* TimeTraveler.swift */; };
+		5253C7F01FA4D97D00D304B5 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
+		5253C80F1FA4E04A00D304B5 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
 		525688B51F9CF08E00F87786 /* Screen-iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525688B41F9CF08E00F87786 /* Screen-iOS.swift */; };
 		525688BF1F9CF33100F87786 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */; };
 		525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
@@ -98,6 +184,7 @@
 		525688D11F9CF3E200F87786 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860321F8E381600C6C7A7 /* Assert.swift */; };
 		525688D21F9CF3E200F87786 /* TimeTraveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860331F8E381600C6C7A7 /* TimeTraveler.swift */; };
 		525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
+		5262A1CD1FA4CD1900DD5B3D /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */; };
 		527FC8061F8EB223006B1295 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
 		527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
 		527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
@@ -187,6 +274,13 @@
 			remoteGlobalIDString = DD21B6F01F92E75A0034A7CE;
 			remoteInfo = "ImagineEngine-macOS";
 		};
+		5262A1CE1FA4CD1900DD5B3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5262A1BB1FA4CCF900DD5B3D;
+			remoteInfo = "ImagineEngine-tvOS";
+		};
 		52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
@@ -257,7 +351,7 @@
 		522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableWrapper.swift; sourceTree = "<group>"; };
 		522CD6631F8D4512008DB43D /* UpdateOutcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOutcome.swift; sourceTree = "<group>"; };
 		522CD6641F8D4512008DB43D /* View+MakeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+MakeLayer.swift"; sourceTree = "<group>"; };
-		522CD6671F8D4512008DB43D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		522CD6671F8D4512008DB43D /* GameViewController-iOS+tvOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController-iOS+tvOS.swift"; sourceTree = "<group>"; };
 		522CD6681F8D4512008DB43D /* GameWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWindow.swift; sourceTree = "<group>"; };
 		523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheet.swift; sourceTree = "<group>"; };
 		52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureImageLoader.swift; sourceTree = "<group>"; };
@@ -267,8 +361,11 @@
 		52479F891F8E804F00D22A87 /* TimelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTests.swift; sourceTree = "<group>"; };
 		52479F8B1F8E818100D22A87 /* ActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTests.swift; sourceTree = "<group>"; };
 		52479F8D1F8E823E00D22A87 /* ActionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMock.swift; sourceTree = "<group>"; };
+		5253C7DC1FA4D66500D304B5 /* Font+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Default.swift"; sourceTree = "<group>"; };
 		525688B41F9CF08E00F87786 /* Screen-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-iOS.swift"; sourceTree = "<group>"; };
 		525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5262A1C81FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FC8051F8EB223006B1295 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		527FC8071F8EB83F006B1295 /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
@@ -300,6 +397,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				525688BF1F9CF33100F87786 /* ImagineEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5262A1B81FA4CCF900DD5B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5262A1C51FA4CD1900DD5B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5262A1CD1FA4CD1900DD5B3D /* ImagineEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +510,7 @@
 				522CD6541F8D4512008DB43D /* DisplayLink-iOS+tvOS.swift */,
 				DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */,
 				52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */,
+				5253C7DC1FA4D66500D304B5 /* Font+Default.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
 				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
@@ -431,7 +544,7 @@
 		522CD6661F8D4512008DB43D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				522CD6671F8D4512008DB43D /* GameViewController.swift */,
+				522CD6671F8D4512008DB43D /* GameViewController-iOS+tvOS.swift */,
 				522CD6681F8D4512008DB43D /* GameWindow.swift */,
 			);
 			path = UIKit;
@@ -477,6 +590,8 @@
 				52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */,
 				DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */,
 				525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */,
+				5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */,
+				5262A1C81FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -484,8 +599,8 @@
 		52D6D99C1BEFF38C002C0205 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				DD7502721C68FC1B006590AF /* Frameworks */,
-				DD7502731C68FC20006590AF /* Tests */,
+				AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */,
+				AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -526,25 +641,16 @@
 			path = AppKit;
 			sourceTree = "<group>";
 		};
-		DD7502721C68FC1B006590AF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DD7502731C68FC20006590AF /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		5262A1B91FA4CCF900DD5B3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D6D9791BEFF229002C0205 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +684,42 @@
 			name = "ImagineEngine-macOS Tests";
 			productName = "ImagineEngine-macOS Tests";
 			productReference = 525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5262A1BB1FA4CCF900DD5B3D /* ImagineEngine-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5262A1C31FA4CCF900DD5B3D /* Build configuration list for PBXNativeTarget "ImagineEngine-tvOS" */;
+			buildPhases = (
+				5262A1B71FA4CCF900DD5B3D /* Sources */,
+				5262A1B81FA4CCF900DD5B3D /* Frameworks */,
+				5262A1B91FA4CCF900DD5B3D /* Headers */,
+				5262A1BA1FA4CCF900DD5B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ImagineEngine-tvOS";
+			productName = "ImagineEngine-tvOS";
+			productReference = 5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5262A1C71FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5262A1D01FA4CD1900DD5B3D /* Build configuration list for PBXNativeTarget "ImagineEngine-tvOS Tests" */;
+			buildPhases = (
+				5262A1C41FA4CD1900DD5B3D /* Sources */,
+				5262A1C51FA4CD1900DD5B3D /* Frameworks */,
+				5262A1C61FA4CD1900DD5B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5262A1CF1FA4CD1900DD5B3D /* PBXTargetDependency */,
+			);
+			name = "ImagineEngine-tvOS Tests";
+			productName = "ImagineEngine-tvOS Tests";
+			productReference = 5262A1C81FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		52D6D97B1BEFF229002C0205 /* ImagineEngine-iOS */ = {
@@ -649,6 +791,15 @@
 						DevelopmentTeam = TEE39J9D8F;
 						ProvisioningStyle = Automatic;
 					};
+					5262A1BB1FA4CCF900DD5B3D = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					5262A1C71FA4CD1900DD5B3D = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = TEE39J9D8F;
+						ProvisioningStyle = Automatic;
+					};
 					52D6D97B1BEFF229002C0205 = {
 						CreatedOnToolsVersion = 7.1;
 						LastSwiftMigration = 0900;
@@ -675,12 +826,28 @@
 				52D6D9851BEFF229002C0205 /* ImagineEngine-iOS Tests */,
 				DD21B6F01F92E75A0034A7CE /* ImagineEngine-macOS */,
 				525688B91F9CF33100F87786 /* ImagineEngine-macOS Tests */,
+				5262A1BB1FA4CCF900DD5B3D /* ImagineEngine-tvOS */,
+				5262A1C71FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		525688B81F9CF33100F87786 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5262A1BA1FA4CCF900DD5B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5262A1C61FA4CD1900DD5B3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -735,6 +902,104 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5262A1B71FA4CCF900DD5B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5253C7D51FA4D57200D304B5 /* SceneEventCollection.swift in Sources */,
+				5253C7D21FA4D57200D304B5 /* Scalable.swift in Sources */,
+				5253C7B21FA4D56C00D304B5 /* View+MakeLayer.swift in Sources */,
+				5253C7AD1FA4D56C00D304B5 /* TextLayer.swift in Sources */,
+				5253C7C31FA4D57200D304B5 /* Fadeable.swift in Sources */,
+				5253C7BC1FA4D57200D304B5 /* Camera.swift in Sources */,
+				5253C7D01FA4D57200D304B5 /* Rotatable.swift in Sources */,
+				5253C79B1FA4D54000D304B5 /* GameViewController-iOS+tvOS.swift in Sources */,
+				5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */,
+				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
+				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
+				5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */,
+				5253C7B01FA4D56C00D304B5 /* UpdatableWrapper.swift in Sources */,
+				5253C7A71FA4D56C00D304B5 /* LoadedTexture.swift in Sources */,
+				5253C7C61FA4D57200D304B5 /* Group.swift in Sources */,
+				5253C7A81FA4D56C00D304B5 /* Optional+GetOrSet.swift in Sources */,
+				5253C7D91FA4D57200D304B5 /* TextureManager.swift in Sources */,
+				5253C7A61FA4D56C00D304B5 /* Layer.swift in Sources */,
+				5253C7DD1FA4D66500D304B5 /* Font+Default.swift in Sources */,
+				5253C7D71FA4D57200D304B5 /* Texture.swift in Sources */,
+				5253C7CB1FA4D57200D304B5 /* Movable.swift in Sources */,
+				5253C7CD1FA4D57200D304B5 /* Plugin.swift in Sources */,
+				5253C7A31FA4D56C00D304B5 /* DisplayLink-iOS+tvOS.swift in Sources */,
+				5253C7D61FA4D57200D304B5 /* SpriteSheet.swift in Sources */,
+				5253C7BB1FA4D57200D304B5 /* BlockTextureCollection.swift in Sources */,
+				5253C7D41FA4D57200D304B5 /* Scene.swift in Sources */,
+				5253C7BD1FA4D57200D304B5 /* CancellationToken.swift in Sources */,
+				5253C7A51FA4D56C00D304B5 /* Grid.swift in Sources */,
+				5253C7B71FA4D57200D304B5 /* ActorEventCollection.swift in Sources */,
+				5253C7CA1FA4D57200D304B5 /* Mirroring.swift in Sources */,
+				5253C7B91FA4D57200D304B5 /* AnimationAction.swift in Sources */,
+				5253C7D11FA4D57200D304B5 /* RotateAction.swift in Sources */,
+				5253C7A91FA4D56C00D304B5 /* PluginManager.swift in Sources */,
+				5253C7DA1FA4D57200D304B5 /* Timeline.swift in Sources */,
+				5253C7A41FA4D56C00D304B5 /* GameView.swift in Sources */,
+				5253C7CC1FA4D57200D304B5 /* MoveAction.swift in Sources */,
+				5253C7B11FA4D56C00D304B5 /* UpdateOutcome.swift in Sources */,
+				5253C7BA1FA4D57200D304B5 /* Block.swift in Sources */,
+				5253C7C21FA4D57200D304B5 /* EventToken.swift in Sources */,
+				5253C7B41FA4D57200D304B5 /* ActionPerformer.swift in Sources */,
+				5253C7C91FA4D57200D304B5 /* MetricAction.swift in Sources */,
+				5253C7B51FA4D57200D304B5 /* ActionToken.swift in Sources */,
+				5253C79E1FA4D56C00D304B5 /* ActionWrapper.swift in Sources */,
+				5253C7AE1FA4D56C00D304B5 /* Updatable.swift in Sources */,
+				5253C7BE1FA4D57200D304B5 /* ClosureAction.swift in Sources */,
+				5253C7C41FA4D57200D304B5 /* FadeAction.swift in Sources */,
+				5253C7BF1FA4D57200D304B5 /* Constraint.swift in Sources */,
+				5253C7CF1FA4D57200D304B5 /* RepeatMode.swift in Sources */,
+				5253C7DB1FA4D57200D304B5 /* Typealiases.swift in Sources */,
+				5253C79C1FA4D54000D304B5 /* GameWindow.swift in Sources */,
+				5253C7AB1FA4D56C00D304B5 /* ReplicatorLayer.swift in Sources */,
+				5253C7D31FA4D57200D304B5 /* ScaleAction.swift in Sources */,
+				5253C7C81FA4D57200D304B5 /* Label.swift in Sources */,
+				5253C7C71FA4D57200D304B5 /* InstanceHashable.swift in Sources */,
+				5253C7B31FA4D57200D304B5 /* Action.swift in Sources */,
+				5253C7AC1FA4D56C00D304B5 /* Screen-iOS.swift in Sources */,
+				5253C79D1FA4D56C00D304B5 /* ActionManager.swift in Sources */,
+				5253C7A11FA4D56C00D304B5 /* ClosureUpdatable.swift in Sources */,
+				5253C7AA1FA4D56C00D304B5 /* PluginWrapper.swift in Sources */,
+				5253C79F1FA4D56C00D304B5 /* Activatable.swift in Sources */,
+				5253C80F1FA4E04A00D304B5 /* BundleTextureImageLoader.swift in Sources */,
+				5253C7D81FA4D57200D304B5 /* TextureImageLoader.swift in Sources */,
+				5253C7B81FA4D57200D304B5 /* Animation.swift in Sources */,
+				5253C7CE1FA4D57200D304B5 /* RepeatAction.swift in Sources */,
+				5253C7C51FA4D57200D304B5 /* Game.swift in Sources */,
+				5253C7C11FA4D57200D304B5 /* EventCollection.swift in Sources */,
+				5253C7AF1FA4D56C00D304B5 /* UpdatableCollection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5262A1C41FA4CD1900DD5B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5253C7ED1FA4D97D00D304B5 /* TextureImageLoaderMock.swift in Sources */,
+				5253C7EF1FA4D97D00D304B5 /* TimeTraveler.swift in Sources */,
+				5253C7E81FA4D97D00D304B5 /* ActionMock.swift in Sources */,
+				5253C7E71FA4D97D00D304B5 /* TimelineTests.swift in Sources */,
+				5253C7EA1FA4D97D00D304B5 /* DisplayLinkMock.swift in Sources */,
+				5253C7F01FA4D97D00D304B5 /* ImageMockFactory.swift in Sources */,
+				5253C7E31FA4D97D00D304B5 /* EventTests.swift in Sources */,
+				5253C7E41FA4D97D00D304B5 /* LabelTests.swift in Sources */,
+				5253C7E91FA4D97D00D304B5 /* ClickGestureRecognizerMock.swift in Sources */,
+				5253C7E51FA4D97D00D304B5 /* SceneTests.swift in Sources */,
+				5253C7EE1FA4D97D00D304B5 /* Assert.swift in Sources */,
+				5253C7EC1FA4D97D00D304B5 /* PluginMock.swift in Sources */,
+				5253C7E61FA4D97D00D304B5 /* TextureManagerTests.swift in Sources */,
+				5253C7E21FA4D97D00D304B5 /* CameraTests.swift in Sources */,
+				5253C7EB1FA4D97D00D304B5 /* GameMock.swift in Sources */,
+				5253C7E01FA4D97D00D304B5 /* ActorTests.swift in Sources */,
+				5253C7E11FA4D97D00D304B5 /* ActionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52D6D9771BEFF229002C0205 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -780,12 +1045,13 @@
 				522CD6A61F8D4526008DB43D /* GameWindow.swift in Sources */,
 				522CD6791F8D451D008DB43D /* Fadeable.swift in Sources */,
 				522CD6871F8D451D008DB43D /* RotateAction.swift in Sources */,
-				522CD6A51F8D4526008DB43D /* GameViewController.swift in Sources */,
+				522CD6A51F8D4526008DB43D /* GameViewController-iOS+tvOS.swift in Sources */,
 				522CD69C1F8D4521008DB43D /* PluginManager.swift in Sources */,
 				522CD67D1F8D451D008DB43D /* InstanceHashable.swift in Sources */,
 				522CD66A1F8D451D008DB43D /* ActionPerformer.swift in Sources */,
 				522CD6861F8D451D008DB43D /* Rotatable.swift in Sources */,
 				522CD6721F8D451D008DB43D /* Camera.swift in Sources */,
+				5253C7DF1FA4D7E500D304B5 /* Font+Default.swift in Sources */,
 				522CD67A1F8D451D008DB43D /* FadeAction.swift in Sources */,
 				522CD6691F8D451D008DB43D /* Action.swift in Sources */,
 				522CD68C1F8D451D008DB43D /* Texture.swift in Sources */,
@@ -861,6 +1127,7 @@
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
 				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
 				DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */,
+				5253C7DE1FA4D7E400D304B5 /* Font+Default.swift in Sources */,
 				DD21B7061F92E75A0034A7CE /* Label.swift in Sources */,
 				DD21B7071F92E75A0034A7CE /* UpdatableWrapper.swift in Sources */,
 				DD21B7081F92E75A0034A7CE /* CancellationToken.swift in Sources */,
@@ -914,6 +1181,11 @@
 			isa = PBXTargetDependency;
 			target = DD21B6F01F92E75A0034A7CE /* ImagineEngine-macOS */;
 			targetProxy = 525688C01F9CF33100F87786 /* PBXContainerItemProxy */;
+		};
+		5262A1CF1FA4CD1900DD5B3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5262A1BB1FA4CCF900DD5B3D /* ImagineEngine-tvOS */;
+			targetProxy = 5262A1CE1FA4CD1900DD5B3D /* PBXContainerItemProxy */;
 		};
 		52D6D9891BEFF229002C0205 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -971,6 +1243,114 @@
 			};
 			name = Release;
 		};
+		5262A1C11FA4CCF900DD5B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Configs/ImagineEngine.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-tvOS";
+				PRODUCT_NAME = ImagineEngine;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		5262A1C21FA4CCF900DD5B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Configs/ImagineEngine.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-tvOS";
+				PRODUCT_NAME = ImagineEngine;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		5262A1D11FA4CD1900DD5B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TEE39J9D8F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Configs/ImagineEngineTests.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		5262A1D21FA4CD1900DD5B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TEE39J9D8F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Configs/ImagineEngineTests.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ImagineEngine.ImagineEngine-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 		52D6D98E1BEFF229002C0205 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -996,7 +1376,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1053,7 +1433,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1216,6 +1596,24 @@
 			buildConfigurations = (
 				525688C31F9CF33100F87786 /* Debug */,
 				525688C41F9CF33100F87786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5262A1C31FA4CCF900DD5B3D /* Build configuration list for PBXNativeTarget "ImagineEngine-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5262A1C11FA4CCF900DD5B3D /* Debug */,
+				5262A1C21FA4CCF900DD5B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5262A1D01FA4CD1900DD5B3D /* Build configuration list for PBXNativeTarget "ImagineEngine-tvOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5262A1D11FA4CD1900DD5B3D /* Debug */,
+				5262A1D21FA4CD1900DD5B3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

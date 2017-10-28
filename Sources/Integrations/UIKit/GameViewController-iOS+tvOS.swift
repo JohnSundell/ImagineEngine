@@ -16,7 +16,10 @@ import UIKit
 public class GameViewController: UIViewController {
     /// The game that the view controller is managing
     public let game: Game
+
+    #if os(iOS)
     public override var prefersStatusBarHidden: Bool { return true }
+    #endif
 
     private let notificationCenter: NotificationCenter
     private var gameWasAutoPaused = false
