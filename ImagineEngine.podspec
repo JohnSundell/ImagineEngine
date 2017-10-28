@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ImagineEngine"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = "A Swift game engine based on Core Animation"
   s.description  = <<-DESC
     Imagine Engine is an ongoing project that aims to create a fast, high-performace Swift 2D game engine for Apple's platforms that is also a joy to use.
@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.source_files = "Sources/Core/**/*.swift"
   s.ios.source_files  = "Sources/Integrations/UIKit/*.swift"
   s.ios.exclude_files = [
+      "Sources/Core/Internal/ClickGestureRecognizer-macOS.swift",
       "Sources/Core/Internal/DisplayLink-macOS.swift",
       "Sources/Core/Internal/Image-macOS.swift",
       "Sources/Core/Internal/Screen-macOS.swift"
