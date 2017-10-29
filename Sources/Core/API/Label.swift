@@ -31,7 +31,7 @@ public final class Label: InstanceHashable, ActionPerformer, Activatable, Movabl
     /// The text that the label is currently rendering.
     public var text: String { didSet { textDidChange() } }
     /// The font that the label renders its text using.
-    public var font = Font.systemFont(ofSize: Font.systemFontSize) { didSet { fontDidChange() } }
+    public var font: Font { didSet { fontDidChange() } }
     /// The color of the text that the label is rendering.
     public var textColor = Color.white { didSet { layer.foregroundColor = textColor.cgColor } }
     /// The label's background color. Default is `.clear` (no background).
@@ -45,6 +45,7 @@ public final class Label: InstanceHashable, ActionPerformer, Activatable, Movabl
     /// Initialize an instance, optionally with an initial text
     public init(text: String = "") {
         self.text = text
+        font = .default
 
         layer.string = text
         layer.contentsScale = Screen.mainScreenScale
