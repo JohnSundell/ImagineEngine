@@ -45,11 +45,10 @@ public class GameViewController: UIViewController {
 
     // MARK: - UIViewController
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func loadView() {
+        view = game.view
         view.backgroundColor = .black
         view.isOpaque = true
-        view.addSubview(game.view)
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -74,11 +73,6 @@ public class GameViewController: UIViewController {
         super.viewDidDisappear(animated)
         game.scene.isPaused = true
         notificationCenter.removeObserver(self)
-    }
-
-    public override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        game.view.frame = view.bounds
     }
 
     // MARK: - Observations
