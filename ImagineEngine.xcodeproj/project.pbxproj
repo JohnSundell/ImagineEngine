@@ -196,6 +196,8 @@
 		52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
 		52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
+		C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
+		C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
 		C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C8D2FCE51FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
@@ -381,6 +383,7 @@
 		52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
+		C800CE2F1FA782EA008EE08D /* TextureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureFormat.swift; sourceTree = "<group>"; };
 		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
 		C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoader.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,6 +492,7 @@
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
 				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
+				C800CE2F1FA782EA008EE08D /* TextureFormat.swift */,
 				52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */,
 				522CD6601F8D4512008DB43D /* TextureManager.swift */,
 				522CD64C1F8D4512008DB43D /* Timeline.swift */,
@@ -1012,6 +1016,7 @@
 				522CD66D1F8D451D008DB43D /* ActorEventCollection.swift in Sources */,
 				522CD6811F8D451D008DB43D /* Movable.swift in Sources */,
 				522CD69B1F8D4521008DB43D /* Optional+GetOrSet.swift in Sources */,
+				C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				522CD6741F8D451D008DB43D /* ClosureAction.swift in Sources */,
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
@@ -1123,6 +1128,7 @@
 				DD21B7011F92E75A0034A7CE /* Grid.swift in Sources */,
 				DD21B7031F92E75A0034A7CE /* GameView.swift in Sources */,
 				DD21B7041F92E75A0034A7CE /* Activatable.swift in Sources */,
+				C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */,
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
 				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
