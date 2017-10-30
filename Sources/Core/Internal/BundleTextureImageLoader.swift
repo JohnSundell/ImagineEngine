@@ -25,17 +25,6 @@ internal final class BundleTextureImageLoader: TextureImageLoader {
             return nil
         }
 
-        guard let data = try? Data(contentsOf: url) else {
-            return nil
-        }
-
-        guard let dataProvider = CGDataProvider(data: data as CFData) else {
-            return nil
-        }
-
-        return CGImage(pngDataProviderSource: dataProvider,
-                       decode: nil,
-                       shouldInterpolate: false,
-                       intent: .defaultIntent)
+        return CGImage.load(withContentsOf: url, format: format)
     }
 }
