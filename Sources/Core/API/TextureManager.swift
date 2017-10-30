@@ -24,23 +24,18 @@ public final class TextureManager {
 
     // MARK: - Public
 
-    public func preloadTexture(named name: String, scale: Int? = nil, onQueue queue: DispatchQueue = .main) {
+    public func preloadTexture(named name: String, scale: Int? = nil, textureFormat: TextureFormat = .png, onQueue queue: DispatchQueue = .main) {
         queue.async {
-            _ = self.load(Texture(name: name), namePrefix: nil, scale: scale)
+            _ = self.load(Texture(name: name, format: textureFormat), namePrefix: nil, scale: scale)
         }
     }
 
     // MARK: - Internal
 
     internal func load(_ texture: Texture, namePrefix: String?, scale: Int?) -> LoadedTexture? {
-        let scale = scale ?? defaultScale
-        var name = texture.name
+        let cacheKey = self.cacheKey(forTexture: texture, withPrefix: namePrefix)
 
-        if let prefix = namePrefix {
-            name = "\(prefix)\(name)"
-        }
-
-        if let cachedTexture = cache[name] {
+        if let cachedTexture = cache[cacheKey] {
             return cachedTexture
         }
 
@@ -49,11 +44,18 @@ public final class TextureManager {
                 return nil
             }
 
-            cache[name] = texture
+            cache[cacheKey] = texture
             return texture
         }
 
-        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale) else {
+        let scale = scale ?? defaultScale
+        var name = texture.name
+
+        if let prefix = namePrefix {
+            name = "\(prefix)\(name)"
+        }
+
+        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: texture.format) else {
             guard scale > 1 else {
                 return nil
             }
@@ -62,7 +64,23 @@ public final class TextureManager {
         }
 
         let texture = LoadedTexture(image: image, scale: scale)
-        cache[name] = texture
+        cache[cacheKey] = texture
         return texture
+    }
+
+    // MARK: - Private
+
+    private func cacheKey(forTexture texture: Texture, withPrefix prefix: String? = nil) -> String {
+        var cacheKey = texture.name
+
+        if let prefix = prefix {
+            cacheKey = "\(prefix)\(cacheKey)"
+        }
+
+        if let extensionName = texture.format.extensionName {
+            cacheKey.append(".\(extensionName)")
+        }
+
+        return cacheKey
     }
 }
