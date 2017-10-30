@@ -58,14 +58,14 @@ public extension Animation {
     }
 
     /// Initialize an instance with a single texture with a certain image name
-    init(textureNamed textureName: String) {
-        content = .texture(Texture(name: textureName))
+    init(textureNamed textureName: String, textureFormat: TextureFormat = .png) {
+        content = .texture(Texture(name: textureName, format: textureFormat))
         updateIdentifier()
     }
 
     /// Initialize an instance with a sequence of textures loaded from an array of image names
-    init(texturesNamed textureNames: [String], frameDuration: TimeInterval) {
-        content = .textures(textureNames.map(Texture.init))
+    init(texturesNamed textureNames: [String], textureFormat: TextureFormat = .png, frameDuration: TimeInterval) {
+        content = .textures(textureNames.map { Texture(name: $0, format: textureFormat) })
         self.frameDuration = frameDuration
         updateIdentifier()
     }
@@ -78,7 +78,7 @@ public extension Animation {
 
     /// Initialize an instance with an array of images to use for the animation
     init(images: [Image], frameDuration: TimeInterval) {
-        content = .textures(images.map(Texture.init))
+        content = .textures(images.map { Texture(image: $0) })
         self.frameDuration = frameDuration
         updateIdentifier()
     }
@@ -90,8 +90,9 @@ public extension Animation {
          frameDuration: TimeInterval,
          repeatMode: RepeatMode = .forever,
          autoResize: Bool = true,
-         ignoreTextureNamePrefix: Bool = false) {
-        let texture = Texture(name: name)
+         ignoreTextureNamePrefix: Bool = false,
+         textureFormat: TextureFormat = .png) {
+        let texture = Texture(name: name, format: textureFormat)
         let spriteSheet = SpriteSheet(texture: texture, frameCount: frameCount, rowCount: rowCount)
         content = .spriteSheet(spriteSheet)
 

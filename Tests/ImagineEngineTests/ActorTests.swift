@@ -89,7 +89,8 @@ final class ActorTests: XCTestCase {
             spriteSheetNamed: "sheet",
             frameCount: 6,
             rowCount: 2,
-            frameDuration: 1
+            frameDuration: 1,
+            textureFormat: .unknown
         )
         animation.textureScale = 1
 
@@ -107,7 +108,8 @@ final class ActorTests: XCTestCase {
             spriteSheetNamed: "sheet2",
             frameCount: 6,
             rowCount: 2,
-            frameDuration: 1
+            frameDuration: 1,
+            textureFormat: .unknown
         )
         newAnimation.textureScale = 1
         actor.animation = newAnimation
@@ -119,7 +121,7 @@ final class ActorTests: XCTestCase {
     func testTextureNamePrefix() {
         actor.textureNamePrefix = "Prefix"
 
-        var animation = Animation(textureNamed: "Texture")
+        var animation = Animation(textureNamed: "Texture", textureFormat: .unknown)
         animation.textureScale = 1
         actor.animation = animation
 
