@@ -8,9 +8,9 @@ import Foundation
 import CoreGraphics
 
 internal final class BundleTextureImageLoader: TextureImageLoader {
-    private let bundle: Bundle
+    private let bundle: BundleProtocol
 
-    init(bundle: Bundle = .main) {
+    init(bundle: BundleProtocol = Bundle.main) {
         self.bundle = bundle
     }
 
