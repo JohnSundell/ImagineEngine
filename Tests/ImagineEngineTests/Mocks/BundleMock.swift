@@ -15,6 +15,7 @@ final class BundleMock: BundleProtocol {
         guard let name = name else {
             return nil
         }
+
         let resourceName = self.resourceName(name, withExtension: ext)
         resourceNames.insert(resourceName)
         return resources[resourceName]

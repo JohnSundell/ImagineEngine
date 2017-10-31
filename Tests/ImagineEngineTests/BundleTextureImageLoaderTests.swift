@@ -9,24 +9,26 @@ import XCTest
 @testable import ImagineEngine
 
 class BundleTextureImageLoaderTests: XCTestCase {
-    private var bundle: BundleMock!
-    private var loader: BundleTextureImageLoader!
-
-    override func setUp() {
-        bundle = BundleMock()
-        loader = BundleTextureImageLoader(bundle: bundle)
-    }
-
     func testLoadsImageWithSpecifiedFormat() {
+        let bundle = BundleMock()
+        let loader = BundleTextureImageLoader(bundle: bundle)
         _ = loader.loadImageForTexture(named: "texture", scale: 1, format: .png)
         _ = loader.loadImageForTexture(named: "ground", scale: 2, format: .jpg)
 
         XCTAssertEqual(bundle.resourceNames, ["texture.png", "ground@2x.jpg"])
     }
+    
+    func testLoadsPNGImage() {
+        let loader = BundleTextureImageLoader(bundle: Bundle(for: type(of: self)))
+        let loadedImage = loader.loadImageForTexture(named: "sample", scale: 1, format: .png)!
 
-    func testDoesNotLoadImageWithUnknownFormat() {
-        _ = loader.loadImageForTexture(named: "texture", scale: 1, format: .unknown)
+        XCTAssertNotNil(loadedImage)
+    }
 
-        XCTAssert(bundle.resourceNames.isEmpty)
+    func testLoadsJPGImage() {
+        let loader = BundleTextureImageLoader(bundle: Bundle(for: type(of: self)))
+        let loadedImage = loader.loadImageForTexture(named: "sample", scale: 1, format: .jpg)!
+
+        XCTAssertNotNil(loadedImage)
     }
 }

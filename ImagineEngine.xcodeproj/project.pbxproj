@@ -202,23 +202,17 @@
 		C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
 		C800CE331FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
 		C800CE341FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
-		C800CE361FA78B73008EE08D /* CGImage+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE351FA78B73008EE08D /* CGImage+Load.swift */; };
-		C800CE371FA78B73008EE08D /* CGImage+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE351FA78B73008EE08D /* CGImage+Load.swift */; };
 		C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
 		C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
 		C800CE3E1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C800CE3F1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C800CE401FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C800CE411FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
-		C800CE431FA790FA008EE08D /* CGImage+LoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE421FA790FA008EE08D /* CGImage+LoadTests.swift */; };
-		C800CE441FA790FA008EE08D /* CGImage+LoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE421FA790FA008EE08D /* CGImage+LoadTests.swift */; };
 		C809426E1FA798B7002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C809426F1FA798B7002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C80942701FA79925002B42A6 /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
 		C80942711FA79934002B42A6 /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
-		C80942721FA79939002B42A6 /* CGImage+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE351FA78B73008EE08D /* CGImage+Load.swift */; };
 		C80942731FA7994C002B42A6 /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
-		C80942741FA7994F002B42A6 /* CGImage+LoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE421FA790FA008EE08D /* CGImage+LoadTests.swift */; };
 		C80942751FA7995B002B42A6 /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
 		C80942761FA7997B002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C80942771FA7997B002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
@@ -410,11 +404,9 @@
 		C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleProtocol.swift; sourceTree = "<group>"; };
 		C800CE2F1FA782EA008EE08D /* TextureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureFormat.swift; sourceTree = "<group>"; };
 		C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoaderTests.swift; sourceTree = "<group>"; };
-		C800CE351FA78B73008EE08D /* CGImage+Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Load.swift"; sourceTree = "<group>"; };
 		C800CE381FA78C74008EE08D /* BundleMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleMock.swift; sourceTree = "<group>"; };
 		C800CE3C1FA790A9008EE08D /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
 		C800CE3D1FA790A9008EE08D /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
-		C800CE421FA790FA008EE08D /* CGImage+LoadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+LoadTests.swift"; sourceTree = "<group>"; };
 		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
 		C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoader.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -540,7 +532,6 @@
 				522CD6511F8D4512008DB43D /* Activatable.swift */,
 				C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */,
 				C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */,
-				C800CE351FA78B73008EE08D /* CGImage+Load.swift */,
 				5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */,
 				522CD6521F8D4512008DB43D /* ClickPlugin.swift */,
 				522CD6531F8D4512008DB43D /* ClosureUpdatable.swift */,
@@ -659,7 +650,6 @@
 				52479F8B1F8E818100D22A87 /* ActionTests.swift */,
 				C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */,
 				527FC8071F8EB83F006B1295 /* CameraTests.swift */,
-				C800CE421FA790FA008EE08D /* CGImage+LoadTests.swift */,
 				527FC8051F8EB223006B1295 /* EventTests.swift */,
 				527FC80B1F8EBAAB006B1295 /* LabelTests.swift */,
 				52479F831F8E7B4E00D22A87 /* SceneTests.swift */,
@@ -941,7 +931,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				525688D01F9CF3E200F87786 /* TextureImageLoaderMock.swift in Sources */,
-				C800CE441FA790FA008EE08D /* CGImage+LoadTests.swift in Sources */,
 				525688C81F9CF3E200F87786 /* EventTests.swift in Sources */,
 				525688CE1F9CF3E200F87786 /* GameMock.swift in Sources */,
 				C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */,
@@ -1012,7 +1001,6 @@
 				5253C7C91FA4D57200D304B5 /* MetricAction.swift in Sources */,
 				5253C7B51FA4D57200D304B5 /* ActionToken.swift in Sources */,
 				5253C79E1FA4D56C00D304B5 /* ActionWrapper.swift in Sources */,
-				C80942721FA79939002B42A6 /* CGImage+Load.swift in Sources */,
 				5253C7AE1FA4D56C00D304B5 /* Updatable.swift in Sources */,
 				5253C7BE1FA4D57200D304B5 /* ClosureAction.swift in Sources */,
 				5253C7C41FA4D57200D304B5 /* FadeAction.swift in Sources */,
@@ -1063,7 +1051,6 @@
 				5253C7E01FA4D97D00D304B5 /* ActorTests.swift in Sources */,
 				C80942731FA7994C002B42A6 /* BundleTextureImageLoaderTests.swift in Sources */,
 				5253C7E11FA4D97D00D304B5 /* ActionTests.swift in Sources */,
-				C80942741FA7994F002B42A6 /* CGImage+LoadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,7 +1076,6 @@
 				522CD6941F8D4521008DB43D /* DisplayLink-iOS+tvOS.swift in Sources */,
 				522CD6991F8D4521008DB43D /* Layer.swift in Sources */,
 				522CD6981F8D4521008DB43D /* Grid.swift in Sources */,
-				C800CE361FA78B73008EE08D /* CGImage+Load.swift in Sources */,
 				522CD6921F8D4521008DB43D /* ClickPlugin.swift in Sources */,
 				528B21511FA382B300CE9967 /* UpdatableCollection.swift in Sources */,
 				522CD6971F8D4521008DB43D /* GameView.swift in Sources */,
@@ -1149,7 +1135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */,
-				C800CE431FA790FA008EE08D /* CGImage+LoadTests.swift in Sources */,
 				52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */,
 				52479F861F8E7BFD00D22A87 /* TimeTraveler.swift in Sources */,
 				C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */,
@@ -1238,7 +1223,6 @@
 				DD21B7261F92E75A0034A7CE /* Timeline.swift in Sources */,
 				DD21B7271F92E75A0034A7CE /* Event.swift in Sources */,
 				DD21B7281F92E75A0034A7CE /* EventToken.swift in Sources */,
-				C800CE371FA78B73008EE08D /* CGImage+Load.swift in Sources */,
 				DD21B7291F92E75A0034A7CE /* MoveAction.swift in Sources */,
 				DD21B72A1F92E75A0034A7CE /* TextureManager.swift in Sources */,
 				DD21B72B1F92E75A0034A7CE /* Constraint.swift in Sources */,
