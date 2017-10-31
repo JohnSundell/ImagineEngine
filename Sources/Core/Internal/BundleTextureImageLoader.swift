@@ -15,17 +15,13 @@ internal final class BundleTextureImageLoader: TextureImageLoader {
     }
 
     func loadImageForTexture(named name: String, scale: Int, format: TextureFormat) -> CGImage? {
-        guard let extensionName = format.extensionName else {
-            return nil
-        }
-
         var imageName = name
 
         if scale > 1 {
             imageName.append("@\(scale)x")
         }
 
-        guard let url = bundle.url(forResource: imageName, withExtension: extensionName) else {
+        guard let url = bundle.url(forResource: imageName, withExtension: format.rawValue) else {
             return nil
         }
 

@@ -12,7 +12,7 @@ final class TextureImageLoaderMock: TextureImageLoader {
     private(set) var imageNames = Set<String>()
     var images = [String : CGImage]()
 
-    func loadImageForTexture(named name: String, scale: Int, format: TextureFormat = .unknown) -> CGImage? {
+    func loadImageForTexture(named name: String, scale: Int, format: TextureFormat) -> CGImage? {
         let name = imageName(name, withScale: scale, format: format)
         imageNames.insert(name)
         return images[name]
@@ -29,9 +29,7 @@ final class TextureImageLoaderMock: TextureImageLoader {
             imageName.append("@\(scale)x")
         }
 
-        if let extensionName = format.extensionName {
-            imageName.append(".\(extensionName)")
-        }
+        imageName.append(".\(format.rawValue)")
 
         return imageName
     }

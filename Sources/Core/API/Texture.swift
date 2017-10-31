@@ -14,7 +14,7 @@ public struct Texture {
     /// Any pre-loaded image that should make up the texture
     public let image: Image?
     /// The format of the texture to load
-    public let format: TextureFormat
+    public let format: TextureFormat?
 
     /// Initialize a texture with the name and the format of a bundled image to load
     public init(name: String, format: TextureFormat = .png) {
@@ -24,9 +24,9 @@ public struct Texture {
     }
 
     /// Initialize a texture with a pre-loaded image
-    public init(image: Image, format: TextureFormat = .unknown) {
+    public init(image: Image) {
         self.name = "InlineImage-\(image.hashValue)"
         self.image = image
-        self.format = format
+        self.format = nil
     }
 }

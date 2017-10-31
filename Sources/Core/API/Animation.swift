@@ -58,14 +58,14 @@ public extension Animation {
     }
 
     /// Initialize an instance with a single texture with a certain image name
-    init(textureNamed textureName: String, textureFormat: TextureFormat = .png) {
-        content = .texture(Texture(name: textureName, format: textureFormat))
+    init(textureNamed textureName: String, format: TextureFormat = .png) {
+        content = .texture(Texture(name: textureName, format: format))
         updateIdentifier()
     }
 
     /// Initialize an instance with a sequence of textures loaded from an array of image names
-    init(texturesNamed textureNames: [String], textureFormat: TextureFormat = .png, frameDuration: TimeInterval) {
-        content = .textures(textureNames.map { Texture(name: $0, format: textureFormat) })
+    init(texturesNamed textureNames: [String], format: TextureFormat = .png, frameDuration: TimeInterval) {
+        content = .textures(textureNames.map { Texture(name: $0, format: format) })
         self.frameDuration = frameDuration
         updateIdentifier()
     }

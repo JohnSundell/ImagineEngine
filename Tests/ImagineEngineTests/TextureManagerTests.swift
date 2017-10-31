@@ -13,23 +13,24 @@ class TextureManagerTests: XCTestCase {
     private var imageLoader: TextureImageLoaderMock!
 
     override func setUp() {
+        super.setUp()
         manager = TextureManager()
         imageLoader = TextureImageLoaderMock()
         manager.imageLoader = imageLoader
     }
 
     func testFallsBackToLowerScaleTextures() {
-        _ = manager.load(Texture(name: "texture", format: .unknown), namePrefix: nil, scale: 3)
+        _ = manager.load(Texture(name: "texture"), namePrefix: nil, scale: 3)
 
-        XCTAssertEqual(imageLoader.imageNames, ["texture@3x", "texture@2x", "texture"])
+        XCTAssertEqual(imageLoader.imageNames, ["texture@3x.png", "texture@2x.png", "texture.png"])
     }
 
     func testRemembersTextureScaleFallback() {
-        let textureToLoad = Texture(name: "texture", format: .unknown)
-        imageLoader.images["texture@2x"] = makeImage()
+        let textureToLoad = Texture(name: "texture")
+        imageLoader.images["texture@2x.png"] = makeImage()
 
         _ = manager.load(textureToLoad, namePrefix: nil, scale: 3)
-        XCTAssertEqual(imageLoader.imageNames, ["texture@3x", "texture@2x"])
+        XCTAssertEqual(imageLoader.imageNames, ["texture@3x.png", "texture@2x.png"])
 
         imageLoader.clearImageNames()
 

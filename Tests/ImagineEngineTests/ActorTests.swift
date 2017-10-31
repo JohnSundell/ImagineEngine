@@ -83,14 +83,13 @@ final class ActorTests: XCTestCase {
     func testAnimatingWithSpriteSheet() {
         let imageSize = Size(width: 300, height: 100)
         let image = ImageMockFactory.makeImage(withSize: imageSize)
-        game.textureImageLoader.images["sheet"] = image.cgImage
+        game.textureImageLoader.images["sheet.png"] = image.cgImage
 
         var animation = Animation(
             spriteSheetNamed: "sheet",
             frameCount: 6,
             rowCount: 2,
-            frameDuration: 1,
-            textureFormat: .unknown
+            frameDuration: 1
         )
         animation.textureScale = 1
 
@@ -108,25 +107,24 @@ final class ActorTests: XCTestCase {
             spriteSheetNamed: "sheet2",
             frameCount: 6,
             rowCount: 2,
-            frameDuration: 1,
-            textureFormat: .unknown
+            frameDuration: 1
         )
         newAnimation.textureScale = 1
         actor.animation = newAnimation
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet", "sheet2"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet.png", "sheet2.png"])
     }
 
     func testTextureNamePrefix() {
         actor.textureNamePrefix = "Prefix"
 
-        var animation = Animation(textureNamed: "Texture", textureFormat: .unknown)
+        var animation = Animation(textureNamed: "Texture")
         animation.textureScale = 1
         actor.animation = animation
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture.png"])
     }
 
     func testAddingAndRemovingPlugin() {

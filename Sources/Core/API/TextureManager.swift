@@ -24,9 +24,9 @@ public final class TextureManager {
 
     // MARK: - Public
 
-    public func preloadTexture(named name: String, scale: Int? = nil, textureFormat: TextureFormat = .png, onQueue queue: DispatchQueue = .main) {
+    public func preloadTexture(named name: String, scale: Int? = nil, format: TextureFormat = .png, onQueue queue: DispatchQueue = .main) {
         queue.async {
-            _ = self.load(Texture(name: name, format: textureFormat), namePrefix: nil, scale: scale)
+            _ = self.load(Texture(name: name, format: format), namePrefix: nil, scale: scale)
         }
     }
 
