@@ -1,0 +1,24 @@
+disabled_rules:
+  - colon
+  - cyclomatic_complexity
+  - for_where
+  - force_cast
+  - function_body_length
+  - function_parameter_count
+  - identifier_name
+  - line_length
+  - operator_whitespace
+  - redundant_optional_initialization
+  - trailing_newline
+  - trailing_whitespace
+  - type_body_length
+  - unused_closure_parameter
+  - vertical_parameter_alignment
+
+custom_rules:
+  empty_line_after_guard_statement:
+    included: ".*\\.swift"
+    name: "Empty line after guard statement"
+    regex: "((?<=\n)([ ]*)guard[^\\}]*?\\}\n\\2[^\n])" # Follow https://regex101.com/r/i1IaQH/1 for the explanation on the regex
+    message: "Add a newline after guard statement to make it easier to read"
+    severity: warning
