@@ -33,7 +33,15 @@ public final class TextureManager {
     // MARK: - Internal
 
     internal func load(_ texture: Texture, namePrefix: String?, scale: Int?) -> LoadedTexture? {
-        let cacheKey = self.cacheKey(forTexture: texture, withPrefix: namePrefix)
+        let scale = scale ?? defaultScale
+        let format = texture.format ?? .png
+        var name = texture.name
+
+        if let prefix = namePrefix {
+            name = "\(prefix)\(name)"
+        }
+
+        let cacheKey = "\(name).\(format.rawValue)"
 
         if let cachedTexture = cache[cacheKey] {
             return cachedTexture
@@ -48,14 +56,7 @@ public final class TextureManager {
             return texture
         }
 
-        let scale = scale ?? defaultScale
-        var name = texture.name
-
-        if let prefix = namePrefix {
-            name = "\(prefix)\(name)"
-        }
-
-        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: texture.format) else {
+        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
                 return nil
             }
@@ -66,21 +67,5 @@ public final class TextureManager {
         let texture = LoadedTexture(image: image, scale: scale)
         cache[cacheKey] = texture
         return texture
-    }
-
-    // MARK: - Private
-
-    private func cacheKey(forTexture texture: Texture, withPrefix prefix: String? = nil) -> String {
-        var cacheKey = texture.name
-
-        if let prefix = prefix {
-            cacheKey = "\(prefix)\(cacheKey)"
-        }
-
-        if let extensionName = texture.format.extensionName {
-            cacheKey.append(".\(extensionName)")
-        }
-
-        return cacheKey
     }
 }
