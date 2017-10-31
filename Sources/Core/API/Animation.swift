@@ -78,7 +78,7 @@ public extension Animation {
 
     /// Initialize an instance with an array of images to use for the animation
     init(images: [Image], frameDuration: TimeInterval) {
-        content = .textures(images.map { Texture(image: $0) })
+        content = .textures(images.map(Texture.init))
         self.frameDuration = frameDuration
         updateIdentifier()
     }
