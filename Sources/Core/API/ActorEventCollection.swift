@@ -23,7 +23,7 @@ public final class ActorEventCollection: EventCollection<Actor> {
     /// Event triggered when the actor exited its scene
     public private(set) lazy var leftScene = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor was clicked (on macOS) or tapped (on iOS/tvOS)
-    public private(set) lazy var clicked: Event<Actor, Void> = self.makeClickedEvent()
+    public private(set) lazy var clicked = makeClickedEvent()
 
     /// Event triggered when the actor collided with another actor
     public func collided(with actor: Actor) -> Event<Actor, Actor> {
