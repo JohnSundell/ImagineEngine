@@ -13,6 +13,8 @@ public final class TextureManager {
     public var imageLoader: TextureImageLoader
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
+    /// The default format when loading textures (default = PNG)
+    public var defaultFormat: TextureFormat = .png
 
     internal private(set) var cache = [String : LoadedTexture]()
 
@@ -24,7 +26,7 @@ public final class TextureManager {
 
     // MARK: - Public
 
-    public func preloadTexture(named name: String, scale: Int? = nil, format: TextureFormat = .png, onQueue queue: DispatchQueue = .main) {
+    public func preloadTexture(named name: String, scale: Int? = nil, format: TextureFormat? = nil, onQueue queue: DispatchQueue = .main) {
         queue.async {
             _ = self.load(Texture(name: name, format: format), namePrefix: nil, scale: scale)
         }
@@ -34,7 +36,7 @@ public final class TextureManager {
 
     internal func load(_ texture: Texture, namePrefix: String?, scale: Int?) -> LoadedTexture? {
         let scale = scale ?? defaultScale
-        let format = texture.format ?? .png
+        let format = texture.format ?? defaultFormat
         var name = texture.name
 
         if let prefix = namePrefix {

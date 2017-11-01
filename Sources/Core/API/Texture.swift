@@ -17,7 +17,7 @@ public struct Texture {
     public let format: TextureFormat?
 
     /// Initialize a texture with the name and the format of a bundled image to load
-    public init(name: String, format: TextureFormat = .png) {
+    public init(name: String, format: TextureFormat? = nil) {
         self.name = name
         self.image = nil
         self.format = format
