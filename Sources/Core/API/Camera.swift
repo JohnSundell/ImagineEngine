@@ -39,8 +39,8 @@ public final class Camera: ActionPerformer, Movable, Activatable {
 
     // MARK: - Plugin API
 
-    public func add<P: Plugin>(_ plugin: @autoclosure () -> P) where P.Object == Camera {
-        pluginManager.add(plugin, for: self)
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == Camera {
+        return pluginManager.add(plugin, for: self)
     }
 
     public func remove<P: Plugin>(_ plugin: P) where P.Object == Camera {

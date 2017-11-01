@@ -177,8 +177,8 @@ open class Scene: Activatable {
     // MARK: - Plugin API
 
     /// Add a plugin to the scene
-    public func add<P: Plugin>(_ plugin: @autoclosure () -> P) where P.Object == Scene {
-        pluginManager.add(plugin, for: self)
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == Scene {
+        return pluginManager.add(plugin, for: self)
     }
 
     /// Remove a plugin from the scene

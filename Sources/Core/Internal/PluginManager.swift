@@ -12,16 +12,19 @@ internal final class PluginManager: Activatable {
 
     // MARK: - API
 
-    func add<P: Plugin>(_ pluginProvider: () -> P, for object: P.Object) {
+    func add<P: Plugin>(_ pluginProvider: () -> P, for object: P.Object) -> P {
         let identifier = ObjectIdentifier(P.self)
 
-        guard plugins[identifier] == nil else {
-            return
+        if let existingPlugin = plugins[identifier] {
+            return existingPlugin.wrapped as! P
         }
 
-        let wrapper = PluginWrapper(plugin: pluginProvider(), object: object)
+        let plugin = pluginProvider()
+        let wrapper = PluginWrapper(plugin: plugin, object: object)
         plugins[identifier] = wrapper
         game.map(wrapper.activate)
+
+        return plugin
     }
 
     func remove<P: Plugin>(_ plugin: P, from object: P.Object) {

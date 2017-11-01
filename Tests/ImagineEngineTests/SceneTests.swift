@@ -80,6 +80,18 @@ final class SceneTests: XCTestCase {
         XCTAssertFalse(plugin.isActive)
     }
 
+    func testSamePluginAddedMultipleTimesReturnsSameInstance() {
+        let scene = Scene(size: Size(width: 300, height: 300))
+
+        let plugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(plugin))
+
+        // The 2nd instance shouldn't be used, since the scen already has
+        // an existing plugin instance attached of the same type
+        let anotherPlugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(anotherPlugin))
+    }
+
     func testReset() {
         let actor = Actor()
         let block = Block(size: .zero, textureCollectionName: "Block")

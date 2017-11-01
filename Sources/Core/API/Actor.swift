@@ -104,8 +104,8 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
 
     // MARK: - Public
 
-    public func add<P: Plugin>(_ plugin: @autoclosure () -> P) where P.Object == Actor {
-        pluginManager.add(plugin, for: self)
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == Actor {
+        return pluginManager.add(plugin, for: self)
     }
 
     public func remove<P: Plugin>(_ plugin: P) where P.Object == Actor {
