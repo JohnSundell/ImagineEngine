@@ -46,11 +46,11 @@ class TextureManagerTests: XCTestCase {
         imageLoader.images["texture.png"] = pngImage
         imageLoader.images["texture.jpg"] = jpgImage
 
-        let loadedPNGTexture = manager.load(pngTexture, namePrefix: nil, scale: 1)!
-        let loadedJPGTexture = manager.load(jpgTexture, namePrefix: nil, scale: 1)!
+        let loadedPNGTexture = manager.load(pngTexture, namePrefix: nil, scale: 1)
+        let loadedJPGTexture = manager.load(jpgTexture, namePrefix: nil, scale: 1)
 
-        XCTAssert(loadedPNGTexture.image === pngImage)
-        XCTAssert(loadedJPGTexture.image === jpgImage)
+        assertSameInstance(loadedPNGTexture?.image, pngImage)
+        assertSameInstance(loadedJPGTexture?.image, jpgImage)
     }
 
     private func makeImage() -> CGImage {
