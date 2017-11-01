@@ -13,6 +13,8 @@ public final class TextureManager {
     public var imageLoader: TextureImageLoader
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
+    /// The default format when loading textures (default = PNG)
+    public var defaultFormat: TextureFormat = .png
 
     internal private(set) var cache = [String : LoadedTexture]()
 
@@ -24,9 +26,9 @@ public final class TextureManager {
 
     // MARK: - Public
 
-    public func preloadTexture(named name: String, scale: Int? = nil, onQueue queue: DispatchQueue = .main) {
+    public func preloadTexture(named name: String, scale: Int? = nil, format: TextureFormat? = nil, onQueue queue: DispatchQueue = .main) {
         queue.async {
-            _ = self.load(Texture(name: name), namePrefix: nil, scale: scale)
+            _ = self.load(Texture(name: name, format: format), namePrefix: nil, scale: scale)
         }
     }
 
@@ -34,13 +36,16 @@ public final class TextureManager {
 
     internal func load(_ texture: Texture, namePrefix: String?, scale: Int?) -> LoadedTexture? {
         let scale = scale ?? defaultScale
+        let format = texture.format ?? defaultFormat
         var name = texture.name
 
         if let prefix = namePrefix {
             name = "\(prefix)\(name)"
         }
 
-        if let cachedTexture = cache[name] {
+        let cacheKey = "\(name).\(format.rawValue)"
+
+        if let cachedTexture = cache[cacheKey] {
             return cachedTexture
         }
 
@@ -49,11 +54,11 @@ public final class TextureManager {
                 return nil
             }
 
-            cache[name] = texture
+            cache[cacheKey] = texture
             return texture
         }
 
-        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale) else {
+        guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
                 return nil
             }
@@ -62,7 +67,7 @@ public final class TextureManager {
         }
 
         let texture = LoadedTexture(image: image, scale: scale)
-        cache[name] = texture
+        cache[cacheKey] = texture
         return texture
     }
 }

@@ -83,7 +83,7 @@ final class ActorTests: XCTestCase {
     func testAnimatingWithSpriteSheet() {
         let imageSize = Size(width: 300, height: 100)
         let image = ImageMockFactory.makeImage(withSize: imageSize)
-        game.textureImageLoader.images["sheet"] = image.cgImage
+        game.textureImageLoader.images["sheet.png"] = image.cgImage
 
         var animation = Animation(
             spriteSheetNamed: "sheet",
@@ -113,7 +113,7 @@ final class ActorTests: XCTestCase {
         actor.animation = newAnimation
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet", "sheet2"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet.png", "sheet2.png"])
     }
 
     func testTextureNamePrefix() {
@@ -124,7 +124,7 @@ final class ActorTests: XCTestCase {
         actor.animation = animation
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture.png"])
     }
 
     func testAddingAndRemovingPlugin() {

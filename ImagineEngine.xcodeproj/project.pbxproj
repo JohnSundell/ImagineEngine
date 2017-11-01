@@ -196,6 +196,26 @@
 		52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
 		52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
+		C800CE2D1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
+		C800CE2E1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
+		C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
+		C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
+		C800CE331FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
+		C800CE341FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
+		C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
+		C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
+		C800CE3E1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
+		C800CE3F1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
+		C800CE401FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
+		C800CE411FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
+		C809426E1FA798B7002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
+		C809426F1FA798B7002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
+		C80942701FA79925002B42A6 /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
+		C80942711FA79934002B42A6 /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
+		C80942731FA7994C002B42A6 /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
+		C80942751FA7995B002B42A6 /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
+		C80942761FA7997B002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
+		C80942771FA7997B002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C86A78BE1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C8D2FCE51FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
@@ -381,6 +401,12 @@
 		52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
+		C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleProtocol.swift; sourceTree = "<group>"; };
+		C800CE2F1FA782EA008EE08D /* TextureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureFormat.swift; sourceTree = "<group>"; };
+		C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoaderTests.swift; sourceTree = "<group>"; };
+		C800CE381FA78C74008EE08D /* BundleMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleMock.swift; sourceTree = "<group>"; };
+		C800CE3C1FA790A9008EE08D /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
+		C800CE3D1FA790A9008EE08D /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
 		C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoader.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,6 +515,7 @@
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
 				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
+				C800CE2F1FA782EA008EE08D /* TextureFormat.swift */,
 				52479F7F1F8E58E200D22A87 /* TextureImageLoader.swift */,
 				522CD6601F8D4512008DB43D /* TextureManager.swift */,
 				522CD64C1F8D4512008DB43D /* Timeline.swift */,
@@ -503,6 +530,7 @@
 				522CD64F1F8D4512008DB43D /* ActionManager.swift */,
 				522CD6501F8D4512008DB43D /* ActionWrapper.swift */,
 				522CD6511F8D4512008DB43D /* Activatable.swift */,
+				C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */,
 				C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */,
 				5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */,
 				522CD6521F8D4512008DB43D /* ClickPlugin.swift */,
@@ -564,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				52479F8D1F8E823E00D22A87 /* ActionMock.swift */,
+				C800CE381FA78C74008EE08D /* BundleMock.swift */,
 				5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */,
 				52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */,
 				52C8603A1F8E535100C6C7A7 /* GameMock.swift */,
@@ -619,6 +648,7 @@
 			children = (
 				52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */,
 				52479F8B1F8E818100D22A87 /* ActionTests.swift */,
+				C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */,
 				527FC8071F8EB83F006B1295 /* CameraTests.swift */,
 				527FC8051F8EB223006B1295 /* EventTests.swift */,
 				527FC80B1F8EBAAB006B1295 /* LabelTests.swift */,
@@ -626,10 +656,20 @@
 				C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */,
 				52479F891F8E804F00D22A87 /* TimelineTests.swift */,
 				52C860391F8E534000C6C7A7 /* Mocks */,
+				C800CE3B1FA79008008EE08D /* Resources */,
 				52C860311F8E381600C6C7A7 /* Utilities */,
 			);
 			name = Tests;
 			path = Tests/ImagineEngineTests;
+			sourceTree = "<group>";
+		};
+		C800CE3B1FA79008008EE08D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C800CE3D1FA790A9008EE08D /* sample.jpg */,
+				C800CE3C1FA790A9008EE08D /* sample.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DD21B7451F92EC450034A7CE /* AppKit */ = {
@@ -837,6 +877,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C800CE3F1FA790AA008EE08D /* sample.png in Resources */,
+				C800CE411FA790AA008EE08D /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +886,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C800CE3E1FA790AA008EE08D /* sample.png in Resources */,
+				C800CE401FA790AA008EE08D /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +895,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C80942761FA7997B002B42A6 /* sample.jpg in Resources */,
+				C80942771FA7997B002B42A6 /* sample.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +911,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C809426E1FA798B7002B42A6 /* sample.jpg in Resources */,
+				C809426F1FA798B7002B42A6 /* sample.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,11 +941,13 @@
 				525688D11F9CF3E200F87786 /* Assert.swift in Sources */,
 				525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */,
 				525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */,
+				C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */,
 				525688D21F9CF3E200F87786 /* TimeTraveler.swift in Sources */,
 				525688C61F9CF3E200F87786 /* ActionTests.swift in Sources */,
 				525688CD1F9CF3E200F87786 /* DisplayLinkMock.swift in Sources */,
 				525688CF1F9CF3E200F87786 /* PluginMock.swift in Sources */,
 				525688CB1F9CF3E200F87786 /* TimelineTests.swift in Sources */,
+				C800CE341FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */,
 				5204849E1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -914,6 +964,7 @@
 				5253C7BC1FA4D57200D304B5 /* Camera.swift in Sources */,
 				5253C7D01FA4D57200D304B5 /* Rotatable.swift in Sources */,
 				5253C79B1FA4D54000D304B5 /* GameViewController-iOS+tvOS.swift in Sources */,
+				C80942701FA79925002B42A6 /* TextureFormat.swift in Sources */,
 				5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */,
 				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
 				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
@@ -921,6 +972,7 @@
 				5253C7B01FA4D56C00D304B5 /* UpdatableWrapper.swift in Sources */,
 				5253C7A71FA4D56C00D304B5 /* LoadedTexture.swift in Sources */,
 				5253C7C61FA4D57200D304B5 /* Group.swift in Sources */,
+				C80942711FA79934002B42A6 /* BundleProtocol.swift in Sources */,
 				5253C7A81FA4D56C00D304B5 /* Optional+GetOrSet.swift in Sources */,
 				5253C7D91FA4D57200D304B5 /* TextureManager.swift in Sources */,
 				5253C7A61FA4D56C00D304B5 /* Layer.swift in Sources */,
@@ -995,7 +1047,9 @@
 				5253C7E61FA4D97D00D304B5 /* TextureManagerTests.swift in Sources */,
 				5253C7E21FA4D97D00D304B5 /* CameraTests.swift in Sources */,
 				5253C7EB1FA4D97D00D304B5 /* GameMock.swift in Sources */,
+				C80942751FA7995B002B42A6 /* BundleMock.swift in Sources */,
 				5253C7E01FA4D97D00D304B5 /* ActorTests.swift in Sources */,
+				C80942731FA7994C002B42A6 /* BundleTextureImageLoaderTests.swift in Sources */,
 				5253C7E11FA4D97D00D304B5 /* ActionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1012,6 +1066,7 @@
 				522CD66D1F8D451D008DB43D /* ActorEventCollection.swift in Sources */,
 				522CD6811F8D451D008DB43D /* Movable.swift in Sources */,
 				522CD69B1F8D4521008DB43D /* Optional+GetOrSet.swift in Sources */,
+				C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				522CD6741F8D451D008DB43D /* ClosureAction.swift in Sources */,
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
@@ -1070,6 +1125,7 @@
 				522CD68E1F8D451D008DB43D /* Typealiases.swift in Sources */,
 				52C860381F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift in Sources */,
 				522CD69E1F8D4521008DB43D /* ReplicatorLayer.swift in Sources */,
+				C800CE2D1FA77F74008EE08D /* BundleProtocol.swift in Sources */,
 				522CD6851F8D451D008DB43D /* RepeatMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,11 +1145,13 @@
 				52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */,
 				52479F841F8E7B4E00D22A87 /* SceneTests.swift in Sources */,
 				52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */,
+				C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */,
 				52C860301F8E374100C6C7A7 /* ActorTests.swift in Sources */,
 				527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */,
 				52479F851F8E7BFA00D22A87 /* Assert.swift in Sources */,
 				52479F8C1F8E818100D22A87 /* ActionTests.swift in Sources */,
 				52479F821F8E5A6F00D22A87 /* TextureImageLoaderMock.swift in Sources */,
+				C800CE331FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */,
 				5204849D1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1118,11 +1176,13 @@
 				DD21B74B1F92ED6B0034A7CE /* GameWindowController.swift in Sources */,
 				DD21B6FC1F92E75A0034A7CE /* LoadedTexture.swift in Sources */,
 				DD21B6FD1F92E75A0034A7CE /* Block.swift in Sources */,
+				C800CE2E1FA77F74008EE08D /* BundleProtocol.swift in Sources */,
 				DD21B6FE1F92E75A0034A7CE /* Updatable.swift in Sources */,
 				DD21B7001F92E75A0034A7CE /* Layer.swift in Sources */,
 				DD21B7011F92E75A0034A7CE /* Grid.swift in Sources */,
 				DD21B7031F92E75A0034A7CE /* GameView.swift in Sources */,
 				DD21B7041F92E75A0034A7CE /* Activatable.swift in Sources */,
+				C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */,
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
 				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
@@ -1205,7 +1265,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;
@@ -1229,7 +1289,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Configs/ImagineEngineTests.plist;

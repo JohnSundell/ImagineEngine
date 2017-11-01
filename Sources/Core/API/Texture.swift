@@ -13,16 +13,20 @@ public struct Texture {
     public let name: String
     /// Any pre-loaded image that should make up the texture
     public let image: Image?
+    /// The format of the texture to load
+    public let format: TextureFormat?
 
-    /// Initialize a texture with the name of a bundled image to load
-    public init(name: String) {
+    /// Initialize a texture with the name and the format of a bundled image to load
+    public init(name: String, format: TextureFormat? = nil) {
         self.name = name
         self.image = nil
+        self.format = format
     }
 
     /// Initialize a texture with a pre-loaded image
     public init(image: Image) {
         self.name = "InlineImage-\(image.hashValue)"
         self.image = image
+        self.format = nil
     }
 }
