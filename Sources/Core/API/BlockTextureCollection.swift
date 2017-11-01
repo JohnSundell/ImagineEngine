@@ -32,7 +32,7 @@ public struct BlockTextureCollection {
     /// all properties using the property name as a suffix for the texture's
     /// name. This enables you to create a folder containing textures for a
     /// block and simply reference them using the folder's name.
-    public init(name: String? = nil, textureFormat: TextureFormat = .png) {
+    public init(name: String? = nil, textureFormat: TextureFormat? = nil) {
         guard let name = name else {
             return
         }

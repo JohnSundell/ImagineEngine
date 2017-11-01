@@ -58,13 +58,13 @@ public extension Animation {
     }
 
     /// Initialize an instance with a single texture with a certain image name
-    init(textureNamed textureName: String, format: TextureFormat = .png) {
+    init(textureNamed textureName: String, format: TextureFormat? = nil) {
         content = .texture(Texture(name: textureName, format: format))
         updateIdentifier()
     }
 
     /// Initialize an instance with a sequence of textures loaded from an array of image names
-    init(texturesNamed textureNames: [String], format: TextureFormat = .png, frameDuration: TimeInterval) {
+    init(texturesNamed textureNames: [String], format: TextureFormat? = nil, frameDuration: TimeInterval) {
         content = .textures(textureNames.map { Texture(name: $0, format: format) })
         self.frameDuration = frameDuration
         updateIdentifier()
@@ -91,7 +91,7 @@ public extension Animation {
          repeatMode: RepeatMode = .forever,
          autoResize: Bool = true,
          ignoreTextureNamePrefix: Bool = false,
-         textureFormat: TextureFormat = .png) {
+         textureFormat: TextureFormat? = nil) {
         let texture = Texture(name: name, format: textureFormat)
         let spriteSheet = SpriteSheet(texture: texture, frameCount: frameCount, rowCount: rowCount)
         content = .spriteSheet(spriteSheet)
