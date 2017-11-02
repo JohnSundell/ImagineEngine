@@ -204,9 +204,7 @@
 		C800CE341FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
 		C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
 		C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
-		C800CE3E1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C800CE3F1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
-		C800CE401FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C800CE411FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C809426E1FA798B7002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C809426F1FA798B7002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
@@ -886,8 +884,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C800CE3E1FA790AA008EE08D /* sample.png in Resources */,
-				C800CE401FA790AA008EE08D /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
