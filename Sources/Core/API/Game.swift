@@ -29,12 +29,11 @@ open class Game {
 
     /// Initialize an instance with a certain viewport size & an initial scene
     public convenience init(size: Size, scene: Scene) {
-        self.init(size: size, scene: scene, displayLink: DisplayLink())
+        let view = GameView(frame: Rect(origin: .zero, size: size))
+        self.init(view: view, scene: scene, displayLink: DisplayLink())
     }
 
-    internal init(size: Size, scene: Scene, displayLink: DisplayLinkProtocol, dateProvider: @escaping () -> Date = Date.init) {
-        let view = GameView(frame: Rect(origin: .zero, size: size))
-
+    internal init(view: GameView, scene: Scene, displayLink: DisplayLinkProtocol, dateProvider: @escaping () -> Date = Date.init) {
         self.view = view
         self.scene = scene
         self.displayLink = displayLink

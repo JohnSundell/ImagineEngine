@@ -193,6 +193,10 @@
 		52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
 		52A124D41FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
 		52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
+		52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
+		52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
+		52A124D11FABA07500252047 /* EdgeInsets-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */; };
 		52C860301F8E374100C6C7A7 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
 		52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
 		52C860381F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */; };
@@ -207,9 +211,7 @@
 		C800CE341FA788A5008EE08D /* BundleTextureImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */; };
 		C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
 		C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE381FA78C74008EE08D /* BundleMock.swift */; };
-		C800CE3E1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
 		C800CE3F1FA790AA008EE08D /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
-		C800CE401FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C800CE411FA790AA008EE08D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C809426E1FA798B7002B42A6 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3D1FA790A9008EE08D /* sample.jpg */; };
 		C809426F1FA798B7002B42A6 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C800CE3C1FA790A9008EE08D /* sample.png */; };
@@ -394,6 +396,8 @@
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
 		528B21501FA382B300CE9967 /* UpdatableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableCollection.swift; sourceTree = "<group>"; };
 		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
+		52A124CC1FAB9F9700252047 /* GameViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewMock.swift; sourceTree = "<group>"; };
+		52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets-macOS.swift"; sourceTree = "<group>"; };
 		52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorTests.swift; sourceTree = "<group>"; };
 		52C860321F8E381600C6C7A7 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		52C860331F8E381600C6C7A7 /* TimeTraveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTraveler.swift; sourceTree = "<group>"; };
@@ -543,6 +547,7 @@
 				522CD6541F8D4512008DB43D /* DisplayLink-iOS+tvOS.swift */,
 				DD21B7421F92EB140034A7CE /* DisplayLink-macOS.swift */,
 				52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */,
+				52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */,
 				5253C7DC1FA4D66500D304B5 /* Font+Default.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
@@ -603,6 +608,7 @@
 				52C8603A1F8E535100C6C7A7 /* GameMock.swift */,
 				52479F871F8E7CAF00D22A87 /* PluginMock.swift */,
 				52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */,
+				52A124CC1FAB9F9700252047 /* GameViewMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -891,8 +897,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C800CE3E1FA790AA008EE08D /* sample.png in Resources */,
-				C800CE401FA790AA008EE08D /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,6 +947,7 @@
 				525688CA1F9CF3E200F87786 /* SceneTests.swift in Sources */,
 				525688CC1F9CF3E200F87786 /* ActionMock.swift in Sources */,
 				525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */,
+				52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				525688D11F9CF3E200F87786 /* Assert.swift in Sources */,
 				525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */,
 				525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */,
@@ -1046,6 +1051,7 @@
 				5253C7F01FA4D97D00D304B5 /* ImageMockFactory.swift in Sources */,
 				5253C7E31FA4D97D00D304B5 /* EventTests.swift in Sources */,
 				5253C7E41FA4D97D00D304B5 /* LabelTests.swift in Sources */,
+				52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				5253C7E91FA4D97D00D304B5 /* ClickGestureRecognizerMock.swift in Sources */,
 				5253C7E51FA4D97D00D304B5 /* SceneTests.swift in Sources */,
 				5253C7EE1FA4D97D00D304B5 /* Assert.swift in Sources */,
@@ -1149,6 +1155,7 @@
 				527FC8061F8EB223006B1295 /* EventTests.swift in Sources */,
 				52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */,
 				52479F881F8E7CAF00D22A87 /* PluginMock.swift in Sources */,
+				52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */,
 				52479F841F8E7B4E00D22A87 /* SceneTests.swift in Sources */,
 				52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */,
@@ -1220,6 +1227,7 @@
 				DD21B71C1F92E75A0034A7CE /* Camera.swift in Sources */,
 				DD21B71D1F92E75A0034A7CE /* FadeAction.swift in Sources */,
 				DD21B71E1F92E75A0034A7CE /* Action.swift in Sources */,
+				52A124D11FABA07500252047 /* EdgeInsets-macOS.swift in Sources */,
 				DD21B71F1F92E75A0034A7CE /* Texture.swift in Sources */,
 				DD21B7201F92E75A0034A7CE /* UpdateOutcome.swift in Sources */,
 				523E5D111F9FEFBC0084792C /* SpriteSheet.swift in Sources */,

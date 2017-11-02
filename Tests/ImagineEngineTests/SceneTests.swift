@@ -189,4 +189,31 @@ final class SceneTests: XCTestCase {
         game.simulateClick(at: Point(x: 200, y: 350))
         XCTAssertEqual(clickedPoint, Point(x: 1050, y: 1550))
     }
+
+    func testSafeAreaInsets() {
+        // Verify default
+        XCTAssertEqual(game.scene.safeAreaInsets, EdgeInsets())
+
+        // This test is only relevant for iOS, since macOS has no concept of safe area insets
+        #if !os(macOS)
+        guard #available(iOS 11, tvOS 11, *) else {
+            return
+        }
+
+        var observationTriggerCount = 0
+
+        game.scene.events.safeAreaInsetsChanged.observe {
+            observationTriggerCount += 1
+        }
+
+        game.mockedView.mockedSafeAreaInsets = EdgeInsets(top: 10, left: 30, bottom: 20, right: 15)
+        game.mockedView.safeAreaInsetsDidChange()
+        XCTAssertEqual(game.scene.safeAreaInsets, EdgeInsets(top: 10, left: 30, bottom: 20, right: 15))
+        XCTAssertEqual(observationTriggerCount, 1)
+
+        // When the same safe area insets get assigned, no observation should be triggered
+        game.mockedView.safeAreaInsetsDidChange()
+        XCTAssertEqual(observationTriggerCount, 1)
+        #endif
+    }
 }
