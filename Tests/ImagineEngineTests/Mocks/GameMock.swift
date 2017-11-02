@@ -8,6 +8,7 @@ import Foundation
 @testable import ImagineEngine
 
 final class GameMock: Game {
+    let mockedView = GameViewMock()
     let timeTraveler = TimeTraveler()
     let textureImageLoader = TextureImageLoaderMock()
 
@@ -20,7 +21,7 @@ final class GameMock: Game {
         let scene = Scene(size: Size(width: 500, height: 500))
         scene.textureManager.imageLoader = textureImageLoader
 
-        super.init(size: scene.size,
+        super.init(view: mockedView,
                    scene: scene,
                    displayLink: displayLink,
                    dateProvider: timeTraveler.generateDate)
