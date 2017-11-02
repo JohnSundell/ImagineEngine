@@ -190,6 +190,9 @@
 		527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
 		528B21511FA382B300CE9967 /* UpdatableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B21501FA382B300CE9967 /* UpdatableCollection.swift */; };
 		528B21521FA382B300CE9967 /* UpdatableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B21501FA382B300CE9967 /* UpdatableCollection.swift */; };
+		52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52A124D41FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
 		52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
 		52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
 		52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
@@ -392,6 +395,7 @@
 		527FC8071F8EB83F006B1295 /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
 		528B21501FA382B300CE9967 /* UpdatableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableCollection.swift; sourceTree = "<group>"; };
+		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		52A124CC1FAB9F9700252047 /* GameViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewMock.swift; sourceTree = "<group>"; };
 		52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets-macOS.swift"; sourceTree = "<group>"; };
 		52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorTests.swift; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 				522CD6481F8D4512008DB43D /* ScaleAction.swift */,
 				522CD6491F8D4512008DB43D /* Scene.swift */,
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
+				52A124D21FABA8AB00252047 /* Pluggable.swift */,
 				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
 				C800CE2F1FA782EA008EE08D /* TextureFormat.swift */,
@@ -970,6 +975,7 @@
 				5253C7D01FA4D57200D304B5 /* Rotatable.swift in Sources */,
 				5253C79B1FA4D54000D304B5 /* GameViewController-iOS+tvOS.swift in Sources */,
 				C80942701FA79925002B42A6 /* TextureFormat.swift in Sources */,
+				52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */,
 				5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */,
 				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
 				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
@@ -1073,6 +1079,7 @@
 				522CD6811F8D451D008DB43D /* Movable.swift in Sources */,
 				522CD69B1F8D4521008DB43D /* Optional+GetOrSet.swift in Sources */,
 				C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */,
+				52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */,
 				522CD6741F8D451D008DB43D /* ClosureAction.swift in Sources */,
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
@@ -1196,6 +1203,7 @@
 				DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */,
 				5253C7DE1FA4D7E400D304B5 /* Font+Default.swift in Sources */,
 				DD21B7061F92E75A0034A7CE /* Label.swift in Sources */,
+				52A124D41FABA8AB00252047 /* Pluggable.swift in Sources */,
 				DD21B7071F92E75A0034A7CE /* UpdatableWrapper.swift in Sources */,
 				DD21B7081F92E75A0034A7CE /* CancellationToken.swift in Sources */,
 				DD21B7091F92E75A0034A7CE /* Scene.swift in Sources */,

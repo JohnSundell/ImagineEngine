@@ -7,26 +7,39 @@
 import Foundation
 
 internal final class PluginManager: Activatable {
-    private var plugins = [ObjectIdentifier : PluginWrapper]()
+    private var plugins = [TypeIdentifier : [ObjectIdentifier : PluginWrapper]]()
     private weak var game: Game?
 
     // MARK: - API
 
-    func add<P: Plugin>(_ pluginProvider: () -> P, for object: P.Object) {
-        let identifier = ObjectIdentifier(P.self)
+    func add<P: Plugin>(_ pluginProvider: () -> P, for object: P.Object, reuseExistingOfSameType: Bool) -> P {
+        let typeIdentifier = TypeIdentifier(type: P.self)
 
-        guard plugins[identifier] == nil else {
-            return
+        if reuseExistingOfSameType {
+            if let existingPlugin = plugins[typeIdentifier]?.first?.value {
+                return existingPlugin.wrapped as! P
+            }
         }
 
-        let wrapper = PluginWrapper(plugin: pluginProvider(), object: object)
-        plugins[identifier] = wrapper
+        let plugin = pluginProvider()
+        let identifier = ObjectIdentifier(plugin)
+        let wrapper = PluginWrapper(plugin: plugin, object: object)
+
+        var pluginsOfType = plugins[typeIdentifier] ?? [:]
+        pluginsOfType[identifier] = wrapper
+        plugins[typeIdentifier] = pluginsOfType
+
         game.map(wrapper.activate)
+
+        return plugin
     }
 
     func remove<P: Plugin>(_ plugin: P, from object: P.Object) {
-        let identifier = ObjectIdentifier(P.self)
-        plugins.removeValue(forKey: identifier)?.deactivate()
+        let typeIdentifier = TypeIdentifier(type: P.self)
+        let identifier = ObjectIdentifier(plugin)
+
+        let plugin = plugins[typeIdentifier]?.removeValue(forKey: identifier)
+        plugin?.deactivate()
     }
 
     // MARK: - Activatable
@@ -34,16 +47,35 @@ internal final class PluginManager: Activatable {
     func activate(in game: Game) {
         self.game = game
 
-        for plugin in plugins.values {
-            plugin.activate(in: game)
+        for pluginCollection in plugins.values {
+            for plugin in pluginCollection.values {
+                plugin.activate(in: game)
+            }
         }
     }
 
     func deactivate() {
         game = nil
 
-        for plugin in plugins.values {
-            plugin.deactivate()
+        for pluginCollection in plugins.values {
+            for plugin in pluginCollection.values {
+                plugin.deactivate()
+            }
+        }
+    }
+}
+
+private extension PluginManager {
+    struct TypeIdentifier: Hashable {
+        static func ==(lhs: TypeIdentifier, rhs: TypeIdentifier) -> Bool {
+            return lhs.identifier == rhs.identifier
+        }
+
+        var hashValue: Int { return identifier.hashValue }
+        private let identifier: ObjectIdentifier
+
+        init<T>(type: T.Type) {
+            identifier = ObjectIdentifier(type)
         }
     }
 }
