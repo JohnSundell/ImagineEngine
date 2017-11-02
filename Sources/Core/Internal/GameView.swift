@@ -6,7 +6,7 @@
 
 import Foundation
 
-internal final class GameView: View {
+internal class GameView: View {
     override var frame: Rect { didSet { game?.scene.camera.size = frame.size } }
     weak var game: Game?
 
@@ -20,6 +20,12 @@ internal final class GameView: View {
         super.didMoveToSuperview()
         game?.updateActivationStatus()
     }
+
+    override func safeAreaInsetsDidChange() {
+        if #available(iOS 11, tvOS 11, *) {
+            super.safeAreaInsetsDidChange()
+            game?.scene.safeAreaInsets = safeAreaInsets
+        }
+    }
     #endif
 }
-

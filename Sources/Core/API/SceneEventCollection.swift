@@ -8,8 +8,10 @@ import Foundation
 
 /// Events that can be used to observe a scene
 public final class SceneEventCollection: EventCollection<Scene> {
-    /// Event that will be triggered when the scene was clicked or tapped
+    /// Event that gets triggered when the scene was clicked or tapped
     public private(set) lazy var clicked = makeClickedEvent()
+    /// Event that gets triggered when its safe area insets changed
+    public private(set) lazy var safeAreaInsetsChanged = Event<Scene, Void>(object: object)
 
     private func makeClickedEvent() -> Event<Scene, Point> {
         object?.add(ClickPlugin())
