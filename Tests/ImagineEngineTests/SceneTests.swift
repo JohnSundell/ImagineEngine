@@ -80,7 +80,7 @@ final class SceneTests: XCTestCase {
         XCTAssertFalse(plugin.isActive)
     }
 
-    func testSamePluginAddedMultipleTimesReturnsSameInstance() {
+    func testReusingSamePluginInstance() {
         let scene = Scene(size: Size(width: 300, height: 300))
 
         let plugin = PluginMock<Scene>()
@@ -90,6 +90,26 @@ final class SceneTests: XCTestCase {
         // an existing plugin instance attached of the same type
         let anotherPlugin = PluginMock<Scene>()
         assertSameInstance(plugin, scene.add(anotherPlugin))
+    }
+
+    func testDisablingPluginReuse() {
+        let scene = Scene(size: Size(width: 300, height: 300))
+
+        let plugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(plugin))
+
+        let anotherPlugin = PluginMock<Scene>()
+        assertSameInstance(anotherPlugin, scene.add(anotherPlugin, reuseExistingOfSameType: false))
+
+        // Both plugins should now be activated...
+        game.scene = scene
+        XCTAssertTrue(plugin.isActive)
+        XCTAssertTrue(anotherPlugin.isActive)
+
+        // ...and deactivated
+        game.scene = Scene(size: Size(width: 300, height: 300))
+        XCTAssertFalse(plugin.isActive)
+        XCTAssertFalse(anotherPlugin.isActive)
     }
 
     func testReset() {

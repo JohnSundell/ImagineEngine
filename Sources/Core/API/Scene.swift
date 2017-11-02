@@ -19,7 +19,7 @@ import Foundation
  *  You can also choose to subclass this class to add your own properties
  *  to keep track of your game's state.
  */
-open class Scene: Activatable {
+open class Scene: Pluggable, Activatable {
     /// The game that the scene currently belongs to.
     public private(set) var game: Game?
     /// The scene's camera. Can be used to move the visible area of the scene.
@@ -174,14 +174,13 @@ open class Scene: Activatable {
         grid.remove(label)
     }
 
-    // MARK: - Plugin API
+    // MARK: - Pluggable
 
-    /// Add a plugin to the scene
-    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == Scene {
-        return pluginManager.add(plugin, for: self)
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                                                  reuseExistingOfSameType: Bool) -> P where P.Object == Scene {
+        return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
     }
 
-    /// Remove a plugin from the scene
     public func remove<P: Plugin>(_ plugin: P) where P.Object == Scene {
         pluginManager.remove(plugin, from: self)
     }

@@ -26,7 +26,7 @@ import Foundation
  *  scene.add(actor)
  *  ```
  */
-public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movable, Rotatable, Scalable, Fadeable {
+public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activatable, Movable, Rotatable, Scalable, Fadeable {
     /// The scene that the actor currently belongs to.
     public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
     /// A collection of events that can be used to observe the actor.
@@ -89,6 +89,17 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         return actionManager.add(action)
     }
 
+    // MARK: - Pluggable
+
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                                                  reuseExistingOfSameType: Bool) -> P where P.Object == Actor {
+        return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
+    }
+
+    public func remove<P: Plugin>(_ plugin: P) where P.Object == Actor {
+        pluginManager.remove(plugin, from: self)
+    }
+
     // MARK: - Activatable
 
     internal func activate(in game: Game) {
@@ -100,16 +111,6 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         scene = nil
         pluginManager.deactivate()
         actionManager.deactivate()
-    }
-
-    // MARK: - Public
-
-    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == Actor {
-        return pluginManager.add(plugin, for: self)
-    }
-
-    public func remove<P: Plugin>(_ plugin: P) where P.Object == Actor {
-        pluginManager.remove(plugin, from: self)
     }
 
     /// Remove this actor from its scene
