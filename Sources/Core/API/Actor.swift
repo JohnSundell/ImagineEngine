@@ -286,25 +286,22 @@ public extension Actor {
     /// Initialize an actor that renders a single texture with a given name
     convenience init(textureNamed textureName: String, scale: Int? = nil, format: TextureFormat? = nil) {
         self.init()
-        defer {
-            animation = Animation(textureNamed: textureName, scale: scale, format: format)
-        }
+        animation = Animation(textureNamed: textureName, scale: scale, format: format)
+        animationDidChange(from: nil)
     }
 
     /// Initialize an actor that renders a single image as its animation
     convenience init(image: Image) {
         self.init()
-        defer {
-            animation = Animation(image: image)
-        }
+        animation = Animation(image: image)
+        animationDidChange(from: nil)
     }
 
     /// Initialize an actor with a given size
     convenience init(size: Size) {
         self.init()
-        defer {
-            self.size = size
-        }
+        self.size = size
+        sizeDidChange(from: .zero)
     }
 
     /// Makes the actor start playing an animation as an action
