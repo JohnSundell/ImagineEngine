@@ -116,12 +116,15 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet.png", "sheet2.png"])
     }
 
+    func testInitializingWithTextureName() {
+        let actor = Actor(textureNamed: "SomeTexture", scale: 1)
+        game.scene.add(actor)
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["SomeTexture.png"])
+    }
+
     func testTextureNamePrefix() {
         actor.textureNamePrefix = "Prefix"
-
-        var animation = Animation(textureNamed: "Texture")
-        animation.textureScale = 1
-        actor.animation = animation
+        actor.animation = Animation(textureNamed: "Texture", scale: 1)
 
         game.update()
         XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture.png"])

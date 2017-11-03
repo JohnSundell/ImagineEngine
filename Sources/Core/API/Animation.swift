@@ -58,8 +58,9 @@ public extension Animation {
     }
 
     /// Initialize an instance with a single texture with a certain image name
-    init(textureNamed textureName: String, format: TextureFormat? = nil) {
+    init(textureNamed textureName: String, scale: Int? = nil, format: TextureFormat? = nil) {
         content = .texture(Texture(name: textureName, format: format))
+        textureScale = scale
         updateIdentifier()
     }
 
