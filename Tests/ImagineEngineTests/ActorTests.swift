@@ -31,6 +31,10 @@ final class ActorTests: XCTestCase {
 
         actor.size = Size(width: 100, height: 300)
         XCTAssertEqual(actor.rect, Rect(x: 100, y: 50, width: 100, height: 300))
+
+        // The actor's rect should be adapted if its scale is changed
+        actor.scale = 3
+        XCTAssertEqual(actor.rect, Rect(x: 0, y: -250, width: 300, height: 900))
     }
 
     func testAnimationAutoResizingActor() {
