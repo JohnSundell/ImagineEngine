@@ -15,6 +15,9 @@ public final class TextureManager {
     public var defaultScale: Int = Int(Screen.mainScreenScale)
     /// The default format when loading textures (default = PNG)
     public var defaultFormat: TextureFormat = .png
+    /// Any name prefix to apply to all loaded textures (default = nil)
+    /// If an actor has a name prefix of its own, this prefix will be applied first
+    public var namePrefix: String?
 
     internal private(set) var cache = [String : LoadedTexture]()
 
@@ -34,10 +37,14 @@ public final class TextureManager {
 
     // MARK: - Internal
 
-    internal func load(_ texture: Texture, namePrefix: String?, scale: Int?) -> LoadedTexture? {
+    internal func load(_ texture: Texture, namePrefix additionalNamePrefix: String?, scale: Int?) -> LoadedTexture? {
         let scale = scale ?? defaultScale
         let format = texture.format ?? defaultFormat
         var name = texture.name
+
+        if let prefix = additionalNamePrefix {
+            name = "\(prefix)\(name)"
+        }
 
         if let prefix = namePrefix {
             name = "\(prefix)\(name)"
