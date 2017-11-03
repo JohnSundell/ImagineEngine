@@ -12,12 +12,16 @@ class TextureManagerTests: XCTestCase {
     private var manager: TextureManager!
     private var imageLoader: TextureImageLoaderMock!
 
+    // MARK: - XCTestCase
+
     override func setUp() {
         super.setUp()
         manager = TextureManager()
         imageLoader = TextureImageLoaderMock()
         manager.imageLoader = imageLoader
     }
+
+    // MARK: - Tests
 
     func testFallsBackToLowerScaleTextures() {
         _ = manager.load(Texture(name: "texture"), namePrefix: nil, scale: 3)
@@ -52,6 +56,20 @@ class TextureManagerTests: XCTestCase {
         assertSameInstance(loadedPNGTexture?.image, pngImage)
         assertSameInstance(loadedJPGTexture?.image, jpgImage)
     }
+
+    func testApplyingTextureNamePrefix() {
+        let texture = Texture(name: "Texture")
+        manager.namePrefix = "Prefix"
+
+        _ = manager.load(texture, namePrefix: nil, scale: 1)
+        XCTAssertEqual(imageLoader.imageNames, ["PrefixTexture.png"])
+
+        // When an additional name prefix is passed in, both prefixes should be applied in sequence
+        _ = manager.load(texture, namePrefix: "Second", scale: 1)
+        XCTAssertEqual(imageLoader.imageNames, ["PrefixTexture.png", "PrefixSecondTexture.png"])
+    }
+
+    // MARK: - Utilities
 
     private func makeImage() -> CGImage {
         return ImageMockFactory.makeCGImage(withSize: Size(width: 1, height: 1))
