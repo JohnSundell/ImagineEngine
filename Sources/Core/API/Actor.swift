@@ -209,7 +209,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activata
         }
 
         layer.scale = scale
-        rectDidChange()
+        updateRect()
     }
 
     private func velocityDidChange(from oldValue: Vector) {
@@ -259,8 +259,10 @@ public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activata
 
     private func updateRect() {
         var newRect = Rect(origin: position, size: size)
-        newRect.origin.x -= size.width / 2
-        newRect.origin.y -= size.height / 2
+        newRect.size.width *= scale
+        newRect.size.height *= scale
+        newRect.origin.x -= newRect.width / 2
+        newRect.origin.y -= newRect.height / 2
         rect = newRect
     }
 
@@ -313,13 +315,13 @@ public extension Actor {
 
 internal extension Actor {
     var rectForCollisionDetection: Rect {
-        let scaledSize = hitboxSize ?? Size(width: rect.width * scale, height: rect.height * scale)
-        return Rect(
-            origin: Point(
-                x: position.x - scaledSize.width / 2,
-                y: position.y - scaledSize.height / 2
-            ),
-            size: scaledSize
-        )
+        if let hitboxSize = hitboxSize {
+            var rect = Rect(origin: position, size: hitboxSize)
+            rect.origin.x -= hitboxSize.width / 2
+            rect.origin.y -= hitboxSize.height / 2
+            return rect
+        }
+
+        return rect
     }
 }
