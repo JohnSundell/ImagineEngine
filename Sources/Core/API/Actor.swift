@@ -281,6 +281,14 @@ public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activata
 }
 
 public extension Actor {
+    /// Initialize an actor that renders a single texture with a given name
+    convenience init(textureNamed textureName: String, scale: Int? = nil, format: TextureFormat? = nil) {
+        self.init()
+        defer {
+            animation = Animation(textureNamed: textureName, scale: scale, format: format)
+        }
+    }
+
     /// Initialize an actor that renders a single image as its animation
     convenience init(image: Image) {
         self.init()
