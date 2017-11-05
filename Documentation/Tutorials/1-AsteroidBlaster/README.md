@@ -20,7 +20,7 @@ Then open the playground workspace for this tutorial, which contains Imagine Eng
 open ImagineEngine/Documentation/Tutorials/1-AsteroidBlaster/AsteroidBlaster.xcworkspace
 ```
 
-You should now have an empty playground open. Hit ⌘+B to compile Imagine Engine for iOS.
+You should now have an empty playground open. Hit ⌘+B to compile Imagine Engine for the iOS simulator.
 
 Ready? Let's make a game! 🚀
 

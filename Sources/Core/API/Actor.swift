@@ -26,7 +26,7 @@ import Foundation
  *  scene.add(actor)
  *  ```
  */
-public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movable, Rotatable, Scalable, Fadeable {
+public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activatable, Movable, Rotatable, Scalable, Fadeable {
     /// The scene that the actor currently belongs to.
     public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
     /// A collection of events that can be used to observe the actor.
@@ -89,6 +89,17 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         return actionManager.add(action)
     }
 
+    // MARK: - Pluggable
+
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                                                  reuseExistingOfSameType: Bool) -> P where P.Object == Actor {
+        return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
+    }
+
+    public func remove<P: Plugin>(_ plugin: P) where P.Object == Actor {
+        pluginManager.remove(plugin, from: self)
+    }
+
     // MARK: - Activatable
 
     internal func activate(in game: Game) {
@@ -100,16 +111,6 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         scene = nil
         pluginManager.deactivate()
         actionManager.deactivate()
-    }
-
-    // MARK: - Public
-
-    public func add<P: Plugin>(_ plugin: @autoclosure () -> P) where P.Object == Actor {
-        pluginManager.add(plugin, for: self)
-    }
-
-    public func remove<P: Plugin>(_ plugin: P) where P.Object == Actor {
-        pluginManager.remove(plugin, from: self)
     }
 
     /// Remove this actor from its scene
@@ -208,7 +209,7 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
         }
 
         layer.scale = scale
-        rectDidChange()
+        updateRect()
     }
 
     private func velocityDidChange(from oldValue: Vector) {
@@ -258,8 +259,10 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
 
     private func updateRect() {
         var newRect = Rect(origin: position, size: size)
-        newRect.origin.x -= size.width / 2
-        newRect.origin.y -= size.height / 2
+        newRect.size.width *= scale
+        newRect.size.height *= scale
+        newRect.origin.x -= newRect.width / 2
+        newRect.origin.y -= newRect.height / 2
         rect = newRect
     }
 
@@ -280,20 +283,25 @@ public final class Actor: InstanceHashable, ActionPerformer, Activatable, Movabl
 }
 
 public extension Actor {
+    /// Initialize an actor that renders a single texture with a given name
+    convenience init(textureNamed textureName: String, scale: Int? = nil, format: TextureFormat? = nil) {
+        self.init()
+        animation = Animation(textureNamed: textureName, scale: scale, format: format)
+        animationDidChange(from: nil)
+    }
+
     /// Initialize an actor that renders a single image as its animation
     convenience init(image: Image) {
         self.init()
-        defer {
-            animation = Animation(image: image)
-        }
+        animation = Animation(image: image)
+        animationDidChange(from: nil)
     }
 
     /// Initialize an actor with a given size
     convenience init(size: Size) {
         self.init()
-        defer {
-            self.size = size
-        }
+        self.size = size
+        sizeDidChange(from: .zero)
     }
 
     /// Makes the actor start playing an animation as an action
@@ -304,13 +312,13 @@ public extension Actor {
 
 internal extension Actor {
     var rectForCollisionDetection: Rect {
-        let scaledSize = hitboxSize ?? Size(width: rect.width * scale, height: rect.height * scale)
-        return Rect(
-            origin: Point(
-                x: position.x - scaledSize.width / 2,
-                y: position.y - scaledSize.height / 2
-            ),
-            size: scaledSize
-        )
+        if let hitboxSize = hitboxSize {
+            var rect = Rect(origin: position, size: hitboxSize)
+            rect.origin.x -= hitboxSize.width / 2
+            rect.origin.y -= hitboxSize.height / 2
+            return rect
+        }
+
+        return rect
     }
 }

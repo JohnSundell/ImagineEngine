@@ -220,16 +220,16 @@ public extension Block {
     /// Initialize an instance with a given size and the name of a texture collection
     /// See `BlockTextureCollection` for more information about how the names of
     /// individual textures are inferred.
-    convenience init(size: Size, textureCollectionName: String, textureScale: Int? = nil) {
-        let textures = BlockTextureCollection(name: textureCollectionName)
+    convenience init(size: Size, textureCollectionName: String, textureScale: Int? = nil, textureFormat: TextureFormat? = nil) {
+        let textures = BlockTextureCollection(name: textureCollectionName, textureFormat: textureFormat)
         self.init(size: size, content: .collection(textures), textureScale: textureScale)
     }
 
     /// Initialize an instance with a given size and the name of a sprite sheet to use for
     /// the block's textures. The texture for the sprite sheet will be cut into 9 identically
     /// sized pieces (3 x 3), which will be used to tile the block.
-    convenience init(size: Size, spriteSheetName: String, textureScale: Int? = nil) {
-        let texture = Texture(name: spriteSheetName)
+    convenience init(size: Size, spriteSheetName: String, textureScale: Int? = nil, textureFormat: TextureFormat? = nil) {
+        let texture = Texture(name: spriteSheetName, format: textureFormat)
         self.init(size: size, content: .texture(texture), textureScale: textureScale)
     }
 }

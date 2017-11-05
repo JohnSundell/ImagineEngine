@@ -8,6 +8,6 @@ import CoreGraphics
  *  to integrate such a pipeline with an instance of `TextureManager`.
  */
 public protocol TextureImageLoader {
-    /// Load an image for a texture with a given name and scale
-    func loadImageForTexture(named name: String, scale: Int) -> CGImage?
+    /// Load an image for a texture with a given name, scale and format
+    func loadImageForTexture(named name: String, scale: Int, format: TextureFormat) -> CGImage?
 }

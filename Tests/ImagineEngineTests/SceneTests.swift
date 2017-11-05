@@ -80,6 +80,38 @@ final class SceneTests: XCTestCase {
         XCTAssertFalse(plugin.isActive)
     }
 
+    func testReusingSamePluginInstance() {
+        let scene = Scene(size: Size(width: 300, height: 300))
+
+        let plugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(plugin))
+
+        // The 2nd instance shouldn't be used, since the scen already has
+        // an existing plugin instance attached of the same type
+        let anotherPlugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(anotherPlugin))
+    }
+
+    func testDisablingPluginReuse() {
+        let scene = Scene(size: Size(width: 300, height: 300))
+
+        let plugin = PluginMock<Scene>()
+        assertSameInstance(plugin, scene.add(plugin))
+
+        let anotherPlugin = PluginMock<Scene>()
+        assertSameInstance(anotherPlugin, scene.add(anotherPlugin, reuseExistingOfSameType: false))
+
+        // Both plugins should now be activated...
+        game.scene = scene
+        XCTAssertTrue(plugin.isActive)
+        XCTAssertTrue(anotherPlugin.isActive)
+
+        // ...and deactivated
+        game.scene = Scene(size: Size(width: 300, height: 300))
+        XCTAssertFalse(plugin.isActive)
+        XCTAssertFalse(anotherPlugin.isActive)
+    }
+
     func testReset() {
         let actor = Actor()
         let block = Block(size: .zero, textureCollectionName: "Block")
@@ -156,5 +188,32 @@ final class SceneTests: XCTestCase {
         game.scene.camera.position = Point(x: 1000, y: 1500)
         game.simulateClick(at: Point(x: 200, y: 350))
         XCTAssertEqual(clickedPoint, Point(x: 1050, y: 1550))
+    }
+
+    func testSafeAreaInsets() {
+        // Verify default
+        XCTAssertEqual(game.scene.safeAreaInsets, EdgeInsets())
+
+        // This test is only relevant for iOS, since macOS has no concept of safe area insets
+        #if !os(macOS)
+        guard #available(iOS 11, tvOS 11, *) else {
+            return
+        }
+
+        var observationTriggerCount = 0
+
+        game.scene.events.safeAreaInsetsChanged.observe {
+            observationTriggerCount += 1
+        }
+
+        game.mockedView.mockedSafeAreaInsets = EdgeInsets(top: 10, left: 30, bottom: 20, right: 15)
+        game.mockedView.safeAreaInsetsDidChange()
+        XCTAssertEqual(game.scene.safeAreaInsets, EdgeInsets(top: 10, left: 30, bottom: 20, right: 15))
+        XCTAssertEqual(observationTriggerCount, 1)
+
+        // When the same safe area insets get assigned, no observation should be triggered
+        game.mockedView.safeAreaInsetsDidChange()
+        XCTAssertEqual(observationTriggerCount, 1)
+        #endif
     }
 }

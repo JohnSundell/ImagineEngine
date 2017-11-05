@@ -6,14 +6,14 @@
 
 import Foundation
 import CoreGraphics
-import ImagineEngine
+@testable import ImagineEngine
 
 final class TextureImageLoaderMock: TextureImageLoader {
     private(set) var imageNames = Set<String>()
     var images = [String : CGImage]()
 
-    func loadImageForTexture(named name: String, scale: Int) -> CGImage? {
-        let name = imageName(name, withScale: scale)
+    func loadImageForTexture(named name: String, scale: Int, format: TextureFormat) -> CGImage? {
+        let name = imageName(name, withScale: scale, format: format)
         imageNames.insert(name)
         return images[name]
     }
@@ -22,11 +22,15 @@ final class TextureImageLoaderMock: TextureImageLoader {
         imageNames.removeAll()
     }
 
-    private func imageName(_ name: String, withScale scale: Int) -> String {
-        guard scale > 1 else {
-            return name
+    private func imageName(_ name: String, withScale scale: Int, format: TextureFormat) -> String {
+        var imageName = name
+
+        if scale > 1 {
+            imageName.append("@\(scale)x")
         }
 
-        return "\(name)@\(scale)x"
+        imageName.append(".\(format.rawValue)")
+
+        return imageName
     }
 }

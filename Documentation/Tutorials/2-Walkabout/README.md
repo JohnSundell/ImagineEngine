@@ -18,7 +18,7 @@ To code along this tutorial, open its playground workspace, which contains Imagi
 open ImagineEngine/Documentation/Tutorials/2-Walkabout/Walkabout.xcworkspace
 ```
 
-You should now have an empty playground open. Hit ⌘+B to compile Imagine Engine for iOS.
+You should now have an empty playground open. Hit ⌘+B to compile Imagine Engine for the iOS simulator.
 
 Ready? Let's make a game! 🚀
 

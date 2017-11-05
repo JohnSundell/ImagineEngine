@@ -32,19 +32,19 @@ public struct BlockTextureCollection {
     /// all properties using the property name as a suffix for the texture's
     /// name. This enables you to create a folder containing textures for a
     /// block and simply reference them using the folder's name.
-    public init(name: String? = nil) {
+    public init(name: String? = nil, textureFormat: TextureFormat? = nil) {
         guard let name = name else {
             return
         }
 
-        top = Texture(name: "\(name)/top")
-        topLeft = Texture(name: "\(name)/topLeft")
-        topRight = Texture(name: "\(name)/topRight")
-        right = Texture(name: "\(name)/right")
-        left = Texture(name: "\(name)/left")
-        center = Texture(name: "\(name)/center")
-        bottom = Texture(name: "\(name)/bottom")
-        bottomLeft = Texture(name: "\(name)/bottomLeft")
-        bottomRight = Texture(name: "\(name)/bottomRight")
+        top = Texture(name: "\(name)/top", format: textureFormat)
+        topLeft = Texture(name: "\(name)/topLeft", format: textureFormat)
+        topRight = Texture(name: "\(name)/topRight", format: textureFormat)
+        right = Texture(name: "\(name)/right", format: textureFormat)
+        left = Texture(name: "\(name)/left", format: textureFormat)
+        center = Texture(name: "\(name)/center", format: textureFormat)
+        bottom = Texture(name: "\(name)/bottom", format: textureFormat)
+        bottomLeft = Texture(name: "\(name)/bottomLeft", format: textureFormat)
+        bottomRight = Texture(name: "\(name)/bottomRight", format: textureFormat)
     }
 }

@@ -31,6 +31,10 @@ final class ActorTests: XCTestCase {
 
         actor.size = Size(width: 100, height: 300)
         XCTAssertEqual(actor.rect, Rect(x: 100, y: 50, width: 100, height: 300))
+
+        // The actor's rect should be adapted if its scale is changed
+        actor.scale = 3
+        XCTAssertEqual(actor.rect, Rect(x: 0, y: -250, width: 300, height: 900))
     }
 
     func testAnimationAutoResizingActor() {
@@ -83,7 +87,7 @@ final class ActorTests: XCTestCase {
     func testAnimatingWithSpriteSheet() {
         let imageSize = Size(width: 300, height: 100)
         let image = ImageMockFactory.makeImage(withSize: imageSize)
-        game.textureImageLoader.images["sheet"] = image.cgImage
+        game.textureImageLoader.images["sheet.png"] = image.cgImage
 
         var animation = Animation(
             spriteSheetNamed: "sheet",
@@ -113,18 +117,21 @@ final class ActorTests: XCTestCase {
         actor.animation = newAnimation
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet", "sheet2"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet.png", "sheet2.png"])
+    }
+
+    func testInitializingWithTextureName() {
+        let actor = Actor(textureNamed: "SomeTexture", scale: 1)
+        game.scene.add(actor)
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["SomeTexture.png"])
     }
 
     func testTextureNamePrefix() {
         actor.textureNamePrefix = "Prefix"
-
-        var animation = Animation(textureNamed: "Texture")
-        animation.textureScale = 1
-        actor.animation = animation
+        actor.animation = Animation(textureNamed: "Texture", scale: 1)
 
         game.update()
-        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture"])
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["PrefixTexture.png"])
     }
 
     func testAddingAndRemovingPlugin() {

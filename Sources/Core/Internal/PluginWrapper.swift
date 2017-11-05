@@ -7,6 +7,8 @@
 import Foundation
 
 internal final class PluginWrapper: Activatable {
+    let wrapped: AnyObject
+
     private let activateClosure: (Game) -> Void
     private let deactivateClosure: () -> Void
 
@@ -19,6 +21,7 @@ internal final class PluginWrapper: Activatable {
             }
         }
         deactivateClosure = plugin.deactivate
+        wrapped = plugin
     }
 
     // MARK: - Activatable

@@ -9,7 +9,7 @@ import QuartzCore
 
 internal final class DisplayLink: DisplayLinkProtocol {
     var callback: () -> Void = {}
-    private lazy var link: CADisplayLink = self.makeLink()
+    private lazy var link = makeLink()
 
     deinit {
         link.remove(from: .main, forMode: .commonModes)

@@ -13,7 +13,7 @@ import Foundation
  *  all cameras start out at the center of their scene. A camera gets its size
  *  from the game that its scene is presented in.
  */
-public final class Camera: ActionPerformer, Movable, Activatable {
+public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     /// The position of the camera within its scene
     public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the camera's viewport. Set as soon as its presented in a game.
@@ -37,20 +37,21 @@ public final class Camera: ActionPerformer, Movable, Activatable {
         self.sceneSize = sceneSize
     }
 
-    // MARK: - Plugin API
-
-    public func add<P: Plugin>(_ plugin: @autoclosure () -> P) where P.Object == Camera {
-        pluginManager.add(plugin, for: self)
-    }
-
-    public func remove<P: Plugin>(_ plugin: P) where P.Object == Camera {
-        pluginManager.remove(plugin, from: self)
-    }
-
     // MARK: - ActionPerformer
 
     @discardableResult public func perform(_ action: Action<Camera>) -> ActionToken {
         return actionManager.add(action)
+    }
+
+    // MARK: - Pluggable
+
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                                                  reuseExistingOfSameType: Bool) -> P where P.Object == Camera {
+        return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
+    }
+
+    public func remove<P: Plugin>(_ plugin: P) where P.Object == Camera {
+        pluginManager.remove(plugin, from: self)
     }
 
     // MARK: - Activatable
