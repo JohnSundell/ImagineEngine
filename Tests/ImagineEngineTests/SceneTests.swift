@@ -92,6 +92,28 @@ final class SceneTests: XCTestCase {
         assertSameInstance(plugin, scene.add(anotherPlugin))
     }
 
+    func testRemovingAllPluginsOfType() {
+        var pluginA: PluginMock! = PluginMock<Scene>()
+        var pluginB: PluginMock! = PluginMock<Scene>()
+
+        game.scene.add(pluginA)
+        game.scene.add(pluginB, reuseExistingOfSameType: false)
+        XCTAssertTrue(pluginA.isActive)
+        XCTAssertTrue(pluginB.isActive)
+
+        game.scene.removePlugins(ofType: PluginMock.self)
+        XCTAssertFalse(pluginA.isActive)
+        XCTAssertFalse(pluginB.isActive)
+
+        // Make sure the scene is not still retaining the plugins after removing them
+        weak var weakPluginA = pluginA
+        weak var weakPluginB = pluginB
+        pluginA = nil
+        pluginB = nil
+        XCTAssertNil(weakPluginA)
+        XCTAssertNil(weakPluginB)
+    }
+
     func testDisablingPluginReuse() {
         let scene = Scene(size: Size(width: 300, height: 300))
 

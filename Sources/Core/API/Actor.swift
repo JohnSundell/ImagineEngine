@@ -100,6 +100,10 @@ public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activata
         pluginManager.remove(plugin, from: self)
     }
 
+    public func removePlugins<P: Plugin>(ofType type: P.Type) where P.Object == Actor {
+        pluginManager.removePlugins(ofType: type, from: self)
+    }
+
     // MARK: - Activatable
 
     internal func activate(in game: Game) {

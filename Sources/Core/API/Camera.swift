@@ -54,6 +54,10 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
         pluginManager.remove(plugin, from: self)
     }
 
+    public func removePlugins<P: Plugin>(ofType type: P.Type) where P.Object == Camera {
+        pluginManager.removePlugins(ofType: type, from: self)
+    }
+
     // MARK: - Activatable
 
     internal func activate(in game: Game) {

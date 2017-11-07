@@ -42,6 +42,18 @@ internal final class PluginManager: Activatable {
         plugin?.deactivate()
     }
 
+    func removePlugins<P: Plugin>(ofType: P.Type, from object: P.Object) {
+        let typeIdentifier = TypeIdentifier(type: P.self)
+
+        guard let pluginsOfType = plugins.removeValue(forKey: typeIdentifier) else {
+            return
+        }
+
+        for plugin in pluginsOfType.values {
+            plugin.deactivate()
+        }
+    }
+
     // MARK: - Activatable
 
     func activate(in game: Game) {

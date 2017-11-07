@@ -23,6 +23,9 @@ public protocol Pluggable: class {
 
     /// Remove a plugin from this object
     func remove<P: Plugin>(_ plugin: P) where P.Object == PluginTarget
+
+    /// Remove all plugins of a certain type from this object
+    func removePlugins<P: Plugin>(ofType type: P.Type) where P.Object == PluginTarget
 }
 
 public extension Pluggable {
