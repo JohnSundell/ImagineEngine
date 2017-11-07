@@ -23,3 +23,10 @@ public final class RepeatAction<Object: AnyObject>: Action<Object> {
         return .continueAfter(0)
     }
 }
+
+public extension ActionPerformer {
+    /// Repeat an action until its cancelled using the returned token
+    @discardableResult func `repeat`(_ action: Action<Self>) -> ActionToken {
+        return perform(RepeatAction(action: action))
+    }
+}
