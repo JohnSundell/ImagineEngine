@@ -26,7 +26,7 @@ public final class RepeatAction<Object: AnyObject>: Action<Object> {
 
 public extension ActionPerformer {
     /// Repeat an action until its cancelled using the returned token
-    func `repeat`(_ action: Action<Self>) -> ActionToken {
+    @discardableResult func `repeat`(_ action: Action<Self>) -> ActionToken {
         return perform(RepeatAction(action: action))
     }
 }
