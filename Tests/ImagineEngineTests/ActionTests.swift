@@ -164,4 +164,37 @@ final class ActionTests: XCTestCase {
         XCTAssertNil(actionB.context)
         XCTAssertNil(actionC.context)
     }
+
+    func testRepeatingAction() {
+        let moveVector = Vector(dx: 100, dy: 50)
+        let moveAction = MoveAction<Actor>(vector: moveVector, duration: 2)
+
+        let actor = Actor()
+        let token = actor.repeat(moveAction)
+        game.scene.add(actor)
+        game.update()
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        XCTAssertEqual(actor.position, Point(x: 100, y: 50))
+
+        // Actor should keep moving, since the action is repeated
+        // (after an intermediate update to reset state)
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertEqual(actor.position, Point(x: 150, y: 75))
+
+        // After the token is cancelled, the repeated action should be cancelled
+        token.cancel()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertEqual(actor.position, Point(x: 150, y: 75))
+
+        // The action shoudn't be repeated anymore either
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertEqual(actor.position, Point(x: 150, y: 75))
+    }
 }
