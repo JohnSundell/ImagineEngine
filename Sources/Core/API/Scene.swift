@@ -119,12 +119,7 @@ open class Scene: Pluggable, Activatable {
 
     /// Remove an actor from the scene
     public func remove(_ actor: Actor) {
-        guard actor.scene === self else {
-            return
-        }
-
-        actor.scene = nil
-        actor.layer.removeFromSuperlayer()
+        deactivate(actor)
         grid.remove(actor)
     }
 
@@ -146,12 +141,7 @@ open class Scene: Pluggable, Activatable {
 
     /// Remove a block from the scene
     public func remove(_ block: Block) {
-        guard block.scene === self else {
-            return
-        }
-
-        block.scene = nil
-        block.layer.removeFromSuperlayer()
+        deactivate(block)
         grid.remove(block)
     }
 
@@ -168,12 +158,7 @@ open class Scene: Pluggable, Activatable {
 
     /// Remove a label from the scene
     public func remove(_ label: Label) {
-        guard label.scene === self else {
-            return
-        }
-
-        label.scene = nil
-        label.layer.removeFromSuperlayer()
+        deactivate(label)
         grid.remove(label)
     }
 
@@ -278,6 +263,15 @@ open class Scene: Pluggable, Activatable {
 
     private func backgroundColorDidChange() {
         layer.backgroundColor = backgroundColor.cgColor
+    }
+
+    private func deactivate(_ object: SceneObject) {
+        guard object.scene === self else {
+            return
+        }
+
+        object.scene = nil
+        object.deactivate()
     }
 }
 

@@ -6,11 +6,25 @@
 
 import Foundation
 import XCTest
-import ImagineEngine
+@testable import ImagineEngine
 
 final class LabelTests: XCTestCase {
+    private var label: Label!
+    private var game: GameMock!
+
+    // MARK: - XCTestCase
+
+    override func setUp() {
+        super.setUp()
+        label = Label()
+        game = GameMock()
+        game.scene.add(label)
+    }
+
+    // MARK: - Tests
+
     func testAutoResize() {
-        let label = Label()
+        // Verify initial size is zero
         XCTAssertEqual(label.size.width, 0)
 
         label.text = "Hello world"
@@ -20,5 +34,14 @@ final class LabelTests: XCTestCase {
         label.size = Size(width: 300, height: 300)
         label.text = "Hello again"
         XCTAssertEqual(label.size, Size(width: 300, height: 300))
+    }
+
+    func testLayerAndSceneReferenceRemovedWhenLabelIsRemoved() {
+        XCTAssertNotNil(label.layer.superlayer)
+        XCTAssertNotNil(label.scene)
+
+        label.remove()
+        XCTAssertNil(label.layer.superlayer)
+        XCTAssertNil(label.scene)
     }
 }
