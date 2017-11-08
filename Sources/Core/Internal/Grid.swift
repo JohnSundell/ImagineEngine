@@ -19,11 +19,7 @@ internal final class Grid {
         }
 
         actorRectDidChange(actor, in: scene)
-
-        if actor.zIndex == 0 {
-            actor.zIndex = nextZIndex
-            nextZIndex += 1
-        }
+        assignZIndexIfNeeded(to: actor)
     }
 
     func remove(_ actor: Actor) {
@@ -49,11 +45,7 @@ internal final class Grid {
         }
 
         blockRectDidChange(block)
-
-        if block.zIndex == 0 {
-            block.zIndex = nextZIndex
-            nextZIndex += 1
-        }
+        assignZIndexIfNeeded(to: block)
     }
 
     func remove(_ block: Block) {
@@ -73,10 +65,7 @@ internal final class Grid {
             return
         }
 
-        if label.zIndex == 0 {
-            label.zIndex = nextZIndex
-            nextZIndex += 1
-        }
+        assignZIndexIfNeeded(to: label)
     }
 
     func remove(_ label: Label) {
@@ -153,6 +142,15 @@ internal final class Grid {
     }
 
     // MARK: - Private
+
+    private func assignZIndexIfNeeded(to object: ZIndexed) {
+        guard object.zIndex == 0 else {
+            return
+        }
+
+        object.zIndex = nextZIndex
+        nextZIndex += 1
+    }
 
     private func forEachTile(within rect: Rect, run closure: (_ tile: Tile, _ isNew: Bool) -> Void) {
         let startIndex = Index(x: rect.minX, y: rect.minY)

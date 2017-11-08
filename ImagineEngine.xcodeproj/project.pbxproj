@@ -190,13 +190,16 @@
 		527FC80C1F8EBAAB006B1295 /* LabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC80B1F8EBAAB006B1295 /* LabelTests.swift */; };
 		528B21511FA382B300CE9967 /* UpdatableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B21501FA382B300CE9967 /* UpdatableCollection.swift */; };
 		528B21521FA382B300CE9967 /* UpdatableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B21501FA382B300CE9967 /* UpdatableCollection.swift */; };
-		52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
-		52A124D41FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
-		52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
 		52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
 		52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
 		52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124CC1FAB9F9700252047 /* GameViewMock.swift */; };
 		52A124D11FABA07500252047 /* EdgeInsets-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */; };
+		52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52A124D41FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A124D21FABA8AB00252047 /* Pluggable.swift */; };
+		52B8065E1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
+		52B8065F1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
+		52B806601FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
 		52C860301F8E374100C6C7A7 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
 		52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
 		52C860381F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */; };
@@ -395,9 +398,10 @@
 		527FC8071F8EB83F006B1295 /* CameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTests.swift; sourceTree = "<group>"; };
 		527FC80B1F8EBAAB006B1295 /* LabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTests.swift; sourceTree = "<group>"; };
 		528B21501FA382B300CE9967 /* UpdatableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableCollection.swift; sourceTree = "<group>"; };
-		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		52A124CC1FAB9F9700252047 /* GameViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewMock.swift; sourceTree = "<group>"; };
 		52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets-macOS.swift"; sourceTree = "<group>"; };
+		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
+		52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIndexed.swift; sourceTree = "<group>"; };
 		52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorTests.swift; sourceTree = "<group>"; };
 		52C860321F8E381600C6C7A7 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		52C860331F8E381600C6C7A7 /* TimeTraveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTraveler.swift; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 				522CD63F1F8D4512008DB43D /* Mirroring.swift */,
 				522CD6401F8D4512008DB43D /* Movable.swift */,
 				522CD6411F8D4512008DB43D /* MoveAction.swift */,
+				52A124D21FABA8AB00252047 /* Pluggable.swift */,
 				522CD6421F8D4512008DB43D /* Plugin.swift */,
 				522CD6431F8D4512008DB43D /* RepeatAction.swift */,
 				522CD6441F8D4512008DB43D /* RepeatMode.swift */,
@@ -521,7 +526,6 @@
 				522CD6481F8D4512008DB43D /* ScaleAction.swift */,
 				522CD6491F8D4512008DB43D /* Scene.swift */,
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
-				52A124D21FABA8AB00252047 /* Pluggable.swift */,
 				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
 				C800CE2F1FA782EA008EE08D /* TextureFormat.swift */,
@@ -529,6 +533,7 @@
 				522CD6601F8D4512008DB43D /* TextureManager.swift */,
 				522CD64C1F8D4512008DB43D /* Timeline.swift */,
 				522CD64D1F8D4512008DB43D /* Typealiases.swift */,
+				52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1030,6 +1035,7 @@
 				5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */,
 				5253C7B01FA4D56C00D304B5 /* UpdatableWrapper.swift in Sources */,
 				5253C7A71FA4D56C00D304B5 /* LoadedTexture.swift in Sources */,
+				52B806601FB373BC0042FBA7 /* ZIndexed.swift in Sources */,
 				5253C7C61FA4D57200D304B5 /* Group.swift in Sources */,
 				C80942711FA79934002B42A6 /* BundleProtocol.swift in Sources */,
 				5253C7A81FA4D56C00D304B5 /* Optional+GetOrSet.swift in Sources */,
@@ -1134,6 +1140,7 @@
 				522CD69A1F8D4521008DB43D /* LoadedTexture.swift in Sources */,
 				522CD6701F8D451D008DB43D /* Block.swift in Sources */,
 				522CD6A11F8D4521008DB43D /* Updatable.swift in Sources */,
+				52B8065E1FB373BC0042FBA7 /* ZIndexed.swift in Sources */,
 				522CD6941F8D4521008DB43D /* DisplayLink-iOS+tvOS.swift in Sources */,
 				522CD6991F8D4521008DB43D /* Layer.swift in Sources */,
 				522CD6981F8D4521008DB43D /* Grid.swift in Sources */,
@@ -1264,6 +1271,7 @@
 				DD21B7101F92E75A0034A7CE /* AnimationAction.swift in Sources */,
 				DD21B7111F92E75A0034A7CE /* ScaleAction.swift in Sources */,
 				DD21B7121F92E75A0034A7CE /* ActionToken.swift in Sources */,
+				52B8065F1FB373BC0042FBA7 /* ZIndexed.swift in Sources */,
 				DD21B7131F92E75A0034A7CE /* TextLayer.swift in Sources */,
 				DD21B7151F92E75A0034A7CE /* Fadeable.swift in Sources */,
 				DD21B7161F92E75A0034A7CE /* RotateAction.swift in Sources */,

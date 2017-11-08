@@ -77,7 +77,7 @@ open class Scene: Pluggable, Activatable {
 
     /// Reset the scene
     /// Calling this will remove all game objects from the scene, and
-    /// reset it to its initial state. Once the reset has been complted,
+    /// reset it to its initial state. Once the reset has been completed,
     /// the `setup()` and `activate()` methods will be called.
     public func reset() {
         for actor in actors {
