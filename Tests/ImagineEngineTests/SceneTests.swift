@@ -152,6 +152,11 @@ final class SceneTests: XCTestCase {
         XCTAssertTrue(game.scene.blocks.isEmpty)
         XCTAssertTrue(game.scene.labels.isEmpty)
 
+        // All objects should have their scene reference removed
+        XCTAssertNil(actor.scene)
+        XCTAssertNil(block.scene)
+        XCTAssertNil(label.scene)
+
         // Plugins should not be removed as part of a reset
         XCTAssertTrue(plugin.isActive)
 

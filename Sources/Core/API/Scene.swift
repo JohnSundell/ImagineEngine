@@ -80,17 +80,9 @@ open class Scene: Pluggable, Activatable {
     /// reset it to its initial state. Once the reset has been completed,
     /// the `setup()` and `activate()` methods will be called.
     public func reset() {
-        for actor in actors {
-            remove(actor)
-        }
-
-        for block in blocks {
-            remove(block)
-        }
-
-        for label in labels {
-            remove(label)
-        }
+        actors.forEach(deactivate)
+        blocks.forEach(deactivate)
+        labels.forEach(deactivate)
 
         camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
