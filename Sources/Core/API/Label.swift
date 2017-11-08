@@ -13,7 +13,7 @@ import Foundation
  *  setting the font and text color of text and will automatically resize itself
  *  to fit the text you assign to it.
  */
-public final class Label: InstanceHashable, ActionPerformer, Activatable, ZIndexed, Movable, Fadeable {
+public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndexed, Movable, Fadeable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
     /// The index of the label on the z axis. Affects rendering. 0 = implicit index.
@@ -67,6 +67,7 @@ public final class Label: InstanceHashable, ActionPerformer, Activatable, ZIndex
 
     internal func deactivate() {
         actionManager.deactivate()
+        layer.removeFromSuperlayer()
     }
 
     // MARK: - Public

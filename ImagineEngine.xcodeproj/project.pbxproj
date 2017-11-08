@@ -200,6 +200,12 @@
 		52B8065E1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
 		52B8065F1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
 		52B806601FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
+		52B806661FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
+		52B806671FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
+		52B806681FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
+		52B8066A1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
+		52B8066B1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
+		52B8066C1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
 		52C860301F8E374100C6C7A7 /* ActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */; };
 		52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
 		52C860381F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860371F8E3A4900C6C7A7 /* DisplayLinkProtocol.swift */; };
@@ -402,6 +408,8 @@
 		52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets-macOS.swift"; sourceTree = "<group>"; };
 		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIndexed.swift; sourceTree = "<group>"; };
+		52B806651FB392500042FBA7 /* SceneObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneObject.swift; sourceTree = "<group>"; };
+		52B806691FB3B6180042FBA7 /* BlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTests.swift; sourceTree = "<group>"; };
 		52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorTests.swift; sourceTree = "<group>"; };
 		52C860321F8E381600C6C7A7 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		52C860331F8E381600C6C7A7 /* TimeTraveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTraveler.swift; sourceTree = "<group>"; };
@@ -563,6 +571,7 @@
 				522CD65C1F8D4512008DB43D /* PluginManager.swift */,
 				522CD65D1F8D4512008DB43D /* PluginWrapper.swift */,
 				522CD65E1F8D4512008DB43D /* ReplicatorLayer.swift */,
+				52B806651FB392500042FBA7 /* SceneObject.swift */,
 				525688B41F9CF08E00F87786 /* Screen-iOS.swift */,
 				DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */,
 				522CD65F1F8D4512008DB43D /* TextLayer.swift */,
@@ -664,6 +673,7 @@
 			children = (
 				52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */,
 				52479F8B1F8E818100D22A87 /* ActionTests.swift */,
+				52B806691FB3B6180042FBA7 /* BlockTests.swift */,
 				C800CE321FA788A5008EE08D /* BundleTextureImageLoaderTests.swift */,
 				527FC8071F8EB83F006B1295 /* CameraTests.swift */,
 				527FC8051F8EB223006B1295 /* EventTests.swift */,
@@ -1002,6 +1012,7 @@
 				525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */,
 				52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				525688D11F9CF3E200F87786 /* Assert.swift in Sources */,
+				52B8066B1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */,
 				525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */,
 				C800CE3A1FA78C74008EE08D /* BundleMock.swift in Sources */,
@@ -1020,6 +1031,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5253C7D51FA4D57200D304B5 /* SceneEventCollection.swift in Sources */,
+				52B806681FB392500042FBA7 /* SceneObject.swift in Sources */,
 				5253C7D21FA4D57200D304B5 /* Scalable.swift in Sources */,
 				5253C7B21FA4D56C00D304B5 /* View+MakeLayer.swift in Sources */,
 				5253C7AD1FA4D56C00D304B5 /* TextLayer.swift in Sources */,
@@ -1107,6 +1119,7 @@
 				5253C7E41FA4D97D00D304B5 /* LabelTests.swift in Sources */,
 				52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				5253C7E91FA4D97D00D304B5 /* ClickGestureRecognizerMock.swift in Sources */,
+				52B8066C1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				5253C7E51FA4D97D00D304B5 /* SceneTests.swift in Sources */,
 				5253C7EE1FA4D97D00D304B5 /* Assert.swift in Sources */,
 				5253C7EC1FA4D97D00D304B5 /* PluginMock.swift in Sources */,
@@ -1125,6 +1138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				522CD6A41F8D4521008DB43D /* View+MakeLayer.swift in Sources */,
+				52B806661FB392500042FBA7 /* SceneObject.swift in Sources */,
 				522CD69D1F8D4521008DB43D /* PluginWrapper.swift in Sources */,
 				522CD6881F8D451D008DB43D /* Scalable.swift in Sources */,
 				523E5D101F9FEFBC0084792C /* SpriteSheet.swift in Sources */,
@@ -1212,6 +1226,7 @@
 				52479F881F8E7CAF00D22A87 /* PluginMock.swift in Sources */,
 				52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */,
+				52B8066A1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				52479F841F8E7B4E00D22A87 /* SceneTests.swift in Sources */,
 				52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */,
 				C800CE391FA78C74008EE08D /* BundleMock.swift in Sources */,
@@ -1275,6 +1290,7 @@
 				DD21B7131F92E75A0034A7CE /* TextLayer.swift in Sources */,
 				DD21B7151F92E75A0034A7CE /* Fadeable.swift in Sources */,
 				DD21B7161F92E75A0034A7CE /* RotateAction.swift in Sources */,
+				52B806671FB392500042FBA7 /* SceneObject.swift in Sources */,
 				DD21B7181F92E75A0034A7CE /* PluginManager.swift in Sources */,
 				DD21B7481F92EC800034A7CE /* GameViewController-macOS.swift in Sources */,
 				DD21B7191F92E75A0034A7CE /* InstanceHashable.swift in Sources */,

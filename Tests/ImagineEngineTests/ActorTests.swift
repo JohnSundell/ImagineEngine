@@ -363,4 +363,13 @@ final class ActorTests: XCTestCase {
         game.scene.add(actor)
         XCTAssertEqual(actor.zIndex, 500)
     }
+
+    func testLayerAndSceneReferenceRemovedWhenActorIsRemoved() {
+        XCTAssertNotNil(actor.layer.superlayer)
+        XCTAssertNotNil(actor.scene)
+
+        actor.remove()
+        XCTAssertNil(actor.layer.superlayer)
+        XCTAssertNil(actor.scene)
+    }
 }
