@@ -26,7 +26,7 @@ import Foundation
  *  scene.add(actor)
  *  ```
  */
-public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activatable, Movable, Rotatable, Scalable, Fadeable {
+public final class Actor: InstanceHashable, ActionPerformer, Pluggable, Activatable, ZIndexed, Movable, Rotatable, Scalable, Fadeable {
     /// The scene that the actor currently belongs to.
     public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
     /// A collection of events that can be used to observe the actor.

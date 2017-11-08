@@ -20,7 +20,7 @@ import QuartzCore
  *  or you can simpy pass the name of such a collection when creating a block to have
  *  Imagine Engine automatically infer the names of all its parts.
  */
-public final class Block: InstanceHashable, Activatable, ActionPerformer, Movable {
+public final class Block: InstanceHashable, Activatable, ActionPerformer, ZIndexed, Movable {
     /// The scene that the block currently belongs to
     public internal(set) var scene: Scene?
     /// The index of the block on the z axis. 0 = implicit index.
