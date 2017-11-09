@@ -50,6 +50,10 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
         return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
     }
 
+    public func plugins<P>(ofType type: P.Type) -> [P] where P : Plugin, Camera == P.Object {
+        return pluginManager.plugins(ofType: type)
+    }
+
     public func remove<P: Plugin>(_ plugin: P) where P.Object == Camera {
         pluginManager.remove(plugin, from: self)
     }
