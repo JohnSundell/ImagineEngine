@@ -21,6 +21,10 @@ public protocol Pluggable: class {
     /// - Returns: The plugin that was either added or reused
     func add<P: Plugin>(_ plugin: @autoclosure () -> P, reuseExistingOfSameType: Bool) -> P where P.Object == PluginTarget
 
+    /// Retrive an array of plugins added to this object
+    /// - Returns: An array of plugins of specified type that were previously added to this object
+    func plugins<P: Plugin>(ofType type: P.Type) -> [P] where P.Object == PluginTarget
+
     /// Remove a plugin from this object
     func remove<P: Plugin>(_ plugin: P) where P.Object == PluginTarget
 

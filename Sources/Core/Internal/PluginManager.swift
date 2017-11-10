@@ -34,6 +34,13 @@ internal final class PluginManager: Activatable {
         return plugin
     }
 
+    func plugins<P: Plugin>(ofType type: P.Type) -> [P] {
+        let typeIdentifier = TypeIdentifier(type: type)
+
+        let pluginsOfType = plugins[typeIdentifier, default: [:]].values
+        return pluginsOfType.map { $0.wrapped as! P }
+    }
+
     func remove<P: Plugin>(_ plugin: P, from object: P.Object) {
         let typeIdentifier = TypeIdentifier(type: P.self)
         let identifier = ObjectIdentifier(plugin)

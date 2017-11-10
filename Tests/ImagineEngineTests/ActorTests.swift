@@ -146,6 +146,25 @@ final class ActorTests: XCTestCase {
         XCTAssertFalse(plugin.isActive)
     }
 
+    func testRetrievingPlugin() {
+        let pluginsBeforeAdded = actor.plugins(ofType: PluginMock<Actor>.self)
+        XCTAssertEqual(pluginsBeforeAdded.count, 0)
+
+        let plugin = PluginMock<Actor>()
+
+        actor.add(plugin)
+        XCTAssertTrue(plugin.isActive)
+
+        let plugins = actor.plugins(ofType: PluginMock<Actor>.self)
+        XCTAssertEqual(plugins.count, 1)
+        assertSameInstance(plugins.first, plugin)
+
+        actor.removePlugins(ofType: PluginMock<Actor>.self)
+
+        let pluginsAfterRemoved = actor.plugins(ofType: PluginMock<Actor>.self)
+        XCTAssertEqual(pluginsAfterRemoved.count, 0)
+    }
+
     func testConstrainingToScene() {
         game.scene.size = Size(width: 500, height: 500)
 
