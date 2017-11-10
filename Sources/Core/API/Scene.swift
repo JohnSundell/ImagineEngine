@@ -43,7 +43,7 @@ open class Scene: Pluggable, Activatable {
     /// The insets that make up the area that is safe to put content in, to avoid the notch
     /// & home indicator on iPhone X (can be observed using the safeAreaInsetsChanged event)
     public internal(set) var safeAreaInsets = EdgeInsets() { didSet { safeAreaInsetsDidChange(from: oldValue) } }
-    /// The scene's background color (default is `.black` = black background color)
+    /// The scene's background color (default = `.black`)
     public var backgroundColor = Color.black { didSet { backgroundColorDidChange() } }
 
     private let layer = Layer()
@@ -58,8 +58,7 @@ open class Scene: Pluggable, Activatable {
 
         camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
-        
-        // Set layer to opaque
+
         layer.isOpaque = true
         sizeDidChange()
         setup()
