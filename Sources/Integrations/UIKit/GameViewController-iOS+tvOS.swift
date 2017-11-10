@@ -47,7 +47,6 @@ public class GameViewController: UIViewController {
 
     public override func loadView() {
         view = game.view
-        view.backgroundColor = .black
         view.isOpaque = true
     }
 
