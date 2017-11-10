@@ -50,7 +50,7 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
         return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
     }
 
-    public func plugins<P>(ofType type: P.Type) -> [P] where P : Plugin, Camera == P.Object {
+    public func plugins<P: Plugin>(ofType type: P.Type) -> [P] where P.Object == Camera {
         return pluginManager.plugins(ofType: type)
     }
 

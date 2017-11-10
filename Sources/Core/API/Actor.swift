@@ -96,7 +96,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer, Plugga
         return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
     }
 
-    public func plugins<P>(ofType type: P.Type) -> [P] where P : Plugin, Actor == P.Object {
+    public func plugins<P: Plugin>(ofType type: P.Type) -> [P] where P.Object == Actor {
         return pluginManager.plugins(ofType: type)
     }
 
