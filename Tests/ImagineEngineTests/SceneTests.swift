@@ -157,7 +157,10 @@ final class SceneTests: XCTestCase {
         XCTAssertNil(block.scene)
         XCTAssertNil(label.scene)
 
-        // Plugins should not be removed as part of a reset
+        // Plugins should not be removed as part of a reset, but they
+        // should have been deactivated and then activated again
+        XCTAssertEqual(plugin.deactivationCount, 1)
+        XCTAssertEqual(plugin.activationCount, 2)
         XCTAssertTrue(plugin.isActive)
 
         // Camera should be back at the starting point
