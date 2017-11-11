@@ -86,10 +86,10 @@ internal final class Grid {
     func actorRectDidChange(_ actor: Actor, in scene: Scene) {
         if actor.constraints.contains(.scene) {
             var adjustedPosition = actor.position
-            adjustedPosition.x = min(scene.size.width - actor.size.width / 2,
-                                     max(actor.size.width / 2, actor.position.x))
-            adjustedPosition.y = min(scene.size.height - actor.size.height / 2,
-                                     max(actor.size.height / 2, actor.position.y))
+            adjustedPosition.x = min(scene.size.width - actor.rect.width / 2,
+                                     max(actor.rect.width / 2, actor.position.x))
+            adjustedPosition.y = min(scene.size.height - actor.rect.height / 2,
+                                     max(actor.rect.height / 2, actor.position.y))
 
             if adjustedPosition != actor.position {
                 actor.position = adjustedPosition
