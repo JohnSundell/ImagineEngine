@@ -20,6 +20,8 @@ public final class ActorEventCollection: EventCollection<Actor> {
     public private(set) lazy var collidedWithAnyActor = Event<Actor, Actor>(object: self.object)
     /// Event triggered when the actor collided with any block
     public private(set) lazy var collidedWithAnyBlock = Event<Actor, Block>(object: self.object)
+    /// Event triggered when actor entered its scene
+    public private(set) lazy var enteredScene = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor exited its scene
     public private(set) lazy var leftScene = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor was clicked (on macOS) or tapped (on iOS/tvOS)
