@@ -229,10 +229,10 @@ open class Scene: Pluggable, Activatable {
         let wasWithinScene = actor.isWithinScene
         let sceneRect = Rect(origin: .zero, size: size)
         actor.isWithinScene = actor.rect.intersects(sceneRect)
+        
         if !wasWithinScene && actor.isWithinScene {
             actor.events.enteredScene.trigger()
-        }
-        if wasWithinScene && !actor.isWithinScene {
+        } else if wasWithinScene && !actor.isWithinScene {
             actor.events.leftScene.trigger()
         }
     }
