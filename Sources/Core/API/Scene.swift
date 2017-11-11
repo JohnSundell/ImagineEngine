@@ -84,16 +84,18 @@ open class Scene: Pluggable, Activatable {
         actors.forEach(deactivate)
         blocks.forEach(deactivate)
         labels.forEach(deactivate)
+        pluginManager.deactivate()
 
         camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
 
         events = SceneEventCollection(object: self)
         grid = Grid()
-
         timeline = Timeline()
+
         game.map(timeline.activate)
         game.map(camera.activate)
+        game.map(pluginManager.activate)
 
         setup()
         activate()
