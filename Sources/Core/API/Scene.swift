@@ -61,6 +61,7 @@ open class Scene: Pluggable, Activatable {
 
         layer.isOpaque = true
         sizeDidChange()
+        backgroundColorDidChange()
         setup()
     }
 
