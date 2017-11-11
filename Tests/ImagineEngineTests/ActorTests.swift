@@ -268,23 +268,23 @@ final class ActorTests: XCTestCase {
     }
     
     func testEnteredScene() {
-        // create actor and place in center of scene
-        var enterSceneCount = 0
+        // Create actor and place in center of scene
         let actor = Actor()
-        actor.position = Point(x: 0, y: 0)
+        actor.position = game.scene.center
         game.scene.add(actor)
-        actor.events.enteredScene.observe {enterSceneCount += 1}
+
+        var enterSceneCount = 0
+        actor.events.enteredScene.observe { enterSceneCount += 1 }
         
-        // move actor outside scene
+        // Move actor outside scene
         actor.position.x = -100
-        XCTAssertEqual (actor.isWithinScene , false)
-        XCTAssertEqual (enterSceneCount , 0)
+        XCTAssertFalse(actor.isWithinScene)
+        XCTAssertEqual(enterSceneCount, 0)
         
-        // mow move actor back into scene
+        // Now move actor back into scene
         actor.position.x = 0
-        XCTAssertEqual(actor.isWithinScene, true)
+        XCTAssertTrue(actor.isWithinScene)
         XCTAssertEqual(enterSceneCount, 1)
-        
     }
 
     func testObservingResize() {
