@@ -197,4 +197,39 @@ final class ActionTests: XCTestCase {
         game.update()
         XCTAssertEqual(actor.position, Point(x: 150, y: 75))
     }
+
+    func testObservingActionCompletionWithObject() {
+        let action = ActionMock<Actor>(duration: 2)
+        let actor = Actor()
+        game.scene.add(actor)
+
+        var passedActor: Actor?
+
+        actor.perform(action).then(using: actor) { actor in
+            passedActor = actor
+        }
+
+        // Make sure completion handler isn't called until action has finished
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+        XCTAssertNil(passedActor)
+
+        // Action should now be finished
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        assertSameInstance(passedActor, actor)
+    }
+
+    func testObjectAssociatedWithActionObservationNotRetained() {
+        let action = ActionMock<Actor>(duration: 2)
+        var actor = Actor()
+
+        weak var weakActor = actor
+        actor.perform(action).then(using: actor) { _ in }
+
+        // Assigning a new actor should release the original one
+        actor = Actor()
+        XCTAssertNil(weakActor)
+    }
 }
