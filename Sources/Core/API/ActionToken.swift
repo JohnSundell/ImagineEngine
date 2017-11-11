@@ -95,6 +95,16 @@ public final class ActionToken: CancellationToken {
     }
 }
 
+public extension ActionToken {
+    /// Run a closure after the action that this token is for has finished, passing in a given object
+    /// to the closure (the object won't be retained and the closure won't be run if it's deallocated)
+    @discardableResult func then<T: AnyObject>(using object: T, run closure: @escaping (T) -> Void) -> ActionToken {
+        return then { [weak object] in
+            object.map(closure)
+        }
+    }
+}
+
 internal extension ActionToken {
     enum ChainItem {
         case token(ActionToken)
