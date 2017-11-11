@@ -37,6 +37,23 @@ final class TimelineTests: XCTestCase {
         XCTAssertEqual(runCount, 1)
     }
 
+    func testRunningClosureAfterIntervalWithObject() {
+        var actor = Actor()
+        weak var passedActor: Actor?
+
+        game.scene.timeline.after(interval: 2, using: actor) { actor in
+            passedActor = actor
+        }
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        assertSameInstance(actor, passedActor)
+
+        // Make sure the object is not retained by the timeline
+        actor = Actor()
+        XCTAssertNil(passedActor)
+    }
+
     func testRepeatingClosureUntilCancelled() {
         var runCount = 0
 
@@ -64,5 +81,22 @@ final class TimelineTests: XCTestCase {
         game.timeTraveler.travel(by: 3)
         game.update()
         XCTAssertEqual(runCount, 3)
+    }
+
+    func testRepeatingClosureWithObject() {
+        var actor = Actor()
+        weak var passedActor: Actor?
+
+        game.scene.timeline.repeat(withInterval: 2, using: actor) { actor in
+            passedActor = actor
+        }
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        assertSameInstance(actor, passedActor)
+
+        // Make sure the object is not retained by the timeline
+        actor = Actor()
+        XCTAssertNil(passedActor)
     }
 }

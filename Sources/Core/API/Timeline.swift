@@ -41,18 +41,18 @@ public final class Timeline: Activatable {
 
     /// Run a closure once after a given time interval
     @discardableResult public func after(interval: TimeInterval, run closure: @escaping () -> Void) -> CancellationToken {
-        let updatable = ClosureUpdatable(closure: closure, repeatInterval: nil)
-        let wrapper = UpdatableWrapper(updatable: updatable)
-        schedule(wrapper, delay: interval)
-        return wrapper.cancellationToken
+        let updatable = ClosureUpdatable(closure: closure)
+        return schedule(updatable, delay: interval)
     }
 
     /// Repeat a closure by a given time interval, until it's cancelled by the returned token
     @discardableResult public func `repeat`(withInterval interval: TimeInterval, closure: @escaping () -> Void) -> CancellationToken {
-        let updatable = ClosureUpdatable(closure: closure, repeatInterval: interval)
-        let wrapper = UpdatableWrapper(updatable: updatable)
-        schedule(wrapper, delay: interval)
-        return wrapper.cancellationToken
+        let updatable = ClosureUpdatable { () -> UpdateOutcome in
+            closure()
+            return .continueAfter(interval)
+        }
+
+        return schedule(updatable, delay: interval)
     }
 
     internal func schedule(_ updatable: UpdatableWrapper, delay: TimeInterval) {
@@ -121,6 +121,12 @@ public final class Timeline: Activatable {
         }
 
         root.insert(updatable, at: time)
+    }
+
+    private func schedule(_ updatable: ClosureUpdatable, delay: TimeInterval) -> CancellationToken {
+        let wrapper = UpdatableWrapper(updatable: updatable)
+        schedule(wrapper, delay: delay)
+        return wrapper.cancellationToken
     }
 }
 
@@ -199,5 +205,30 @@ private extension Timeline {
     enum NodeUpdateOutcome {
         case keep
         case discard
+    }
+}
+
+public extension Timeline {
+    /// Run a closure after a given time interval, using an object that will be passed into the closure when run.
+    /// The object won't be retained, and if it's released before the interval has passed, the closure won't be run.
+    @discardableResult func after<T: AnyObject>(interval: TimeInterval, using object: T, run closure: @escaping (T) -> Void) -> CancellationToken {
+        return after(interval: interval) { [weak object] in
+            object.map(closure)
+        }
+    }
+
+    /// Repeat a closure by a given time interval, using an object that will be passed into the closure when run.
+    /// The closure will be repeatedly run until either the passed object is deallocated, or until the returned token is cancelled.
+    @discardableResult func `repeat`<T: AnyObject>(withInterval interval: TimeInterval, using object: T, closure: @escaping (T) -> Void) -> CancellationToken {
+        let updatable = ClosureUpdatable { [weak object] () -> UpdateOutcome in
+            guard let object = object else {
+                return .finished
+            }
+
+            closure(object)
+            return .continueAfter(interval)
+        }
+
+        return schedule(updatable, delay: interval)
     }
 }

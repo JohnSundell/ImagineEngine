@@ -7,21 +7,20 @@
 import Foundation
 
 internal final class ClosureUpdatable: Updatable {
-    private let closure: () -> Void
-    private let repeatInterval: TimeInterval?
+    private let closure: () -> UpdateOutcome
 
-    init(closure: @escaping () -> Void, repeatInterval: TimeInterval?) {
+    init(closure: @escaping () -> Void) {
+        self.closure = {
+            closure()
+            return .finished
+        }
+    }
+
+    init(closure: @escaping () -> UpdateOutcome) {
         self.closure = closure
-        self.repeatInterval = repeatInterval
     }
 
     func update(currentTime: TimeInterval) -> UpdateOutcome {
-        closure()
-
-        guard let repeatInterval = repeatInterval else {
-            return .finished
-        }
-
-        return .continueAfter(repeatInterval)
+        return closure()
     }
 }
