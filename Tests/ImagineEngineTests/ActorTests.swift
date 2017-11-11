@@ -183,7 +183,7 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.position.x, 475)
         
         actor.position.y = 600
-        XCTAssertEqual(actor.position.x, 475)
+        XCTAssertEqual(actor.position.y, 475)
 
         // Removing the constraint should free the actor to move outside of the scene
         actor.constraints = []
