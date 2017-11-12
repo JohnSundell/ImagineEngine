@@ -26,7 +26,8 @@ import Foundation
  *  scene.add(actor)
  *  ```
  */
-public final class Actor: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Rotatable, Scalable, Fadeable {
+public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
+                          Pluggable, ZIndexed, Movable, Rotatable, Scalable, Fadeable {
     /// The scene that the actor currently belongs to.
     public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
     /// A collection of events that can be used to observe the actor.
@@ -77,7 +78,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer, Plugga
     private var velocityActionToken: ActionToken?
     private var animationActionToken: ActionToken?
     private var isUpdatingPosition = false
-    
+
     // MARK: - Initializer
 
     /// Initialize an instance of this class
@@ -156,7 +157,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer, Plugga
         isClickable = true
         scene?.add(ClickPlugin())
     }
-    
+
     // MARK: - Private
 
     private func sceneDidChange() {
@@ -175,7 +176,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer, Plugga
         let isOriginalUpdate = !isUpdatingPosition
         isUpdatingPosition = true
         updateRect()
-        
+
         guard isOriginalUpdate else {
             return
         }

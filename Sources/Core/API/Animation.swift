@@ -34,7 +34,7 @@ public struct Animation {
     /// Whether the actor's `textureNamePrefix` should be ignored for this animation
     public var ignoreTextureNamePrefix = false
     /// Any explicit scale that should be used when loading textures for this animation
-    public var textureScale: Int? = nil
+    public var textureScale: Int?
 
     private var identifier = ""
 }

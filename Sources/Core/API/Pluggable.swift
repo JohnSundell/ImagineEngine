@@ -19,7 +19,8 @@ public protocol Pluggable: class {
 
     /// Add a plugin to this object or reuse an existing instance of the same type (default)
     /// - Returns: The plugin that was either added or reused
-    func add<P: Plugin>(_ plugin: @autoclosure () -> P, reuseExistingOfSameType: Bool) -> P where P.Object == PluginTarget
+    func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                        reuseExistingOfSameType: Bool) -> P where P.Object == PluginTarget
 
     /// Retrive an array of plugins added to this object
     /// - Returns: An array of plugins of specified type that were previously added to this object

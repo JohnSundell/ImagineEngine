@@ -23,7 +23,7 @@ public final class MoveAction<Object: Movable>: Action<Object> {
         self.mode = .vector(vector)
         super.init(duration: duration)
     }
-    
+
     public override func start(for object: Object) {
         vector = nil
         previousCompletionRatio = nil

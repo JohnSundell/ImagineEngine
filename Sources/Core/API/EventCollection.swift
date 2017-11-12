@@ -24,10 +24,12 @@ public class EventCollection<Object: AnyObject> {
     /// Make a new event with an identifier for the event's subject
     /// Call this method within an extension defining a custom event.
     /// For more information, see the documentation for `Event`.
-    public func makeEvent<Subject>(named name: StaticString = #function, withSubjectIdentifier subjectIdentifier: String) -> Event<Object, Subject> {
+    public func makeEvent<Subject>(named name: StaticString = #function,
+                                   withSubjectIdentifier subjectIdentifier: String) -> Event<Object, Subject> {
         let name = "\(name)-\(subjectIdentifier)"
 
         if let event = events[name] {
+            // swiftlint:disable:next force_cast
             return event as! Event<Object, Subject>
         }
 
@@ -39,7 +41,8 @@ public class EventCollection<Object: AnyObject> {
     /// Make a new event with a subject
     /// Call this method within an extension defining a custom event.
     /// For more information, see the documentation for `Event`.
-    public func makeEvent<Subject: AnyObject>(named name: StaticString = #function, withSubject subject: Subject) -> Event<Object, Subject> {
+    public func makeEvent<Subject: AnyObject>(named name: StaticString = #function,
+                                              withSubject subject: Subject) -> Event<Object, Subject> {
         return makeEvent(named: name, withSubjectIdentifier: String(describing: ObjectIdentifier(subject)))
     }
 

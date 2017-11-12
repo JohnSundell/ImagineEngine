@@ -84,7 +84,7 @@ open class Action<Object> {
         if context.completionRatio < 1 {
             return .continueAfter(0)
         }
-        
+
         return .finished
     }
 }

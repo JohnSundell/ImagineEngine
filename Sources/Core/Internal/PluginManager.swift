@@ -17,6 +17,7 @@ internal final class PluginManager: Activatable {
 
         if reuseExistingOfSameType {
             if let existingPlugin = plugins[typeIdentifier]?.first?.value {
+                // swiftlint:disable:next force_cast
                 return existingPlugin.wrapped as! P
             }
         }
@@ -36,9 +37,12 @@ internal final class PluginManager: Activatable {
 
     func plugins<P: Plugin>(ofType type: P.Type) -> [P] {
         let typeIdentifier = TypeIdentifier(type: type)
-
         let pluginsOfType = plugins[typeIdentifier, default: [:]].values
-        return pluginsOfType.map { $0.wrapped as! P }
+
+        return pluginsOfType.map { wrapper in
+            // swiftlint:disable:next force_cast
+            wrapper.wrapped as! P
+        }
     }
 
     func remove<P: Plugin>(_ plugin: P, from object: P.Object) {

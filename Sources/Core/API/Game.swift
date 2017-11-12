@@ -33,7 +33,10 @@ open class Game {
         self.init(view: view, scene: scene, displayLink: DisplayLink())
     }
 
-    internal init(view: GameView, scene: Scene, displayLink: DisplayLinkProtocol, dateProvider: @escaping () -> Date = Date.init) {
+    internal init(view: GameView,
+                  scene: Scene,
+                  displayLink: DisplayLinkProtocol,
+                  dateProvider: @escaping () -> Date = Date.init) {
         self.view = view
         self.scene = scene
         self.displayLink = displayLink
@@ -67,7 +70,7 @@ open class Game {
     }
 
     // MARK: - Private
-    
+
     private func sceneDidChange(from previousScene: Scene?) {
         previousScene?.deactivate()
 
