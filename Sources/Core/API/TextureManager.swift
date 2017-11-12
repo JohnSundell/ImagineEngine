@@ -7,10 +7,11 @@
 import Foundation
 import CoreGraphics
 
+///
 public enum ErrorMode {
-  case IgnoreError
-  case LogError
-  case TriggerAssertOnError
+    case ignore
+    case log
+    case assert
 }
 
 /// Class that manages & faciliates the loading of textures for actors
@@ -26,7 +27,7 @@ public final class TextureManager {
     public var namePrefix: String?
     /// ErrorMode to optionally set to apply in cases there is an image load failure for a texture. (default = IgnoreError)
     /// This is considered only in DEBUG mode
-    public var errorMode: ErrorMode = .IgnoreError
+    public var errorMode: ErrorMode = .ignore
 
     internal private(set) var cache = [String : LoadedTexture]()
 
@@ -77,21 +78,19 @@ public final class TextureManager {
         guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
               
-              #if DEBUG
-              let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
-              switch errorMode {
-              case .IgnoreError:
-                break
-              case .LogError:
-                print(errorMessage)
-              case .TriggerAssertOnError:
-                assertionFailure(errorMessage)
-              default:
-                break
-              }
-              #endif
+                #if DEBUG
+                let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
+                switch errorMode {
+                    case .ignore:
+                    break
+                    case .log:
+                    print(errorMessage)
+                    case .assert:
+                    assertionFailure(errorMessage)
+                }
+                #endif
               
-              return nil
+                return nil
             }
 
             return load(texture, namePrefix: namePrefix, scale: scale - 1)
