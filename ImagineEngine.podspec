@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ImagineEngine"
-  s.version      = "0.5.0"
+  s.version      = "0.6.0"
   s.summary      = "A Swift game engine based on Core Animation"
   s.description  = <<-DESC
     Imagine Engine is an ongoing project that aims to create a fast, high-performace Swift 2D game engine for Apple's platforms that is also a joy to use.
