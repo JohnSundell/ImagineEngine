@@ -28,6 +28,24 @@ final class SceneTests: XCTestCase {
         XCTAssertNil(actor.scene)
     }
 
+    func testAddingAndRemovingMultipleActors() {
+        let actor1 = Actor()
+        let actor2 = Actor()
+        
+        game.scene.add(actor1, actor2)
+        
+        let actors: Set<Actor> = [actor1, actor2]
+        XCTAssertEqual(game.scene.actors, actors)
+        
+        for actor in actors {
+            assertSameInstance(game.scene, actor.scene)
+            actor.remove()
+            XCTAssertNil(actor.scene)
+        }
+        
+        XCTAssertEqual(game.scene.actors, [])
+    }
+    
     func testAddingAndRemovingBlock() {
         let block = Block(size: .zero, textureCollectionName: "Block")
 
@@ -39,17 +57,53 @@ final class SceneTests: XCTestCase {
         XCTAssertEqual(game.scene.blocks, [])
         XCTAssertNil(block.scene)
     }
-
+    
+    func testAddingAndRemovingMultipleBlocks() {
+        let block1 = Block(size: .zero, textureCollectionName: "Block1")
+        let block2 = Block(size: .zero, textureCollectionName: "Block2")
+        
+        game.scene.add(block1, block2)
+        
+        let blocks: Set<Block> = [block1, block2]
+        XCTAssertEqual(game.scene.blocks, blocks)
+        
+        for block in blocks {
+            assertSameInstance(game.scene, block.scene)
+            block.remove()
+            XCTAssertNil(block.scene)
+        }
+        
+        XCTAssertEqual(game.scene.blocks, [])
+    }
+    
     func testAddingAndRemovingLabel() {
         let label = Label()
-
+        
         game.scene.add(label)
         XCTAssertEqual(game.scene.labels, [label])
         assertSameInstance(game.scene, label.scene)
-
+        
         label.remove()
         XCTAssertEqual(game.scene.labels, [])
         XCTAssertNil(label.scene)
+    }
+    
+    func testAddingAndRemovingMultipleLabels() {
+        let label1 = Label()
+        let label2 = Label()
+        
+        game.scene.add(label1, label2)
+        
+        let labels:Set<Label> = [label1, label2]
+        XCTAssertEqual(game.scene.labels, labels)
+        
+        for label in labels {
+            assertSameInstance(game.scene, label.scene)
+            label.remove()
+            XCTAssertNil(label.scene)
+        }
+        
+        XCTAssertEqual(game.scene.labels, [])
     }
 
     func testAddingAndRemovingPlugin() {
