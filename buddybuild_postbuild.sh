@@ -7,4 +7,4 @@ xcodebuild clean test -project ImagineEngine.xcodeproj -scheme ImagineEngine-tvO
 # Run danger
 chruby 2.3.1
 bundle install
-bundle exec danger --fail-on-errors=true
+bundle exec danger
