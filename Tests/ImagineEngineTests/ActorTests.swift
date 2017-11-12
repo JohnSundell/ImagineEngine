@@ -175,13 +175,13 @@ final class ActorTests: XCTestCase {
 
         actor.position.y = 600
         XCTAssertEqual(actor.position.y, 450)
-        
+
         // Set actor scale
         actor.scale = 0.5
 
         actor.position.x = 500
         XCTAssertEqual(actor.position.x, 475)
-        
+
         actor.position.y = 600
         XCTAssertEqual(actor.position.y, 475)
 
@@ -210,7 +210,7 @@ final class ActorTests: XCTestCase {
         // Approaching from the right should stop the actor at the block's right edge
         actor.position = Point(x: -130, y: 0)
         XCTAssertEqual(actor.position.x, -200)
-        
+
         // Approaching from the top should stop the actor at the block's top edge
         actor.position = Point(x: 0, y: -130)
         XCTAssertEqual(actor.position.y, -200)
@@ -275,7 +275,7 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(oldPositions, [.zero, Point(x: 100, y: 0)])
         XCTAssertEqual(newPositions, [Point(x: 100, y: 0), Point(x: 100, y: 50)])
     }
-    
+
     func testEnteredScene() {
         // Create actor and place in center of scene
         let actor = Actor()
@@ -284,12 +284,12 @@ final class ActorTests: XCTestCase {
 
         var enterSceneCount = 0
         actor.events.enteredScene.observe { enterSceneCount += 1 }
-        
+
         // Move actor outside scene
         actor.position.x = -100
         XCTAssertFalse(actor.isWithinScene)
         XCTAssertEqual(enterSceneCount, 0)
-        
+
         // Now move actor back into scene
         actor.position.x = 0
         XCTAssertTrue(actor.isWithinScene)

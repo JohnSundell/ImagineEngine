@@ -4,7 +4,7 @@
  *  See LICENSE file for license
  */
 
-import Foundation   
+import Foundation
 
 /**
  *  Class representing a scene in an Imagine Engine game
@@ -49,7 +49,7 @@ open class Scene: Pluggable, Activatable {
     private let layer = Layer()
     private var grid = Grid()
     private let pluginManager = PluginManager()
-        
+
     // MARK: - Initializer
 
     /// Initialize an instance with a given size
@@ -107,7 +107,7 @@ open class Scene: Pluggable, Activatable {
     /// Add an actor to the scene
     public func add(_ actor: Actor) {
         actor.scene = self
-        
+
         grid.add(actor, in: self)
         layer.addSublayer(actor.layer)
         game.map(actor.activate)
@@ -178,10 +178,10 @@ open class Scene: Pluggable, Activatable {
     }
 
     // MARK: - Activatable
-    
+
     internal func activate(in game: Game) {
         self.game = game
-        
+
         game.view.makeLayerIfNeeded().addSublayer(layer)
 
         camera.activate(in: game)
@@ -202,7 +202,7 @@ open class Scene: Pluggable, Activatable {
 
         activate()
     }
-    
+
     internal func deactivate() {
         layer.removeFromSuperlayer()
 
@@ -232,7 +232,7 @@ open class Scene: Pluggable, Activatable {
         let wasWithinScene = actor.isWithinScene
         let sceneRect = Rect(origin: .zero, size: size)
         actor.isWithinScene = actor.rect.intersects(sceneRect)
-        
+
         if !wasWithinScene && actor.isWithinScene {
             actor.events.enteredScene.trigger()
         } else if wasWithinScene && !actor.isWithinScene {

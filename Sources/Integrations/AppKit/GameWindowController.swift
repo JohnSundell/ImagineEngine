@@ -24,7 +24,7 @@ public class GameWindowController: NSWindowController {
             backing: .buffered,
             defer: false
         )
-        
+
         super.init(window: window)
 
         contentViewController = viewController
