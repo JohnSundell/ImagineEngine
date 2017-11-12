@@ -7,7 +7,15 @@
 import Foundation
 import CoreGraphics
 
-///
+/**
+    This Enum decides how to handle Errors while loading images for a texture
+    - Note: Setting this only works in DEBUG mode
+ 
+    - Remark:
+        - **ignore**: Ignores the error
+        - **log**: Logs the error with missing image info to the console
+        - **assert**: Throws a assertFailure for the error with missing image info
+ */
 public enum ErrorMode {
     case ignore
     case log
