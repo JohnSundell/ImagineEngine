@@ -48,7 +48,7 @@ final class ActorTests: XCTestCase {
         actor.animation = Animation(images: images, frameDuration: 1.5)
 
         // The actor should directly render the first frame
-        XCTAssertEqual(actor.size, imageSizes[0])
+        XCTAssertEqual(actor.size, imageSizes[0].scaled)
 
         // Perform a game update to start the animation
         game.update()
@@ -56,17 +56,17 @@ final class ActorTests: XCTestCase {
         // After 1.5 seconds the second frame should be rendered, and the actor resized
         game.timeTraveler.travel(by: 1.5)
         game.update()
-        XCTAssertEqual(actor.size, imageSizes[1])
+        XCTAssertEqual(actor.size, imageSizes[1].scaled)
 
         // Same thing for the third frame
         game.timeTraveler.travel(by: 1.5)
         game.update()
-        XCTAssertEqual(actor.size, imageSizes[2])
+        XCTAssertEqual(actor.size, imageSizes[2].scaled)
 
         // After an additional 1.5 seconds, the initial frame should again be rendered
         game.timeTraveler.travel(by: 1.5)
         game.update()
-        XCTAssertEqual(actor.size, imageSizes[0])
+        XCTAssertEqual(actor.size, imageSizes[0].scaled)
     }
 
     func testSettingActorInitialSizeFromAnimation() {
@@ -81,7 +81,7 @@ final class ActorTests: XCTestCase {
 
         // As soon as the actor is added, it should be resized (even without an update)
         game.scene.add(actor)
-        XCTAssertEqual(actor.size, imageSize)
+        XCTAssertEqual(actor.size, imageSize.scaled)
     }
 
     func testAnimatingWithSpriteSheet() {
@@ -419,5 +419,17 @@ final class ActorTests: XCTestCase {
         actor.remove()
         XCTAssertNil(actor.layer.superlayer)
         XCTAssertNil(actor.scene)
+    }
+}
+
+private extension Size {
+    // TODO: Needed until we find a better way of figuring out the image scale factor on macOS
+    var scaled: Size {
+        #if (os(iOS) || os(tvOS))
+            return self
+        #else
+            let scale = Screen.mainScreenScale
+            return Size(width: self.width / scale, height: self.height / scale)
+        #endif
     }
 }
