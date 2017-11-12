@@ -1,20 +1,16 @@
+function_body_length: 50
+identifier_name:
+    excluded:
+        - x
+        - y
+
 disabled_rules:
-  - colon
-  - cyclomatic_complexity
-  - for_where
-  - force_cast
-  - function_body_length
-  - function_parameter_count
-  - identifier_name
-  - legacy_nsgeometry_functions
-  - line_length
-  - operator_whitespace
-  - redundant_optional_initialization
-  - trailing_newline
-  - trailing_whitespace
-  - type_body_length
-  - unused_closure_parameter
-  - vertical_parameter_alignment
+    - colon
+    - cyclomatic_complexity
+    - file_length
+    - for_where
+    - operator_whitespace
+    - type_body_length
 
 custom_rules:
   empty_line_after_guard_statement:

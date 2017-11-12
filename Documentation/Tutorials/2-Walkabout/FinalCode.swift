@@ -25,7 +25,7 @@ class WalkaboutScene: Scene {
 
         var moveToken: ActionToken?
 
-        events.clicked.observe { scene, point in
+        events.clicked.observe { _, point in
             moveToken?.cancel()
 
             let speed: Metric = 100

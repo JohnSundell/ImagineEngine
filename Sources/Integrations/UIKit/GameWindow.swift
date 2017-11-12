@@ -19,7 +19,7 @@ public class GameWindow: UIWindow {
         super.init(frame: frame)
         rootViewController = viewController
     }
-    
+
     required public init?(coder decoder: NSCoder) {
         viewController = GameViewController(scene: Scene(size: .zero))
         super.init(coder: decoder)

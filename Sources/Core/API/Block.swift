@@ -96,21 +96,26 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         segmentLayers.bottom.frame.origin.y = size.height - segmentLayers.bottom.frame.height
 
         let centerReplicatorLayer = ReplicatorLayer()
-        centerReplicatorLayer.frame.origin.y = segmentLayers.top.frame.height
-        centerReplicatorLayer.frame.size.width = size.width
-        centerReplicatorLayer.frame.size.height = size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
+        centerReplicatorLayer.frame = Rect(
+            x: 0,
+            y: segmentLayers.top.frame.height,
+            width: size.width,
+            height: size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
+        )
         centerReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, segmentLayers.center.frame.height, 0)
         centerReplicatorLayer.masksToBounds = true
 
         if segmentLayers.center.frame.height > 0 {
-            centerReplicatorLayer.instanceCount = Int(ceil(centerReplicatorLayer.frame.height / segmentLayers.center.frame.height))
+            let fractionalInstanceCount = centerReplicatorLayer.frame.height / segmentLayers.center.frame.height
+            centerReplicatorLayer.instanceCount = Int(ceil(fractionalInstanceCount))
         }
 
         centerReplicatorLayer.addSublayer(segmentLayers.center)
         layer.addSublayer(centerReplicatorLayer)
     }
 
-    private func makeSegmentLayers(from textures: BlockTextureCollection, using textureManager: TextureManager) -> SegmentLayerCollection {
+    private func makeSegmentLayers(from textures: BlockTextureCollection,
+                                   using textureManager: TextureManager) -> SegmentLayerCollection {
         func loadTexture(_ texture: Texture?) -> LoadedTexture? {
             guard let texture = texture else {
                 return nil
@@ -221,7 +226,9 @@ public extension Block {
     /// Initialize an instance with a given size and the name of a texture collection
     /// See `BlockTextureCollection` for more information about how the names of
     /// individual textures are inferred.
-    convenience init(size: Size, textureCollectionName: String, textureScale: Int? = nil, textureFormat: TextureFormat? = nil) {
+    convenience init(size: Size, textureCollectionName: String,
+                     textureScale: Int? = nil,
+                     textureFormat: TextureFormat? = nil) {
         let textures = BlockTextureCollection(name: textureCollectionName, textureFormat: textureFormat)
         self.init(size: size, content: .collection(textures), textureScale: textureScale)
     }
@@ -229,7 +236,9 @@ public extension Block {
     /// Initialize an instance with a given size and the name of a sprite sheet to use for
     /// the block's textures. The texture for the sprite sheet will be cut into 9 identically
     /// sized pieces (3 x 3), which will be used to tile the block.
-    convenience init(size: Size, spriteSheetName: String, textureScale: Int? = nil, textureFormat: TextureFormat? = nil) {
+    convenience init(size: Size, spriteSheetName: String,
+                     textureScale: Int? = nil,
+                     textureFormat: TextureFormat? = nil) {
         let texture = Texture(name: spriteSheetName, format: textureFormat)
         self.init(size: size, content: .texture(texture), textureScale: textureScale)
     }
@@ -273,7 +282,7 @@ private extension Block {
             if let centerTexture = centerTexture {
                 let centerContentLayer = makeContentLayer(withTexture: centerTexture, contentRect: centerContentRect)
                 let centerTextureSize = centerContentLayer.frame.size
-                
+
                 let replicatorLayer = ReplicatorLayer()
                 replicatorLayer.frame.size.width = width - leftLayerSize.width - rightLayerSize.width
                 replicatorLayer.frame.size.height = centerTextureSize.height
