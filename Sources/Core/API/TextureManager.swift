@@ -7,6 +7,12 @@
 import Foundation
 import CoreGraphics
 
+public enum ErrorMode {
+  case IgnoreError
+  case LogError
+  case TriggerAssertOnError
+}
+
 /// Class that manages & faciliates the loading of textures for actors
 public final class TextureManager {
     /// The image loader that should be used (default = load from bundle)
@@ -18,6 +24,9 @@ public final class TextureManager {
     /// Any name prefix to apply to all loaded textures (default = nil)
     /// If an actor has a name prefix of its own, this prefix will be applied first
     public var namePrefix: String?
+    /// ErrorMode to optionally set to apply in cases there is an image load failure for a texture. (default = IgnoreError)
+    /// This is considered only in DEBUG mode
+    public var errorMode: ErrorMode = .IgnoreError
 
     internal private(set) var cache = [String : LoadedTexture]()
 
@@ -67,7 +76,22 @@ public final class TextureManager {
 
         guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
-                return nil
+              
+              #if DEBUG
+              let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
+              switch errorMode {
+              case .IgnoreError:
+                break
+              case .LogError:
+                print(errorMessage)
+              case .TriggerAssertOnError:
+                assertionFailure(errorMessage)
+              default:
+                break
+              }
+              #endif
+              
+              return nil
             }
 
             return load(texture, namePrefix: namePrefix, scale: scale - 1)
