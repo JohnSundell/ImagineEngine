@@ -212,7 +212,6 @@
 		52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
 		52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
-		5908626D1FB7B1E000DD9FAB /* Scene+MultipleAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5908626C1FB7B1E000DD9FAB /* Scene+MultipleAdd.swift */; };
 		C800CE2D1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
 		C800CE2E1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
 		C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
@@ -420,7 +419,6 @@
 		52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkMock.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5908626C1FB7B1E000DD9FAB /* Scene+MultipleAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scene+MultipleAdd.swift"; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
 		C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleProtocol.swift; sourceTree = "<group>"; };
@@ -582,7 +580,6 @@
 				522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */,
 				522CD6631F8D4512008DB43D /* UpdateOutcome.swift */,
 				522CD6641F8D4512008DB43D /* View+MakeLayer.swift */,
-				5908626C1FB7B1E000DD9FAB /* Scene+MultipleAdd.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1212,7 +1209,6 @@
 				522CD69E1F8D4521008DB43D /* ReplicatorLayer.swift in Sources */,
 				C800CE2D1FA77F74008EE08D /* BundleProtocol.swift in Sources */,
 				522CD6851F8D451D008DB43D /* RepeatMode.swift in Sources */,
-				5908626D1FB7B1E000DD9FAB /* Scene+MultipleAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

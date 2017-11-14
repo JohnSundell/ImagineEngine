@@ -282,4 +282,16 @@ public extension Scene {
     var center: Point {
         return Point(x: size.width / 2, y: size.height / 2)
     }
+    
+    func add(_ actors: Actor...) {
+        actors.forEach(add)
+    }
+    
+    func add(_ labels: Label...) {
+        labels.forEach(add)
+    }
+    
+    func add(_ blocks: Block...) {
+        blocks.forEach(add)
+    }
 }
