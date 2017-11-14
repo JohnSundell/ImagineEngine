@@ -20,9 +20,12 @@ function test_tvOS {
         ONLY_ACTIVE_ARCH=NO
 }
 
+# Make subcommands fail the build if they fail
+set -eo pipefail
+
 # Run tests on macOS + tvOS
-set -o pipefail && test_macOS | xcpretty
-set -o pipefail && test_tvOS | xcpretty
+test_macOS | xcpretty
+test_tvOS | xcpretty
 
 # Run Danger
 chruby 2.3.1
