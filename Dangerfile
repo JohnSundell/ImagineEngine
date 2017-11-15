@@ -1,3 +1,8 @@
+# Display a friendly welcoming message to non-collaborators
+unless github.api.collaborator?('JohnSundell/ImagineEngine', github.pr_author)
+    message "Hi @#{github.pr_author} 👋! Thank you for contributing to Imagine Engine! I'm the CI Bot for this project, and will assist you in getting your PR merged 👍"
+end
+
 # Show SwiftLint warnings inline in the diff
 swiftlint.lint_files inline_mode: true
 
