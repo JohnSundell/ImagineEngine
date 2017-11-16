@@ -27,6 +27,10 @@ public class MetricAction<Object>: Action<Object> {
 
     // MARK: - Action
 
+    public override func start(for object: Object) {
+        startMetric = nil
+    }
+
     public override func update(with context: Action<Object>.UpdateContext) {
         let startMetric = self.startMetric.get(orSet: getClosure(context.object))
         let delta = calculateDelta(from: startMetric)
