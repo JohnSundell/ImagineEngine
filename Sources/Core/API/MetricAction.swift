@@ -26,7 +26,7 @@ public class MetricAction<Object>: Action<Object> {
     }
 
     // MARK: - Action
-    
+
     public override func start(for object: Object) {
         startMetric = nil
     }

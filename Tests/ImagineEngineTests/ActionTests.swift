@@ -197,20 +197,20 @@ final class ActionTests: XCTestCase {
         game.update()
         XCTAssertEqual(actor.position, Point(x: 150, y: 75))
     }
-    
+
     func testRepeatingDeltaRotationAction() {
         let rotationDelta: Metric = 3
         let rotationAction = RotateAction<Actor>(delta: rotationDelta, duration: 2)
-        
+
         let actor = Actor()
         actor.repeat(rotationAction)
         game.scene.add(actor)
         game.update()
-        
+
         game.timeTraveler.travel(by: 2)
         game.update()
         XCTAssertEqual(actor.rotation, 3.0, accuracy: 0.01)
-        
+
         // Actor should keep rotating by the delta value, since the action is repeated
         // (after an intermediate update to reset state)
         game.update()
