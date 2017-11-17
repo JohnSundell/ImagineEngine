@@ -46,10 +46,11 @@ public final class Timeline: Activatable {
         return schedule(updatable, delay: interval)
     }
 
-    /// Repeat a closure by a given time interval, until it's cancelled by the returned token
+    /// Repeat a closure by a given time interval with a certain mode, until it's cancelled by the returned token
     @discardableResult public func `repeat`(withInterval interval: TimeInterval,
+                                            mode: RepeatMode = .forever,
                                             closure: @escaping () -> Void) -> CancellationToken {
-        let updatable = ClosureUpdatable { () -> UpdateOutcome in
+        let updatable = ClosureUpdatable(repeatMode: mode) { () -> UpdateOutcome in
             closure()
             return .continueAfter(interval)
         }
@@ -222,11 +223,13 @@ public extension Timeline {
     }
 
     /// Repeat a closure by a given time interval, using an object that will be passed into the closure when run.
-    /// The closure will be repeated until either its object is released, or until cancelled using the returned token.
+    /// The closure will be repeated according to the specified repeat mode, either its object is released, or until
+    /// cancelled using the returned token.
     @discardableResult func `repeat`<T: AnyObject>(withInterval interval: TimeInterval,
                                                    using object: T,
+                                                   mode: RepeatMode = .forever,
                                                    closure: @escaping (T) -> Void) -> CancellationToken {
-        let updatable = ClosureUpdatable { [weak object] () -> UpdateOutcome in
+        let updatable = ClosureUpdatable(repeatMode: mode) { [weak object] () -> UpdateOutcome in
             guard let object = object else {
                 return .finished
             }
