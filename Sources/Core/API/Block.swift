@@ -55,10 +55,10 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
     public func remove() {
         scene?.remove(self)
     }
-    
+
     // MARK: - SceneObject
-    
-    func addLayer(to superlayer: Layer) {
+
+    internal func addLayer(to superlayer: Layer) {
         superlayer.addSublayer(layer)
     }
 
