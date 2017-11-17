@@ -17,3 +17,13 @@ end
 if github.pr_body.length == 0
     warn "Please add a decription to your PR to make it easier to review 👌"
 end
+
+# Encourage rebases instead of including merge commits
+if git.commits.any? { |c| c.message =~ /^Merge branch 'master'/ }
+  warn "Please rebase to get rid of the merge commits in this PR 🙏"
+end
+
+# If changes have been made in sources, encourage tests
+if !git.modified_files.grep(/Sources/).empty? && git.modified_files.grep(/Tests/).empty?
+    warn "Remember to write tests in case you have added a new API or fixed a bug. Feel free to ask for help if you need it 👍"
+end
