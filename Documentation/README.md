@@ -1,5 +1,13 @@
 ## Imagine Engine Documentation
 
-Welcome to the Imagine Engine documentation portal!
+Welcome to the Imagine Engine documentation portal! Here you can navigate to the available documentation sections:
 
-More content will soon be added here, but for now, check out [the first](Tutorials/1-AsteroidBlaster) and [second](Tutorials/2-Walkabout) tutorials - which will introduce you to the engine and some of its features by building two simple games 🚀
+**🚀 [Tutorials](Tutorials)**
+
+Learn how to use Imagine Engine by completing step-by-step tutorials using Swift playgrounds.
+
+**📖 [Guides](Guides)**
+
+Browse various guides that each explain how a certain aspect or feature of Imagine Engine works.
+
+
