@@ -83,7 +83,13 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
 
     /// Initialize an instance of this class
     public init() {}
-
+    
+    // MARK: - SceneObject
+    
+    func addLayer(to superlayer: Layer) {
+        superlayer.addSublayer(layer)
+    }
+    
     // MARK: - ActionPerformer
 
     @discardableResult public func perform(_ action: Action<Actor>) -> ActionToken {
