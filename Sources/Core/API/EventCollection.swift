@@ -46,10 +46,10 @@ public class EventCollection<Object: AnyObject> {
         return makeEvent(named: name, withSubjectIdentifier: String(describing: ObjectIdentifier(subject)))
     }
 
-    /// Make a new event without a subject
+    /// Make a new event that is not bound to a specific subject
     /// Call this method within an extension defining a custom event.
     /// For more information, see the documentation for `Event`.
-    public func makeEvent(named name: StaticString = #function) -> Event<Object, Void> {
+    public func makeEvent<Subject>(named name: StaticString = #function) -> Event<Object, Subject> {
         return makeEvent(named: name, withSubjectIdentifier: "Void")
     }
 }

@@ -12,6 +12,10 @@ private extension EventCollection where Object == Actor {
     var testEvent: Event<Actor, Point> {
         return makeEvent(withSubjectIdentifier: "subject")
     }
+
+    var testEventWithoutSubjectIdentifier: Event<Actor, Size> {
+        return makeEvent()
+    }
 }
 
 final class EventTests: XCTestCase {
@@ -33,6 +37,26 @@ final class EventTests: XCTestCase {
         event.trigger(with: Point(x: 200, y: 100))
         assertSameInstance(observedActor, actor)
         XCTAssertEqual(observedPoint, Point(x: 200, y: 100))
+    }
+
+    func testMakingAndObservingEventWithoutSubjectIdentifier() {
+        let actor = Actor()
+        let event = actor.events.testEventWithoutSubjectIdentifier
+
+        // Accessing the event again should return the same instance
+        assertSameInstance(event, actor.events.testEventWithoutSubjectIdentifier)
+
+        var observedActor: Actor?
+        var observedSize: Size?
+
+        event.observe {
+            observedActor = $0
+            observedSize = $1
+        }
+
+        event.trigger(with: Size(width: 200, height: 100))
+        assertSameInstance(observedActor, actor)
+        XCTAssertEqual(observedSize, Size(width: 200, height: 100))
     }
 
     func testAddingAndRemovingObserver() {
