@@ -16,10 +16,6 @@ public final class ActorEventCollection: EventCollection<Actor> {
     public private(set) lazy var rectChanged = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor's velocity changed
     public private(set) lazy var velocityChanged = Event<Actor, Void>(object: self.object)
-    /// Event triggered when the actor collided with any other actor
-    public private(set) lazy var collidedWithAnyActor = Event<Actor, Actor>(object: self.object)
-    /// Event triggered when the actor collided with any block
-    public private(set) lazy var collidedWithAnyBlock = Event<Actor, Block>(object: self.object)
     /// Event triggered when actor entered its scene
     public private(set) lazy var enteredScene = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor exited its scene
@@ -29,16 +25,20 @@ public final class ActorEventCollection: EventCollection<Actor> {
 
     /// Event triggered when the actor collided with another actor
     public func collided(with actor: Actor) -> Event<Actor, Actor> {
+        object?.isCollisionDetectionActive = true
+        actor.isCollisionDetectionActive = true
         return makeEvent(withSubject: actor)
     }
 
     /// Event triggered when the actor collided with an actor in a given group
     public func collided(withActorInGroup group: Group) -> Event<Actor, Actor> {
+        object?.isCollisionDetectionActive = true
         return makeEvent(withSubjectIdentifier: group.identifier)
     }
 
     /// Event triggered when the actor collided with a block in a given group
     public func collided(withBlockInGroup group: Group) -> Event<Actor, Block> {
+        object?.isCollisionDetectionActive = true
         return makeEvent(withSubjectIdentifier: group.identifier)
     }
 

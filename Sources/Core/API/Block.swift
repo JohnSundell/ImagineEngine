@@ -35,6 +35,7 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
     public var group: Group?
 
     internal let layer = Layer()
+    internal lazy var actorsInContact = Set<Actor>()
     internal lazy var gridTiles = Set<Grid.Tile>()
 
     private let content: Content

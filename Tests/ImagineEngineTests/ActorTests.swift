@@ -393,6 +393,62 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(numberOfCollisions, 5)
     }
 
+    func testObservingCollisionWithActorInGroup() {
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 300, y: 300)
+
+        let group = Group.name("ActorGroup")
+
+        let otherActor = Actor(size: Size(width: 100, height: 100))
+        otherActor.group = group
+        game.scene.add(otherActor)
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(withActorInGroup: group).observe {
+            numberOfCollisions += 1
+        }
+
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Move the actor to collide with the other actor
+        actor.position = otherActor.position
+        XCTAssertEqual(numberOfCollisions, 1)
+
+        // Then move the other actor away, then back, which should also trigger a collision
+        otherActor.position = Point(x: 300, y: 300)
+        otherActor.position = actor.position
+        XCTAssertEqual(numberOfCollisions, 2)
+    }
+
+    func testObservingCollisionWithBlockInGroup() {
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 300, y: 300)
+
+        let group = Group.name("BlockGroup")
+
+        let block = Block(size: Size(width: 100, height: 100), spriteSheetName: "Block")
+        block.group = group
+        game.scene.add(block)
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(withBlockInGroup: group).observe {
+            numberOfCollisions += 1
+        }
+
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Move the actor to collide with the block
+        actor.position = block.position
+        XCTAssertEqual(numberOfCollisions, 1)
+
+        // Then move the other actor away, then back, which should also trigger a collision
+        block.position = Point(x: 300, y: 300)
+        block.position = actor.position
+        XCTAssertEqual(numberOfCollisions, 2)
+    }
+
     func testAssigningZIndex() {
         XCTAssertEqual(actor.zIndex, 0)
 

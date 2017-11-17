@@ -69,9 +69,11 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
 
     internal let layer = Layer()
     internal lazy var actorsInContact = Set<Actor>()
+    internal lazy var blocksInContact = Set<Block>()
     internal lazy var gridTiles = Set<Grid.Tile>()
     internal private(set) var isClickable = false
     internal var isWithinScene = false
+    internal var isCollisionDetectionActive = false
 
     private let pluginManager = PluginManager()
     private lazy var actionManager = ActionManager(object: self)
