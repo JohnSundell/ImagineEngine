@@ -9,6 +9,8 @@ import Foundation
 internal final class ClosureUpdatable: Updatable {
     private let closure: () -> UpdateOutcome
 
+    // MARK: - Initializers
+
     init(closure: @escaping () -> Void) {
         self.closure = {
             closure()
@@ -16,9 +18,26 @@ internal final class ClosureUpdatable: Updatable {
         }
     }
 
-    init(closure: @escaping () -> UpdateOutcome) {
-        self.closure = closure
+    init(repeatMode: RepeatMode, closure: @escaping () -> UpdateOutcome) {
+        var repeatMode = repeatMode
+
+        self.closure = {
+            switch repeatMode {
+            case .forever:
+                break
+            case .times(let count):
+                guard count > 0 else {
+                    return .finished
+                }
+
+                repeatMode = .times(count - 1)
+            }
+
+            return closure()
+        }
     }
+
+    // MARK: - Updatable
 
     func update(currentTime: TimeInterval) -> UpdateOutcome {
         return closure()

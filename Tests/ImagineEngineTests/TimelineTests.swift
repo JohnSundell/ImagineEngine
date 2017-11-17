@@ -99,4 +99,25 @@ final class TimelineTests: XCTestCase {
         actor = Actor()
         XCTAssertNil(passedActor)
     }
+
+    func testRepeatingClosureASetNumberOfTimes() {
+        var runCount = 0
+
+        game.scene.timeline.repeat(withInterval: 2, mode: .times(2)) {
+            runCount += 1
+        }
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        XCTAssertEqual(runCount, 1)
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        XCTAssertEqual(runCount, 2)
+
+        // The third time the event shouldn't be repeated anymore
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        XCTAssertEqual(runCount, 2)
+    }
 }
