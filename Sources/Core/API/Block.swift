@@ -56,6 +56,12 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         scene?.remove(self)
     }
 
+    // MARK: - SceneObject
+
+    internal func addLayer(to superlayer: Layer) {
+        superlayer.addSublayer(layer)
+    }
+
     // MARK: - ActionPerformer
 
     @discardableResult public func perform(_ action: Action<Block>) -> ActionToken {

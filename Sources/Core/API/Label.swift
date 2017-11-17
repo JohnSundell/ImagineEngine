@@ -53,6 +53,12 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         fontDidChange()
     }
 
+    // MARK: - SceneObject
+
+    internal func addLayer(to superlayer: Layer) {
+        superlayer.addSublayer(layer)
+    }
+
     // MARK: - ActionPerformer
 
     @discardableResult public func perform(_ action: Action<Label>) -> ActionToken {

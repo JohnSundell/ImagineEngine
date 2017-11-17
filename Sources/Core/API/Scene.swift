@@ -109,7 +109,7 @@ open class Scene: Pluggable, Activatable {
         actor.scene = self
 
         grid.add(actor, in: self)
-        layer.addSublayer(actor.layer)
+        actor.addLayer(to: layer)
         game.map(actor.activate)
     }
 
@@ -131,7 +131,7 @@ open class Scene: Pluggable, Activatable {
         block.scene = self
 
         grid.add(block)
-        layer.addSublayer(block.layer)
+        block.addLayer(to: layer)
         game.map(block.activate)
     }
 
@@ -148,7 +148,7 @@ open class Scene: Pluggable, Activatable {
         label.scene = self
 
         grid.add(label)
-        layer.addSublayer(label.layer)
+        label.addLayer(to: layer)
         game.map(label.activate)
     }
 
