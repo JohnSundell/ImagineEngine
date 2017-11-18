@@ -82,14 +82,17 @@ public final class Timeline: Activatable {
         lastUpdateTime = currentTime
         let currentTime = currentTime - pauseInterval
 
-        for updatable in immediateUpdatables.removeAll() {
+        for updatable in immediateUpdatables {
             let outcome = updatable.update(currentTime: currentTime)
 
             switch outcome {
             case .continueAfter(let delay):
-                schedule(updatable, delay: delay)
+                if delay > 0 {
+                    immediateUpdatables.remove(updatable)
+                    schedule(updatable, delay: delay)
+                }
             case .finished:
-                break
+                immediateUpdatables.remove(updatable)
             }
         }
 
@@ -164,8 +167,10 @@ private extension Timeline {
         }
 
         func update(in timeline: Timeline, currentTime: TimeInterval) -> NodeUpdateOutcome {
-            if currentTime >= time {
-                for updatable in updatables.removeAll() {
+            let deadlineReached = currentTime >= time
+
+            if deadlineReached {
+                for updatable in updatables {
                     let outcome = updatable.update(currentTime: currentTime)
 
                     switch outcome {
@@ -201,7 +206,7 @@ private extension Timeline {
                 }
             }
 
-            return updatables.isEmpty ? .discard : .keep
+            return deadlineReached ? .discard : .keep
         }
     }
 

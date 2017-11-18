@@ -120,4 +120,40 @@ final class TimelineTests: XCTestCase {
         game.update()
         XCTAssertEqual(runCount, 2)
     }
+
+    func testScheduledClosureNotRetained() {
+        var actor = Actor()
+        weak var weakActor = actor
+
+        game.scene.timeline.after(interval: 2) {
+            // Capture the actor as a strong reference
+            actor.backgroundColor = .red
+        }
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+
+        // The closure should now have been removed, and the actor shouldn't be retained
+        actor = Actor()
+        XCTAssertNil(weakActor)
+    }
+
+    func testRepeatedClosureNotRetained() {
+        var actor = Actor()
+        weak var weakActor = actor
+
+        game.scene.timeline.repeat(withInterval: 2, mode: .times(2)) {
+            // Capture the actor as a strong reference
+            actor.backgroundColor = .red
+        }
+
+        game.timeTraveler.travel(by: 2)
+        game.update()
+        game.timeTraveler.travel(by: 2)
+        game.update()
+
+        // The closure should now have been removed, and the actor shouldn't be retained
+        actor = Actor()
+        XCTAssertNil(weakActor)
+    }
 }
