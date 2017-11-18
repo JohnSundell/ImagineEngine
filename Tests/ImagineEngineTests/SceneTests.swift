@@ -17,15 +17,28 @@ final class SceneTests: XCTestCase {
     }
 
     func testAddingAndRemovingActor() {
+        var addedActor: Actor?
+        var removedActor: Actor?
+
+        game.scene.events.actorAdded.observe { _, actor in
+            addedActor = actor
+        }
+
+        game.scene.events.actorRemoved.observe { _, actor in
+            removedActor = actor
+        }
+
         let actor = Actor()
 
         game.scene.add(actor)
         XCTAssertEqual(game.scene.actors, [actor])
         assertSameInstance(game.scene, actor.scene)
+        assertSameInstance(addedActor, actor)
 
         actor.remove()
         XCTAssertEqual(game.scene.actors, [])
         XCTAssertNil(actor.scene)
+        assertSameInstance(removedActor, actor)
     }
 
     func testAddingAndRemovingMultipleActors() {
