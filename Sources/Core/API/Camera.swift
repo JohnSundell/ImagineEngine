@@ -20,6 +20,8 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     public internal(set) var size = Size() { didSet { sizeDidChange(from: oldValue) }}
     /// The current rectangle of the camera's viewport.
     public private(set) var rect = Rect()
+    /// A collection of events that can be used to observe the camera.
+    public private(set) lazy var events = CameraEventCollection(object: self)
     /// Whether the camera is constrained to the scene or can move outside of it (default = false)
     public var constrainedToScene = false { didSet { update() } }
 
@@ -80,6 +82,7 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     private func positionDidChange(from oldValue: Point) {
         if position != oldValue {
             update()
+            events.moved.trigger(with: (oldValue, position))
         }
     }
 

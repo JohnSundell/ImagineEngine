@@ -75,6 +75,31 @@ final class CameraTests: XCTestCase {
         XCTAssertEqual(scene.camera.position, Point(x: -2000, y: -1000))
     }
 
+    func testObservingMove() {
+        let scene = Scene(size: Size(width: 500, height: 500))
+
+        var noValueTriggerCount = 0
+        scene.camera.events.moved.observe { noValueTriggerCount += 1 }
+
+        var cameraPositions = [Point]()
+        var oldPositions = [Point]()
+        var newPositions = [Point]()
+
+        scene.camera.events.moved.observe { actor, positions in
+            cameraPositions.append(actor.position)
+            oldPositions.append(positions.old)
+            newPositions.append(positions.new)
+        }
+
+        scene.camera.position.x += 100
+        scene.camera.position.y += 50
+
+        XCTAssertEqual(noValueTriggerCount, 2)
+        XCTAssertEqual(cameraPositions, [Point(x: 350, y: 250), Point(x: 350, y: 300)])
+        XCTAssertEqual(oldPositions, [Point(x: 250, y: 250), Point(x: 350, y: 250)])
+        XCTAssertEqual(newPositions, [Point(x: 350, y: 250), Point(x: 350, y: 300)])
+    }
+
     func testAddingAndRemovingPlugin() {
         let plugin = PluginMock<Camera>()
 
