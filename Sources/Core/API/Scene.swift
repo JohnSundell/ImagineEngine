@@ -111,12 +111,15 @@ open class Scene: Pluggable, Activatable {
         grid.add(actor, in: self)
         actor.addLayer(to: layer)
         game.map(actor.activate)
+
+        events.actorAdded.trigger(with: actor)
     }
 
     /// Remove an actor from the scene
     public func remove(_ actor: Actor) {
         deactivate(actor)
         grid.remove(actor)
+        events.actorRemoved.trigger(with: actor)
     }
 
     /// Get all actors which rects intersect a given point
