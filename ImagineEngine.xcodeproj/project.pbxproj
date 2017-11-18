@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026CE1C41FC06B7E00A0998B /* CameraEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */; };
+		026CE1C51FC06B7E00A0998B /* CameraEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */; };
+		026CE1C61FC06B7E00A0998B /* CameraEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */; };
 		5204849D1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		5204849E1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		520484A21FA357070011D372 /* ClickGestureRecognizer-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */; };
@@ -325,6 +328,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEventCollection.swift; sourceTree = "<group>"; };
 		5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickGestureRecognizerMock.swift; sourceTree = "<group>"; };
 		5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClickGestureRecognizer-macOS.swift"; sourceTree = "<group>"; };
 		522CD6281F8D4512008DB43D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
@@ -508,6 +512,7 @@
 				522CD62F1F8D4512008DB43D /* Block.swift */,
 				522CD6301F8D4512008DB43D /* BlockTextureCollection.swift */,
 				522CD6311F8D4512008DB43D /* Camera.swift */,
+				026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */,
 				522CD6321F8D4512008DB43D /* CancellationToken.swift */,
 				522CD6331F8D4512008DB43D /* ClosureAction.swift */,
 				522CD6341F8D4512008DB43D /* Constraint.swift */,
@@ -1045,6 +1050,7 @@
 				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
 				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
 				5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */,
+				026CE1C61FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
 				5253C7B01FA4D56C00D304B5 /* UpdatableWrapper.swift in Sources */,
 				5253C7A71FA4D56C00D304B5 /* LoadedTexture.swift in Sources */,
 				52B806601FB373BC0042FBA7 /* ZIndexed.swift in Sources */,
@@ -1152,6 +1158,7 @@
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
 				522CD69A1F8D4521008DB43D /* LoadedTexture.swift in Sources */,
+				026CE1C41FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
 				522CD6701F8D451D008DB43D /* Block.swift in Sources */,
 				522CD6A11F8D4521008DB43D /* Updatable.swift in Sources */,
 				52B8065E1FB373BC0042FBA7 /* ZIndexed.swift in Sources */,
@@ -1269,6 +1276,7 @@
 				C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */,
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
+				026CE1C51FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
 				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
 				DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */,
 				5253C7DE1FA4D7E400D304B5 /* Font+Default.swift in Sources */,
