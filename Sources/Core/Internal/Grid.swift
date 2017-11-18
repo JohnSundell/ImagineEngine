@@ -31,6 +31,10 @@ internal final class Grid {
             actorInContact.actorsInContact.remove(actor)
         }
 
+        for blockInContact in actor.blocksInContact {
+            blockInContact.actorsInContact.remove(actor)
+        }
+
         for tile in actor.gridTiles {
             tile.actors.remove(actor)
         }
@@ -51,6 +55,10 @@ internal final class Grid {
     func remove(_ block: Block) {
         guard blocks.remove(block) != nil else {
             return
+        }
+
+        for actorInContact in block.actorsInContact {
+            actorInContact.blocksInContact.remove(block)
         }
 
         for tile in block.gridTiles {
@@ -120,6 +128,14 @@ internal final class Grid {
 
                 actor.actorsInContact.remove(otherActor)
             }
+
+            for block in tile.blocks {
+                guard block.actorsInContact.remove(actor) != nil else {
+                    continue
+                }
+
+                actor.blocksInContact.remove(block)
+            }
         }
     }
 
@@ -134,10 +150,20 @@ internal final class Grid {
 
             tile.blocks.insert(block)
             block.gridTiles.insert(tile)
+
+            performCollisionDetection(for: block, in: tile)
         }
 
         for tile in tilesExited {
             tile.blocks.remove(block)
+
+            for actor in tile.actors {
+                guard actor.blocksInContact.remove(block) != nil else {
+                    continue
+                }
+
+                block.actorsInContact.remove(actor)
+            }
         }
     }
 
@@ -172,12 +198,62 @@ internal final class Grid {
     }
 
     private func performCollisionDetection(for actor: Actor, in tile: Tile) {
-        guard shouldPerformCollisionDetection(for: actor) else {
+        guard let mode = resolveCollisionDetectionMode(for: actor) else {
             return
         }
 
-        for otherActor in tile.actors {
-            guard shouldPerformCollisionDetection(for: otherActor) else {
+        switch mode {
+        case .full:
+            detectCollisions(between: actor, and: tile.actors)
+        case .constraintsOnly:
+            break
+        }
+
+        for block in tile.blocks {
+            guard let blockGroup = block.group else {
+                continue
+            }
+
+            detectCollision(between: actor, and: block, blockGroup: blockGroup, mode: mode)
+        }
+    }
+
+    private func performCollisionDetection(for block: Block, in tile: Tile) {
+        guard let group = block.group else {
+            return
+        }
+
+        for actor in tile.actors {
+            guard let mode = resolveCollisionDetectionMode(for: actor) else {
+                continue
+            }
+
+            detectCollision(between: actor, and: block, blockGroup: group, mode: mode)
+        }
+    }
+
+    private func resolveCollisionDetectionMode(for actor: Actor) -> CollisionDetectionMode? {
+        if actor.group != nil {
+            return .full
+        }
+
+        if actor.isCollisionDetectionEnabled && actor.isCollisionDetectionActive {
+            return .full
+        }
+
+        if !actor.constraints.isEmpty {
+            return .constraintsOnly
+        }
+
+        return nil
+    }
+
+    private func detectCollisions(between actor: Actor, and otherActors: Set<Actor>) {
+        for otherActor in otherActors {
+            switch resolveCollisionDetectionMode(for: otherActor) {
+            case .full?:
+                break
+            case nil, .constraintsOnly?:
                 continue
             }
 
@@ -189,46 +265,47 @@ internal final class Grid {
                 continue
             }
 
-            handleCollisionBetween(actor, and: otherActor)
-            handleCollisionBetween(otherActor, and: actor)
+            handleCollision(between: actor, and: otherActor)
+            handleCollision(between: otherActor, and: actor)
+        }
+    }
+
+    private func detectCollision(between actor: Actor,
+                                 and block: Block,
+                                 blockGroup: Group,
+                                 mode: CollisionDetectionMode) {
+        guard actor.rectForCollisionDetection.intersects(block.rect) else {
+            return
         }
 
-        for block in tile.blocks {
-            guard actor.rectForCollisionDetection.intersects(block.rect) else {
-                continue
+        switch mode {
+        case .full:
+            guard !actor.blocksInContact.contains(block) else {
+                break
             }
 
-            handleCollisionBetween(actor, and: block)
+            actor.blocksInContact.insert(block)
+            block.actorsInContact.insert(actor)
+            actor.events.collided(withBlockInGroup: blockGroup).trigger(with: block)
+        case .constraintsOnly:
+            break
+        }
 
-            if let group = block.group {
-                if actor.constraints.contains(.neverOverlapBlockInGroup(group)) {
-                    move(actor, awayFrom: block)
-                }
+        if let group = block.group {
+            if actor.constraints.contains(.neverOverlapBlockInGroup(group)) {
+                move(actor, awayFrom: block)
             }
         }
     }
 
-    private func shouldPerformCollisionDetection(for actor: Actor) -> Bool {
-        return actor.isCollisionDetectionEnabled && actor.scene != nil
-    }
-
-    private func handleCollisionBetween(_ actorA: Actor, and actorB: Actor) {
+    private func handleCollision(between actorA: Actor, and actorB: Actor) {
         actorA.events.collided(with: actorB).trigger(with: actorB)
-        actorA.events.collidedWithAnyActor.trigger(with: actorB)
 
         if let group = actorB.group {
             actorA.events.collided(withActorInGroup: group).trigger(with: actorB)
         }
 
         actorA.actorsInContact.insert(actorB)
-    }
-
-    private func handleCollisionBetween(_ actor: Actor, and block: Block) {
-        actor.events.collidedWithAnyBlock.trigger(with: block)
-
-        if let group = block.group {
-            actor.events.collided(withBlockInGroup: group).trigger(with: block)
-        }
     }
 
     private func move(_ actor: Actor, awayFrom block: Block) {
@@ -274,6 +351,11 @@ private extension Grid {
         let x: Int
         let y: Int
         var hashValue: Int { return x ^ y }
+    }
+
+    enum CollisionDetectionMode {
+        case full
+        case constraintsOnly
     }
 }
 
