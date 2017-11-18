@@ -270,7 +270,10 @@ internal final class Grid {
         }
     }
 
-    private func detectCollision(between actor: Actor, and block: Block, blockGroup: Group, mode: CollisionDetectionMode) {
+    private func detectCollision(between actor: Actor,
+                                 and block: Block,
+                                 blockGroup: Group,
+                                 mode: CollisionDetectionMode) {
         guard actor.rectForCollisionDetection.intersects(block.rect) else {
             return
         }
