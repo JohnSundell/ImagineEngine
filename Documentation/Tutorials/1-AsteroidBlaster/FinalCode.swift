@@ -12,13 +12,15 @@ class AsteroidBlasterScene: Scene {
     override func setup() {
         backgroundColor = Color(red: 0, green: 0, blue: 0.3, alpha: 1)
 
+        let housesGroup = Group.name("Houses")
+        let groundGroup = Group.name("Ground")
+
         let groundSize = Size(width: size.width, height: 100)
         let ground = Block(size: groundSize, textureCollectionName: "Ground")
         ground.position.x = center.x
         ground.position.y = size.height - groundSize.height / 2
+        ground.group = groundGroup
         add(ground)
-
-        let housesGroup = Group.name("Houses")
 
         for x in stride(from: center.x - 100, to: center.x + 150, by: 50) {
             let house = Actor()
@@ -45,7 +47,7 @@ class AsteroidBlasterScene: Scene {
 
             asteroid.velocity.dy = 100
 
-            asteroid.events.collidedWithAnyBlock.observe { asteroid in
+            asteroid.events.collided(withBlockInGroup: groundGroup).observe { asteroid in
                 asteroid.explode()
             }
 

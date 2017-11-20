@@ -155,10 +155,13 @@ You'll now start seeing asteroids falling from the sky 🌠:
 
 Right now, each asteroid will keep falling indefinitely, even if it hits the ground or a house. To fix that, let's add some collision detection. Collisions are a core part of most games, but doing collision detection in a performant and nice way can sometimes be very tricky. Thankfully, Imagine Engine provides a super easy to use API for observing many types of collisions.
 
-For our game, we want to add two collisions. The first, is when an asteroid collides with our ground block, at which point we want to destroy and remove the asteroid. To handle such a collision, let's observe the `collidedWithAnyBlock` event on each asteroid, like this:
+For our game, we want to add two collisions. The first, is when an asteroid collides with our ground block, at which point we want to destroy and remove the asteroid. To handle such a collision, let's associate our ground block with a group called `Ground`, and then observe the `collided(withBlockInGroup:)` event on each asteroid - like this:
 
 ```swift
-asteroid.events.collidedWithAnyBlock.observe { asteroid in
+let groundGroup = Group.name("Ground")
+ground.group = groundGroup
+
+asteroid.events.collided(withBlockInGroup: groundGroup).observe { asteroid in
     // An asteroid collided with our ground block
 }
 ```
