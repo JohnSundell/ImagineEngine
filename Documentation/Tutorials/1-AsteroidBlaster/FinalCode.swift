@@ -45,7 +45,10 @@ class AsteroidBlasterScene: Scene {
 
             asteroid.velocity.dy = 100
 
-            asteroid.events.collidedWithAnyBlock.observe { asteroid in
+            let groundGroup = Group.name("Ground")
+            ground.group = groundGroup
+
+            asteroid.events.collided(withBlockInGroup: groundGroup).observe { asteroid in
                 asteroid.explode()
             }
 
