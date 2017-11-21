@@ -234,6 +234,9 @@
 		C86A78BF1FA1B61A0099632B /* TextureManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */; };
 		C8D2FCE51FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
 		C8D2FCE61FA493940077B560 /* BundleTextureImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */; };
+		CDC7F0041FC419F300782197 /* TextureErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC7F0031FC419F300782197 /* TextureErrorHandler.swift */; };
+		CDC7F0051FC419F300782197 /* TextureErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC7F0031FC419F300782197 /* TextureErrorHandler.swift */; };
+		CDC7F0061FC419F300782197 /* TextureErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC7F0031FC419F300782197 /* TextureErrorHandler.swift */; };
 		DD21B6F21F92E75A0034A7CE /* View+MakeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6641F8D4512008DB43D /* View+MakeLayer.swift */; };
 		DD21B6F31F92E75A0034A7CE /* PluginWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD65D1F8D4512008DB43D /* PluginWrapper.swift */; };
 		DD21B6F41F92E75A0034A7CE /* Scalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6471F8D4512008DB43D /* Scalable.swift */; };
@@ -429,6 +432,7 @@
 		C800CE3D1FA790A9008EE08D /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureManagerTests.swift; sourceTree = "<group>"; };
 		C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTextureImageLoader.swift; sourceTree = "<group>"; };
+		CDC7F0031FC419F300782197 /* TextureErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureErrorHandler.swift; sourceTree = "<group>"; };
 		DD21B7361F92E75A0034A7CE /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD21B7381F92E81C0034A7CE /* Image-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-macOS.swift"; sourceTree = "<group>"; };
 		DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-macOS.swift"; sourceTree = "<group>"; };
@@ -580,6 +584,7 @@
 				522CD6621F8D4512008DB43D /* UpdatableWrapper.swift */,
 				522CD6631F8D4512008DB43D /* UpdateOutcome.swift */,
 				522CD6641F8D4512008DB43D /* View+MakeLayer.swift */,
+				CDC7F0031FC419F300782197 /* TextureErrorHandler.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1249,6 +1254,7 @@
 				DD21B6F41F92E75A0034A7CE /* Scalable.swift in Sources */,
 				DD21B6F51F92E75A0034A7CE /* Plugin.swift in Sources */,
 				520484A21FA357070011D372 /* ClickGestureRecognizer-macOS.swift in Sources */,
+				CDC7F0051FC419F300782197 /* TextureErrorHandler.swift in Sources */,
 				DD21B6F61F92E75A0034A7CE /* ActorEventCollection.swift in Sources */,
 				DD21B6F71F92E75A0034A7CE /* Movable.swift in Sources */,
 				DD21B7411F92EA610034A7CE /* ClickPlugin.swift in Sources */,
