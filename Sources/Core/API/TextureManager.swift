@@ -14,7 +14,7 @@ import CoreGraphics
     - Remark:
         - **ignore**: Ignores the error
         - **log**: Logs the error with missing image info to the console
-        - **assert**: Throws a assertFailure for the error with missing image info
+        - **assert**: Throws an assertFailure for the error with missing image info
  */
 public enum ErrorMode {
     case ignore
