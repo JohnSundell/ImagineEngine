@@ -1079,6 +1079,7 @@
 				5253C7B91FA4D57200D304B5 /* AnimationAction.swift in Sources */,
 				5253C7D11FA4D57200D304B5 /* RotateAction.swift in Sources */,
 				5253C7A91FA4D56C00D304B5 /* PluginManager.swift in Sources */,
+				CDC7F0061FC419F300782197 /* TextureErrorHandler.swift in Sources */,
 				5253C7DA1FA4D57200D304B5 /* Timeline.swift in Sources */,
 				5253C7A41FA4D56C00D304B5 /* GameView.swift in Sources */,
 				5253C7CC1FA4D57200D304B5 /* MoveAction.swift in Sources */,
