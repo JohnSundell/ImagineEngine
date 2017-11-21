@@ -11,6 +11,7 @@ import XCTest
 class TextureManagerTests: XCTestCase {
     private var manager: TextureManager!
     private var imageLoader: TextureImageLoaderMock!
+    private var errorHandler: TextureErrorHandlerMock!
 
     // MARK: - XCTestCase
 
@@ -19,6 +20,8 @@ class TextureManagerTests: XCTestCase {
         manager = TextureManager()
         imageLoader = TextureImageLoaderMock()
         manager.imageLoader = imageLoader
+        errorHandler = TextureErrorHandlerMock()
+        manager.errorHandler = errorHandler
     }
 
     // MARK: - Tests
@@ -67,6 +70,30 @@ class TextureManagerTests: XCTestCase {
         // When an additional name prefix is passed in, both prefixes should be applied in sequence
         _ = manager.load(texture, namePrefix: "Second", scale: 1)
         XCTAssertEqual(imageLoader.imageNames, ["PrefixTexture.png", "PrefixSecondTexture.png"])
+    }
+    
+    func testIgnoresErrorWhenErrorModeIsIgnoreWhenLoadinTextureFails() {
+        let texture = Texture(name: "nonExistentTexture")
+        manager.errorMode = .ignore
+        
+        _ = manager.load(texture, namePrefix: nil, scale: 1)
+        XCTAssert(errorHandler.didIgnore)
+    }
+    
+    func testLogsErrorWhenErrorModeIsLogWhenLoadingTextureFailures() {
+        let texture = Texture(name: "nonExistentTexture")
+        manager.errorMode = .log
+        
+        _ = manager.load(texture, namePrefix: nil, scale: 1)
+        XCTAssert(errorHandler.didLog && !errorHandler.didAssert)
+    }
+    
+    func testAssertsErrorWhenErrorModeIsAssertWhenLoadingTextureFailures() {
+        let texture = Texture(name: "nonExistentTexture")
+        manager.errorMode = .assert
+        
+        _ = manager.load(texture, namePrefix: nil, scale: 1)
+        XCTAssert(!errorHandler.didLog && errorHandler.didAssert)
     }
 
     // MARK: - Utilities
