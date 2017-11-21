@@ -26,6 +26,8 @@ public enum ErrorMode {
 public final class TextureManager {
     /// The image loader that should be used (default = load from bundle)
     public var imageLoader: TextureImageLoader
+    /// The Error Handler that should be used (default implementation is provided in this class: DefaultTextureErrorHandler)
+    public var errorHandler: TextureErrorHandler
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
     /// The default format when loading textures (default = PNG)
@@ -41,8 +43,9 @@ public final class TextureManager {
 
     // MARK: - Init
 
-    internal init(imageLoader: TextureImageLoader = BundleTextureImageLoader()) {
+    internal init(imageLoader: TextureImageLoader = BundleTextureImageLoader(), errorHandler: TextureErrorHandler = DefaultTextureErrorHandler()) {
         self.imageLoader = imageLoader
+        self.errorHandler = errorHandler
     }
 
     // MARK: - Public
@@ -92,9 +95,9 @@ public final class TextureManager {
                     case .ignore:
                     break
                     case .log:
-                    print(errorMessage)
+                    self.errorHandler.log(errorMessage: errorMessage)
                     case .assert:
-                    assertionFailure(errorMessage)
+                    self.errorHandler.assert(errorMessage: errorMessage)
                 }
                 #endif
               
@@ -107,5 +110,16 @@ public final class TextureManager {
         let texture = LoadedTexture(image: image, scale: scale)
         cache[cacheKey] = texture
         return texture
+    }
+}
+
+/// The default implementation of the TextureErrorHandler protocol to be used by this class
+private class DefaultTextureErrorHandler :TextureErrorHandler {
+    func log(errorMessage: String) {
+        print(errorMessage)
+    }
+    
+    func assert(errorMessage: String) {
+        assertionFailure(errorMessage)
     }
 }
