@@ -91,7 +91,6 @@ public final class TextureManager {
         guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
 
-                
                 #if DEBUG
                 let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
                 switch errorMode {
