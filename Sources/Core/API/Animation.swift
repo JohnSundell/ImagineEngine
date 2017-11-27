@@ -152,7 +152,13 @@ internal extension Animation {
 
             var contentRect = Rect()
             contentRect.origin.x = Metric(column) / Metric(framesPerRow)
+
+            #if os(macOS)
+            contentRect.origin.y = Metric(sheet.rowCount - 1 - row) / Metric(sheet.rowCount)
+            #else
             contentRect.origin.y = Metric(row) / Metric(sheet.rowCount)
+            #endif
+
             contentRect.size.width = 1 / Metric(framesPerRow)
             contentRect.size.height = 1 / Metric(sheet.rowCount)
 
