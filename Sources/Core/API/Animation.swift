@@ -147,8 +147,14 @@ internal extension Animation {
             return Frame(texture: textures[index], contentRect: contentRect)
         case .spriteSheet(let sheet):
             let framesPerRow = sheet.frameCount / sheet.rowCount
-            let row = index / framesPerRow
-            let column = index - row * framesPerRow
+            let rowIndex = index / framesPerRow
+            let column = index - rowIndex * framesPerRow
+
+            #if os(macOS)
+            let row = sheet.rowCount - 1 - rowIndex
+            #else
+            let row = rowIndex
+            #endif
 
             var contentRect = Rect()
             contentRect.origin.x = Metric(column) / Metric(framesPerRow)
