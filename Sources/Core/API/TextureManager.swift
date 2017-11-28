@@ -7,7 +7,6 @@
 import Foundation
 import CoreGraphics
 
-
 ///    This Enum decides how to handle Errors while loading images for a texture.
 ///    Setting this only works in DEBUG mode
 public enum ErrorMode {
