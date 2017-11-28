@@ -7,10 +7,23 @@
 import Foundation
 import CoreGraphics
 
+///    This Enum decides how to handle Errors while loading images for a texture.
+///    Setting this only works in DEBUG mode
+public enum ErrorMode {
+    ///Ignores the error
+    case ignore
+    ///Logs the error with missing image info to the console
+    case log
+    ///Throws an assertFailure for the error with missing image info
+    case assert
+}
+
 /// Class that manages & faciliates the loading of textures for actors
 public final class TextureManager {
     /// The image loader that should be used (default = load from bundle)
     public var imageLoader: TextureImageLoader
+    /// The Error Handler that should be used (default = DefaultTextureErrorHandler)
+    internal var errorHandler: TextureErrorHandler
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
     /// The default format when loading textures (default = PNG)
@@ -18,13 +31,19 @@ public final class TextureManager {
     /// Any name prefix to apply to all loaded textures (default = nil)
     /// If an actor has a name prefix of its own, this prefix will be applied first
     public var namePrefix: String?
+    /// ErrorMode to optionally set to apply in cases there is an image load failure for a texture.
+    /// (default = IgnoreError)
+    /// This is considered only in DEBUG mode
+    public var errorMode: ErrorMode = .ignore
 
     internal private(set) var cache = [String : LoadedTexture]()
 
     // MARK: - Init
 
-    internal init(imageLoader: TextureImageLoader = BundleTextureImageLoader()) {
+    internal init(imageLoader: TextureImageLoader = BundleTextureImageLoader(),
+                  errorHandler: TextureErrorHandler = DefaultTextureErrorHandler()) {
         self.imageLoader = imageLoader
+        self.errorHandler = errorHandler
     }
 
     // MARK: - Public
@@ -70,6 +89,19 @@ public final class TextureManager {
 
         guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
+
+                #if DEBUG
+                let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
+                switch errorMode {
+                    case .ignore:
+                    break
+                    case .log:
+                    self.errorHandler.log(errorMessage: errorMessage)
+                    case .assert:
+                    self.errorHandler.assert(errorMessage: errorMessage)
+                }
+                #endif
+
                 return nil
             }
 
@@ -79,5 +111,16 @@ public final class TextureManager {
         let texture = LoadedTexture(image: image, scale: scale)
         cache[cacheKey] = texture
         return texture
+    }
+}
+
+/// The default implementation of the TextureErrorHandler protocol to be used by this class
+private class DefaultTextureErrorHandler :TextureErrorHandler {
+    func log(errorMessage: String) {
+        print(errorMessage)
+    }
+
+    func assert(errorMessage: String) {
+        assertionFailure(errorMessage)
     }
 }
