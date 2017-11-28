@@ -72,32 +72,31 @@ class TextureManagerTests: XCTestCase {
         XCTAssertEqual(imageLoader.imageNames, ["PrefixTexture.png", "PrefixSecondTexture.png"])
     }
 
-    func testIgnoresErrorWhenErrorModeIsIgnoreWhenLoadinTextureFails() {
+    func testIgnoresErrorWhenErrorModeIsIgnoreWhenLoadingTextureFails() {
         let texture = Texture(name: "nonExistentTexture")
         manager.errorMode = .ignore
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
-        XCTAssertFalse(errorHandler.didLog, "Should not have logged")
-        XCTAssertFalse(errorHandler.didAssert, "Should not have asserted")
+        XCTAssertFalse(errorHandler.didLog)
+        XCTAssertFalse(errorHandler.didAssert)
     }
 
-    func testLogsErrorWhenErrorModeIsLogWhenLoadingTextureFailures() {
+    func testLogsErrorWhenErrorModeIsLogWhenLoadingTextureFails() {
         let texture = Texture(name: "nonExistentTexture")
         manager.errorMode = .log
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
-        XCTAssertTrue(errorHandler.didLog, "Did not log")
-        XCTAssertFalse(errorHandler.didAssert, "Should not have asserted")
+        XCTAssertTrue(errorHandler.didLog)
+        XCTAssertFalse(errorHandler.didAssert)
     }
 
-    func testAssertsErrorWhenErrorModeIsAssertWhenLoadingTextureFailures() {
+    func testAssertsErrorWhenErrorModeIsAssertWhenLoadingTextureFails() {
         let texture = Texture(name: "nonExistentTexture")
         manager.errorMode = .assert
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
-        XCTAssert(!errorHandler.didLog && errorHandler.didAssert)
-        XCTAssertTrue(errorHandler.didAssert, "Did not assert")
-        XCTAssertFalse(errorHandler.didLog, "Should not have logged")
+        XCTAssertTrue(errorHandler.didAssert)
+        XCTAssertFalse(errorHandler.didLog)
     }
 
     // MARK: - Utilities

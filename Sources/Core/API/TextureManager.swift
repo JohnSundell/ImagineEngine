@@ -7,17 +7,6 @@
 import Foundation
 import CoreGraphics
 
-///    This Enum decides how to handle Errors while loading images for a texture.
-///    Setting this only works in DEBUG mode
-public enum ErrorMode {
-    ///Ignores the error
-    case ignore
-    ///Logs the error with missing image info to the console
-    case log
-    ///Throws an assertFailure for the error with missing image info
-    case assert
-}
-
 /// Class that manages & faciliates the loading of textures for actors
 public final class TextureManager {
     /// The image loader that should be used (default = load from bundle)
@@ -31,9 +20,8 @@ public final class TextureManager {
     /// Any name prefix to apply to all loaded textures (default = nil)
     /// If an actor has a name prefix of its own, this prefix will be applied first
     public var namePrefix: String?
-    /// ErrorMode to optionally set to apply in cases there is an image load failure for a texture.
-    /// (default = IgnoreError)
-    /// This is considered only in DEBUG mode
+    /// Which mode to use in case an error was encountered when loading a texture (default = .ignore)
+    /// This is considered only in DEBUG mode.
     public var errorMode: ErrorMode = .ignore
 
     internal private(set) var cache = [String : LoadedTexture]()
@@ -89,15 +77,15 @@ public final class TextureManager {
 
         guard let image = imageLoader.loadImageForTexture(named: name, scale: scale, format: format) else {
             guard scale > 1 else {
-
                 #if DEBUG
-                let errorMessage = "Image with filename '\(name)' for a texture couldn't be found"
+                let errorMessage = "Texture image named '\(name)' could not be found"
+
                 switch errorMode {
-                    case .ignore:
+                case .ignore:
                     break
-                    case .log:
+                case .log:
                     self.errorHandler.log(errorMessage: errorMessage)
-                    case .assert:
+                case .assert:
                     self.errorHandler.assert(errorMessage: errorMessage)
                 }
                 #endif
@@ -114,7 +102,18 @@ public final class TextureManager {
     }
 }
 
-/// The default implementation of the TextureErrorHandler protocol to be used by this class
+public extension TextureManager {
+    /// Enum describing various error modes that can used with `TextureManager`
+    enum ErrorMode {
+        /// Ignore all errors
+        case ignore
+        /// Log errors to the console
+        case log
+        /// Trigger an assertion failure when an error occured
+        case assert
+    }
+}
+
 private class DefaultTextureErrorHandler :TextureErrorHandler {
     func log(errorMessage: String) {
         print(errorMessage)
