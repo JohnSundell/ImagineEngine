@@ -421,6 +421,28 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(numberOfCollisions, 2)
     }
 
+    func testShouldNotCollideWithItself() {
+        let group = Group.name("ActorGroup")
+
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 300, y: 300)
+        actor.group = group
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(withActorInGroup: group).observe {
+            numberOfCollisions += 1
+        }
+
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Move the actor to trigger collision detection
+        actor.position = Point(x: 400, y: 400)
+
+        // Actor should not collide with itself
+        XCTAssertEqual(numberOfCollisions, 0)
+    }
+
     func testObservingCollisionWithBlockInGroup() {
         actor.size = Size(width: 100, height: 100)
         actor.position = Point(x: 300, y: 300)

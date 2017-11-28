@@ -250,6 +250,10 @@ internal final class Grid {
 
     private func detectCollisions(between actor: Actor, and otherActors: Set<Actor>) {
         for otherActor in otherActors {
+            guard otherActor !== actor else {
+                continue
+            }
+
             switch resolveCollisionDetectionMode(for: otherActor) {
             case .full?:
                 break
