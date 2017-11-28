@@ -634,9 +634,9 @@
 				5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */,
 				52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */,
 				52C8603A1F8E535100C6C7A7 /* GameMock.swift */,
+				52A124CC1FAB9F9700252047 /* GameViewMock.swift */,
 				52479F871F8E7CAF00D22A87 /* PluginMock.swift */,
 				52479F811F8E5A6F00D22A87 /* TextureImageLoaderMock.swift */,
-				52A124CC1FAB9F9700252047 /* GameViewMock.swift */,
 				CDC7F0071FC42D4800782197 /* TextureErrorHandlerMock.swift */,
 			);
 			path = Mocks;
