@@ -77,7 +77,8 @@ class TextureManagerTests: XCTestCase {
         manager.errorMode = .ignore
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
-        XCTAssert(errorHandler.didIgnore)
+        XCTAssertFalse(errorHandler.didLog, "Should not have logged")
+        XCTAssertFalse(errorHandler.didAssert, "Should not have asserted")
     }
 
     func testLogsErrorWhenErrorModeIsLogWhenLoadingTextureFailures() {
@@ -85,7 +86,8 @@ class TextureManagerTests: XCTestCase {
         manager.errorMode = .log
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
-        XCTAssert(errorHandler.didLog && !errorHandler.didAssert)
+        XCTAssertTrue(errorHandler.didLog, "Did not log")
+        XCTAssertFalse(errorHandler.didAssert, "Should not have asserted")
     }
 
     func testAssertsErrorWhenErrorModeIsAssertWhenLoadingTextureFailures() {
@@ -94,6 +96,8 @@ class TextureManagerTests: XCTestCase {
 
         _ = manager.load(texture, namePrefix: nil, scale: 1)
         XCTAssert(!errorHandler.didLog && errorHandler.didAssert)
+        XCTAssertTrue(errorHandler.didAssert, "Did not assert")
+        XCTAssertFalse(errorHandler.didLog, "Should not have logged")
     }
 
     // MARK: - Utilities

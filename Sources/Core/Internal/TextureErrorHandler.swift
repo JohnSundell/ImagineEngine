@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol TextureErrorHandler {
+internal protocol TextureErrorHandler {
     func log(errorMessage: String)
     func assert(errorMessage: String)
 }

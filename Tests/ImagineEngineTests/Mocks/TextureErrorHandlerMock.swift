@@ -1,17 +1,14 @@
-//
-//  TextureErrorHandlerMock.swift
-//  ImagineEngine
-//
-//  Created by Vijay on 21/11/17.
-//  Copyright © 2017 ImagineEngine. All rights reserved.
-//
+/**
+ *  Imagine Engine
+ *  Copyright (c) John Sundell 2017
+ *  Copyright (c) Vijay Tholpadi 2017
+ *  See LICENSE file for license
+ */
 
 import Foundation
 @testable import ImagineEngine
 
 class TextureErrorHandlerMock: TextureErrorHandler {
-
-    var didIgnore: Bool { return !didLog && !didAssert }
     var didLog = false
     var didAssert = false
 

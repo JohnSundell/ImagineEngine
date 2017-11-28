@@ -7,18 +7,15 @@
 import Foundation
 import CoreGraphics
 
-/**
-    This Enum decides how to handle Errors while loading images for a texture
-    - Note: Setting this only works in DEBUG mode
- 
-    - Remark:
-        - **ignore**: Ignores the error
-        - **log**: Logs the error with missing image info to the console
-        - **assert**: Throws an assertFailure for the error with missing image info
- */
+
+///    This Enum decides how to handle Errors while loading images for a texture.
+///    Setting this only works in DEBUG mode
 public enum ErrorMode {
+    ///Ignores the error
     case ignore
+    ///Logs the error with missing image info to the console
     case log
+    ///Throws an assertFailure for the error with missing image info
     case assert
 }
 
@@ -27,7 +24,7 @@ public final class TextureManager {
     /// The image loader that should be used (default = load from bundle)
     public var imageLoader: TextureImageLoader
     /// The Error Handler that should be used (default = DefaultTextureErrorHandler)
-    public var errorHandler: TextureErrorHandler
+    internal var errorHandler: TextureErrorHandler
     /// The default scale when loading textures (default = the main screen's scale)
     public var defaultScale: Int = Int(Screen.mainScreenScale)
     /// The default format when loading textures (default = PNG)
