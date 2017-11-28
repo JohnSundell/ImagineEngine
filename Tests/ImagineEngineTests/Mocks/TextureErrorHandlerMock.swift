@@ -8,9 +8,9 @@
 import Foundation
 @testable import ImagineEngine
 
-class TextureErrorHandlerMock: TextureErrorHandler {
-    var didLog = false
-    var didAssert = false
+final class TextureErrorHandlerMock: TextureErrorHandler {
+    private(set) var didLog = false
+    private(set) var didAssert = false
 
     func log(errorMessage: String) {
         didLog = true
