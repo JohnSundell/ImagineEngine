@@ -443,6 +443,31 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(numberOfCollisions, 0)
     }
 
+    func testObservingCollisionWhenCollidingActorIsRemoved() {
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 300, y: 300)
+
+        let otherActor = Actor(size: Size(width: 100, height: 100))
+        game.scene.add(otherActor)
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(with: otherActor).observe {
+            otherActor.remove()
+            numberOfCollisions += 1
+        }
+
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Move the actor to trigger collision detection but not so far that it
+        // collides with the other actor.
+        actor.position = Point(x: 200, y: 0)
+        // Move the other actor so that it collides with the actor
+        otherActor.position = actor.position
+
+        XCTAssertEqual(numberOfCollisions, 1)
+    }
+
     func testObservingCollisionWithBlockInGroup() {
         actor.size = Size(width: 100, height: 100)
         actor.position = Point(x: 300, y: 300)

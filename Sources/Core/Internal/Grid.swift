@@ -254,6 +254,14 @@ internal final class Grid {
                 continue
             }
 
+            guard otherActor.scene != nil else {
+                continue
+            }
+
+            guard actor.scene != nil else {
+                continue
+            }
+
             switch resolveCollisionDetectionMode(for: otherActor) {
             case .full?:
                 break
