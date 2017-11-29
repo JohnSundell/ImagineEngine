@@ -215,6 +215,9 @@
 		52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603A1F8E535100C6C7A7 /* GameMock.swift */; };
 		52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */; };
 		52D6D9871BEFF229002C0205 /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */; };
+		52E725921FCF68AB0099FCC7 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E725911FCF68AB0099FCC7 /* Shadow.swift */; };
+		52E725931FCF68AB0099FCC7 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E725911FCF68AB0099FCC7 /* Shadow.swift */; };
+		52E725941FCF68AB0099FCC7 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E725911FCF68AB0099FCC7 /* Shadow.swift */; };
 		C800CE2D1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
 		C800CE2E1FA77F74008EE08D /* BundleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */; };
 		C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C800CE2F1FA782EA008EE08D /* TextureFormat.swift */; };
@@ -429,6 +432,7 @@
 		52C8603C1F8E537C00C6C7A7 /* DisplayLinkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkMock.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* ImagineEngine-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E725911FCF68AB0099FCC7 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* ImagineEngine.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngine.plist; sourceTree = "<group>"; };
 		AD2FAA281CD0B6E100659CF4 /* ImagineEngineTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImagineEngineTests.plist; sourceTree = "<group>"; };
 		C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleProtocol.swift; sourceTree = "<group>"; };
@@ -547,6 +551,7 @@
 				522CD6481F8D4512008DB43D /* ScaleAction.swift */,
 				522CD6491F8D4512008DB43D /* Scene.swift */,
 				522CD64A1F8D4512008DB43D /* SceneEventCollection.swift */,
+				52E725911FCF68AB0099FCC7 /* Shadow.swift */,
 				523E5D0F1F9FEFBC0084792C /* SpriteSheet.swift */,
 				522CD64B1F8D4512008DB43D /* Texture.swift */,
 				C800CE2F1FA782EA008EE08D /* TextureFormat.swift */,
@@ -1058,6 +1063,7 @@
 				C80942701FA79925002B42A6 /* TextureFormat.swift in Sources */,
 				52A124D51FABA8AB00252047 /* Pluggable.swift in Sources */,
 				5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */,
+				52E725941FCF68AB0099FCC7 /* Shadow.swift in Sources */,
 				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
 				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
 				5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */,
@@ -1168,6 +1174,7 @@
 				C800CE301FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				52A124D31FABA8AB00252047 /* Pluggable.swift in Sources */,
 				522CD6741F8D451D008DB43D /* ClosureAction.swift in Sources */,
+				52E725921FCF68AB0099FCC7 /* Shadow.swift in Sources */,
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
 				522CD69A1F8D4521008DB43D /* LoadedTexture.swift in Sources */,
@@ -1287,6 +1294,7 @@
 				DD21B6FE1F92E75A0034A7CE /* Updatable.swift in Sources */,
 				DD21B7001F92E75A0034A7CE /* Layer.swift in Sources */,
 				DD21B7011F92E75A0034A7CE /* Grid.swift in Sources */,
+				52E725931FCF68AB0099FCC7 /* Shadow.swift in Sources */,
 				DD21B7031F92E75A0034A7CE /* GameView.swift in Sources */,
 				DD21B7041F92E75A0034A7CE /* Activatable.swift in Sources */,
 				C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */,

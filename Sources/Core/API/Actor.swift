@@ -52,6 +52,8 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     public var mirroring = Set<Mirroring>() { didSet { layer.mirroring = mirroring } }
     /// The actor's background color. Default is `.clear` (no background).
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
+    /// Any shadow that should be rendered beneath the actor. Using shadows may impact performance.
+    public var shadow: Shadow? { didSet { shadowDidChange() } }
     /// Any texture-based animation that the actor is playing. See `Animation` for more info.
     public var animation: Animation? { didSet { animationDidChange(from: oldValue) } }
     /// Any prefix that should be prepended to the names of all textures loaded for the actor
@@ -254,6 +256,15 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         velocityActionToken = perform(RepeatAction(
             action: MoveAction(vector: velocity, duration: 1)
         ))
+    }
+
+    private func shadowDidChange() {
+        layer.shadowRadius = shadow?.radius ?? 0
+        layer.shadowOpacity = Float(shadow?.opacity ?? 0)
+        layer.shadowColor = shadow?.color.cgColor
+        layer.shadowOffset.width = shadow?.offset.x ?? 0
+        layer.shadowOffset.height = shadow?.offset.y ?? 0
+        layer.shadowPath = shadow?.path
     }
 
     private func animationDidChange(from oldValue: Animation?) {
