@@ -326,8 +326,8 @@ final class ActorTests: XCTestCase {
     }
 
     func testObservingRotationChange() {
-        var noValueTriggerCount = 0
-        actor.events.rotated.observe { noValueTriggerCount += 1 }
+        var triggerCount = 0
+        actor.events.rotated.observe { triggerCount += 1 }
 
         actor.rotation = 1
         actor.rotation = 2
@@ -335,7 +335,7 @@ final class ActorTests: XCTestCase {
         // Setting rotation to same value should not generate event
         actor.rotation = 2
 
-        XCTAssertEqual(noValueTriggerCount, 2)
+        XCTAssertEqual(triggerCount, 2)
         XCTAssertEqual(actor.layer.rotation, 2, accuracy: 0.001)
     }
 
