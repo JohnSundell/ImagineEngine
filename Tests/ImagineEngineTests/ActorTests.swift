@@ -325,6 +325,20 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(velocities, [Vector(dx: 100, dy: 0), Vector(dx: 100, dy: 50)])
     }
 
+    func testObservingRotationChange() {
+        var noValueTriggerCount = 0
+        actor.events.rotated.observe { noValueTriggerCount += 1 }
+
+        actor.rotation = 1
+        actor.rotation = 2
+
+        // Setting rotation to same value should not generate event
+        actor.rotation = 2
+
+        XCTAssertEqual(noValueTriggerCount, 2)
+        XCTAssertEqual(actor.layer.rotation, 2, accuracy: 0.001)
+    }
+
     func testObservingCollisionsWithOtherActor() {
         let otherActor = Actor(size: Size(width: 100, height: 100))
         game.scene.add(otherActor)

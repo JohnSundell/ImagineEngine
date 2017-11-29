@@ -41,7 +41,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     /// The rectangle the actor currently occupies within its scene.
     public private(set) var rect = Rect() { didSet { rectDidChange() } }
     /// The rotation of the actor along the z axis.
-    public var rotation = Metric() { didSet { layer.rotation = rotation } }
+    public var rotation = Metric() { didSet { rotationDidChange(from: oldValue) } }
     /// The scale the actor gets rendered at. Affects collision detection unless a hitboxSize is set.
     public var scale: Metric = 1 { didSet { scaleDidChange(from: oldValue) } }
     /// The velocity of the actor. Used for continous directional movement.
@@ -210,6 +210,16 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
 
         events.resized.trigger()
         events.rectChanged.trigger()
+    }
+
+    private func rotationDidChange(from oldValue: Metric) {
+        guard rotation != oldValue else {
+            return
+        }
+
+        layer.rotation = rotation
+
+        events.rotated.trigger()
     }
 
     private func rectDidChange() {
