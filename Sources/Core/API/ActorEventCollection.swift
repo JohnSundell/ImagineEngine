@@ -12,6 +12,8 @@ public final class ActorEventCollection: EventCollection<Actor> {
     public private(set) lazy var moved = Event<Actor, (old: Point, new: Point)>(object: self.object)
     /// Event triggered when the actor was resized
     public private(set) lazy var resized = Event<Actor, Void>(object: self.object)
+    /// Event triggered when the actor was rotated
+    public private(set) lazy var rotated = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor's rectangle changed (either by position or size)
     public private(set) lazy var rectChanged = Event<Actor, Void>(object: self.object)
     /// Event triggered when the actor's velocity changed
