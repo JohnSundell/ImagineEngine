@@ -233,12 +233,10 @@ internal final class Grid {
     }
 
     private func resolveCollisionDetectionMode(for actor: Actor) -> CollisionDetectionMode? {
-        if actor.group != nil {
-            return .full
-        }
-
-        if actor.isCollisionDetectionEnabled && actor.isCollisionDetectionActive {
-            return .full
+        if actor.isCollisionDetectionEnabled {
+            if actor.isCollisionDetectionActive || actor.group != nil {
+                return .full
+            }
         }
 
         if !actor.constraints.isEmpty {
