@@ -537,6 +537,27 @@ final class ActorTests: XCTestCase {
         XCTAssertNil(actor.layer.superlayer)
         XCTAssertNil(actor.scene)
     }
+
+    func testShadowPropertyMapping() {
+        let pathRect = Rect(x: 10, y: 9, width: 20, height: 17)
+        let path = Path(rect: pathRect, transform: nil)
+
+        actor.shadow = Shadow(
+            radius: 10,
+            opacity: 0.5,
+            color: .blue,
+            offset: Point(x: 10, y: 7),
+            path: path
+        )
+
+        XCTAssertEqual(actor.layer.shadowRadius, 10)
+        XCTAssertEqual(actor.layer.shadowOpacity, 0.5)
+        XCTAssertEqual(actor.layer.shadowColor, Color.blue.cgColor)
+        XCTAssertEqual(actor.layer.shadowOffset.width, 10)
+        XCTAssertEqual(actor.layer.shadowOffset.height, 7)
+        XCTAssertEqual(actor.layer.shadowPath, path)
+
+    }
 }
 
 private extension Size {

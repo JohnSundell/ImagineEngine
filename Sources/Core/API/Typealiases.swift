@@ -12,6 +12,7 @@ public typealias Point = CGPoint
 public typealias Size = CGSize
 public typealias Vector = CGVector
 public typealias Metric = CGFloat
+public typealias Path = CGPath
 
 #if os(macOS)
 import AppKit
