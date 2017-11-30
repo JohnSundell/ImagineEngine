@@ -482,6 +482,39 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(numberOfCollisions, 1)
     }
 
+    func testDisablingCollisionDetection() {
+        actor.size = Size(width: 100, height: 100)
+        actor.position = Point(x: 300, y: 300)
+
+        let otherActor = Actor(size: Size(width: 100, height: 100))
+        game.scene.add(otherActor)
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(with: otherActor).observe {
+            numberOfCollisions += 1
+        }
+
+        otherActor.isCollisionDetectionEnabled = false
+        otherActor.position = actor.position
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Regardless of which actor has collision detection disabled
+        // no collision should occur
+        otherActor.position = .zero
+        otherActor.isCollisionDetectionEnabled = true
+        actor.isCollisionDetectionEnabled = false
+        otherActor.position = actor.position
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Make sure collision detection setting is still respected even
+        // an actor is assigned to a group
+        otherActor.position = .zero
+        actor.group = Group.number(1)
+        otherActor.position = actor.position
+        XCTAssertEqual(numberOfCollisions, 0)
+    }
+
     func testObservingCollisionWithBlockInGroup() {
         actor.size = Size(width: 100, height: 100)
         actor.position = Point(x: 300, y: 300)
