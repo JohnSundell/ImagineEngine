@@ -89,6 +89,7 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     private func sizeDidChange(from oldValue: Size) {
         if size != oldValue {
             update()
+            events.resized.trigger()
         }
     }
 
