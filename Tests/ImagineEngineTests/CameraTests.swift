@@ -74,20 +74,20 @@ final class CameraTests: XCTestCase {
         scene.camera.position = Point(x: -2000, y: -1000)
         XCTAssertEqual(scene.camera.position, Point(x: -2000, y: -1000))
     }
-    
+
     func testResizeEventTrigger() {
         let scene = Scene(size: Size(width: 500, height: 300))
         var resizeTriggerCount = 0
         scene.camera.events.resized.observe { resizeTriggerCount += 1 }
-        
+
         XCTAssertEqual(resizeTriggerCount, 0)
-        
+
         // Set view frame and add scene to game thus resizing the camera
         game.view.frame.size = Size(width: 250, height: 150)
         game.scene = scene
-        
+
         XCTAssertEqual(resizeTriggerCount, 1)
-        
+
         // Set view frame back to original size to ensure the resize event is untriggered
         game.view.frame.size = Size(width: 250, height: 150)
         XCTAssertEqual(resizeTriggerCount, 1)
