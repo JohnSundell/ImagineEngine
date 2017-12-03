@@ -16,7 +16,7 @@ public struct Shadow {
     public var color: Color
     /// The offset of the shadow, based on the object's center point
     public var offset: Point
-    /// Any path to draw the shadow using. Specifying this may increase performance.
+    /// Any path to draw the shadow using. Specifying this may improve performance.
     public var path: Path?
 
     /// Initialize an instance with a given set of values
