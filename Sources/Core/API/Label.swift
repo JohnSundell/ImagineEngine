@@ -5,6 +5,7 @@
  */
 
 import Foundation
+import QuartzCore
 
 /**
  *  Class used to render text content in a scene
@@ -34,6 +35,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
     public var font: Font { didSet { fontDidChange() } }
     /// The color of the text that the label is rendering.
     public var textColor = Color.white { didSet { layer.foregroundColor = textColor.cgColor } }
+    /// The way the label's text should be laid out given excess space
+    public var horizontalAlignment = HorizontalAlignment.left { didSet { horizontalAlignmentDidChange() } }
     /// The label's background color. Default is `.clear` (no background).
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
 
@@ -51,6 +54,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         layer.contentsScale = Screen.mainScreenScale
 
         fontDidChange()
+        horizontalAlignmentDidChange()
     }
 
     // MARK: - SceneObject
@@ -109,5 +113,33 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
                                            context: nil)
 
         size = rect.size
+    }
+
+    private func horizontalAlignmentDidChange() {
+        layer.alignmentMode = horizontalAlignment.mode
+    }
+}
+
+public extension Label {
+    enum HorizontalAlignment {
+        case left
+        case center
+        case right
+        case justified
+    }
+}
+
+private extension Label.HorizontalAlignment {
+    var mode: String {
+        switch self {
+        case .left:
+            return kCAAlignmentLeft
+        case .center:
+            return kCAAlignmentCenter
+        case .right:
+            return kCAAlignmentRight
+        case .justified:
+            return kCAAlignmentJustified
+        }
     }
 }
