@@ -44,4 +44,12 @@ final class LabelTests: XCTestCase {
         XCTAssertNil(label.layer.superlayer)
         XCTAssertNil(label.scene)
     }
+
+    func testSettingHorizontalAlignment() {
+        // Make sure that "left" is the default
+        XCTAssertEqual(label.layer.alignmentMode, kCAAlignmentLeft)
+
+        label.horizontalAlignment = .right
+        XCTAssertEqual(label.layer.alignmentMode, kCAAlignmentRight)
+    }
 }
