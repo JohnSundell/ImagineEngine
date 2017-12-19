@@ -48,8 +48,12 @@ public extension Animation {
          frameIndexSeparator: String = "/",
          repeatMode: RepeatMode = .forever,
          autoResize: Bool = true,
-         ignoreTextureNamePrefix: Bool = false) {
-        self.content = .frames(withBaseName: name, indexSeparator: frameIndexSeparator, count: frameCount)
+         ignoreTextureNamePrefix: Bool = false,
+         textureFormat: TextureFormat = .png) {
+        self.content = .frames(withBaseName: name,
+                               indexSeparator: frameIndexSeparator,
+                               format: textureFormat,
+                               count: frameCount)
         self.frameDuration = frameDuration
         self.repeatMode = repeatMode
         self.autoResize = autoResize
@@ -185,8 +189,13 @@ private extension Animation {
 }
 
 private extension Animation.Content {
-    static func frames(withBaseName name: String, indexSeparator: String, count: Int) -> Animation.Content {
-        let frames = (0..<count).map { Texture(name: "\(name)\(indexSeparator)\($0)") }
+    static func frames(withBaseName name: String,
+                       indexSeparator: String,
+                       format: TextureFormat,
+                       count: Int) -> Animation.Content {
+        let frames = (0..<count).map {
+            Texture(name: "\(name)\(indexSeparator)\($0)", format: format)
+        }
         return .textures(frames)
     }
 

@@ -120,6 +120,41 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(game.textureImageLoader.imageNames, ["sheet.png", "sheet2.png"])
     }
 
+    func testDefaultAnimationTextureFormatIsPNG() {
+        var animation = Animation(
+            name: "Animation",
+            frameCount: 2,
+            frameDuration: 1
+        )
+
+        animation.textureScale = 1
+        actor.animation = animation
+
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["Animation/0.png", "Animation/1.png"])
+    }
+
+    func testAnimatingWithJPGTextures() {
+        var animation = Animation(
+            name: "Animation",
+            frameCount: 2,
+            frameDuration: 1,
+            textureFormat: .jpg
+        )
+
+        animation.textureScale = 1
+        actor.animation = animation
+
+        game.update()
+        game.timeTraveler.travel(by: 1)
+        game.update()
+
+        XCTAssertEqual(game.textureImageLoader.imageNames, ["Animation/0.jpg", "Animation/1.jpg"])
+    }
+
     func testInitializingWithTextureName() {
         let actor = Actor(textureNamed: "SomeTexture", scale: 1)
         game.scene.add(actor)
