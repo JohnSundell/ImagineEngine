@@ -52,4 +52,32 @@ final class LabelTests: XCTestCase {
         label.horizontalAlignment = .right
         XCTAssertEqual(label.layer.alignmentMode, kCAAlignmentRight)
     }
+
+    func testAddingAndRemovingPlugin() {
+        let plugin = PluginMock<Label>()
+
+        label.add(plugin)
+        XCTAssertTrue(plugin.isActive)
+        assertSameInstance(plugin.object, label)
+        assertSameInstance(plugin.game, game)
+
+        label.remove(plugin)
+        XCTAssertFalse(plugin.isActive)
+    }
+
+    func testPluginActivationAndDeactivation() {
+        let label = Label()
+
+        let plugin = PluginMock<Label>()
+        label.add(plugin)
+        XCTAssertFalse(plugin.isActive)
+
+        // Plugin shouldn't be activated until the label is added
+        game.scene.add(label)
+        XCTAssertTrue(plugin.isActive)
+
+        // When label is removed, plugin should be deactivated
+        label.remove()
+        XCTAssertFalse(plugin.isActive)
+    }
 }
