@@ -14,7 +14,7 @@ import QuartzCore
  *  setting the font and text color of text and will automatically resize itself
  *  to fit the text you assign to it.
  */
-public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndexed, Movable, Fadeable {
+public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Fadeable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
     /// The index of the label on the z axis. Affects rendering. 0 = implicit index.
@@ -42,6 +42,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
 
     internal let layer = TextLayer()
     private lazy var actionManager = ActionManager(object: self)
+    private let pluginManager = PluginManager()
 
     // MARK: - Initializer
 
@@ -69,14 +70,35 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         return actionManager.add(action)
     }
 
+    // MARK: - Pluggable
+
+    @discardableResult public func add<P: Plugin>(_ plugin: @autoclosure () -> P,
+                                                  reuseExistingOfSameType: Bool) -> P where P.Object == Label {
+        return pluginManager.add(plugin, for: self, reuseExistingOfSameType: reuseExistingOfSameType)
+    }
+
+    public func plugins<P: Plugin>(ofType type: P.Type) -> [P] where P.Object == Label {
+        return pluginManager.plugins(ofType: type)
+    }
+
+    public func remove<P: Plugin>(_ plugin: P) where P.Object == Label {
+        pluginManager.remove(plugin, from: self)
+    }
+
+    public func removePlugins<P: Plugin>(ofType type: P.Type) where P.Object == Label {
+        pluginManager.removePlugins(ofType: type, from: self)
+    }
+
     // MARK: - Activatable
 
     internal func activate(in game: Game) {
         actionManager.activate(in: game)
+        pluginManager.activate(in: game)
     }
 
     internal func deactivate() {
         actionManager.deactivate()
+        pluginManager.deactivate()
         layer.removeFromSuperlayer()
     }
 
