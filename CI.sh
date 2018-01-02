@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+function test_iOS {
+    xcodebuild clean test \
+        -project ImagineEngine.xcodeproj \
+        -scheme ImagineEngine-iOS \
+        -destination "platform=iOS Simulator,name=iPhone 8" \
+        CODE_SIGN_IDENTITY="" \
+        CODE_SIGNING_REQUIRED=NO \
+        ONLY_ACTIVE_ARCH=NO
+}
+
 function test_macOS {
     xcodebuild clean test \
         -project ImagineEngine.xcodeproj \
@@ -24,10 +34,9 @@ function test_tvOS {
 set -eo pipefail
 
 # Run tests on macOS + tvOS
+test_iOS | xcpretty
 test_macOS | xcpretty
 test_tvOS | xcpretty
 
 # Run Danger
-chruby 2.3.1
-bundle install
 bundle exec danger
