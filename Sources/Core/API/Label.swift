@@ -17,12 +17,14 @@ import QuartzCore
 public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Fadeable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
+    /// A collection of events that can be used to observe the label.
+    public private(set) lazy var events = LabelEventCollection(object: self)
     /// The index of the label on the z axis. Affects rendering. 0 = implicit index.
     public var zIndex = 0 { didSet { layer.zPosition = Metric(zIndex) } }
     /// The position of the label within its scene.
-    public var position = Point() { didSet { layer.position = position } }
+    public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the label, centered on its position.
-    public var size = Size() { didSet { layer.bounds.size = size } }
+    public var size = Size() { didSet { sizeDidChange(from: oldValue) } }
     /// Whether the label should automatically be resized to fit its content.
     public var shouldAutoResize = true
     /// The rectangle that the label currently occupies within its scene.
@@ -41,6 +43,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
 
     internal let layer = TextLayer()
+    internal private(set) lazy var gridTiles = Set<Grid.Tile>()
+
     private lazy var actionManager = ActionManager(object: self)
     private let pluginManager = PluginManager()
 
@@ -62,6 +66,16 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
 
     internal func addLayer(to superlayer: Layer) {
         superlayer.addSublayer(layer)
+    }
+
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.labels.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.labels.remove(self)
+        gridTiles.remove(gridTile)
     }
 
     // MARK: - ActionPerformer
@@ -110,6 +124,24 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     }
 
     // MARK: - Private
+
+    private func positionDidChange(from oldValue: Point) {
+        guard position != oldValue else {
+            return
+        }
+
+        layer.position = position
+        scene?.labelRectDidChange(self)
+    }
+
+    private func sizeDidChange(from oldValue: Size) {
+        guard size != oldValue else {
+            return
+        }
+
+        layer.bounds.size = size
+        scene?.labelRectDidChange(self)
+    }
 
     private func textDidChange() {
         layer.string = text

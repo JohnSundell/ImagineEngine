@@ -26,7 +26,7 @@ final class GameMock: Game {
                    displayLink: displayLink,
                    dateProvider: timeTraveler.generateDate)
 
-        scene.add(clickPlugin)
+        scene.add(clickPlugin, reuseExistingOfSameType: false)
 
         view.frame.size = scene.size
         containerView.addSubview(view)

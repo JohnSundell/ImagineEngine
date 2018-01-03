@@ -73,7 +73,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     internal lazy var actorsInContact = Set<Actor>()
     internal lazy var blocksInContact = Set<Block>()
     internal lazy var gridTiles = Set<Grid.Tile>()
-    internal private(set) var isClickable = false
     internal var isWithinScene = false
     internal var isCollisionDetectionActive = false
 
@@ -92,6 +91,32 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
 
     internal func addLayer(to superlayer: Layer) {
         superlayer.addSublayer(layer)
+    }
+
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.actors.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.actors.remove(self)
+        gridTiles.remove(gridTile)
+
+        for otherActor in gridTile.actors {
+            guard otherActor.actorsInContact.remove(self) != nil else {
+                continue
+            }
+
+            actorsInContact.remove(otherActor)
+        }
+
+        for block in gridTile.blocks {
+            guard block.actorsInContact.remove(self) != nil else {
+                continue
+            }
+
+            blocksInContact.remove(block)
+        }
     }
 
     // MARK: - ActionPerformer
@@ -159,22 +184,9 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         }
     }
 
-    internal func makeClickable() {
-        guard !isClickable else {
-            return
-        }
-
-        isClickable = true
-        scene?.add(ClickPlugin())
-    }
-
     // MARK: - Private
 
     private func sceneDidChange() {
-        if isClickable {
-            scene?.add(ClickPlugin())
-        }
-
         renderFirstAnimationFrameIfNeeded()
     }
 

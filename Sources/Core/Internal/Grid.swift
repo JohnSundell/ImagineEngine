@@ -74,10 +74,12 @@ internal final class Grid {
         }
 
         assignZIndexIfNeeded(to: label)
+        labelRectDidChange(label)
     }
 
     func remove(_ label: Label) {
         labels.remove(label)
+        label.gridTiles.forEach(label.remove)
     }
 
     func actors(at point: Point) -> [Actor] {
@@ -89,6 +91,16 @@ internal final class Grid {
 
         let actors = tile.actors.filter { $0.isHitTestingEnabled }
         return actors.sorted { $0.zIndex > $1.zIndex }
+    }
+
+    func labels(at point: Point) -> [Label] {
+        let index = Index(x: point.x, y: point.y)
+
+        guard let tile = tiles[index] else {
+            return []
+        }
+
+        return tile.labels.sorted { $0.zIndex > $1.zIndex }
     }
 
     func actorRectDidChange(_ actor: Actor, in scene: Scene) {
@@ -105,66 +117,15 @@ internal final class Grid {
             }
         }
 
-        var tilesExited = actor.gridTiles
-        actor.gridTiles = []
-
-        forEachTile(within: actor.rect) { tile, isNew in
-            if !isNew {
-                tilesExited.remove(tile)
-                performCollisionDetection(for: actor, in: tile)
-            }
-
-            tile.actors.insert(actor)
-            actor.gridTiles.insert(tile)
-        }
-
-        for tile in tilesExited {
-            tile.actors.remove(actor)
-
-            for otherActor in tile.actors {
-                guard otherActor.actorsInContact.remove(actor) != nil else {
-                    continue
-                }
-
-                actor.actorsInContact.remove(otherActor)
-            }
-
-            for block in tile.blocks {
-                guard block.actorsInContact.remove(actor) != nil else {
-                    continue
-                }
-
-                actor.blocksInContact.remove(block)
-            }
-        }
+        updateTiles(for: actor, collisionDetector: performCollisionDetection)
     }
 
     func blockRectDidChange(_ block: Block) {
-        var tilesExited = block.gridTiles
-        block.gridTiles = []
+        updateTiles(for: block, collisionDetector: performCollisionDetection)
+    }
 
-        forEachTile(within: block.rect) { tile, isNew in
-            if !isNew {
-                tilesExited.remove(tile)
-            }
-
-            tile.blocks.insert(block)
-            block.gridTiles.insert(tile)
-
-            performCollisionDetection(for: block, in: tile)
-        }
-
-        for tile in tilesExited {
-            tile.blocks.remove(block)
-
-            for actor in tile.actors {
-                guard actor.blocksInContact.remove(block) != nil else {
-                    continue
-                }
-
-                block.actorsInContact.remove(actor)
-            }
-        }
+    func labelRectDidChange(_ label: Label) {
+        updateTiles(for: label, collisionDetector: nil)
     }
 
     // MARK: - Private
@@ -178,23 +139,30 @@ internal final class Grid {
         nextZIndex += 1
     }
 
-    private func forEachTile(within rect: Rect, run closure: (_ tile: Tile, _ isNew: Bool) -> Void) {
+    private func updateTiles<O: SceneObject>(for object: O, collisionDetector: ((O, Tile) -> Void)?) {
+        let rect = object.rect
         let startIndex = Index(x: rect.minX, y: rect.minY)
         let endIndex = Index(x: rect.maxX, y: rect.maxY)
+
+        var tilesExited = object.gridTiles
 
         for x in startIndex.x...endIndex.x {
             for y in startIndex.y...endIndex.y {
                 let index = Index(x: x, y: y)
 
                 if let existingTile = tiles[index] {
-                    closure(existingTile, false)
+                    object.add(to: existingTile)
+                    tilesExited.remove(existingTile)
+                    collisionDetector?(object, existingTile)
                 } else {
                     let tile = Tile()
                     tiles[index] = tile
-                    closure(tile, true)
+                    object.add(to: tile)
                 }
             }
         }
+
+        tilesExited.forEach(object.remove)
     }
 
     private func performCollisionDetection(for actor: Actor, in tile: Tile) {
@@ -349,6 +317,7 @@ internal extension Grid {
 
         var actors = Set<Actor>()
         var blocks = Set<Block>()
+        var labels = Set<Label>()
     }
 }
 

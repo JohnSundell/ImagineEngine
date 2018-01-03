@@ -63,6 +63,24 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         superlayer.addSublayer(layer)
     }
 
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.blocks.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.blocks.remove(self)
+        gridTiles.remove(gridTile)
+
+        for actor in gridTile.actors {
+            guard actor.blocksInContact.remove(self) != nil else {
+                continue
+            }
+
+            actorsInContact.remove(actor)
+        }
+    }
+
     // MARK: - ActionPerformer
 
     @discardableResult public func perform(_ action: Action<Block>) -> ActionToken {

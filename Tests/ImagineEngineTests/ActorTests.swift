@@ -624,7 +624,6 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.layer.shadowOffset.width, 10)
         XCTAssertEqual(actor.layer.shadowOffset.height, 7)
         XCTAssertEqual(actor.layer.shadowPath, path)
-
     }
 }
 

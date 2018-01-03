@@ -13,6 +13,9 @@
 		5204849D1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		5204849E1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		520484A21FA357070011D372 /* ClickGestureRecognizer-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */; };
+		521054261FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
+		521054271FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
+		521054281FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
 		522CD6691F8D451D008DB43D /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6281F8D4512008DB43D /* Action.swift */; };
 		522CD66A1F8D451D008DB43D /* ActionPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6291F8D4512008DB43D /* ActionPerformer.swift */; };
 		522CD66B1F8D451D008DB43D /* ActionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD62A1F8D4512008DB43D /* ActionToken.swift */; };
@@ -340,6 +343,7 @@
 		026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEventCollection.swift; sourceTree = "<group>"; };
 		5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickGestureRecognizerMock.swift; sourceTree = "<group>"; };
 		5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClickGestureRecognizer-macOS.swift"; sourceTree = "<group>"; };
+		521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEventCollection.swift; sourceTree = "<group>"; };
 		522CD6281F8D4512008DB43D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		522CD6291F8D4512008DB43D /* ActionPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPerformer.swift; sourceTree = "<group>"; };
 		522CD62A1F8D4512008DB43D /* ActionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionToken.swift; sourceTree = "<group>"; };
@@ -537,6 +541,7 @@
 				522CD63B1F8D4512008DB43D /* Group.swift */,
 				522CD63C1F8D4512008DB43D /* InstanceHashable.swift */,
 				522CD63D1F8D4512008DB43D /* Label.swift */,
+				521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */,
 				522CD63E1F8D4512008DB43D /* MetricAction.swift */,
 				522CD63F1F8D4512008DB43D /* Mirroring.swift */,
 				522CD6401F8D4512008DB43D /* Movable.swift */,
@@ -1078,6 +1083,7 @@
 				5253C7A61FA4D56C00D304B5 /* Layer.swift in Sources */,
 				5253C7DD1FA4D66500D304B5 /* Font+Default.swift in Sources */,
 				5253C7D71FA4D57200D304B5 /* Texture.swift in Sources */,
+				521054281FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
 				5253C7CB1FA4D57200D304B5 /* Movable.swift in Sources */,
 				5253C7CD1FA4D57200D304B5 /* Plugin.swift in Sources */,
 				5253C7A31FA4D56C00D304B5 /* DisplayLink-iOS+tvOS.swift in Sources */,
@@ -1189,6 +1195,7 @@
 				528B21511FA382B300CE9967 /* UpdatableCollection.swift in Sources */,
 				522CD6971F8D4521008DB43D /* GameView.swift in Sources */,
 				522CD6911F8D4521008DB43D /* Activatable.swift in Sources */,
+				521054261FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
 				522CD67C1F8D451D008DB43D /* Group.swift in Sources */,
 				522CD67E1F8D451D008DB43D /* Label.swift in Sources */,
 				522CD6A21F8D4521008DB43D /* UpdatableWrapper.swift in Sources */,
@@ -1348,6 +1355,7 @@
 				DD21B72B1F92E75A0034A7CE /* Constraint.swift in Sources */,
 				DD21B72C1F92E75A0034A7CE /* Typealiases.swift in Sources */,
 				DD21B72D1F92E75A0034A7CE /* DisplayLinkProtocol.swift in Sources */,
+				521054271FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
 				528B21521FA382B300CE9967 /* UpdatableCollection.swift in Sources */,
 				DD21B72E1F92E75A0034A7CE /* ReplicatorLayer.swift in Sources */,
 				DD21B72F1F92E75A0034A7CE /* RepeatMode.swift in Sources */,
