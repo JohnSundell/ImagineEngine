@@ -248,10 +248,19 @@ public extension Block {
         self.init(size: size, content: .collection(textures), textureScale: textureScale)
     }
 
+    /// Initialize an instance of this class with a single texture. You may also
+    /// (optionally) choose which scale that the textures should be loaded using.
+    convenience init(size: Size, texture: Texture, textureScale: Int? = nil) {
+        var collection = BlockTextureCollection()
+        collection.center = texture
+        self.init(size: size, textures: collection, textureScale: textureScale)
+    }
+
     /// Initialize an instance with a given size and the name of a texture collection
     /// See `BlockTextureCollection` for more information about how the names of
     /// individual textures are inferred.
-    convenience init(size: Size, textureCollectionName: String,
+    convenience init(size: Size,
+                     textureCollectionName: String,
                      textureScale: Int? = nil,
                      textureFormat: TextureFormat? = nil) {
         let textures = BlockTextureCollection(name: textureCollectionName, textureFormat: textureFormat)
@@ -261,7 +270,8 @@ public extension Block {
     /// Initialize an instance with a given size and the name of a sprite sheet to use for
     /// the block's textures. The texture for the sprite sheet will be cut into 9 identically
     /// sized pieces (3 x 3), which will be used to tile the block.
-    convenience init(size: Size, spriteSheetName: String,
+    convenience init(size: Size,
+                     spriteSheetName: String,
                      textureScale: Int? = nil,
                      textureFormat: TextureFormat? = nil) {
         let texture = Texture(name: spriteSheetName, format: textureFormat)
