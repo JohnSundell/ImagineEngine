@@ -319,4 +319,34 @@ final class SceneTests: XCTestCase {
         XCTAssertEqual(observationTriggerCount, 1)
         #endif
     }
+
+    func testActorsAtPoint() {
+        let actorA = Actor(size: Size(width: 100, height: 100))
+        let actorB = Actor(size: Size(width: 100, height: 100))
+        game.scene.add(actorA, actorB)
+
+        // Since both actors are at (0, 0), they should both be returned
+        // Actor B should be returned first, since it's on the top
+        XCTAssertEqual(game.scene.actors(at: .zero), [actorB, actorA])
+
+        // Move actor A slightly away, but still within the same grid tile
+        // to make sure it isn't invalidly returned
+        actorA.position.x = 60
+        XCTAssertEqual(game.scene.actors(at: .zero), [actorB])
+    }
+
+    func testLabelsAtPoint() {
+        let labelA = Label(text: "Hello")
+        let labelB = Label(text: "World")
+        game.scene.add(labelA, labelB)
+
+        // Since both labels are at (0, 0), they should both be returned
+        // Label B should be returned first, since it's on the top
+        XCTAssertEqual(game.scene.labels(at: .zero), [labelB, labelA])
+
+        // Move label A slightly away, but still within the same grid tile
+        // to make sure it isn't invalidly returned
+        labelA.position.x += labelA.size.width / 2 + 10
+        XCTAssertEqual(game.scene.labels(at: .zero), [labelB])
+    }
 }

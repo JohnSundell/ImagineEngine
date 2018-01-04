@@ -89,7 +89,11 @@ internal final class Grid {
             return []
         }
 
-        let actors = tile.actors.filter { $0.isHitTestingEnabled }
+        let actors = tile.actors.filter { actor in
+            return actor.isHitTestingEnabled &&
+                   actor.rect.contains(point)
+        }
+
         return actors.sorted { $0.zIndex > $1.zIndex }
     }
 
@@ -100,7 +104,11 @@ internal final class Grid {
             return []
         }
 
-        return tile.labels.sorted { $0.zIndex > $1.zIndex }
+        let labels = tile.labels.filter { label in
+            return label.rect.contains(point)
+        }
+
+        return labels.sorted { $0.zIndex > $1.zIndex }
     }
 
     func actorRectDidChange(_ actor: Actor, in scene: Scene) {
