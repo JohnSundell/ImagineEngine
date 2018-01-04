@@ -6,7 +6,7 @@
 
 import Foundation
 import XCTest
-import ImagineEngine
+@testable import ImagineEngine
 
 final class SceneTests: XCTestCase {
     private var game: GameMock!
@@ -285,6 +285,12 @@ final class SceneTests: XCTestCase {
         game.scene.camera.position = Point(x: 1000, y: 1500)
         game.simulateClick(at: Point(x: 200, y: 350))
         XCTAssertEqual(clickedPoint, Point(x: 1050, y: 1550))
+    }
+
+    func testClickPluginAlwaysAdded() {
+        let scene = Scene(size: .zero)
+        let plugins = scene.plugins(ofType: ClickPlugin.self)
+        XCTAssertFalse(plugins.isEmpty)
     }
 
     func testSafeAreaInsets() {

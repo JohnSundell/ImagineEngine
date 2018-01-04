@@ -54,9 +54,11 @@ internal final class ClickPlugin: Plugin {
         scene.events.clicked.trigger(with: point)
 
         scene.actors(at: point).forEach { actor in
-            if actor.isClickable {
-                actor.events.clicked.trigger()
-            }
+            actor.events.clicked.trigger()
+        }
+
+        scene.labels(at: point).forEach { label in
+            label.events.clicked.trigger()
         }
     }
 }

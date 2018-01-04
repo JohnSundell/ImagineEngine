@@ -58,11 +58,13 @@ open class Scene: Pluggable, Activatable {
 
         camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
-
         layer.isOpaque = true
+
         sizeDidChange()
         backgroundColorDidChange()
         setup()
+
+        add(ClickPlugin())
     }
 
     // MARK: - Override points
@@ -125,6 +127,11 @@ open class Scene: Pluggable, Activatable {
     /// Get all actors which rects intersect a given point
     public func actors(at point: Point) -> [Actor] {
         return grid.actors(at: point)
+    }
+
+    /// Get all the labels which rects intersect a given point
+    public func labels(at point: Point) -> [Label] {
+        return grid.labels(at: point)
     }
 
     // MARK: - Block API
@@ -245,6 +252,10 @@ open class Scene: Pluggable, Activatable {
 
     internal func blockRectDidChange(_ block: Block) {
         grid.blockRectDidChange(block)
+    }
+
+    internal func labelRectDidChange(_ label: Label) {
+        grid.labelRectDidChange(label)
     }
 
     // MARK: - Private

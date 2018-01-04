@@ -80,4 +80,39 @@ final class LabelTests: XCTestCase {
         label.remove()
         XCTAssertFalse(plugin.isActive)
     }
+
+    func testObservingClicks() {
+        let labelA = Label(text: "Hello")
+        let labelB = Label(text: "World")
+        game.scene.add(labelA, labelB)
+
+        var labelAClickCount = 0
+        var labelBClickCount = 0
+        var clickedLabels = [Label]()
+
+        labelA.events.clicked.observe { label in
+            labelAClickCount += 1
+            clickedLabels.append(label)
+        }
+
+        labelB.events.clicked.observe { label in
+            labelBClickCount += 1
+            clickedLabels.append(label)
+        }
+
+        game.simulateClick(at: .zero)
+
+        XCTAssertEqual(labelAClickCount, 1)
+        XCTAssertEqual(labelBClickCount, 1)
+        XCTAssertEqual(clickedLabels, [labelB, labelA])
+
+        // Move label to make sure that the grid is updated
+        labelA.position = Point(x: 200, y: 300)
+        game.simulateClick(at: Point(x: 200, y: 300))
+
+        // Only labelA should have been clicked twice
+        XCTAssertEqual(labelAClickCount, 2)
+        XCTAssertEqual(labelBClickCount, 1)
+        XCTAssertEqual(clickedLabels, [labelB, labelA, labelA])
+    }
 }
