@@ -226,6 +226,11 @@ open class Scene: Pluggable, Activatable {
         grid.labelRectDidChange(label)
     }
 
+    internal func handleClick(at point: Point) {
+        events.clicked.trigger(with: point)
+        grid.handleClick(at: point)
+    }
+
     // MARK: - Private
 
     private func pauseStatusDidChange() {

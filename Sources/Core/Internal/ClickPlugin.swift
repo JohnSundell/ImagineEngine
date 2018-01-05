@@ -42,23 +42,31 @@ internal final class ClickPlugin: Plugin {
             return
         }
 
-        var point = recognizer.location(in: recognizer.view)
+        let cameraPoint = recognizer.location(in: scene.camera)
+        scene.camera.handleClick(at: cameraPoint)
+
+        let scenePoint = scene.convertCameraPoint(cameraPoint)
+        scene.handleClick(at: scenePoint)
+    }
+}
+
+private extension ClickGestureRecognizer {
+    func location(in camera: Camera) -> Point {
+        var point = location(in: view)
 
         #if os(macOS)
-        point.y = scene.camera.size.height - point.y
+        point.y = camera.size.height - point.y
         #endif
 
-        point.x += scene.camera.rect.minX
-        point.y += scene.camera.rect.minY
+        return point
+    }
+}
 
-        scene.events.clicked.trigger(with: point)
-
-        scene.actors(at: point).forEach { actor in
-            actor.events.clicked.trigger()
-        }
-
-        scene.labels(at: point).forEach { label in
-            label.events.clicked.trigger()
-        }
+private extension Scene {
+    func convertCameraPoint(_ point: Point) -> Point {
+        var point = point
+        point.x += camera.rect.minX
+        point.y += camera.rect.minY
+        return point
     }
 }

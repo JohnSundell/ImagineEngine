@@ -118,6 +118,20 @@ final class CameraTests: XCTestCase {
         XCTAssertEqual(newPositions, [Point(x: 350, y: 250), Point(x: 350, y: 300)])
     }
 
+    func testObservingClick() {
+        var clickedPoints = [Point]()
+
+        game.scene.camera.events.clicked.observe { _, point in
+            clickedPoints.append(point)
+        }
+
+        game.simulateClick(at: Point(x: 10, y: 20))
+        XCTAssertEqual(clickedPoints, [Point(x: 10, y: 20)])
+
+        game.simulateClick(at: Point(x: 30, y: 40))
+        XCTAssertEqual(clickedPoints, [Point(x: 10, y: 20), Point(x: 30, y: 40)])
+    }
+
     func testAddingAndRemovingPlugin() {
         let plugin = PluginMock<Camera>()
 
