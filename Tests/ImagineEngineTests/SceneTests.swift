@@ -349,4 +349,22 @@ final class SceneTests: XCTestCase {
         labelA.position.x += labelA.size.width / 2 + 10
         XCTAssertEqual(game.scene.labels(at: .zero), [labelB])
     }
+
+    func testObservingResize() {
+        var sizes = [Size]()
+
+        game.scene.events.resized.observe { scene in
+            sizes.append(scene.size)
+        }
+
+        game.scene.size = Size(width: 1000, height: 200)
+        XCTAssertEqual(sizes, [Size(width: 1000, height: 200)])
+
+        game.scene.size = .zero
+        XCTAssertEqual(sizes, [Size(width: 1000, height: 200), .zero])
+
+        // Setting the same size again should not retrigger the event
+        game.scene.size = .zero
+        XCTAssertEqual(sizes, [Size(width: 1000, height: 200), .zero])
+    }
 }
