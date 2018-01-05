@@ -27,6 +27,8 @@ internal final class Grid: Activatable {
             return
         }
 
+        actor.deactivate()
+
         for actorInContact in actor.actorsInContact {
             actorInContact.actorsInContact.remove(actor)
         }
@@ -57,6 +59,8 @@ internal final class Grid: Activatable {
             return
         }
 
+        block.deactivate()
+
         for actorInContact in block.actorsInContact {
             actorInContact.blocksInContact.remove(block)
         }
@@ -78,7 +82,11 @@ internal final class Grid: Activatable {
     }
 
     func remove(_ label: Label) {
-        labels.remove(label)
+        guard labels.remove(label) != nil else {
+            return
+        }
+
+        label.deactivate()
         label.gridTiles.forEach(label.remove)
     }
 
@@ -134,6 +142,20 @@ internal final class Grid: Activatable {
 
     func labelRectDidChange(_ label: Label) {
         updateTiles(for: label, collisionDetector: nil)
+    }
+
+    func removeAllObjects() {
+        for actor in actors {
+            actor.remove()
+        }
+
+        for block in blocks {
+            block.remove()
+        }
+
+        for label in labels {
+            label.remove()
+        }
     }
 
     // MARK: - Activatable

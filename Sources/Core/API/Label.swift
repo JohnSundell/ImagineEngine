@@ -113,7 +113,6 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     internal func deactivate() {
         actionManager.deactivate()
         pluginManager.deactivate()
-        layer.removeFromSuperlayer()
     }
 
     // MARK: - Public
@@ -121,6 +120,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     /// Remove the label from its scene
     public func remove() {
         scene?.remove(self)
+        scene = nil
+        layer.removeFromSuperlayer()
     }
 
     // MARK: - Private
