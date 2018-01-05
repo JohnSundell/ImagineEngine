@@ -104,31 +104,21 @@ open class Scene: Pluggable, Activatable {
 
     /// Add an actor to the scene
     public func add(_ actor: Actor) {
-        actor.scene = self
-
         grid.add(actor, in: self)
         actor.addLayer(to: layer)
-        game.map(actor.activate)
-
         events.actorAdded.trigger(with: actor)
     }
 
     /// Add a block to the scene
     public func add(_ block: Block) {
-        block.scene = self
-
-        grid.add(block)
+        grid.add(block, in: self)
         block.addLayer(to: layer)
-        game.map(block.activate)
     }
 
     /// Add a label to the scene
     public func add(_ label: Label) {
-        label.scene = self
-
-        grid.add(label)
+        grid.add(label, in: self)
         label.addLayer(to: layer)
-        game.map(label.activate)
     }
 
     /// Get all actors which rects intersect a given point
