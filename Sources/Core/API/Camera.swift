@@ -79,6 +79,12 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
         actionManager.deactivate()
     }
 
+    // MARK: - Internal
+
+    internal func handleClick(at point: Point) {
+        events.clicked.trigger(with: point)
+    }
+
     // MARK: - Private
 
     private func positionDidChange(from oldValue: Point) {

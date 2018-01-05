@@ -144,6 +144,16 @@ internal final class Grid: Activatable {
         updateTiles(for: label, collisionDetector: nil)
     }
 
+    func handleClick(at point: Point) {
+        for actor in actors(at: point) {
+            actor.events.clicked.trigger()
+        }
+
+        for label in labels(at: point) {
+            label.events.clicked.trigger()
+        }
+    }
+
     func removeAllObjects() {
         for actor in actors {
             actor.remove()
