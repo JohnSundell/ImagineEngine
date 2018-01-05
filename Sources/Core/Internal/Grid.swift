@@ -12,6 +12,7 @@ internal final class Grid: Activatable {
     private(set) var labels = Set<Label>()
     private var tiles = [Index : Tile]()
     private var nextZIndex = 0
+    private weak var game: Game?
 
     func add(_ actor: Actor, in scene: Scene) {
         guard actors.insert(actor).inserted else {
@@ -20,6 +21,9 @@ internal final class Grid: Activatable {
 
         actorRectDidChange(actor, in: scene)
         assignZIndexIfNeeded(to: actor)
+
+        actor.scene = scene
+        game.map(actor.activate)
     }
 
     func remove(_ actor: Actor) {
@@ -45,13 +49,16 @@ internal final class Grid: Activatable {
         actor.gridTiles = []
     }
 
-    func add(_ block: Block) {
+    func add(_ block: Block, in scene: Scene) {
         guard blocks.insert(block).inserted else {
             return
         }
 
         blockRectDidChange(block)
         assignZIndexIfNeeded(to: block)
+
+        block.scene = scene
+        game.map(block.activate)
     }
 
     func remove(_ block: Block) {
@@ -72,13 +79,16 @@ internal final class Grid: Activatable {
         block.gridTiles = []
     }
 
-    func add(_ label: Label) {
+    func add(_ label: Label, in scene: Scene) {
         guard labels.insert(label).inserted else {
             return
         }
 
         assignZIndexIfNeeded(to: label)
         labelRectDidChange(label)
+
+        label.scene = scene
+        game.map(label.activate)
     }
 
     func remove(_ label: Label) {
@@ -171,6 +181,8 @@ internal final class Grid: Activatable {
     // MARK: - Activatable
 
     func activate(in game: Game) {
+        self.game = game
+
         for actor in actors {
             actor.activate(in: game)
         }
@@ -185,6 +197,8 @@ internal final class Grid: Activatable {
     }
 
     func deactivate() {
+        game = nil
+
         for actor in actors {
             actor.deactivate()
         }
