@@ -6,7 +6,7 @@
 
 import Foundation
 
-internal final class Grid {
+internal final class Grid: Activatable {
     private(set) var actors = Set<Actor>()
     private(set) var blocks = Set<Block>()
     private(set) var labels = Set<Label>()
@@ -134,6 +134,36 @@ internal final class Grid {
 
     func labelRectDidChange(_ label: Label) {
         updateTiles(for: label, collisionDetector: nil)
+    }
+
+    // MARK: - Activatable
+
+    func activate(in game: Game) {
+        for actor in actors {
+            actor.activate(in: game)
+        }
+
+        for block in blocks {
+            block.activate(in: game)
+        }
+
+        for label in labels {
+            label.activate(in: game)
+        }
+    }
+
+    func deactivate() {
+        for actor in actors {
+            actor.deactivate()
+        }
+
+        for block in blocks {
+            block.deactivate()
+        }
+
+        for label in labels {
+            label.deactivate()
+        }
     }
 
     // MARK: - Private
