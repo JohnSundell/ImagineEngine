@@ -23,7 +23,7 @@ open class Scene: Pluggable, Activatable {
     /// The game that the scene currently belongs to.
     public private(set) var game: Game?
     /// The scene's camera. Can be used to move the visible area of the scene.
-    public private(set) var camera: Camera
+    public private(set) lazy var camera = Camera(scene: self, layer: layer)
     /// A colleciton of events that can be used to observe the scene.
     public private(set) lazy var events = SceneEventCollection(object: self)
     /// Whether the scene is currently paused (which will pause all of its objects).
@@ -56,7 +56,6 @@ open class Scene: Pluggable, Activatable {
     public init(size: Size) {
         self.size = size
 
-        camera = Camera(layer: layer, sceneSize: size)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
         layer.isOpaque = true
 
@@ -89,7 +88,7 @@ open class Scene: Pluggable, Activatable {
         labels.forEach(deactivate)
         pluginManager.deactivate()
 
-        camera = Camera(layer: layer, sceneSize: size)
+        camera = Camera(scene: self, layer: layer)
         camera.position = Point(x: size.width / 2, y: size.height / 2)
 
         events = SceneEventCollection(object: self)
@@ -252,7 +251,6 @@ open class Scene: Pluggable, Activatable {
         }
 
         layer.bounds.size = size
-        camera.sceneSize = size
         events.resized.trigger()
     }
 
