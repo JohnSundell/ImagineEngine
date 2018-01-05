@@ -39,7 +39,7 @@ open class Scene: Pluggable, Activatable {
     /// The scene's texture manager, that keeps track of loaded textures.
     public let textureManager = TextureManager()
     /// The current size of the scene
-    public var size: Size { didSet { sizeDidChange() } }
+    public var size: Size { didSet { sizeDidChange(from: oldValue) } }
     /// The insets that make up the area that is safe to put content in, to avoid the notch
     /// & home indicator on iPhone X (can be observed using the safeAreaInsetsChanged event)
     public internal(set) var safeAreaInsets = EdgeInsets() { didSet { safeAreaInsetsDidChange(from: oldValue) } }
@@ -60,7 +60,7 @@ open class Scene: Pluggable, Activatable {
         camera.position = Point(x: size.width / 2, y: size.height / 2)
         layer.isOpaque = true
 
-        sizeDidChange()
+        sizeDidChange(from: .zero)
         backgroundColorDidChange()
         setup()
 
@@ -246,9 +246,14 @@ open class Scene: Pluggable, Activatable {
         timeline.isPaused = isPaused
     }
 
-    private func sizeDidChange() {
+    private func sizeDidChange(from oldValue: Size) {
+        guard size != oldValue else {
+            return
+        }
+
         layer.bounds.size = size
         camera.sceneSize = size
+        events.resized.trigger()
     }
 
     private func safeAreaInsetsDidChange(from oldValue: EdgeInsets) {
