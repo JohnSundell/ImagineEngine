@@ -25,18 +25,20 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     /// Whether the camera is constrained to the scene or can move outside of it (default = false)
     public var constrainedToScene = false { didSet { update() } }
 
-    internal var sceneSize: Size { didSet { update() } }
-
     private let pluginManager = PluginManager()
     private lazy var actionManager = ActionManager(object: self)
-    private let layer: Layer
     private weak var scene: Scene?
+    private let layer: Layer
 
     // MARK: - Initializer
 
-    internal init(layer: Layer, sceneSize: Size) {
+    internal init(scene: Scene, layer: Layer) {
+        self.scene = scene
         self.layer = layer
-        self.sceneSize = sceneSize
+
+        scene.events.resized.addObserver(self) { camera in
+            camera.update()
+        }
     }
 
     // MARK: - ActionPerformer
@@ -94,32 +96,36 @@ public final class Camera: ActionPerformer, Pluggable, Movable, Activatable {
     }
 
     private func update() {
+        guard let scene = scene else {
+            return
+        }
+
         var newRect = Rect(origin: position, size: size)
         newRect.origin.x -= size.width / 2
         newRect.origin.y -= size.height / 2
         rect = newRect
 
         if constrainedToScene {
-            if sceneSize.width >= size.width {
+            if scene.size.width >= size.width {
                 guard newRect.minX >= 0 else {
                     position.x = size.width / 2
                     return
                 }
 
-                guard newRect.maxX <= sceneSize.width else {
-                    position.x = sceneSize.width - size.width / 2
+                guard newRect.maxX <= scene.size.width else {
+                    position.x = scene.size.width - size.width / 2
                     return
                 }
             }
 
-            if sceneSize.height >= size.height {
+            if scene.size.height >= size.height {
                 guard newRect.minY >= 0 else {
                     position.y = size.height / 2
                     return
                 }
 
-                guard newRect.maxY <= sceneSize.height else {
-                    position.y = sceneSize.height - size.height / 2
+                guard newRect.maxY <= scene.size.height else {
+                    position.y = scene.size.height - size.height / 2
                     return
                 }
             }
