@@ -154,12 +154,13 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     internal func deactivate() {
         pluginManager.deactivate()
         actionManager.deactivate()
-        layer.removeFromSuperlayer()
     }
 
     /// Remove this actor from its scene
     public func remove() {
         scene?.remove(self)
+        scene = nil
+        layer.removeFromSuperlayer()
     }
 
     // MARK: - Internal

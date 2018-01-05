@@ -76,16 +76,15 @@ open class Scene: Pluggable, Activatable {
     /// Put your code that starts your game here.
     open func activate() {}
 
-    // MARK: - Scene API
+    // MARK: - API
 
     /// Reset the scene
     /// Calling this will remove all game objects from the scene, and
     /// reset it to its initial state. Once the reset has been completed,
     /// the `setup()` and `activate()` methods will be called.
     public func reset() {
-        actors.forEach(deactivate)
-        blocks.forEach(deactivate)
-        labels.forEach(deactivate)
+        grid.deactivate()
+        grid.removeAllObjects()
         pluginManager.deactivate()
 
         camera = Camera(scene: self, layer: layer)
@@ -103,8 +102,6 @@ open class Scene: Pluggable, Activatable {
         activate()
     }
 
-    // MARK: - Actor API
-
     /// Add an actor to the scene
     public func add(_ actor: Actor) {
         actor.scene = self
@@ -116,25 +113,6 @@ open class Scene: Pluggable, Activatable {
         events.actorAdded.trigger(with: actor)
     }
 
-    /// Remove an actor from the scene
-    public func remove(_ actor: Actor) {
-        deactivate(actor)
-        grid.remove(actor)
-        events.actorRemoved.trigger(with: actor)
-    }
-
-    /// Get all actors which rects intersect a given point
-    public func actors(at point: Point) -> [Actor] {
-        return grid.actors(at: point)
-    }
-
-    /// Get all the labels which rects intersect a given point
-    public func labels(at point: Point) -> [Label] {
-        return grid.labels(at: point)
-    }
-
-    // MARK: - Block API
-
     /// Add a block to the scene
     public func add(_ block: Block) {
         block.scene = self
@@ -143,14 +121,6 @@ open class Scene: Pluggable, Activatable {
         block.addLayer(to: layer)
         game.map(block.activate)
     }
-
-    /// Remove a block from the scene
-    public func remove(_ block: Block) {
-        deactivate(block)
-        grid.remove(block)
-    }
-
-    // MARK: - Label API
 
     /// Add a label to the scene
     public func add(_ label: Label) {
@@ -161,10 +131,14 @@ open class Scene: Pluggable, Activatable {
         game.map(label.activate)
     }
 
-    /// Remove a label from the scene
-    public func remove(_ label: Label) {
-        deactivate(label)
-        grid.remove(label)
+    /// Get all actors which rects intersect a given point
+    public func actors(at point: Point) -> [Actor] {
+        return grid.actors(at: point)
+    }
+
+    /// Get all the labels which rects intersect a given point
+    public func labels(at point: Point) -> [Label] {
+        return grid.labels(at: point)
     }
 
     // MARK: - Pluggable
@@ -231,6 +205,19 @@ open class Scene: Pluggable, Activatable {
         }
     }
 
+    internal func remove(_ actor: Actor) {
+        grid.remove(actor)
+        events.actorRemoved.trigger(with: actor)
+    }
+
+    internal func remove(_ block: Block) {
+        grid.remove(block)
+    }
+
+    internal func remove(_ label: Label) {
+        grid.remove(label)
+    }
+
     internal func blockRectDidChange(_ block: Block) {
         grid.blockRectDidChange(block)
     }
@@ -264,15 +251,6 @@ open class Scene: Pluggable, Activatable {
 
     private func backgroundColorDidChange() {
         layer.backgroundColor = backgroundColor.cgColor
-    }
-
-    private func deactivate(_ object: SceneObject) {
-        guard object.scene === self else {
-            return
-        }
-
-        object.scene = nil
-        object.deactivate()
     }
 }
 

@@ -55,6 +55,8 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
     /// Remove this block from its scene
     public func remove() {
         scene?.remove(self)
+        scene = nil
+        layer.removeFromSuperlayer()
     }
 
     // MARK: - SceneObject
@@ -96,7 +98,6 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
 
     internal func deactivate() {
         actionManager.deactivate()
-        layer.removeFromSuperlayer()
     }
 
     // MARK: - Private
