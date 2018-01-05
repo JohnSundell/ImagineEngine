@@ -197,18 +197,7 @@ open class Scene: Pluggable, Activatable {
         camera.activate(in: game)
         timeline.activate(in: game)
         pluginManager.activate(in: game)
-
-        for actor in grid.actors {
-            actor.activate(in: game)
-        }
-
-        for block in grid.blocks {
-            block.activate(in: game)
-        }
-
-        for label in grid.labels {
-            label.activate(in: game)
-        }
+        grid.activate(in: game)
 
         activate()
     }
@@ -219,14 +208,7 @@ open class Scene: Pluggable, Activatable {
         camera.deactivate()
         timeline.deactivate()
         pluginManager.deactivate()
-
-        for actor in grid.actors {
-            actor.deactivate()
-        }
-
-        for label in grid.labels {
-            label.deactivate()
-        }
+        grid.deactivate()
     }
 
     // MARK: - Internal
