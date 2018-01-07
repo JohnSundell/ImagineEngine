@@ -625,6 +625,32 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(actor.layer.shadowOffset.height, 7)
         XCTAssertEqual(actor.layer.shadowPath, path)
     }
+
+    func testObservingCollisionsWhileInContactAndMovingBetweenGridTiles() {
+        let otherActor = Actor(size: Size(width: 100, height: 100))
+        game.scene.add(otherActor)
+
+        actor.size = otherActor.size
+        actor.position = Point(x: 200, y: 0)
+
+        var numberOfCollisions = 0
+
+        actor.events.collided(with: otherActor).observe {
+            numberOfCollisions += 1
+        }
+
+        XCTAssertEqual(numberOfCollisions, 0)
+
+        // Actors start intersecting = first collision
+        actor.position = Point(x: 0, y: 0)
+        XCTAssertEqual(numberOfCollisions, 1)
+
+        // Actor moving out of grid tile and then back into it while
+        // in contact the whole time
+        actor.position = Point(x: 60, y: 0)
+        actor.position = Point(x: 40, y: 0)
+        XCTAssertEqual(numberOfCollisions, 1)
+    }
 }
 
 private extension Size {
