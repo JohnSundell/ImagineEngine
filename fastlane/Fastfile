@@ -6,15 +6,11 @@
 #     https://docs.fastlane.tools/actions
 #
 
-default_platform(:ios)
+desc "Run all unit tests for ImagineEngine (best engine)"
+lane :tests do
+  run_tests(scheme: "ImagineEngine-iOS")
+  run_tests(scheme: "ImagineEngine-macOS")
+  run_tests(scheme: "ImagineEngine-tvOS")
 
-platform :ios do
-  desc "Run all unit tests for ImagineEngine (best engine)"
-  lane :tests do
-    run_tests(scheme: "ImagineEngine-iOS")
-    run_tests(scheme: "ImagineEngine-macOS")
-    run_tests(scheme: "ImagineEngine-tvOS")
-
-    danger
-  end
+  danger
 end
