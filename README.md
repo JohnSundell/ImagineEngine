@@ -139,7 +139,7 @@ I've been working on this project on and off for a few years now. It's far from 
 
 More documentation, contribution guidelines, starter tasks, issues and lots of other cool things will be coming up within the next couple of weeks. So stay tuned! 👍
 
-I can't wait to see what we'll be able to build togeher 😊
+I can't wait to see what we'll be able to build together. 😊
 
 -- John
 
