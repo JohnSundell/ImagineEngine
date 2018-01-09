@@ -8,9 +8,11 @@
 
 desc "Run all unit tests for ImagineEngine (best engine)"
 lane :tests do
+  reset_simulators if is_ci?
   run_tests(scheme: "ImagineEngine-iOS")
-  run_tests(scheme: "ImagineEngine-macOS")
   run_tests(scheme: "ImagineEngine-tvOS")
+  run_tests(scheme: "ImagineEngine-macOS", destination: "platform=macOS")
+  run_tests(scheme: "ImagineEngine-macOS")
 
   danger
 end

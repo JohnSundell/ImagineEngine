@@ -17,10 +17,9 @@ xcode-select --install
 | RubyGems                   | macOS or Linux with Ruby 2.0.0 or above | `sudo gem install fastlane -NV`                                                                                                       |
 
 # Available Actions
-## iOS
-### ios tests
+### tests
 ```
-fastlane ios tests
+fastlane tests
 ```
 Run all unit tests for ImagineEngine (best engine)
 
