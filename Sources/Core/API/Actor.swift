@@ -103,10 +103,15 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         gridTiles.remove(gridTile)
 
         for otherActor in gridTile.actors {
-            guard otherActor.actorsInContact.remove(self) != nil else {
+            guard otherActor.actorsInContact.contains(self) else {
                 continue
             }
 
+            guard !otherActor.rectForCollisionDetection.intersects(rectForCollisionDetection) else {
+                continue
+            }
+
+            otherActor.actorsInContact.remove(self)
             actorsInContact.remove(otherActor)
         }
 
