@@ -12,7 +12,6 @@ lane :tests do
   run_tests(scheme: "ImagineEngine-iOS")
   run_tests(scheme: "ImagineEngine-tvOS")
   run_tests(scheme: "ImagineEngine-macOS", destination: "platform=macOS")
-  run_tests(scheme: "ImagineEngine-macOS")
 
   danger
 end
