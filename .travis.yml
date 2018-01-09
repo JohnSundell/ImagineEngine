@@ -1,4 +1,4 @@
 language: objective-c
 osx_image: xcode9.2
 script:
-    - bash CI.sh
+    - bundle exec fastlane tests
