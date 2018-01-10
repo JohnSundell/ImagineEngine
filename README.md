@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="Logo.png" width="250" max-width="50%" alt="Imagine Engine" />
+    <img src="Logo.png" width="484" max-width="80%" alt="Imagine Engine" />
 </p>
 
 <p align="center">
