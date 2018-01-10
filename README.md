@@ -41,7 +41,7 @@ let window = GameWindow(scene: scene)
 window.makeKeyAndVisible()
 ```
 
-...and smoothly scale up as your game grows in complexity, all while maintaining a solid frame rate running on iOS, macOS or tvOS.
+...and smoothly scale up as your game grows in complexity on either iOS, macOS or tvOS.
 
 🌃 **Scenes present your game content**
 
