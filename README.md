@@ -64,7 +64,7 @@ player.velocity.dx = 50
 scene.add(player)
 ```
 
-📦 **Easily create platform and tiled textures with Blocks**
+📦 **Easily create platforms and tiled textures with Blocks**
 
 Using blocks you can easily tile textures together to form objects that can scale nicely to any size, without having to scale any texture. This is done by stitching together up to 9 different textures to form a block of textures rendered side by side. Here's how you can easily create a block from a folder named "Platform" that contains the textures that should be stitched together:
 
@@ -148,4 +148,6 @@ To get started, check out the [tutorials section](https://github.com/JohnSundell
 
 If you need help getting started or have a question about Imagine Engine, feel free to [open an issue](https://github.com/JohnSundell/ImagineEngine/issues/new)! We're a friendly community who would love to get more people involved.
 
-Imagine Engine is in active development, with new features being constantly added. Need something new, or want to help out making the engine even more capable? [Browse and create new issues](https://github.com/JohnSundell/ImagineEngine/issues) and let's build some awesome games together! 🚀
+Imagine Engine is in active development, with new features being constantly added. Need something new, or want to help out making the engine even more capable? [Browse and create new issues](https://github.com/JohnSundell/ImagineEngine/issues) or [open a PR](https://github.com/JohnSundell/ImagineEngine/pull/new/master).
+
+Lets build some awesome games together! 🚀
