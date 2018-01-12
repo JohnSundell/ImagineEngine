@@ -97,6 +97,7 @@ open class Scene: Pluggable, Activatable {
         game.map(timeline.activate)
         game.map(camera.activate)
         game.map(pluginManager.activate)
+        game.map(grid.activate)
 
         setup()
         activate()
