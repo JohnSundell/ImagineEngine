@@ -42,6 +42,8 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     public private(set) var rect = Rect() { didSet { rectDidChange() } }
     /// The rotation of the actor along the z axis.
     public var rotation = Metric() { didSet { rotationDidChange(from: oldValue) } }
+    /// Any radius that should be applied to the corners of the actor. Default = 0.
+    public var cornerRadius = Metric() { didSet { layer.cornerRadius = cornerRadius } }
     /// The scale the actor gets rendered at. Affects collision detection unless a hitboxSize is set.
     public var scale: Metric = 1 { didSet { scaleDidChange(from: oldValue) } }
     /// The velocity of the actor. Used for continous directional movement.
