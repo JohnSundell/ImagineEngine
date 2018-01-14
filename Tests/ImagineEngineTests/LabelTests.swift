@@ -25,8 +25,8 @@ final class LabelTests: XCTestCase {
     func testWrapped() {
         // Check its default value (false)
         XCTAssertEqual(label.layer.isWrapped, false)
-        label.shouldWrap = true
         
+        label.shouldWrap = true
         XCTAssertEqual(label.shouldWrap, label.layer.isWrapped)
     }
 
