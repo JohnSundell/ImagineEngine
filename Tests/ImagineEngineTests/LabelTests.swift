@@ -22,6 +22,13 @@ final class LabelTests: XCTestCase {
     }
 
     // MARK: - Tests
+    func testWrapped() {
+        // Check its default value (false)
+        XCTAssertEqual(label.layer.isWrapped, false)
+
+        label.shouldWrap = true
+        XCTAssertEqual(label.shouldWrap, label.layer.isWrapped)
+    }
 
     func testAutoResize() {
         // Verify initial size is zero
