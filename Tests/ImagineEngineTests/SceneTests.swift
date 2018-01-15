@@ -234,6 +234,22 @@ final class SceneTests: XCTestCase {
         XCTAssertEqual(game.scene.camera.position, Point(x: 250, y: 250))
     }
 
+    func testActorActivationAfterReset() {
+        game.scene.reset()
+
+        // Adding an actor after reset should immediately activate it
+        let actor = Actor()
+        game.scene.add(actor)
+
+        // Verify activation by adding an action
+        let action = ActionMock<Actor>(duration: 1)
+        actor.perform(action)
+
+        // After one update cycle the action should have been started
+        game.update()
+        XCTAssertTrue(action.isStarted)
+    }
+
     func testPausing() {
         let actor = Actor()
         actor.move(to: Point(x: 100, y: 100), duration: 5)

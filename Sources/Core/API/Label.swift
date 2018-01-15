@@ -19,6 +19,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     public internal(set) var scene: Scene?
     /// A collection of events that can be used to observe the label.
     public private(set) lazy var events = LabelEventCollection(object: self)
+    /// Whether the label's text should be wrapped on multiple lines in case it doesn't fit its width.
+    public var shouldWrap = false { didSet { layer.isWrapped = shouldWrap } }
     /// The index of the label on the z axis. Affects rendering. 0 = implicit index.
     public var zIndex = 0 { didSet { layer.zPosition = Metric(zIndex) } }
     /// The position of the label within its scene.
