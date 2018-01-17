@@ -12,9 +12,9 @@ internal final class TextLayer: CATextLayer {
     override func action(forKey event: String) -> CAAction? {
         return NSNull()
     }
-    
+
     // MARK: - Private
-    
+
     private func updateTransform() {
         var newTransform = CATransform3DIdentity
         newTransform = CATransform3DRotate(newTransform, rotation, 0, 0, 1)
