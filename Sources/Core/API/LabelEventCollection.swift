@@ -10,4 +10,6 @@ import Foundation
 public final class LabelEventCollection: EventCollection<Label> {
     /// Event triggered when the label was clicked (on macOS) or tapped (on iOS/tvOS)
     public private(set) lazy var clicked = Event<Label, Void>(object: object)
+    /// Event triggered when the label was rotated
+    public private(set) lazy var rotated = Event<Label, Void>(object: object)
 }
