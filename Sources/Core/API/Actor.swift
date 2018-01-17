@@ -170,6 +170,17 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         layer.removeFromSuperlayer()
     }
 
+    /// Check if it's in contact with an Actor
+    public func isInContact(with actor: Actor) -> Bool {
+        print(self.actorsInContact)
+        return self.actorsInContact.contains(actor)
+    }
+
+    /// Check if it's in contact with a Blosk
+    public func isInContact(with block: Block) -> Bool {
+        return self.blocksInContact.contains(block)
+    }
+
     // MARK: - Internal
 
     internal func render(frame: Animation.Frame, scale: Int?, resize: Bool, ignoreNamePrefix: Bool) {
