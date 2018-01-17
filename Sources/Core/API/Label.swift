@@ -14,7 +14,7 @@ import QuartzCore
  *  setting the font and text color of text and will automatically resize itself
  *  to fit the text you assign to it.
  */
-public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Fadeable {
+public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Fadeable, Rotatable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
     /// A collection of events that can be used to observe the label.
