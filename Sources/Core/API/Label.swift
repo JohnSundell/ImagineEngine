@@ -156,7 +156,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
 
     private func fontDidChange() {
         layer.font = font
-        layer.fontSize = font.pointSize * scale
+        layer.fontSize = font.pointSize
         autoResize()
     }
 
@@ -164,8 +164,9 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
         guard oldValue != scale else {
             return
         }
-        
-        fontDidChange()
+
+        layer.scale = scale
+        autoResize()
     }
 
     private func autoResize() {
@@ -179,10 +180,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
                                            options: [.usesLineFragmentOrigin],
                                            attributes: [.font: font],
                                            context: nil)
-
         size = rect.size
-        size.height *= scale
-        size.width *= scale
     }
 
     private func horizontalAlignmentDidChange() {
