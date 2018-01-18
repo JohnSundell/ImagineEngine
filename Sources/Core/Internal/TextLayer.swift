@@ -16,8 +16,6 @@ internal final class TextLayer: CATextLayer {
     // MARK: - Private
 
     private func updateTransform() {
-        var newTransform = CATransform3DIdentity
-        newTransform = CATransform3DRotate(newTransform, rotation, 0, 0, 1)
-        transform = newTransform
+        transform = CATransform3DMakeRotation(rotation, 0, 0, 1)
     }
 }

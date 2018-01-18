@@ -123,7 +123,7 @@ final class LabelTests: XCTestCase {
         XCTAssertEqual(clickedLabels, [labelB, labelA, labelA])
     }
     
-    func testObservingRotate() {
+    func testObservingRotation() {
         let label = Label(text: "Greetings")
 
         var labelRotateCount = 0
@@ -132,11 +132,7 @@ final class LabelTests: XCTestCase {
         }
 
         XCTAssertEqual(labelRotateCount, 0)
-        XCTAssertEqual(label.rotation, 0)
         label.rotation = 90
-        XCTAssertEqual(label.rotation, 90)
-        label.rotation = -90
-        XCTAssertEqual(label.rotation, -90)
-        XCTAssertEqual(labelRotateCount, 2)
+        XCTAssertEqual(labelRotateCount, 1)
     }
 }
