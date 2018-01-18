@@ -175,7 +175,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         return actorsInContact.contains(actor)
     }
 
-    /// Check if it's in contact with a Blosk
+    /// Check if it's in contact with a Block
     public func isInContact(with block: Block) -> Bool {
         return blocksInContact.contains(block)
     }
