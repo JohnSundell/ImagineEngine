@@ -652,14 +652,14 @@ final class ActorTests: XCTestCase {
         XCTAssertEqual(numberOfCollisions, 1)
     }
 
-    func testIsInContactWIthOtherActor() {
+    func testIsInContactWithOtherActor() {
         let otherActor = Actor(size: Size(width: 100, height: 100))
         game.scene.add(otherActor)
 
         actor.size = otherActor.size
 
         var collided = false
-        _ = actor.events.collided(with: otherActor).observe {
+        actor.events.collided(with: otherActor).observe {
             collided = true
         }
 
@@ -672,7 +672,7 @@ final class ActorTests: XCTestCase {
         XCTAssertTrue(actor.isInContact(with: otherActor))
     }
 
-    func testIsInContactWIthBlock() {
+    func testIsInContactWithBlock() {
         let blockSize = Size(width: 100, height: 100)
         let blockGroup = Group.name("BlockInContact")
 
