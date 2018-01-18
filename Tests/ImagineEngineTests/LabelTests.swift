@@ -131,7 +131,6 @@ final class LabelTests: XCTestCase {
 
         // Upscale the label
         label.scale = upscaleFactor
-
         XCTAssertEqual(label.layer.scale, upscaleFactor)
 
         // Downscale the label

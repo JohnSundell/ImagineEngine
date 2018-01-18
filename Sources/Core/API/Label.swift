@@ -166,7 +166,6 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
         }
 
         layer.scale = scale
-        autoResize()
     }
 
     private func autoResize() {
