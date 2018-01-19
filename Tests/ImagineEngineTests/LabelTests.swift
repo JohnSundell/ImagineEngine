@@ -122,4 +122,23 @@ final class LabelTests: XCTestCase {
         XCTAssertEqual(labelBClickCount, 1)
         XCTAssertEqual(clickedLabels, [labelB, labelA, labelA])
     }
+
+    func testScaling() {
+        let label = Label(text: "Hello world")
+
+        let upscaleFactor: Metric = 2.5
+        let downscaleFactor: Metric = 0.4
+
+        // Upscale the label
+        label.scale = upscaleFactor
+        XCTAssertEqual(label.layer.scale, upscaleFactor)
+
+        // Downscale the label
+        label.scale = downscaleFactor
+        XCTAssertEqual(label.layer.scale, downscaleFactor)
+
+        // Back to original size
+        label.scale = 1
+        XCTAssertEqual(label.layer.scale, 1)
+    }
 }

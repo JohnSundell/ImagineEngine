@@ -14,7 +14,8 @@ import QuartzCore
  *  setting the font and text color of text and will automatically resize itself
  *  to fit the text you assign to it.
  */
-public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable, ZIndexed, Movable, Fadeable {
+public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable,
+                          ZIndexed, Movable, Fadeable, Scalable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
     /// A collection of events that can be used to observe the label.
@@ -43,6 +44,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     public var horizontalAlignment = HorizontalAlignment.left { didSet { horizontalAlignmentDidChange() } }
     /// The label's background color. Default is `.clear` (no background).
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
+    /// The scale the label gets rendered at.
+    public var scale: Metric = 1 { didSet { scaleDidChange(from: oldValue) } }
 
     internal let layer = TextLayer()
     internal private(set) lazy var gridTiles = Set<Grid.Tile>()
@@ -157,6 +160,14 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
         autoResize()
     }
 
+    private func scaleDidChange(from oldValue: Metric) {
+        guard oldValue != scale else {
+            return
+        }
+
+        layer.scale = scale
+    }
+
     private func autoResize() {
         guard shouldAutoResize else {
             return
@@ -168,7 +179,6 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
                                            options: [.usesLineFragmentOrigin],
                                            attributes: [.font: font],
                                            context: nil)
-
         size = rect.size
     }
 
