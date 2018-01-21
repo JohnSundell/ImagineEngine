@@ -651,6 +651,51 @@ final class ActorTests: XCTestCase {
         actor.position = Point(x: 40, y: 0)
         XCTAssertEqual(numberOfCollisions, 1)
     }
+
+    func testIsInContactWithOtherActor() {
+        let otherActor = Actor(size: Size(width: 100, height: 100))
+        game.scene.add(otherActor)
+
+        actor.size = otherActor.size
+
+        var collided = false
+        actor.events.collided(with: otherActor).observe {
+            collided = true
+        }
+
+        actor.position = Point(x: 200, y: 0)
+        XCTAssertFalse(actor.isInContact(with: otherActor))
+        XCTAssertFalse(collided)
+
+        actor.position = Point(x: 40, y: 0)
+        XCTAssertTrue(collided)
+        XCTAssertTrue(actor.isInContact(with: otherActor))
+    }
+
+    func testIsInContactWithBlock() {
+        let blockSize = Size(width: 100, height: 100)
+        let blockGroup = Group.name("BlockInContact")
+
+        let block = Block(size: blockSize, textureCollectionName: "BlockInContact")
+        block.group = blockGroup
+        game.scene.add(block)
+
+        actor.size = Size(width: 200, height: 200)
+
+        var collided = false
+        actor.events.collided(withBlockInGroup: blockGroup).observe {
+            collided = true
+        }
+
+        actor.position = Point(x: 200, y: 0)
+        XCTAssertFalse(actor.isInContact(with: block))
+        XCTAssertFalse(collided)
+
+        actor.position = Point(x: 40, y: 0)
+        XCTAssertTrue(collided)
+        XCTAssertTrue(actor.isInContact(with: block))
+    }
+
 }
 
 private extension Size {
