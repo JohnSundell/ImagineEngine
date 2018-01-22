@@ -61,10 +61,10 @@ private let pluginManager = PluginManager()
 public init(text: String = "") {
     self.text = text
     font = .default
-    
+
     layer.string = text
     layer.contentsScale = Screen.mainScreenScale
-    
+
     fontDidChange()
     horizontalAlignmentDidChange()
 }
@@ -137,7 +137,7 @@ private func positionDidChange(from oldValue: Point) {
     guard position != oldValue else {
         return
     }
-    
+
     layer.position = position
     scene?.labelRectDidChange(self)
 }
@@ -146,7 +146,7 @@ private func sizeDidChange(from oldValue: Size) {
     guard size != oldValue else {
         return
     }
-    
+
     layer.bounds.size = size
     scene?.labelRectDidChange(self)
 }
@@ -171,7 +171,7 @@ private func rotationDidChange(from oldValue: Metric) {
 
     events.rotated.trigger()
 }
-    
+
 private func scaleDidChange(from oldValue: Metric) {
     guard oldValue != scale else {
         return
@@ -184,9 +184,9 @@ private func autoResize() {
     guard shouldAutoResize else {
         return
     }
-    
+
     let objCString = NSString(string: text)
-    
+
     let rect = objCString.boundingRect(with: .zero,
                                        options: [.usesLineFragmentOrigin],
                                        attributes: [.font: font],
