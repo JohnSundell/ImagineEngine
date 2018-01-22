@@ -116,27 +116,11 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
             segmentLayers = makeSegmentLayers(from: loadedTexture)
         }
 
+        setupFrames(for: segmentLayers)
+        let centerReplicatorLayer = makeCenterReplicationLayer(for: segmentLayers)
+
         layer.addSublayer(segmentLayers.top)
         layer.addSublayer(segmentLayers.bottom)
-
-        segmentLayers.bottom.frame.origin.y = size.height - segmentLayers.bottom.frame.height
-
-        let centerReplicatorLayer = ReplicatorLayer()
-        centerReplicatorLayer.frame = Rect(
-            x: 0,
-            y: segmentLayers.top.frame.height,
-            width: size.width,
-            height: size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
-        )
-        centerReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, segmentLayers.center.frame.height, 0)
-        centerReplicatorLayer.masksToBounds = true
-
-        if segmentLayers.center.frame.height > 0 {
-            let fractionalInstanceCount = centerReplicatorLayer.frame.height / segmentLayers.center.frame.height
-            centerReplicatorLayer.instanceCount = Int(ceil(fractionalInstanceCount))
-        }
-
-        centerReplicatorLayer.addSublayer(segmentLayers.center)
         layer.addSublayer(centerReplicatorLayer)
     }
 
@@ -233,6 +217,52 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
             bottom: bottomSegmentLayer,
             center: centerSegmentLayer
         )
+    }
+
+    private func setupFrames(for segmentLayers: SegmentLayerCollection) {
+        #if os(macOS)
+        let centerHeight = size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
+        segmentLayers.top.frame.origin.y = size.height - segmentLayers.top.frame.size.height
+        segmentLayers.center.frame.origin.y = centerHeight - segmentLayers.center.frame.size.height
+
+        segmentLayers.bottom.frame.origin.y = 0
+        #else
+        segmentLayers.bottom.frame.origin.y = size.height - segmentLayers.bottom.frame.height
+        #endif
+    }
+
+    private func makeCenterReplicationLayer(for segmentLayers: SegmentLayerCollection) -> ReplicatorLayer {
+        let centerReplicatorLayer = ReplicatorLayer()
+
+        #if os(macOS)
+        let centerHeight = size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
+        centerReplicatorLayer.frame = Rect(
+            x: 0,
+            y: segmentLayers.bottom.frame.height,
+            width: size.width,
+            height: centerHeight
+        )
+        centerReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, -segmentLayers.center.frame.height, 0)
+        #else
+        centerReplicatorLayer.frame = Rect(
+            x: 0,
+            y: segmentLayers.top.frame.height,
+            width: size.width,
+            height: size.height - segmentLayers.top.frame.height - segmentLayers.bottom.frame.height
+        )
+        centerReplicatorLayer.instanceTransform = CATransform3DMakeTranslation(0, segmentLayers.center.frame.height, 0)
+        #endif
+
+        centerReplicatorLayer.masksToBounds = true
+
+        if segmentLayers.center.frame.height > 0 {
+            let fractionalInstanceCount = centerReplicatorLayer.frame.height / segmentLayers.center.frame.height
+            centerReplicatorLayer.instanceCount = Int(ceil(fractionalInstanceCount))
+        }
+
+        centerReplicatorLayer.addSublayer(segmentLayers.center)
+
+        return centerReplicatorLayer
     }
 
     private func positionDidChange() {
