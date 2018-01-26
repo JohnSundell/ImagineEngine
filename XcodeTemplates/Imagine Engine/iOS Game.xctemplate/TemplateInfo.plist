@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Identifier</key>
+	<string>com.ImagineEngine.Templates.iOS</string>
+	<key>Ancestors</key>
+	<array>
+		<string>com.apple.dt.unit.cocoaTouchApplicationBase</string>
+	</array>
+	<key>Concrete</key>
+	<true/>
+	<key>Description</key>
+	<string>This template provides a starting point for an iOS game powered by Imagine Engine.</string>
+	<key>Options</key>
+    <array>
+        <dict>
+            <key>Identifier</key>
+            <string>languageChoice</string>
+            <key>Units</key>
+            <dict>
+                <key>Swift</key>
+				<dict>
+          			<key>Nodes</key>
+          			<array>
+            			<string>___PACKAGENAME___Scene.swift</string>
+						<string>../Podfile</string>
+          			</array>
+        		</dict>
+            </dict>
+        </dict>
+    </array>
+	<key>Definitions</key>
+	<dict>
+		<key>AppDelegate.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>AppDelegate.swift</string>
+		</dict>
+		<key>___PACKAGENAME___Scene.swift</key>
+		<dict>
+			<key>Path</key>
+			<string>___PACKAGENAME___Scene.swift</string>
+		</dict>
+		<key>../Podfile</key>
+		<dict>
+			<key>Path</key>
+			<string>Podfile</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
