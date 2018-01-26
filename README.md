@@ -142,6 +142,10 @@ scene.timeline.repeat(withInterval: 5) {
 
 Imagine Engine supports all of Apple's platforms except watchOS. The API is also completely cross platform, so that you don't have to scatter `#if`s all over your game code.
 
+## Xcode templates
+
+Imagine Engine ships with Xcode project templates that makes it super easy to get started with a new project. [You can find more information & installation instructions here](XcodeTemplates).
+
 ## Let's get started!
 
 To get started, check out the [tutorials section](https://github.com/JohnSundell/ImagineEngine/tree/master/Documentation/Tutorials), which contains tutorials that will walk you through building your first Imagine Engine-powered games with very few lines of code. No previous game developer experience required!

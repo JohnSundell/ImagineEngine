@@ -1,3 +1,6 @@
+excluded:
+    - XcodeTemplates
+
 function_body_length: 50
 identifier_name:
     excluded:
