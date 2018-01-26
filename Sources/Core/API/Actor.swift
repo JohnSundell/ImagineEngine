@@ -89,6 +89,25 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     /// Initialize an instance of this class
     public init() {}
 
+    // MARK: - API
+
+    /// Remove this actor from its scene
+    public func remove() {
+        scene?.remove(self)
+        scene = nil
+        layer.removeFromSuperlayer()
+    }
+
+    /// Check if this actor is in contact with another actor
+    public func isInContact(with actor: Actor) -> Bool {
+        return actorsInContact.contains(actor)
+    }
+
+    /// Check if this actor is in contact with a given block
+    public func isInContact(with block: Block) -> Bool {
+        return blocksInContact.contains(block)
+    }
+
     // MARK: - SceneObject
 
     internal func addLayer(to superlayer: Layer) {
@@ -161,23 +180,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     internal func deactivate() {
         pluginManager.deactivate()
         actionManager.deactivate()
-    }
-
-    /// Remove this actor from its scene
-    public func remove() {
-        scene?.remove(self)
-        scene = nil
-        layer.removeFromSuperlayer()
-    }
-
-    /// Check if it's in contact with an Actor
-    public func isInContact(with actor: Actor) -> Bool {
-        return actorsInContact.contains(actor)
-    }
-
-    /// Check if it's in contact with a Block
-    public func isInContact(with block: Block) -> Bool {
-        return blocksInContact.contains(block)
     }
 
     // MARK: - Internal
