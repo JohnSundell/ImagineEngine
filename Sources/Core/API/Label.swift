@@ -15,7 +15,7 @@ import QuartzCore
  *  to fit the text you assign to it.
  */
 public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable,
-                          ZIndexed, Movable, Fadeable, Scalable {
+                          ZIndexed, Movable, Fadeable, Rotatable, Scalable {
     /// The scene that the label currently belongs to.
     public internal(set) var scene: Scene?
     /// A collection of events that can be used to observe the label.
@@ -28,6 +28,8 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the label, centered on its position.
     public var size = Size() { didSet { sizeDidChange(from: oldValue) } }
+    /// The rotation of the label along the z axis.
+    public var rotation = Metric() { didSet { rotationDidChange(from: oldValue) } }
     /// Whether the label should automatically be resized to fit its content.
     public var shouldAutoResize = true
     /// The rectangle that the label currently occupies within its scene.
@@ -158,6 +160,16 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
         layer.font = font
         layer.fontSize = font.pointSize
         autoResize()
+    }
+
+    private func rotationDidChange(from oldValue: Metric) {
+        guard rotation != oldValue else {
+            return
+        }
+
+        layer.rotation = rotation
+
+        events.rotated.trigger()
     }
 
     private func scaleDidChange(from oldValue: Metric) {
