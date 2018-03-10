@@ -87,6 +87,9 @@
 		52479F8A1F8E804F00D22A87 /* TimelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F891F8E804F00D22A87 /* TimelineTests.swift */; };
 		52479F8C1F8E818100D22A87 /* ActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8B1F8E818100D22A87 /* ActionTests.swift */; };
 		52479F8E1F8E823E00D22A87 /* ActionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52479F8D1F8E823E00D22A87 /* ActionMock.swift */; };
+		524B329F205488D50069A4A1 /* SpriteSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B329E205488D50069A4A1 /* SpriteSheetTests.swift */; };
+		524B32A0205488D50069A4A1 /* SpriteSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B329E205488D50069A4A1 /* SpriteSheetTests.swift */; };
+		524B32A1205488D50069A4A1 /* SpriteSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524B329E205488D50069A4A1 /* SpriteSheetTests.swift */; };
 		5253C79B1FA4D54000D304B5 /* GameViewController-iOS+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6671F8D4512008DB43D /* GameViewController-iOS+tvOS.swift */; };
 		5253C79C1FA4D54000D304B5 /* GameWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD6681F8D4512008DB43D /* GameWindow.swift */; };
 		5253C79D1FA4D56C00D304B5 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522CD64F1F8D4512008DB43D /* ActionManager.swift */; };
@@ -190,6 +193,9 @@
 		525688D11F9CF3E200F87786 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860321F8E381600C6C7A7 /* Assert.swift */; };
 		525688D21F9CF3E200F87786 /* TimeTraveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860331F8E381600C6C7A7 /* TimeTraveler.swift */; };
 		525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */; };
+		5256F9772053D989003F3F88 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5256F9762053D989003F3F88 /* Coordinate.swift */; };
+		5256F9782053D989003F3F88 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5256F9762053D989003F3F88 /* Coordinate.swift */; };
+		5256F9792053D989003F3F88 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5256F9762053D989003F3F88 /* Coordinate.swift */; };
 		5262A1CD1FA4CD1900DD5B3D /* ImagineEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */; };
 		527FC8061F8EB223006B1295 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8051F8EB223006B1295 /* EventTests.swift */; };
 		527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FC8071F8EB83F006B1295 /* CameraTests.swift */; };
@@ -412,9 +418,11 @@
 		52479F891F8E804F00D22A87 /* TimelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTests.swift; sourceTree = "<group>"; };
 		52479F8B1F8E818100D22A87 /* ActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTests.swift; sourceTree = "<group>"; };
 		52479F8D1F8E823E00D22A87 /* ActionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMock.swift; sourceTree = "<group>"; };
+		524B329E205488D50069A4A1 /* SpriteSheetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheetTests.swift; sourceTree = "<group>"; };
 		5253C7DC1FA4D66500D304B5 /* Font+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Default.swift"; sourceTree = "<group>"; };
 		525688B41F9CF08E00F87786 /* Screen-iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen-iOS.swift"; sourceTree = "<group>"; };
 		525688BA1F9CF33100F87786 /* ImagineEngine-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5256F9762053D989003F3F88 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		5262A1BC1FA4CCF900DD5B3D /* ImagineEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImagineEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5262A1C81FA4CD1900DD5B3D /* ImagineEngine-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ImagineEngine-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FC8051F8EB223006B1295 /* EventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
@@ -532,6 +540,7 @@
 				522CD6321F8D4512008DB43D /* CancellationToken.swift */,
 				522CD6331F8D4512008DB43D /* ClosureAction.swift */,
 				522CD6341F8D4512008DB43D /* Constraint.swift */,
+				5256F9762053D989003F3F88 /* Coordinate.swift */,
 				522CD6351F8D4512008DB43D /* Event.swift */,
 				522CD6361F8D4512008DB43D /* EventCollection.swift */,
 				522CD6371F8D4512008DB43D /* EventToken.swift */,
@@ -704,6 +713,7 @@
 				527FC8051F8EB223006B1295 /* EventTests.swift */,
 				527FC80B1F8EBAAB006B1295 /* LabelTests.swift */,
 				52479F831F8E7B4E00D22A87 /* SceneTests.swift */,
+				524B329E205488D50069A4A1 /* SpriteSheetTests.swift */,
 				C86A78BD1FA1B61A0099632B /* TextureManagerTests.swift */,
 				52479F891F8E804F00D22A87 /* TimelineTests.swift */,
 				52C860391F8E534000C6C7A7 /* Mocks */,
@@ -1038,6 +1048,7 @@
 				525688D31F9CF3E200F87786 /* ImageMockFactory.swift in Sources */,
 				52A124CE1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				525688D11F9CF3E200F87786 /* Assert.swift in Sources */,
+				524B32A0205488D50069A4A1 /* SpriteSheetTests.swift in Sources */,
 				52B8066B1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				525688C71F9CF3E200F87786 /* CameraTests.swift in Sources */,
 				525688C51F9CF3E200F87786 /* ActorTests.swift in Sources */,
@@ -1105,6 +1116,7 @@
 				5253C7BA1FA4D57200D304B5 /* Block.swift in Sources */,
 				5253C7C21FA4D57200D304B5 /* EventToken.swift in Sources */,
 				5253C7B41FA4D57200D304B5 /* ActionPerformer.swift in Sources */,
+				5256F9792053D989003F3F88 /* Coordinate.swift in Sources */,
 				5253C7C91FA4D57200D304B5 /* MetricAction.swift in Sources */,
 				5253C7B51FA4D57200D304B5 /* ActionToken.swift in Sources */,
 				5253C79E1FA4D56C00D304B5 /* ActionWrapper.swift in Sources */,
@@ -1150,6 +1162,7 @@
 				5253C7E41FA4D97D00D304B5 /* LabelTests.swift in Sources */,
 				52A124CF1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				5253C7E91FA4D97D00D304B5 /* ClickGestureRecognizerMock.swift in Sources */,
+				524B32A1205488D50069A4A1 /* SpriteSheetTests.swift in Sources */,
 				52B8066C1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				5253C7E51FA4D97D00D304B5 /* SceneTests.swift in Sources */,
 				5253C7EE1FA4D97D00D304B5 /* Assert.swift in Sources */,
@@ -1217,6 +1230,7 @@
 				522CD6A61F8D4526008DB43D /* GameWindow.swift in Sources */,
 				522CD6791F8D451D008DB43D /* Fadeable.swift in Sources */,
 				522CD6871F8D451D008DB43D /* RotateAction.swift in Sources */,
+				5256F9772053D989003F3F88 /* Coordinate.swift in Sources */,
 				522CD6A51F8D4526008DB43D /* GameViewController-iOS+tvOS.swift in Sources */,
 				522CD69C1F8D4521008DB43D /* PluginManager.swift in Sources */,
 				522CD67D1F8D451D008DB43D /* InstanceHashable.swift in Sources */,
@@ -1262,6 +1276,7 @@
 				52479F881F8E7CAF00D22A87 /* PluginMock.swift in Sources */,
 				52A124CD1FAB9F9700252047 /* GameViewMock.swift in Sources */,
 				52C860361F8E383100C6C7A7 /* ImageMockFactory.swift in Sources */,
+				524B329F205488D50069A4A1 /* SpriteSheetTests.swift in Sources */,
 				52B8066A1FB3B6180042FBA7 /* BlockTests.swift in Sources */,
 				52479F841F8E7B4E00D22A87 /* SceneTests.swift in Sources */,
 				52C8603D1F8E537C00C6C7A7 /* DisplayLinkMock.swift in Sources */,
@@ -1299,6 +1314,7 @@
 				DD21B6FD1F92E75A0034A7CE /* Block.swift in Sources */,
 				C800CE2E1FA77F74008EE08D /* BundleProtocol.swift in Sources */,
 				DD21B6FE1F92E75A0034A7CE /* Updatable.swift in Sources */,
+				5256F9782053D989003F3F88 /* Coordinate.swift in Sources */,
 				DD21B7001F92E75A0034A7CE /* Layer.swift in Sources */,
 				DD21B7011F92E75A0034A7CE /* Grid.swift in Sources */,
 				52E725931FCF68AB0099FCC7 /* Shadow.swift in Sources */,

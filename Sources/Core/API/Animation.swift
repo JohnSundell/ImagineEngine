@@ -88,19 +88,36 @@ public extension Animation {
         updateIdentifier()
     }
 
-    /// initialize an instance with a sprite sheet from a given image name
+    /// Initialize an instance with a sprite sheet from a given image name
     init(spriteSheetNamed name: String,
          frameCount: Int,
-         rowCount: Int,
+         rowCount: Int = 1,
          frameDuration: TimeInterval,
          repeatMode: RepeatMode = .forever,
          autoResize: Bool = true,
          ignoreTextureNamePrefix: Bool = false,
-         textureFormat: TextureFormat? = nil) {
-        let texture = Texture(name: name, format: textureFormat)
-        let spriteSheet = SpriteSheet(texture: texture, frameCount: frameCount, rowCount: rowCount)
-        content = .spriteSheet(spriteSheet)
+         textureFormat format: TextureFormat? = nil) {
+        let spriteSheet = SpriteSheet(
+            textureNamed: name,
+            format: format,
+            frameCount: frameCount,
+            rowCount: rowCount
+        )
 
+        self.init(spriteSheet: spriteSheet,
+                  frameDuration: frameDuration,
+                  repeatMode: repeatMode,
+                  autoResize: autoResize,
+                  ignoreTextureNamePrefix: ignoreTextureNamePrefix)
+    }
+
+    /// Initialize an instance with a sprite sheet
+    init(spriteSheet: SpriteSheet,
+         frameDuration: TimeInterval,
+         repeatMode: RepeatMode = .forever,
+         autoResize: Bool = true,
+         ignoreTextureNamePrefix: Bool = false) {
+        content = .spriteSheet(spriteSheet)
         self.frameDuration = frameDuration
         self.repeatMode = repeatMode
         self.autoResize = autoResize
@@ -131,7 +148,7 @@ internal extension Animation {
         case .textures(let textures):
             return textures.count
         case .spriteSheet(let sheet):
-            return sheet.frameCount
+            return sheet.slicedArea?.frameCount ?? sheet.frameCount
         }
     }
 
@@ -150,23 +167,7 @@ internal extension Animation {
             let contentRect = Rect(x: 0, y: 0, width: 1, height: 1)
             return Frame(texture: textures[index], contentRect: contentRect)
         case .spriteSheet(let sheet):
-            let framesPerRow = sheet.frameCount / sheet.rowCount
-            let row = index / framesPerRow
-            let column = index - row * framesPerRow
-
-            var contentRect = Rect()
-            contentRect.origin.x = Metric(column) / Metric(framesPerRow)
-
-            #if os(macOS)
-            contentRect.origin.y = Metric(sheet.rowCount - 1 - row) / Metric(sheet.rowCount)
-            #else
-            contentRect.origin.y = Metric(row) / Metric(sheet.rowCount)
-            #endif
-
-            contentRect.size.width = 1 / Metric(framesPerRow)
-            contentRect.size.height = 1 / Metric(sheet.rowCount)
-
-            return Frame(texture: sheet.texture, contentRect: contentRect)
+            return sheet.frame(at: index)
         }
     }
 }
