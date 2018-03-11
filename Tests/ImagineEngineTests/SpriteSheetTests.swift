@@ -51,4 +51,9 @@ final class SpriteSheetTests: XCTestCase {
         XCTAssertEqual(frame4.contentRect, Rect(x: 0.75, y: 0.5, width: 0.25, height: 0.25))
         #endif
     }
+
+    func testInitializingWithColumnAndRowCount() {
+        let sheet = SpriteSheet(textureNamed: "Sheet", columnCount: 9, rowCount: 7)
+        XCTAssertEqual(sheet.frameCount, 9 * 7)
+    }
 }
