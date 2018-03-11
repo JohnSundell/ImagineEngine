@@ -66,6 +66,13 @@ public extension SpriteSheet {
         self.init(texture: texture, frameCount: frameCount, rowCount: rowCount)
     }
 
+    /// Initialize an instance with a given column (width) and row (height) count
+    init(textureNamed textureName: String, format: TextureFormat? = nil, columnCount: Int, rowCount: Int) {
+        let texture = Texture(name: textureName, format: format)
+        let frameCount = columnCount * rowCount
+        self.init(texture: texture, frameCount: frameCount, rowCount: rowCount)
+    }
+
     /// Create a slice of this sprite sheet from a range of coordinates
     func slice(from coordinates: ClosedRange<Coordinate>) -> SpriteSheet {
         var sheet = self
