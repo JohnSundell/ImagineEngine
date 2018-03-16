@@ -25,4 +25,12 @@ final class BlockTests: XCTestCase {
         XCTAssertNil(block.layer.superlayer)
         XCTAssertNil(block.scene)
     }
+
+    func testBackgroundColor() {
+        XCTAssertEqual(block.backgroundColor, .clear)
+
+        // Verify that the background color is passed through to the layer
+        block.backgroundColor = .red
+        XCTAssertEqual(block.layer.backgroundColor, Color.red.cgColor)
+    }
 }

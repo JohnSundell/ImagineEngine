@@ -31,6 +31,8 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
     public let size: Size
     /// The rectangle that the block currently occupies within its scene.
     public var rect: Rect { return layer.frame }
+    /// The block's background color. Default is `.clear` (no background).
+    public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
     /// Any logical group that the block is a part of. Can be used for events & collisions.
     public var group: Group?
 
