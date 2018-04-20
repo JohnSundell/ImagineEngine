@@ -41,7 +41,7 @@ import Foundation
  */
 public final class Event<Object: AnyObject, Subject> {
     private weak var object: Object?
-    private lazy var observationClosures = [ObservationKey : (Object, Subject) -> Void]()
+    private lazy var observations = [ObservationKey : Observation]()
 
     // MARK: - Initializer
 
@@ -59,25 +59,25 @@ public final class Event<Object: AnyObject, Subject> {
             return
         }
 
-        for (key, closure) in observationClosures {
+        for (key, observation) in observations {
             switch key {
             case .objectIdentifier:
                 break
             case .token(let token):
                 guard !token.isCancelled else {
-                    observationClosures[key] = nil
+                    observations[key] = nil
                     continue
                 }
             }
 
-            closure(object, subject)
+            observation.closure(object, subject)
         }
     }
 
     /// Observe the event using a closure
     @discardableResult public func observe(using closure: @escaping (Object, Subject) -> Void) -> EventToken {
         let token = EventToken()
-        observationClosures[.token(token)] = closure
+        observations[.token(token)] = Observation(closure: closure)
         return token
     }
 
@@ -85,9 +85,9 @@ public final class Event<Object: AnyObject, Subject> {
     public func addObserver<T: AnyObject>(_ observer: T, closure: @escaping (T, Object, Subject) -> Void) {
         let identifier = ObjectIdentifier(observer)
 
-        observationClosures[.objectIdentifier(identifier)] = { [weak self, weak observer] object, subject in
+        observations[.objectIdentifier(identifier)] = Observation { [weak self, weak observer] object, subject in
             guard let observer = observer else {
-                self?.observationClosures[.objectIdentifier(identifier)] = nil
+                self?.observations[.objectIdentifier(identifier)] = nil
                 return
             }
 
@@ -98,7 +98,7 @@ public final class Event<Object: AnyObject, Subject> {
     /// Remove an observer from the event
     public func removeObserver<T: AnyObject>(_ observer: T) {
         let identifier = ObjectIdentifier(observer)
-        observationClosures[.objectIdentifier(identifier)] = nil
+        observations[.objectIdentifier(identifier)] = nil
     }
 }
 
@@ -143,6 +143,10 @@ private extension Event {
     enum ObservationKey {
         case token(EventToken)
         case objectIdentifier(ObjectIdentifier)
+    }
+
+    struct Observation {
+        let closure: (Object, Subject) -> Void
     }
 }
 
