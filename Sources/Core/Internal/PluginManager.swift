@@ -90,11 +90,6 @@ internal final class PluginManager: Activatable {
 
 private extension PluginManager {
     struct TypeIdentifier: Hashable {
-        static func ==(lhs: TypeIdentifier, rhs: TypeIdentifier) -> Bool {
-            return lhs.identifier == rhs.identifier
-        }
-
-        var hashValue: Int { return identifier.hashValue }
         private let identifier: ObjectIdentifier
 
         init<T>(type: T.Type) {

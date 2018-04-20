@@ -407,13 +407,8 @@ internal extension Grid {
 
 private extension Grid {
     struct Index: Hashable {
-        static func ==(lhs: Index, rhs: Index) -> Bool {
-            return lhs.x == rhs.x && lhs.y == rhs.y
-        }
-
         let x: Int
         let y: Int
-        var hashValue: Int { return x ^ y }
     }
 
     enum CollisionDetectionMode {
