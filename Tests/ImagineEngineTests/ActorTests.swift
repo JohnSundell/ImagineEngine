@@ -371,7 +371,7 @@ final class ActorTests: XCTestCase {
         actor.rotation = 2
 
         XCTAssertEqual(triggerCount, 2)
-        XCTAssertEqual(actor.layer.rotation, 2, accuracy: 0.001)
+        XCTAssertEqual(CATransform3DMakeRotation(2, 0, 0, 1), actor.layer.transform)
     }
 
     func testObservingCollisionsWithOtherActor() {

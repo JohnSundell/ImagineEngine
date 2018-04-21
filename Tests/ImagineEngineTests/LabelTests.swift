@@ -144,14 +144,16 @@ final class LabelTests: XCTestCase {
 
         // Upscale the label
         label.scale = upscaleFactor
-        XCTAssertEqual(label.layer.scale, upscaleFactor)
+        XCTAssertEqual(CATransform3DMakeScale(upscaleFactor, upscaleFactor, 1),
+                       label.layer.transform)
 
         // Downscale the label
         label.scale = downscaleFactor
-        XCTAssertEqual(label.layer.scale, downscaleFactor)
+        XCTAssertEqual(CATransform3DMakeScale(downscaleFactor, downscaleFactor, 1),
+                       label.layer.transform)
 
         // Back to original size
         label.scale = 1
-        XCTAssertEqual(label.layer.scale, 1)
+        XCTAssertEqual(CATransform3DIdentity, label.layer.transform)
     }
 }

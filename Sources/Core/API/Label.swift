@@ -167,7 +167,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
             return
         }
 
-        layer.rotation = rotation
+        applyLayerTransform()
 
         events.rotated.trigger()
     }
@@ -177,7 +177,7 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
             return
         }
 
-        layer.scale = scale
+        applyLayerTransform()
     }
 
     private func autoResize() {
@@ -196,6 +196,10 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
 
     private func horizontalAlignmentDidChange() {
         layer.alignmentMode = horizontalAlignment.mode
+    }
+
+    private func applyLayerTransform() {
+        layer.applyTransform(withRotation: rotation, scale: scale, mirroring: [])
     }
 }
 
