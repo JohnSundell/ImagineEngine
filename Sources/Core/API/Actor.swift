@@ -5,6 +5,7 @@
  */
 
 import Foundation
+import QuartzCore
 
 /**
  *  Class used to define an actor in a scene
@@ -26,10 +27,11 @@ import Foundation
  *  scene.add(actor)
  *  ```
  */
-public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
-                          Pluggable, ZIndexed, Movable, Rotatable, Scalable, Fadeable {
+public final class Actor: Node<CALayer>, InstanceHashable, ActionPerformer,
+                          Pluggable, ZIndexed, Movable, Rotatable, Scalable,
+                          Fadeable, Activatable, GridPlaceable {
     /// The scene that the actor currently belongs to.
-    public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
+    override public internal(set) weak var scene: Scene? { didSet { sceneDidChange() } }
     /// A collection of events that can be used to observe the actor.
     public private(set) lazy var events = ActorEventCollection(object: self)
     /// The index of the actor on the z axis. Affects rendering & hit testing. 0 = implicit index.
@@ -38,8 +40,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     public var position = Point() { didSet { positionDidChange(from: oldValue) } }
     /// The size of the actor (centered on its position).
     public var size = Size() { didSet { sizeDidChange(from: oldValue) } }
-    /// The rectangle the actor currently occupies within its scene.
-    public private(set) var rect = Rect() { didSet { rectDidChange() } }
     /// The rotation of the actor along the z axis.
     public var rotation = Metric() { didSet { rotationDidChange(from: oldValue) } }
     /// Any radius that should be applied to the corners of the actor. Default = 0.
@@ -71,10 +71,8 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     /// Any logical group that the actor is a part of. Can be used for events & collisions.
     public var group: Group?
 
-    internal let layer = Layer()
     internal lazy var actorsInContact = Set<Actor>()
     internal lazy var blocksInContact = Set<Block>()
-    internal lazy var gridTiles = Set<Grid.Tile>()
     internal var isWithinScene = false
     internal var isCollisionDetectionActive = false
 
@@ -87,7 +85,9 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     // MARK: - Initializer
 
     /// Initialize an instance of this class
-    public init() {}
+    public init() {
+        super.init(layer: Layer())
+    }
 
     // MARK: - API
 
@@ -106,43 +106,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     /// Check if this actor is in contact with a given block
     public func isInContact(with block: Block) -> Bool {
         return blocksInContact.contains(block)
-    }
-
-    // MARK: - SceneObject
-
-    internal func addLayer(to superlayer: Layer) {
-        superlayer.addSublayer(layer)
-    }
-
-    internal func add(to gridTile: Grid.Tile) {
-        gridTile.actors.insert(self)
-        gridTiles.insert(gridTile)
-    }
-
-    internal func remove(from gridTile: Grid.Tile) {
-        gridTile.actors.remove(self)
-        gridTiles.remove(gridTile)
-
-        for otherActor in gridTile.actors {
-            guard otherActor.actorsInContact.contains(self) else {
-                continue
-            }
-
-            guard !otherActor.rectForCollisionDetection.intersects(rectForCollisionDetection) else {
-                continue
-            }
-
-            otherActor.actorsInContact.remove(self)
-            actorsInContact.remove(otherActor)
-        }
-
-        for block in gridTile.blocks {
-            guard block.actorsInContact.remove(self) != nil else {
-                continue
-            }
-
-            blocksInContact.remove(block)
-        }
     }
 
     // MARK: - ActionPerformer
@@ -182,6 +145,39 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         actionManager.deactivate()
     }
 
+    // MARK: - GridPlaceable
+
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.actors.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.actors.remove(self)
+        gridTiles.remove(gridTile)
+
+        for otherActor in gridTile.actors {
+            guard otherActor.actorsInContact.contains(self) else {
+                continue
+            }
+
+            guard !otherActor.rectForCollisionDetection.intersects(rectForCollisionDetection) else {
+                continue
+            }
+
+            otherActor.actorsInContact.remove(self)
+            actorsInContact.remove(otherActor)
+        }
+
+        for block in gridTile.blocks {
+            guard block.actorsInContact.remove(self) != nil else {
+                continue
+            }
+
+            blocksInContact.remove(block)
+        }
+    }
+
     // MARK: - Internal
 
     internal func render(frame: Animation.Frame, scale: Int?, resize: Bool, ignoreNamePrefix: Bool) {
@@ -217,7 +213,9 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
 
         let isOriginalUpdate = !isUpdatingPosition
         isUpdatingPosition = true
-        updateRect()
+
+        layer.position = position
+        rectDidChange()
 
         guard isOriginalUpdate else {
             return
@@ -229,7 +227,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
             return
         }
 
-        layer.position = position
         events.moved.trigger(with: (oldValue, position))
         events.rectChanged.trigger()
     }
@@ -240,7 +237,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         }
 
         layer.bounds.size = size
-        updateRect()
+        rectDidChange()
 
         events.resized.trigger()
         events.rectChanged.trigger()
@@ -252,6 +249,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         }
 
         applyLayerTransform()
+        rectDidChange()
 
         events.rotated.trigger()
     }
@@ -270,7 +268,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         }
 
         applyLayerTransform()
-        updateRect()
+        rectDidChange()
     }
 
     private func velocityDidChange(from oldValue: Vector) {
@@ -325,15 +323,6 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
         if oldValue == false && isHitTestingEnabled == true {
             rectDidChange()
         }
-    }
-
-    private func updateRect() {
-        var newRect = Rect(origin: position, size: size)
-        newRect.size.width *= scale
-        newRect.size.height *= scale
-        newRect.origin.x -= newRect.width / 2
-        newRect.origin.y -= newRect.height / 2
-        rect = newRect
     }
 
     private func renderFirstAnimationFrameIfNeeded() {

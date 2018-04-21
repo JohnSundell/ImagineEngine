@@ -14,10 +14,9 @@ import QuartzCore
  *  setting the font and text color of text and will automatically resize itself
  *  to fit the text you assign to it.
  */
-public final class Label: SceneObject, InstanceHashable, ActionPerformer, Pluggable,
-                          ZIndexed, Movable, Fadeable, Rotatable, Scalable {
-    /// The scene that the label currently belongs to.
-    public internal(set) var scene: Scene?
+public final class Label: Node<CATextLayer>, InstanceHashable, ActionPerformer, Pluggable,
+                          ZIndexed, Movable, Fadeable, Rotatable, Scalable, Activatable,
+                          GridPlaceable {
     /// A collection of events that can be used to observe the label.
     public private(set) lazy var events = LabelEventCollection(object: self)
     /// Whether the label's text should be wrapped on multiple lines in case it doesn't fit its width.
@@ -32,8 +31,6 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     public var rotation = Metric() { didSet { rotationDidChange(from: oldValue) } }
     /// Whether the label should automatically be resized to fit its content.
     public var shouldAutoResize = true
-    /// The rectangle that the label currently occupies within its scene.
-    public var rect: Rect { return layer.frame }
     /// The opacity of the label. Ranges from 0 (transparent) - 1 (opaque).
     public var opacity = Metric(1) { didSet { layer.opacity = Float(opacity) } }
     /// The text that the label is currently rendering.
@@ -49,9 +46,6 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     /// The scale the label gets rendered at.
     public var scale: Metric = 1 { didSet { scaleDidChange(from: oldValue) } }
 
-    internal let layer = TextLayer()
-    internal private(set) lazy var gridTiles = Set<Grid.Tile>()
-
     private lazy var actionManager = ActionManager(object: self)
     private let pluginManager = PluginManager()
 
@@ -62,27 +56,13 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
         self.text = text
         font = .default
 
+        super.init(layer: TextLayer())
+
         layer.string = text
         layer.contentsScale = Screen.mainScreenScale
 
         fontDidChange()
         horizontalAlignmentDidChange()
-    }
-
-    // MARK: - SceneObject
-
-    internal func addLayer(to superlayer: Layer) {
-        superlayer.addSublayer(layer)
-    }
-
-    internal func add(to gridTile: Grid.Tile) {
-        gridTile.labels.insert(self)
-        gridTiles.insert(gridTile)
-    }
-
-    internal func remove(from gridTile: Grid.Tile) {
-        gridTile.labels.remove(self)
-        gridTiles.remove(gridTile)
     }
 
     // MARK: - ActionPerformer
@@ -120,6 +100,18 @@ public final class Label: SceneObject, InstanceHashable, ActionPerformer, Plugga
     internal func deactivate() {
         actionManager.deactivate()
         pluginManager.deactivate()
+    }
+
+    // MARK: - GridPlaceable
+
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.labels.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.labels.remove(self)
+        gridTiles.remove(gridTile)
     }
 
     // MARK: - Public

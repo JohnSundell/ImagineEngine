@@ -13,12 +13,21 @@
 		5204849D1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		5204849E1FA353590011D372 /* ClickGestureRecognizerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */; };
 		520484A21FA357070011D372 /* ClickGestureRecognizer-macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */; };
-		5209C858208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C857208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
-		5209C859208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C857208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
-		5209C85A208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C857208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
-		5209C85C208BF3510033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85B208BF3510033DB4A /* CALayer+Transform.swift */; };
-		5209C85D208BF3510033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85B208BF3510033DB4A /* CALayer+Transform.swift */; };
-		5209C85E208BF3510033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85B208BF3510033DB4A /* CALayer+Transform.swift */; };
+		5209C845208BE4A90033DB4A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C844208BE4A90033DB4A /* Node.swift */; };
+		5209C846208BE4A90033DB4A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C844208BE4A90033DB4A /* Node.swift */; };
+		5209C847208BE4A90033DB4A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C844208BE4A90033DB4A /* Node.swift */; };
+		5209C849208BE8EB0033DB4A /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C848208BE8EB0033DB4A /* AnyNode.swift */; };
+		5209C84A208BE8EB0033DB4A /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C848208BE8EB0033DB4A /* AnyNode.swift */; };
+		5209C84B208BE8EB0033DB4A /* AnyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C848208BE8EB0033DB4A /* AnyNode.swift */; };
+		5209C84D208BEAC00033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C84C208BEAC00033DB4A /* CALayer+Transform.swift */; };
+		5209C84E208BEAC00033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C84C208BEAC00033DB4A /* CALayer+Transform.swift */; };
+		5209C84F208BEAC00033DB4A /* CALayer+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C84C208BEAC00033DB4A /* CALayer+Transform.swift */; };
+		5209C854208BEFF00033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C850208BEFC80033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
+		5209C855208BEFF00033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C850208BEFC80033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
+		5209C856208BEFF10033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C850208BEFC80033DB4A /* XCTAssertEqual+CATransform3D.swift */; };
+		5209C860208CC1690033DB4A /* GridPlaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85F208CC1690033DB4A /* GridPlaceable.swift */; };
+		5209C861208CC1690033DB4A /* GridPlaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85F208CC1690033DB4A /* GridPlaceable.swift */; };
+		5209C862208CC1690033DB4A /* GridPlaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5209C85F208CC1690033DB4A /* GridPlaceable.swift */; };
 		521054261FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
 		521054271FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
 		521054281FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */; };
@@ -218,9 +227,6 @@
 		52B8065E1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
 		52B8065F1FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
 		52B806601FB373BC0042FBA7 /* ZIndexed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */; };
-		52B806661FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
-		52B806671FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
-		52B806681FB392500042FBA7 /* SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806651FB392500042FBA7 /* SceneObject.swift */; };
 		52B8066A1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
 		52B8066B1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
 		52B8066C1FB3B6180042FBA7 /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B806691FB3B6180042FBA7 /* BlockTests.swift */; };
@@ -355,8 +361,11 @@
 		026CE1C31FC06B7E00A0998B /* CameraEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEventCollection.swift; sourceTree = "<group>"; };
 		5204849C1FA353590011D372 /* ClickGestureRecognizerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickGestureRecognizerMock.swift; sourceTree = "<group>"; };
 		5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClickGestureRecognizer-macOS.swift"; sourceTree = "<group>"; };
-		5209C857208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTAssertEqual+CATransform3D.swift"; sourceTree = "<group>"; };
-		5209C85B208BF3510033DB4A /* CALayer+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Transform.swift"; sourceTree = "<group>"; };
+		5209C844208BE4A90033DB4A /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		5209C848208BE8EB0033DB4A /* AnyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNode.swift; sourceTree = "<group>"; };
+		5209C84C208BEAC00033DB4A /* CALayer+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Transform.swift"; sourceTree = "<group>"; };
+		5209C850208BEFC80033DB4A /* XCTAssertEqual+CATransform3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTAssertEqual+CATransform3D.swift"; sourceTree = "<group>"; };
+		5209C85F208CC1690033DB4A /* GridPlaceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPlaceable.swift; sourceTree = "<group>"; };
 		521054251FFD78B1002FCFB6 /* LabelEventCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEventCollection.swift; sourceTree = "<group>"; };
 		522CD6281F8D4512008DB43D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		522CD6291F8D4512008DB43D /* ActionPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPerformer.swift; sourceTree = "<group>"; };
@@ -441,7 +450,6 @@
 		52A124D01FABA07500252047 /* EdgeInsets-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EdgeInsets-macOS.swift"; sourceTree = "<group>"; };
 		52A124D21FABA8AB00252047 /* Pluggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluggable.swift; sourceTree = "<group>"; };
 		52B8065D1FB373BC0042FBA7 /* ZIndexed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIndexed.swift; sourceTree = "<group>"; };
-		52B806651FB392500042FBA7 /* SceneObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneObject.swift; sourceTree = "<group>"; };
 		52B806691FB3B6180042FBA7 /* BlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTests.swift; sourceTree = "<group>"; };
 		52C8602D1F8E36B600C6C7A7 /* ActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorTests.swift; sourceTree = "<group>"; };
 		52C860321F8E381600C6C7A7 /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
@@ -563,6 +571,7 @@
 				522CD63F1F8D4512008DB43D /* Mirroring.swift */,
 				522CD6401F8D4512008DB43D /* Movable.swift */,
 				522CD6411F8D4512008DB43D /* MoveAction.swift */,
+				5209C844208BE4A90033DB4A /* Node.swift */,
 				52A124D21FABA8AB00252047 /* Pluggable.swift */,
 				522CD6421F8D4512008DB43D /* Plugin.swift */,
 				522CD6431F8D4512008DB43D /* RepeatAction.swift */,
@@ -592,9 +601,10 @@
 				522CD64F1F8D4512008DB43D /* ActionManager.swift */,
 				522CD6501F8D4512008DB43D /* ActionWrapper.swift */,
 				522CD6511F8D4512008DB43D /* Activatable.swift */,
+				5209C848208BE8EB0033DB4A /* AnyNode.swift */,
 				C800CE2C1FA77F74008EE08D /* BundleProtocol.swift */,
 				C8D2FCE41FA493940077B560 /* BundleTextureImageLoader.swift */,
-				5209C85B208BF3510033DB4A /* CALayer+Transform.swift */,
+				5209C84C208BEAC00033DB4A /* CALayer+Transform.swift */,
 				5204849F1FA356F80011D372 /* ClickGestureRecognizer-macOS.swift */,
 				522CD6521F8D4512008DB43D /* ClickPlugin.swift */,
 				522CD6531F8D4512008DB43D /* ClosureUpdatable.swift */,
@@ -605,6 +615,7 @@
 				5253C7DC1FA4D66500D304B5 /* Font+Default.swift */,
 				522CD6571F8D4512008DB43D /* GameView.swift */,
 				522CD6581F8D4512008DB43D /* Grid.swift */,
+				5209C85F208CC1690033DB4A /* GridPlaceable.swift */,
 				DD21B7381F92E81C0034A7CE /* Image-macOS.swift */,
 				522CD6591F8D4512008DB43D /* Layer.swift */,
 				522CD65A1F8D4512008DB43D /* LoadedTexture.swift */,
@@ -612,7 +623,6 @@
 				522CD65C1F8D4512008DB43D /* PluginManager.swift */,
 				522CD65D1F8D4512008DB43D /* PluginWrapper.swift */,
 				522CD65E1F8D4512008DB43D /* ReplicatorLayer.swift */,
-				52B806651FB392500042FBA7 /* SceneObject.swift */,
 				525688B41F9CF08E00F87786 /* Screen-iOS.swift */,
 				DD21B73B1F92E8B90034A7CE /* Screen-macOS.swift */,
 				522CD65F1F8D4512008DB43D /* TextLayer.swift */,
@@ -650,7 +660,7 @@
 				52C860321F8E381600C6C7A7 /* Assert.swift */,
 				52C860331F8E381600C6C7A7 /* TimeTraveler.swift */,
 				52C860341F8E382800C6C7A7 /* ImageMockFactory.swift */,
-				5209C857208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift */,
+				5209C850208BEFC80033DB4A /* XCTAssertEqual+CATransform3D.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1047,7 +1057,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5209C859208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
+				5209C855208BEFF00033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
 				525688D01F9CF3E200F87786 /* TextureImageLoaderMock.swift in Sources */,
 				525688C81F9CF3E200F87786 /* EventTests.swift in Sources */,
 				525688CE1F9CF3E200F87786 /* GameMock.swift in Sources */,
@@ -1079,7 +1089,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5253C7D51FA4D57200D304B5 /* SceneEventCollection.swift in Sources */,
-				52B806681FB392500042FBA7 /* SceneObject.swift in Sources */,
 				5253C7D21FA4D57200D304B5 /* Scalable.swift in Sources */,
 				5253C7B21FA4D56C00D304B5 /* View+MakeLayer.swift in Sources */,
 				5253C7AD1FA4D56C00D304B5 /* TextLayer.swift in Sources */,
@@ -1092,7 +1101,6 @@
 				5253C7B61FA4D57200D304B5 /* Actor.swift in Sources */,
 				52E725941FCF68AB0099FCC7 /* Shadow.swift in Sources */,
 				5253C7A01FA4D56C00D304B5 /* ClickPlugin.swift in Sources */,
-				5209C85E208BF3510033DB4A /* CALayer+Transform.swift in Sources */,
 				5253C7C01FA4D57200D304B5 /* Event.swift in Sources */,
 				5253C7A21FA4D56C00D304B5 /* DisplayLinkProtocol.swift in Sources */,
 				026CE1C61FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
@@ -1107,6 +1115,7 @@
 				5253C7DD1FA4D66500D304B5 /* Font+Default.swift in Sources */,
 				5253C7D71FA4D57200D304B5 /* Texture.swift in Sources */,
 				521054281FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
+				5209C84F208BEAC00033DB4A /* CALayer+Transform.swift in Sources */,
 				5253C7CB1FA4D57200D304B5 /* Movable.swift in Sources */,
 				5253C7CD1FA4D57200D304B5 /* Plugin.swift in Sources */,
 				5253C7A31FA4D56C00D304B5 /* DisplayLink-iOS+tvOS.swift in Sources */,
@@ -1124,6 +1133,7 @@
 				5253C7DA1FA4D57200D304B5 /* Timeline.swift in Sources */,
 				5253C7A41FA4D56C00D304B5 /* GameView.swift in Sources */,
 				5253C7CC1FA4D57200D304B5 /* MoveAction.swift in Sources */,
+				5209C862208CC1690033DB4A /* GridPlaceable.swift in Sources */,
 				5253C7B11FA4D56C00D304B5 /* UpdateOutcome.swift in Sources */,
 				5253C7BA1FA4D57200D304B5 /* Block.swift in Sources */,
 				5253C7C21FA4D57200D304B5 /* EventToken.swift in Sources */,
@@ -1136,6 +1146,7 @@
 				5253C7BE1FA4D57200D304B5 /* ClosureAction.swift in Sources */,
 				5253C7C41FA4D57200D304B5 /* FadeAction.swift in Sources */,
 				5253C7BF1FA4D57200D304B5 /* Constraint.swift in Sources */,
+				5209C847208BE4A90033DB4A /* Node.swift in Sources */,
 				5253C7CF1FA4D57200D304B5 /* RepeatMode.swift in Sources */,
 				5253C7DB1FA4D57200D304B5 /* Typealiases.swift in Sources */,
 				5253C79C1FA4D54000D304B5 /* GameWindow.swift in Sources */,
@@ -1145,6 +1156,7 @@
 				5253C7C71FA4D57200D304B5 /* InstanceHashable.swift in Sources */,
 				5253C7B31FA4D57200D304B5 /* Action.swift in Sources */,
 				5253C7AC1FA4D56C00D304B5 /* Screen-iOS.swift in Sources */,
+				5209C84B208BE8EB0033DB4A /* AnyNode.swift in Sources */,
 				5253C79D1FA4D56C00D304B5 /* ActionManager.swift in Sources */,
 				5253C7A11FA4D56C00D304B5 /* ClosureUpdatable.swift in Sources */,
 				5253C7AA1FA4D56C00D304B5 /* PluginWrapper.swift in Sources */,
@@ -1163,7 +1175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5209C85A208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
+				5209C856208BEFF10033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
 				5253C7ED1FA4D97D00D304B5 /* TextureImageLoaderMock.swift in Sources */,
 				5253C7EF1FA4D97D00D304B5 /* TimeTraveler.swift in Sources */,
 				5253C7E81FA4D97D00D304B5 /* ActionMock.swift in Sources */,
@@ -1195,7 +1207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				522CD6A41F8D4521008DB43D /* View+MakeLayer.swift in Sources */,
-				52B806661FB392500042FBA7 /* SceneObject.swift in Sources */,
 				522CD69D1F8D4521008DB43D /* PluginWrapper.swift in Sources */,
 				522CD6881F8D451D008DB43D /* Scalable.swift in Sources */,
 				523E5D101F9FEFBC0084792C /* SpriteSheet.swift in Sources */,
@@ -1208,7 +1219,6 @@
 				522CD6741F8D451D008DB43D /* ClosureAction.swift in Sources */,
 				52E725921FCF68AB0099FCC7 /* Shadow.swift in Sources */,
 				522CD6841F8D451D008DB43D /* RepeatAction.swift in Sources */,
-				5209C85C208BF3510033DB4A /* CALayer+Transform.swift in Sources */,
 				522CD6931F8D4521008DB43D /* ClosureUpdatable.swift in Sources */,
 				522CD69A1F8D4521008DB43D /* LoadedTexture.swift in Sources */,
 				026CE1C41FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
@@ -1223,6 +1233,7 @@
 				522CD6971F8D4521008DB43D /* GameView.swift in Sources */,
 				522CD6911F8D4521008DB43D /* Activatable.swift in Sources */,
 				521054261FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
+				5209C84D208BEAC00033DB4A /* CALayer+Transform.swift in Sources */,
 				522CD67C1F8D451D008DB43D /* Group.swift in Sources */,
 				522CD67E1F8D451D008DB43D /* Label.swift in Sources */,
 				522CD6A21F8D4521008DB43D /* UpdatableWrapper.swift in Sources */,
@@ -1240,6 +1251,7 @@
 				522CD66F1F8D451D008DB43D /* AnimationAction.swift in Sources */,
 				522CD6891F8D451D008DB43D /* ScaleAction.swift in Sources */,
 				522CD66B1F8D451D008DB43D /* ActionToken.swift in Sources */,
+				5209C860208CC1690033DB4A /* GridPlaceable.swift in Sources */,
 				522CD69F1F8D4521008DB43D /* TextLayer.swift in Sources */,
 				522CD6A61F8D4526008DB43D /* GameWindow.swift in Sources */,
 				522CD6791F8D451D008DB43D /* Fadeable.swift in Sources */,
@@ -1252,6 +1264,7 @@
 				522CD6861F8D451D008DB43D /* Rotatable.swift in Sources */,
 				522CD6721F8D451D008DB43D /* Camera.swift in Sources */,
 				5253C7DF1FA4D7E500D304B5 /* Font+Default.swift in Sources */,
+				5209C845208BE4A90033DB4A /* Node.swift in Sources */,
 				522CD67A1F8D451D008DB43D /* FadeAction.swift in Sources */,
 				522CD6691F8D451D008DB43D /* Action.swift in Sources */,
 				522CD68C1F8D451D008DB43D /* Texture.swift in Sources */,
@@ -1261,6 +1274,7 @@
 				522CD67B1F8D451D008DB43D /* Game.swift in Sources */,
 				522CD6801F8D451D008DB43D /* Mirroring.swift in Sources */,
 				522CD66C1F8D451D008DB43D /* Actor.swift in Sources */,
+				5209C849208BE8EB0033DB4A /* AnyNode.swift in Sources */,
 				522CD68D1F8D451D008DB43D /* Timeline.swift in Sources */,
 				522CD6761F8D451D008DB43D /* Event.swift in Sources */,
 				522CD6781F8D451D008DB43D /* EventToken.swift in Sources */,
@@ -1279,7 +1293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5209C858208BF3230033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
+				5209C854208BEFF00033DB4A /* XCTAssertEqual+CATransform3D.swift in Sources */,
 				527FC8081F8EB83F006B1295 /* CameraTests.swift in Sources */,
 				52C8603B1F8E535100C6C7A7 /* GameMock.swift in Sources */,
 				52479F861F8E7BFD00D22A87 /* TimeTraveler.swift in Sources */,
@@ -1338,6 +1352,7 @@
 				C800CE311FA782EA008EE08D /* TextureFormat.swift in Sources */,
 				DD21B73A1F92E8240034A7CE /* Image-macOS.swift in Sources */,
 				DD21B7051F92E75A0034A7CE /* Group.swift in Sources */,
+				5209C84E208BEAC00033DB4A /* CALayer+Transform.swift in Sources */,
 				026CE1C51FC06B7E00A0998B /* CameraEventCollection.swift in Sources */,
 				DD21B7441F92EB1A0034A7CE /* DisplayLink-macOS.swift in Sources */,
 				DD21B73D1F92E8CB0034A7CE /* Screen-macOS.swift in Sources */,
@@ -1360,7 +1375,6 @@
 				DD21B7131F92E75A0034A7CE /* TextLayer.swift in Sources */,
 				DD21B7151F92E75A0034A7CE /* Fadeable.swift in Sources */,
 				DD21B7161F92E75A0034A7CE /* RotateAction.swift in Sources */,
-				52B806671FB392500042FBA7 /* SceneObject.swift in Sources */,
 				DD21B7181F92E75A0034A7CE /* PluginManager.swift in Sources */,
 				DD21B7481F92EC800034A7CE /* GameViewController-macOS.swift in Sources */,
 				DD21B7191F92E75A0034A7CE /* InstanceHashable.swift in Sources */,
@@ -1375,17 +1389,19 @@
 				523E5D111F9FEFBC0084792C /* SpriteSheet.swift in Sources */,
 				DD21B7211F92E75A0034A7CE /* MetricAction.swift in Sources */,
 				DD21B7221F92E75A0034A7CE /* Animation.swift in Sources */,
-				5209C85D208BF3510033DB4A /* CALayer+Transform.swift in Sources */,
 				DD21B7231F92E75A0034A7CE /* Game.swift in Sources */,
 				DD21B7241F92E75A0034A7CE /* Mirroring.swift in Sources */,
 				DD21B7251F92E75A0034A7CE /* Actor.swift in Sources */,
 				DD21B7261F92E75A0034A7CE /* Timeline.swift in Sources */,
+				5209C861208CC1690033DB4A /* GridPlaceable.swift in Sources */,
 				DD21B7271F92E75A0034A7CE /* Event.swift in Sources */,
+				5209C84A208BE8EB0033DB4A /* AnyNode.swift in Sources */,
 				DD21B7281F92E75A0034A7CE /* EventToken.swift in Sources */,
 				DD21B7291F92E75A0034A7CE /* MoveAction.swift in Sources */,
 				DD21B72A1F92E75A0034A7CE /* TextureManager.swift in Sources */,
 				DD21B72B1F92E75A0034A7CE /* Constraint.swift in Sources */,
 				DD21B72C1F92E75A0034A7CE /* Typealiases.swift in Sources */,
+				5209C846208BE4A90033DB4A /* Node.swift in Sources */,
 				DD21B72D1F92E75A0034A7CE /* DisplayLinkProtocol.swift in Sources */,
 				521054271FFD78B1002FCFB6 /* LabelEventCollection.swift in Sources */,
 				528B21521FA382B300CE9967 /* UpdatableCollection.swift in Sources */,

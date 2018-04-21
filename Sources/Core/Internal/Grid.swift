@@ -223,30 +223,30 @@ internal final class Grid: Activatable {
         nextZIndex += 1
     }
 
-    private func updateTiles<O: SceneObject>(for object: O, collisionDetector: ((O, Tile) -> Void)?) {
-        let rect = object.rect
+    private func updateTiles<N: AnyNode & GridPlaceable>(for node: N, collisionDetector: ((N, Tile) -> Void)?) {
+        let rect = node.rect
         let startIndex = Index(x: rect.minX, y: rect.minY)
         let endIndex = Index(x: rect.maxX, y: rect.maxY)
 
-        var tilesExited = object.gridTiles
+        var tilesExited = node.gridTiles
 
         for x in startIndex.x...endIndex.x {
             for y in startIndex.y...endIndex.y {
                 let index = Index(x: x, y: y)
 
                 if let existingTile = tiles[index] {
-                    object.add(to: existingTile)
+                    node.add(to: existingTile)
                     tilesExited.remove(existingTile)
-                    collisionDetector?(object, existingTile)
+                    collisionDetector?(node, existingTile)
                 } else {
                     let tile = Tile()
                     tiles[index] = tile
-                    object.add(to: tile)
+                    node.add(to: tile)
                 }
             }
         }
 
-        tilesExited.forEach(object.remove)
+        tilesExited.forEach(node.remove)
     }
 
     private func performCollisionDetection(for actor: Actor, in tile: Tile) {

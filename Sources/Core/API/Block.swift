@@ -20,25 +20,20 @@ import QuartzCore
  *  or you can simpy pass the name of such a collection when creating a block to have
  *  Imagine Engine automatically infer the names of all its parts.
  */
-public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndexed, Movable {
-    /// The scene that the block currently belongs to
-    public internal(set) var scene: Scene?
+public final class Block: Node<CALayer>, InstanceHashable, ActionPerformer, ZIndexed,
+                          Movable, Activatable, GridPlaceable {
     /// The index of the block on the z axis. 0 = implicit index.
     public var zIndex = 0 { didSet { layer.zPosition = Metric(zIndex) } }
     /// The position (center-point) of the block within its scene.
     public var position = Point() { didSet { positionDidChange() } }
     /// The size of the block (centered on its position).
     public let size: Size
-    /// The rectangle that the block currently occupies within its scene.
-    public var rect: Rect { return layer.frame }
     /// The block's background color. Default is `.clear` (no background).
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
     /// Any logical group that the block is a part of. Can be used for events & collisions.
     public var group: Group?
 
-    internal let layer = Layer()
     internal lazy var actorsInContact = Set<Actor>()
-    internal lazy var gridTiles = Set<Grid.Tile>()
 
     private let content: Content
     private let textureScale: Int?
@@ -48,6 +43,8 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         self.size = size
         self.content = content
         self.textureScale = textureScale
+
+        super.init(layer: Layer())
 
         layer.bounds.size = size
     }
@@ -59,30 +56,6 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
         scene?.remove(self)
         scene = nil
         layer.removeFromSuperlayer()
-    }
-
-    // MARK: - SceneObject
-
-    internal func addLayer(to superlayer: Layer) {
-        superlayer.addSublayer(layer)
-    }
-
-    internal func add(to gridTile: Grid.Tile) {
-        gridTile.blocks.insert(self)
-        gridTiles.insert(gridTile)
-    }
-
-    internal func remove(from gridTile: Grid.Tile) {
-        gridTile.blocks.remove(self)
-        gridTiles.remove(gridTile)
-
-        for actor in gridTile.actors {
-            guard actor.blocksInContact.remove(self) != nil else {
-                continue
-            }
-
-            actorsInContact.remove(actor)
-        }
     }
 
     // MARK: - ActionPerformer
@@ -100,6 +73,26 @@ public final class Block: SceneObject, InstanceHashable, ActionPerformer, ZIndex
 
     internal func deactivate() {
         actionManager.deactivate()
+    }
+
+    // MARK: - GridPlaceable
+
+    internal func add(to gridTile: Grid.Tile) {
+        gridTile.blocks.insert(self)
+        gridTiles.insert(gridTile)
+    }
+
+    internal func remove(from gridTile: Grid.Tile) {
+        gridTile.blocks.remove(self)
+        gridTiles.remove(gridTile)
+
+        for actor in gridTile.actors {
+            guard actor.blocksInContact.remove(self) != nil else {
+                continue
+            }
+
+            actorsInContact.remove(actor)
+        }
     }
 
     // MARK: - Private
