@@ -8,10 +8,6 @@ import Foundation
 import QuartzCore
 
 internal final class Layer: CALayer {
-    var rotation: Metric = 0 { didSet { updateTransform() } }
-    var scale: Metric = 1 { didSet { updateTransform() } }
-    var mirroring = Set<Mirroring>() { didSet { updateTransform() } }
-
     // MARK: - Initializers
 
     override init() {
@@ -30,23 +26,5 @@ internal final class Layer: CALayer {
 
     override func action(forKey event: String) -> CAAction? {
         return NSNull()
-    }
-
-    // MARK: - Private
-
-    private func updateTransform() {
-        var newTransform = CATransform3DIdentity
-        newTransform = CATransform3DRotate(newTransform, rotation, 0, 0, 1)
-        newTransform = CATransform3DScale(newTransform, scale, scale, 1)
-
-        if mirroring.contains(.horizontal) {
-            newTransform = CATransform3DScale(newTransform, -1, 1, 1)
-        }
-
-        if mirroring.contains(.vertical) {
-            newTransform = CATransform3DScale(newTransform, 1, -1, 1)
-        }
-
-        transform = newTransform
     }
 }

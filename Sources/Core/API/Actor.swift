@@ -51,7 +51,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
     /// The opacity of the actor. Ranges from 0 (transparent) - 1 (opaque).
     public var opacity = Metric(1) { didSet { layer.opacity = Float(opacity) } }
     /// Any mirroring to apply when rendering the actor. See `Mirroring` for options.
-    public var mirroring = Set<Mirroring>() { didSet { layer.mirroring = mirroring } }
+    public var mirroring = Set<Mirroring>() { didSet { applyLayerTransform() } }
     /// The actor's background color. Default is `.clear` (no background).
     public var backgroundColor = Color.clear { didSet { layer.backgroundColor = backgroundColor.cgColor } }
     /// Any shadow that should be rendered beneath the actor. Using shadows may impact performance.
@@ -251,7 +251,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
             return
         }
 
-        layer.rotation = rotation
+        applyLayerTransform()
 
         events.rotated.trigger()
     }
@@ -269,7 +269,7 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
             return
         }
 
-        layer.scale = scale
+        applyLayerTransform()
         updateRect()
     }
 
@@ -349,6 +349,10 @@ public final class Actor: SceneObject, InstanceHashable, ActionPerformer,
                scale: animation.textureScale,
                resize: animation.autoResize,
                ignoreNamePrefix: animation.ignoreTextureNamePrefix)
+    }
+
+    private func applyLayerTransform() {
+        layer.applyTransform(withRotation: rotation, scale: scale, mirroring: mirroring)
     }
 }
 
