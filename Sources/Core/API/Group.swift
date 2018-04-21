@@ -7,7 +7,7 @@
 import Foundation
 
 /// Enum used to define logical groups that game objects can belong to
-public enum Group {
+public enum Group: Hashable {
     /// A group that is identified by a string-based name
     case name(String)
     /// A group that is identifier by a number
@@ -34,15 +34,5 @@ internal extension Group {
         case .number(let number):
             return "number-\(number)"
         }
-    }
-}
-
-extension Group: Hashable {
-    public static func ==(lhs: Group, rhs: Group) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-
-    public var hashValue: Int {
-        return identifier.hashValue
     }
 }

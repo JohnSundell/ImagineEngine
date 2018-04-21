@@ -140,42 +140,12 @@ public extension Event where Subject == Void {
 }
 
 private extension Event {
-    enum ObservationKey {
+    enum ObservationKey: Hashable {
         case token(EventToken)
         case objectIdentifier(ObjectIdentifier)
     }
 
     struct Observation {
         let closure: (Object, Subject) -> Void
-    }
-}
-
-extension Event.ObservationKey: Hashable {
-    static func ==(lhs: Event.ObservationKey, rhs: Event.ObservationKey) -> Bool {
-        switch lhs {
-        case .token(let tokenA):
-            switch rhs {
-            case .token(let tokenB):
-                return tokenA === tokenB
-            case .objectIdentifier:
-                return false
-            }
-        case .objectIdentifier(let identifierA):
-            switch rhs {
-            case .token:
-                return false
-            case .objectIdentifier(let identifierB):
-                return identifierA == identifierB
-            }
-        }
-    }
-
-    var hashValue: Int {
-        switch self {
-        case .objectIdentifier(let identifier):
-            return identifier.hashValue
-        case .token(let token):
-            return ObjectIdentifier(token).hashValue
-        }
     }
 }
