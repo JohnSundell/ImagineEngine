@@ -106,20 +106,20 @@ open class Scene: Pluggable, Activatable {
     /// Add an actor to the scene
     public func add(_ actor: Actor) {
         grid.add(actor, in: self)
-        actor.addLayer(to: layer)
+        layer.addSublayer(actor.layer)
         events.actorAdded.trigger(with: actor)
     }
 
     /// Add a block to the scene
     public func add(_ block: Block) {
         grid.add(block, in: self)
-        block.addLayer(to: layer)
+        layer.addSublayer(block.layer)
     }
 
     /// Add a label to the scene
     public func add(_ label: Label) {
         grid.add(label, in: self)
-        label.addLayer(to: layer)
+        layer.addSublayer(label.layer)
     }
 
     /// Get all actors which rects intersect a given point
