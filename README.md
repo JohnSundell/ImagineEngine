@@ -22,7 +22,7 @@ Welcome to **Imagine Engine**, an ongoing project that aims to create a fast, hi
 
 ## Fast Core Animation-based rendering
 
-Imagine Engine uses Core Animation as its rendering backend - just like Apple's UI frameworks like UIKit and AppKit does. By leveraging the power of Core Animation's hardware accelerated 2D rendering capabilities, Imagine Engine is able to push lots of pixels onto the screen at the same time. That means more objects, more effects and less restrictions when designing your games.
+Imagine Engine uses Core Animation as its rendering backend - just like Apple's UI frameworks like UIKit and AppKit do. By leveraging the power of Core Animation's hardware accelerated 2D rendering capabilities, Imagine Engine is able to push lots of pixels onto the screen at the same time. That means more objects, more effects and less restrictions when designing your games.
 
 ## An easy to use API
 
