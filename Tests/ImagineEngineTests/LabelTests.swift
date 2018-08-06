@@ -54,10 +54,10 @@ final class LabelTests: XCTestCase {
 
     func testSettingHorizontalAlignment() {
         // Make sure that "left" is the default
-        XCTAssertEqual(label.layer.alignmentMode, kCAAlignmentLeft)
+        XCTAssertEqual(label.layer.alignmentMode, .left)
 
         label.horizontalAlignment = .right
-        XCTAssertEqual(label.layer.alignmentMode, kCAAlignmentRight)
+        XCTAssertEqual(label.layer.alignmentMode, .right)
     }
 
     func testAddingAndRemovingPlugin() {

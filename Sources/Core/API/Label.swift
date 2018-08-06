@@ -205,16 +205,16 @@ public extension Label {
 }
 
 private extension Label.HorizontalAlignment {
-    var mode: String {
+    var mode: CATextLayerAlignmentMode {
         switch self {
         case .left:
-            return kCAAlignmentLeft
+            return .left
         case .center:
-            return kCAAlignmentCenter
+            return .center
         case .right:
-            return kCAAlignmentRight
+            return .right
         case .justified:
-            return kCAAlignmentJustified
+            return .justified
         }
     }
 }
