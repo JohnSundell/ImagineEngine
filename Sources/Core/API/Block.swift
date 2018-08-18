@@ -85,14 +85,6 @@ public final class Block: Node<CALayer>, InstanceHashable, ActionPerformer, ZInd
     internal func remove(from gridTile: Grid.Tile) {
         gridTile.blocks.remove(self)
         gridTiles.remove(gridTile)
-
-        for actor in gridTile.actors {
-            guard actor.blocksInContact.remove(self) != nil else {
-                continue
-            }
-
-            actorsInContact.remove(actor)
-        }
     }
 
     // MARK: - Private

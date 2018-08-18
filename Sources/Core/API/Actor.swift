@@ -155,27 +155,6 @@ public final class Actor: Node<CALayer>, InstanceHashable, ActionPerformer,
     internal func remove(from gridTile: Grid.Tile) {
         gridTile.actors.remove(self)
         gridTiles.remove(gridTile)
-
-        for otherActor in gridTile.actors {
-            guard otherActor.actorsInContact.contains(self) else {
-                continue
-            }
-
-            guard !otherActor.rectForCollisionDetection.intersects(rectForCollisionDetection) else {
-                continue
-            }
-
-            otherActor.actorsInContact.remove(self)
-            actorsInContact.remove(otherActor)
-        }
-
-        for block in gridTile.blocks {
-            guard block.actorsInContact.remove(self) != nil else {
-                continue
-            }
-
-            blocksInContact.remove(block)
-        }
     }
 
     // MARK: - Internal

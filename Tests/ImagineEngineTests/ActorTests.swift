@@ -696,6 +696,28 @@ final class ActorTests: XCTestCase {
         XCTAssertTrue(actor.isInContact(with: block))
     }
 
+    func testIsInContactWithBlockWithNoOverlappingConstraint() {
+        let blockSize = Size(width: 100, height: 100)
+        let blockGroup = Group.name("BlockInContact")
+        let block = Block(size: blockSize, textureCollectionName: "BlockInContact")
+        block.group = blockGroup
+        game.scene.add(block)
+
+        actor.size = Size(width: 50, height: 50)
+        actor.position = Point(x: 300, y: 0)
+
+        actor.constraints.insert(.neverOverlapBlockInGroup(blockGroup))
+        actor.position = Point(x: 50, y: 0)
+
+        // Since actor can't overlap the block, it should be right outside of it,
+        // but still be in contact
+        XCTAssertEqual(actor.position, Point(x: 75, y: 0))
+        XCTAssertTrue(actor.isInContact(with: block))
+
+        // Moving the actor away should break the contact
+        actor.position.x += 1
+        XCTAssertFalse(actor.isInContact(with: block))
+    }
 }
 
 private extension Size {
