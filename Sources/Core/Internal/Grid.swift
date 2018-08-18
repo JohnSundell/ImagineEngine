@@ -144,10 +144,35 @@ internal final class Grid: Activatable {
         }
 
         updateTiles(for: actor, collisionDetector: performCollisionDetection)
+
+        let expandedRect = actor.rectForCollisionDetection.insetBy(dx: -1, dy: -1)
+
+        for otherActor in actor.actorsInContact {
+            if !expandedRect.intersects(otherActor.rectForCollisionDetection) {
+                actor.actorsInContact.remove(otherActor)
+                otherActor.actorsInContact.remove(actor)
+            }
+        }
+
+        for block in actor.blocksInContact {
+            if !expandedRect.intersects(block.rect) {
+                actor.blocksInContact.remove(block)
+                block.actorsInContact.remove(actor)
+            }
+        }
     }
 
     func blockRectDidChange(_ block: Block) {
         updateTiles(for: block, collisionDetector: performCollisionDetection)
+
+        let expandedRect = block.rect.insetBy(dx: -1, dy: -1)
+
+        for actor in block.actorsInContact {
+            if !actor.rectForCollisionDetection.intersects(expandedRect) {
+                actor.blocksInContact.remove(block)
+                block.actorsInContact.remove(actor)
+            }
+        }
     }
 
     func labelRectDidChange(_ label: Label) {
@@ -350,7 +375,8 @@ internal final class Grid: Activatable {
             block.actorsInContact.insert(actor)
             actor.events.collided(withBlockInGroup: blockGroup).trigger(with: block)
         case .constraintsOnly:
-            break
+            actor.blocksInContact.insert(block)
+            block.actorsInContact.insert(actor)
         }
 
         if let group = block.group {
