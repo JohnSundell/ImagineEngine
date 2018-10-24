@@ -12,11 +12,11 @@ internal final class DisplayLink: DisplayLinkProtocol {
     private lazy var link = makeLink()
 
     deinit {
-        link.remove(from: .main, forMode: .commonModes)
+        link.remove(from: .main, forMode: .common)
     }
 
     func activate() {
-        link.add(to: .main, forMode: .commonModes)
+        link.add(to: .main, forMode: .common)
     }
 
     // MARK: - Private

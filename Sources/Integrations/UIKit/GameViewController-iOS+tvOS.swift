@@ -57,13 +57,13 @@ public class GameViewController: UIViewController {
 
         notificationCenter.addObserver(self,
            selector: #selector(applicationDidBecomeActive),
-           name: .UIApplicationDidBecomeActive,
+           name: UIApplication.didBecomeActiveNotification,
            object: nil
         )
 
         notificationCenter.addObserver(self,
             selector: #selector(applicationWillBecomeInactive),
-            name: .UIApplicationWillResignActive,
+            name: UIApplication.willResignActiveNotification,
             object: nil
         )
     }
