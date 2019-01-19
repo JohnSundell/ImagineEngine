@@ -49,7 +49,8 @@ public extension Animation {
          repeatMode: RepeatMode = .forever,
          autoResize: Bool = true,
          ignoreTextureNamePrefix: Bool = false,
-         textureFormat: TextureFormat = .png) {
+         textureFormat: TextureFormat = .png,
+         textureScale: Int? = nil) {
         self.content = .frames(withBaseName: name,
                                indexSeparator: frameIndexSeparator,
                                format: textureFormat,
@@ -58,6 +59,7 @@ public extension Animation {
         self.repeatMode = repeatMode
         self.autoResize = autoResize
         self.ignoreTextureNamePrefix = ignoreTextureNamePrefix
+        self.textureScale = textureScale
         updateIdentifier()
     }
 
