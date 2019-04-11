@@ -14,9 +14,7 @@ extension InstanceHashable {
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
-    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
-    
 }
