@@ -37,6 +37,6 @@ public extension Pluggable {
     /// Add a plugin to this object, reusing an existing instance of the same type if possible
     /// - Returns: The plugin that was either added or reused
     @discardableResult func add<P: Plugin>(_ plugin: @autoclosure () -> P) -> P where P.Object == PluginTarget {
-        return add(plugin, reuseExistingOfSameType: true)
+        return add(plugin(), reuseExistingOfSameType: true)
     }
 }

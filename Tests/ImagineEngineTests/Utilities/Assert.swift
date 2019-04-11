@@ -50,7 +50,7 @@ public func assertErrorThrown<T, E: Error>(at file: StaticString = #file,
                                            line: UInt = #line,
                                            _ errorExpression: @autoclosure () -> E,
                                            by closure: () throws -> T) where E: Equatable {
-    assert(at: file, line: line, try closure(), throwsError: errorExpression)
+    assert(at: file, line: line, try closure(), throwsError: errorExpression())
 }
 
 /**
